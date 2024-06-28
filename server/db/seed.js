@@ -70,7 +70,7 @@ async function main() {
   });
 
   console.log(daniel);
-  
+
   await prisma.theater.create({
     data: {
         Location: "Georgia",
