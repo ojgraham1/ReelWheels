@@ -31,13 +31,13 @@ const createUser = async (user) => {
     const token = await jwt.sign({ id: user.id }, jwtSecret);
     console.log("Token generated:", token);
     const response = await client.query(
-    `INSERT INTO users (name, email, address, username, password) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`,
+    `INSERT INTO users (username, password, firstName, lastName, email, address, phoneNumber, birthdate, isAdmin) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`,
     [username, password, firstName, lastName, email, address, phoneNumber, birthdate, isAdmin]
     );
     return response.rows[0];
 };
-      
-    
+
+
 // MovieApi
 
 // Theater
