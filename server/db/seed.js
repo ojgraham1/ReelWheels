@@ -69,7 +69,7 @@ async function main() {
     },
   });
 
-  console.log(thomas);
+  console.log(daniel);
 }
 
 main()
