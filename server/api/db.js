@@ -25,7 +25,19 @@ const deleteUser = async (id) => {
     await client.query(`DELETE FROM Users WHERE id = $1`, [id]);
     return { id };
 };
-  
+
+const createUser = async (user) => {
+    const { username, password, firstName, lastName, email, address, phoneNumber, birthdate, isAdmin } = user;
+    const token = await jwt.sign({ id: user.id }, jwtSecret);
+    console.log("Token generated:", token);
+    const response = await client.query(
+    `INSERT INTO users (name, email, address, username, password) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`,
+    [username, password, firstName, lastName, email, address, phoneNumber, birthdate, isAdmin]
+    );
+    return response.rows[0];
+};
+      
+    
 // MovieApi
 
 // Theater
@@ -37,5 +49,8 @@ const deleteUser = async (id) => {
 
 module.exports = {
     getAllUsers,
-    getUserById
+    getUserById,
+    getUserByUsername,
+    deleteUser,
+    createUser,
 }
