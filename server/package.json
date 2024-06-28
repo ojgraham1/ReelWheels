@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "prisma": "npx prisma studio"
+    "prisma": "npx prisma studio",
+    "seed": "npx prisma migrate reset --force && node ./db/seed.js"
   },
   "dependencies": {
     "@prisma/client": "^5.16.1",
