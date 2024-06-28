@@ -56,6 +56,12 @@ model Theater {
 }
 
 model MovieAPI {
-  id        BigInt     @id @default(autoincrement())
-  showtimes Showtimes[]
+  id            BigInt    @id
+  title         String
+  overview      String
+  release_date  DateTime
+  poster_path   String?
+  backdrop_path String?
+  vote_average  Float
+  showtimes     Showtimes[]
 }
