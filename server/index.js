@@ -27,3 +27,8 @@ app.get("/api/movies", async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+
+
+
+
+// https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=33
