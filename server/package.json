@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "prisma": "npx prisma studio"
+  },
   "dependencies": {
     "@prisma/client": "^5.16.1",
     "bcrypt": "^5.1.1",
