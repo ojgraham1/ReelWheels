@@ -11,43 +11,43 @@ datasource db {
 }
 
 model Users {
-  id          BigInt    @id @default(autoincrement())
-  username    String    @unique
-  password    String
-  firstName   String
-  lastName    String
-  email       String    @unique
-  address     String
-  phoneNumber String
-  birthdate   DateTime
-  isAdmin     Boolean   @default(false)
+  id           Int            @id @default(autoincrement())
+  username     String         @unique
+  password     String
+  firstName    String
+  lastName     String
+  email        String         @unique
+  address      String
+  phoneNumber  String
+  birthdate    DateTime
+  isAdmin      Boolean        @default(false)
   reservations Reservations[]
 }
 
 model Reservations {
-  id            BigInt    @id @default(autoincrement())
-  user_id       BigInt
+  id            Int    @id @default(autoincrement())
+  user_id       Int
   quantity      Int
   carpass       Boolean
   isPurchased   Boolean   @default(false)
-  showtime_id   BigInt
+  showtime_id   Int
   timePurchased DateTime
-  user          Users      @relation(fields: [user_id], references: [id])
-  showtime      Showtimes  @relation(fields: [showtime_id], references: [id])
+  user          Users     @relation(fields: [user_id], references: [id])
+  showtime      Showtimes @relation(fields: [showtime_id], references: [id])
 }
 
 model Showtimes {
-  id          BigInt       @id @default(autoincrement())
-  theater_id  BigInt
-  movie_id    BigInt
-  times       DateTime
-  theater     Theater      @relation(fields: [theater_id], references: [id])
-  movie       MovieAPI     @relation(fields: [movie_id], references: [id])
+  id           Int         @id @default(autoincrement())
+  theater_id   Int
+  movie_id     Int
+  times        DateTime
+  theater      Theater        @relation(fields: [theater_id], references: [id])
+  movie        MovieAPI       @relation(fields: [movie_id], references: [id])
   reservations Reservations[]
 }
 
 model Theater {
-  id        BigInt     @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   Location  String
   Address   String
   Capacity  Int
@@ -56,6 +56,6 @@ model Theater {
 }
 
 model MovieAPI {
-  id        BigInt     @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   showtimes Showtimes[]
 }
