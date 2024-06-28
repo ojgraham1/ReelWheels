@@ -70,6 +70,23 @@ async function main() {
   });
 
   console.log(daniel);
+
+  await prisma.theater.create({
+    data: {
+        Location: "Georgia",
+        Address: "123 DriveIn Lane",
+        Capacity: 50,
+        email: "reelwheels1@gmail.com",
+    }
+  })
+  await prisma.theater.create({
+    data: {
+        Location: "Michigan",
+        Address: "456 Movie Street",
+        Capacity: 50,
+        email: "reelwheels2@gmail.com",
+    }
+  })
 }
 
 main()
