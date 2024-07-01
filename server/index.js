@@ -13,10 +13,12 @@ app.use(express.json());
 
 // Route import
 const usersRoute = require("./api/users");
+const reservationsRoute = require("./api/reservations");
 const theaterRoute = require("./api/theater");
 
 //Routes
 app.use("/users", usersRoute);
+app.use("/reservations", reservationsRoute);
 app.use("/theater", theaterRoute);
 
 
