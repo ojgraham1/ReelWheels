@@ -71,7 +71,7 @@ async function main() {
 
   console.log(daniel);
 
-  await prisma.theater.create({
+  const theater1 = await prisma.theater.create({
     data: {
         Location: "Georgia",
         Address: "123 DriveIn Lane",
@@ -79,14 +79,17 @@ async function main() {
         email: "reelwheels1@gmail.com",
     }
   })
-  await prisma.theater.create({
+  console.log("Created theater:", theater1);
+
+  const theater2 = await prisma.theater.create({
     data: {
         Location: "Michigan",
         Address: "456 Movie Street",
         Capacity: 50,
         email: "reelwheels2@gmail.com",
-    }
-  })
+    },
+  });
+  console.log("Created theater:", theater2);
 }
 
 main()
