@@ -1,57 +1,168 @@
 const express = require("express");
 const router = express.Router();
-//import token / admin
-const {  getAllUsers,
-    getUserById,
-    getUserByUsername,
-    deleteUser,
-    createUser } = require ("./db")
 
-// add tokens
-    router.get("/", async (req, res, next) => {
-        try {
-          res.send(await getAllUsers());
-        } catch (err) {
-          next(err);
-          }
-          });
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
 
-    router.get("/:id", async (req, res, next) => {
-        try {
-            res.send(await getUserById(req.params.id));
-            } catch (err) {
-              next(err);
-            }
-          });
-    router.get("/:username", async (req, res, next) => {
-        try {
-            res.send(await getUserByUsername(req.params.id));
-            } catch (err) {
-            next(err);
-            }
-            });
+// Get All Users
+router.get("/", async (req, res) => {
+  try {
+    const users = await prisma.users.findMany({
+      select: {
+        username: true,
+      },
+    });
+    res.status(200).send(users);
+  } catch (error) {
+    res.status(500).send({ msg: error.message });
+  }
+});
 
-    router.delete("/:id", async (req, res, next) => {
-        try {
-            const deletedUser = await deleteUser(req.params.id);
-            if (deletedUser) {
-            res.json(deletedUser);
-            } else {
-            res.status(404).send("User not found");
-            }
-            } catch (err) {
-            next(err);
-            }
-            });
-    router.post("/", async (req, res, next) => {
-        try {
-            const newUser = await createUser(req.body);
-            res.status(201).json(newUser);
-            } catch (err) {
-            next(err);
-            }
-            });
-    
-    
-          module.exports = router;
-    
+// export const getAllUsers = async (req, res) => {
+//     try {
+//         const response = await prisma.users.findMany()
+//         res.status(200).json(response)
+//     } catch (error) {
+//         res.status(500).json({ msg: error.message })
+//     };
+// };
+
+// Get User By Id
+router.get("/:id", async (req, res) => {
+  try {
+    const user = await prisma.users.findUnique({
+      where: {
+        id: Number(req.params.id),
+      },
+      select: {
+        username: true,
+      },
+    });
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(404).json({ msg: error.message });
+  }
+});
+
+// Get User By Username
+// ? Check if username: username() is correct input for this field
+router.get("/:username", async (req, res) => {
+  try {
+    const user = await prisma.users.findUnique({
+      where: {
+        username: req.body.username,
+      },
+    });
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(404).json({ msg: error.message });
+  }
+});
+
+// Create New User
+// ? check if boolean is correct input
+router.post("/", async (req, res) => {
+  const {
+    username,
+    password,
+    firstName,
+    lastName,
+    email,
+    address,
+    phoneNumber,
+    birthdate,
+    isAdmin,
+  } = req.body;
+  try {
+    const newUser = await prisma.users.create({
+      data: {
+        username: username,
+        password: password,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        address: address,
+        phoneNumber: phoneNumber,
+        birthdate: birthdate,
+        isAdmin: Boolean,
+      },
+    });
+    res.status(201).json(newUser);
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
+});
+
+// export const createUser = async (req, res) => {
+//     const { username, password, firstName, lastName, email, address, phoneNumber, birthdate, isAdmin  } = req.body
+//     try {
+//         const user = await prisma.users.create({
+//             data: {
+//                 username: username,
+//                 password: password,
+//                 firstName: firstName,
+//                 lastName: lastName,
+//                 email: email,
+//                 address: address,
+//                 phoneNumber: phoneNumber,
+//                 birthdate: birthdate,
+//                 isAdmin: Boolean,
+//             },
+//         })
+//         res.status(201).json(user)
+//     } catch (error) {
+//         res.status(400).json({ msg: error.message })
+//     };
+// };
+
+// // Update Existing User
+router.put("/:id", async (req, res) => {
+  const {
+    username,
+    password,
+    firstName,
+    lastName,
+    email,
+    address,
+    phoneNumber,
+    birthdate,
+    isAdmin,
+  } = req.body;
+  try {
+    const user = await prisma.users.update({
+      where: {
+        id: Number(req.params.id),
+      },
+      data: {
+        username: username,
+        password: password,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        address: address,
+        phoneNumber: phoneNumber,
+        birthdate: birthdate,
+        isAdmin: Boolean,
+      },
+    });
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
+});
+
+// // Delete Existing User
+router.delete("/:id", async (req, res) => {
+  try {
+    const user = await prisma.users.delete({
+      where: {
+        id: Number(req.params.id),
+      },
+    });
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
+});
+
+module.exports = router;
