@@ -46,11 +46,11 @@ router.get("/:id", async (req, res) => {
 
 // Get User By Username
 // ? Check if username: username() is correct input for this field
-router.get("/:username", async (req, res) => {
+router.get("/username/:username", async (req, res) => {
   try {
     const user = await prisma.users.findUnique({
       where: {
-        username: req.body.username,
+        username: req.params.username,
       },
     });
     res.status(200).json(user);
@@ -84,7 +84,7 @@ router.post("/", async (req, res) => {
         address: address,
         phoneNumber: phoneNumber,
         birthdate: birthdate,
-        isAdmin: Boolean,
+        isAdmin: Boolean(isAdmin),
       },
     });
     res.status(201).json(newUser);
@@ -142,7 +142,7 @@ router.put("/:id", async (req, res) => {
         address: address,
         phoneNumber: phoneNumber,
         birthdate: birthdate,
-        isAdmin: Boolean,
+        isAdmin: Boolean(isAdmin),
       },
     });
     res.status(200).json(user);

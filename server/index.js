@@ -9,6 +9,13 @@ const TMDB_API_KEY =
 const TMDB_BASE_URL = "https://api.themoviedb.org/3";
 
 app.use(cors());
+app.use(express.json());
+
+// User route import
+const usersRoute = require("./api/users");
+
+//User route
+app.use("/users", usersRoute);
 
 app.get("/api/movies", async (req, res) => {
   try {
@@ -27,8 +34,5 @@ app.get("/api/movies", async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
-
-
-
 
 // https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=33
