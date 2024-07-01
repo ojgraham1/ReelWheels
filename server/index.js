@@ -14,11 +14,13 @@ app.use(express.json());
 // User route import
 const usersRoute = require("./api/users");
 const showtimesRoute = require("./api/showtimes");
+const reservationsRoute = require("./api/reservations");
 
 // showtime route
 app.use("/showtimes", showtimesRoute);
 //User route
 app.use("/users", usersRoute);
+app.use("/reservations", reservationsRoute);
 
 app.get("/api/movies", async (req, res) => {
   try {
