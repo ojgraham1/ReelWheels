@@ -100,6 +100,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+// Get Showtimes By Theater Id
 router.get("/:id/showtimes", async (req, res) => {
   try {
     const showtimes = await prisma.theater.findMany({
