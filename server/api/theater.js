@@ -116,5 +116,25 @@ router.get("/:id/showtimes", async (req, res) => {
     res.status(500).json({ msg: error.message });
   }
 });
+// Create Showtime For Theater
+router.post("/:id/showtimes", async (req, res) => {
+  const { movie_id, showtime } = req.body;
+  try {
+    const showtime = await prisma.showtimes.create({
+      data: {
+        movie_id: movie_id,
+        showtime: showtime,
+        theater: {
+          connect: {
+            id: Number(req.params.id),
+          },
+        },
+      },
+    });
+    res.status(201).json(showtime);
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
+});
 
 module.exports = router;
