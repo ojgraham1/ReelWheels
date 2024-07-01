@@ -13,7 +13,10 @@ app.use(express.json());
 
 // User route import
 const usersRoute = require("./api/users");
+const showtimesRoute = require("./api/showtimes");
 
+// showtime route
+app.use("/showtimes", showtimesRoute);
 //User route
 app.use("/users", usersRoute);
 
