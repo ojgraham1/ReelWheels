@@ -1,49 +1,55 @@
-// ADD ROUTES/ROUTER
 const express = require('express');
 const router = express.Router();
 
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient()
 
-export const getAllTheaters = async (req, res) => {
+
+// Get All Theaters
+router.get("/", async (req, res) => {
     try {
-        const response = await prisma.theater.findMany()
-        res.status(200).json(response)
+        const theaters = await prisma.theater.findMany()
+        res.status(200).json(theaters)
     } catch (error) {
         res.status(500).json({ msg: error.message })
     };
-};
+});
 
-
-
-export const getTheaterById = async (req, res) => {
+// Get Theater By Id
+router.get("/:id", async (req, res) => {
     try {
-        const response = await prisma.theater.findUnique({
+        const theater = await prisma.theater.findUnique({
             where: {
                 id: Number(req.params.id),
             },
         })
-        res.status(200).json(response)
+        res.status(200).json(theater)
     } catch (error) {
         res.status(404).json({ msg: error.message })
     };
-};
+});
 
-// ? check if input for location should be "string" or "location"
-export const getTheaterByLocation = async (req, res) => {
+// Get Theater By Location
+router.get("/location/:location", async (req, res) => {
     try {
-        const response = await prisma.theater.findUnique({
+        console.log(req.params.location)
+
+        const theater = await prisma.theater.findMany({
             where: {
-                Location: Location(req.params.id),
+                Location: {
+                    contains: req.params.location,
+                }
             },
         })
-        res.status(200).json(response)
+        res.status(200).json(theater)
     } catch (error) {
         res.status(404).json({ msg: error.message })
     };
-};
+});
 
-export const createTheater = async (req, res) => {
+// Create New Theater
+router.post("/", async (req, res) => {
+    console.log(req.body);
     const { Location, Address, Capacity, email } = req.body
     try {
         const theater = await prisma.theater.create({
@@ -58,9 +64,10 @@ export const createTheater = async (req, res) => {
     } catch (error) {
         res.status(400).json({ msg: error.message })
     };
-};
+});
 
-export const updateTheater = async (req, res) => {
+// Update Existing Theater
+router.put("/:id", async (req, res) => {
     const { Location, Address, Capacity, email } = req.body
     try {
         const theater = await prisma.theater.update({
@@ -78,9 +85,10 @@ export const updateTheater = async (req, res) => {
     } catch (error) {
         res.status(400).json({ msg: error.message })
     };
-};
+});
 
-export const deleteTheater = async (req, res) => {
+// Delete Existing Theater
+router.delete("/:id", async (req, res) => {
     try {
         const theater = await prisma.theater.delete({
             where: {
@@ -91,6 +99,6 @@ export const deleteTheater = async (req, res) => {
     } catch (error) {
         res.status(400).json({ msg: error.message })
     };
-};
+});
 
-module.exports = theaterRouter;
+module.exports = router;
