@@ -4,54 +4,41 @@ const router = express.Router();
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
+
 // Get All Users
 router.get("/", async (req, res) => {
   try {
-    const users = await prisma.users.findMany({
-      select: {
-        username: true,
-      },
-    });
+    const users = await prisma.users.findMany()
     res.status(200).send(users);
   } catch (error) {
     res.status(500).send({ msg: error.message });
   }
 });
 
-// export const getAllUsers = async (req, res) => {
-//     try {
-//         const response = await prisma.users.findMany()
-//         res.status(200).json(response)
-//     } catch (error) {
-//         res.status(500).json({ msg: error.message })
-//     };
-// };
-
 // Get User By Id
 router.get("/:id", async (req, res) => {
   try {
-    const user = await prisma.users.findUnique({
-      where: {
-        id: Number(req.params.id),
-      },
-      select: {
-        username: true,
-      },
-    });
-    res.status(200).json(user);
-  } catch (error) {
-    res.status(404).json({ msg: error.message });
-  }
+        const user = await prisma.users.findUnique({
+            where: {
+                id: Number(req.params.id),
+            },
+        })
+        res.status(200).json(user)
+    } catch (error) {
+       res.status(404).json({ msg: error.message })
+    };
 });
 
 // Get User By Username
-// ? Check if username: username() is correct input for this field
 router.get("/username/:username", async (req, res) => {
   try {
+    console.log(req.params.username);
+
     const user = await prisma.users.findUnique({
       where: {
-        username: req.body.username,
+        username: req.params.username
       },
+
     });
     res.status(200).json(user);
   } catch (error) {
@@ -60,7 +47,6 @@ router.get("/username/:username", async (req, res) => {
 });
 
 // Create New User
-// ? check if boolean is correct input
 router.post("/", async (req, res) => {
   const {
     username,
@@ -92,28 +78,6 @@ router.post("/", async (req, res) => {
     res.status(400).json({ msg: error.message });
   }
 });
-
-// export const createUser = async (req, res) => {
-//     const { username, password, firstName, lastName, email, address, phoneNumber, birthdate, isAdmin  } = req.body
-//     try {
-//         const user = await prisma.users.create({
-//             data: {
-//                 username: username,
-//                 password: password,
-//                 firstName: firstName,
-//                 lastName: lastName,
-//                 email: email,
-//                 address: address,
-//                 phoneNumber: phoneNumber,
-//                 birthdate: birthdate,
-//                 isAdmin: Boolean,
-//             },
-//         })
-//         res.status(201).json(user)
-//     } catch (error) {
-//         res.status(400).json({ msg: error.message })
-//     };
-// };
 
 // // Update Existing User
 router.put("/:id", async (req, res) => {
