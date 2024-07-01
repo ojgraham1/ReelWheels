@@ -13,6 +13,7 @@ app.use(express.json());
 
 // Route import
 const usersRoute = require("./api/users");
+const showtimesRoute = require("./api/showtimes");
 const reservationsRoute = require("./api/reservations");
 const theaterRoute = require("./api/theater");
 
@@ -20,8 +21,7 @@ const theaterRoute = require("./api/theater");
 app.use("/users", usersRoute);
 app.use("/reservations", reservationsRoute);
 app.use("/theater", theaterRoute);
-
-
+app.use("/showtimes", showtimesRoute);
 
 app.get("/api/movies", async (req, res) => {
   try {
