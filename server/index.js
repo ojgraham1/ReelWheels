@@ -17,7 +17,7 @@ const reservationsRoute = require("./api/reservations");
 
 //User route
 app.use("/users", usersRoute);
-app.use("./reservations", reservationsRoute);
+app.use("/reservations", reservationsRoute);
 
 app.get("/api/movies", async (req, res) => {
   try {
