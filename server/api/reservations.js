@@ -3,8 +3,10 @@ const router = express.Router();
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
+const { veryTokey, isAdmin } = require('../auth/middleware')
+
 // get all reservations
-router.get('/', async (req, res) => {
+router.get('/', isAdmin, async (req, res) => {
     try {
       const reservations = await prisma.reservations.findMany({
         include: {
@@ -21,7 +23,7 @@ router.get('/', async (req, res) => {
   
 
   //reservations by user id
-router.get('/user/:userId', async (req, res) => {
+router.get('/user/:userId', veryTokey, async (req, res) => {
     const userId = parseInt(req.params.userId);
     try {
       const reservations = await prisma.reservations.findMany({
@@ -42,7 +44,7 @@ router.get('/user/:userId', async (req, res) => {
   
 
   //reservations by theater id
-router.get('/theater/:theaterId', async (req, res) => {
+router.get('/theater/:theaterId',isAdmin, async (req, res) => {
     const theaterId = parseInt(req.params.theaterId);
     try {
       const reservations = await prisma.reservations.findMany({
@@ -64,7 +66,7 @@ router.get('/theater/:theaterId', async (req, res) => {
   });
   
 // post reservations by user id
-router.post('/user/:userId', async (req, res) => {
+router.post('/user/:userId', veryTokey, async (req, res) => {
     const userId = parseInt(req.params.userId);
     const { quantity, carpass, showtime_id } = req.body;
     try {
@@ -87,7 +89,7 @@ router.post('/user/:userId', async (req, res) => {
   
 
 // delete reservation by id
-router.delete('/:reservationId', async (req, res) => {
+router.delete('/:reservationId',veryTokey, async (req, res) => {
     const reservationId = parseInt(req.params.reservationId);
     try {
       await prisma.reservations.delete({

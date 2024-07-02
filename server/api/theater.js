@@ -4,6 +4,9 @@ const router = express.Router();
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
+const {isAdmin } = require('../auth/middleware')
+
+
 // Get All Theaters
 router.get("/", async (req, res) => {
   try {
@@ -47,7 +50,7 @@ router.get("/location/:location", async (req, res) => {
 });
 
 // Create New Theater
-router.post("/", async (req, res) => {
+router.post("/", isAdmin, async (req, res) => {
   console.log(req.body);
   const { Location, Address, Capacity, email } = req.body;
   try {
@@ -66,7 +69,7 @@ router.post("/", async (req, res) => {
 });
 
 // Update Existing Theater
-router.put("/:id", async (req, res) => {
+router.put("/:id", isAdmin, async (req, res) => {
   const { Location, Address, Capacity, email } = req.body;
   try {
     const theater = await prisma.theater.update({
@@ -87,7 +90,7 @@ router.put("/:id", async (req, res) => {
 });
 
 // Delete Existing Theater
-router.delete("/:id", async (req, res) => {
+router.delete("/:id",isAdmin, async (req, res) => {
   try {
     const theater = await prisma.theater.delete({
       where: {

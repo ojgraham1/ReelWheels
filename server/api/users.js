@@ -18,7 +18,7 @@ router.get("/", veryTokey, async (req, res) => {
 });
 
 // Get User By Id
-router.get("/:id", async (req, res) => {
+router.get("/:id", veryTokey, async (req, res) => {
   try {
         const user = await prisma.users.findUnique({
             where: {
@@ -32,7 +32,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // Get User By Username
-router.get("/username/:username", async (req, res) => {
+router.get("/username/:username", veryTokey, async (req, res) => {
   try {
     console.log(req.params.username);
 
@@ -82,7 +82,7 @@ router.get("/username/:username", async (req, res) => {
 // });
 
 // // Update Existing User
-router.put("/:id", async (req, res) => {
+router.put("/:id", veryTokey, async (req, res) => {
   const {
     username,
     password,
@@ -118,7 +118,7 @@ router.put("/:id", async (req, res) => {
 });
 
 // // Delete Existing User
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", veryTokey, async (req, res) => {
   try {
     const user = await prisma.users.delete({
       where: {
