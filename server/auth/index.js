@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { PrismaClient } = require('@prisma/client');
+const jwtSecret = "shh";
 
 const prisma = new PrismaClient();
 const router = express.Router();
@@ -63,8 +64,11 @@ router.post('/login', async (req, res) => {
     if (!passwordMatch) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
-
-    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '1w' });
+    console.log(user)
+    const token = jwt.sign(
+        { data: { userId: user.id, isadmin: user.isAdmin } },
+        jwtSecret,
+        { expiresIn: "1w" });
 
     res.status(200).json({ token });
   } catch (error) {
