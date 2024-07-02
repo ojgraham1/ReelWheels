@@ -40,13 +40,12 @@ router.get("/search/:title", async (req, res) => {
       where: {
         title: {
           contains: title,
-          mode: "insensitive",
         },
       },
     });
     res.status(200).json(movies);
   } catch (error) {
-    console.error(error);
+    console.error("Error searching movies:", error);
     res.status(500).json({ error: "Failed to search movies!" });
   }
 });
