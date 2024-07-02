@@ -136,5 +136,18 @@ router.post("/:id/showtimes", async (req, res) => {
     res.status(400).json({ msg: error.message });
   }
 });
+// delete Showtime for Theater
+router.delete("/:id/showtimes/:showtime_id", async (req, res) => {
+  try {
+    const showtime = await prisma.showtimes.delete({
+      where: {
+        id: Number(req.params.showtime_id),
+      },
+    });
+    res.status(200).json(showtime);
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
+});
 
 module.exports = router;
