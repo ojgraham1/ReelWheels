@@ -119,5 +119,56 @@ router.get("/:id/showtimes", async (req, res) => {
     res.status(500).json({ msg: error.message });
   }
 });
+// Create Showtime For Theater
+router.post("/:id/showtimes", async (req, res) => {
+  const { movie_id, showtime } = req.body;
+  try {
+    const showtime = await prisma.showtimes.create({
+      data: {
+        movie_id: movie_id,
+        showtime: showtime,
+        theater: {
+          connect: {
+            id: Number(req.params.id),
+          },
+        },
+      },
+    });
+    res.status(201).json(showtime);
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
+});
+// delete Showtime for Theater
+router.delete("/:id/showtimes/:showtime_id", async (req, res) => {
+  try {
+    const showtime = await prisma.showtimes.delete({
+      where: {
+        id: Number(req.params.showtime_id),
+      },
+    });
+    res.status(200).json(showtime);
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
+});
+// Update Showtime for Theater
+router.put("/:id/showtimes/:showtime_id", async (req, res) => {
+  const { movie_id, showtime } = req.body;
+  try {
+    const showtime = await prisma.showtimes.update({
+      where: {
+        id: Number(req.params.showtime_id),
+      },
+      data: {
+        movie_id: movie_id,
+        showtime: showtime,
+      },
+    });
+    res.status(200).json(showtime);
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
+});
 
 module.exports = router;

@@ -17,13 +17,13 @@ const showtimesRoute = require("./api/showtimes");
 const reservationsRoute = require("./api/reservations");
 const theaterRoute = require("./api/theater");
 const authRoute = require("./auth/index")
+const movieApiRoute = require("./api/movieApi");
 
 //Routes
 app.use("/users", usersRoute);
 app.use("/reservations", reservationsRoute);
 app.use("/theater", theaterRoute);
 app.use("/showtimes", showtimesRoute);
-app.use("/auth", authRoute)
 
 app.get("/api/movies", async (req, res) => {
   try {
