@@ -149,5 +149,23 @@ router.delete("/:id/showtimes/:showtime_id", async (req, res) => {
     res.status(400).json({ msg: error.message });
   }
 });
+// Update Showtime for Theater
+router.put("/:id/showtimes/:showtime_id", async (req, res) => {
+  const { movie_id, showtime } = req.body;
+  try {
+    const showtime = await prisma.showtimes.update({
+      where: {
+        id: Number(req.params.showtime_id),
+      },
+      data: {
+        movie_id: movie_id,
+        showtime: showtime,
+      },
+    });
+    res.status(200).json(showtime);
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
+});
 
 module.exports = router;
