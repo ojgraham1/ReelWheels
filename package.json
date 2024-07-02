@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "start-all": "concurrently \"npm run dev --prefix client\" \"node server/index.js\" \"node server/insertMovies.js\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
