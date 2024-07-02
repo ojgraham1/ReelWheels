@@ -48,8 +48,10 @@ async function insertNowPlayingMovies() {
   console.log("Movies inserted/updated successfully."); // This will display in console if everything goes to plan
 }
 // Error handler
-insertNowPlayingMovies()
-  .catch((e) => console.error(e))
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+// insertNowPlayingMovies()
+//   .catch((e) => console.error(e))
+//   .finally(async () => {
+//     await prisma.$disconnect();
+//   });
+
+module.exports = insertNowPlayingMovies;

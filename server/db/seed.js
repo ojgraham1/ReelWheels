@@ -1,8 +1,11 @@
 const { PrismaClient } = require("@prisma/client");
 
+const insertNowPlayingMovies = require("../insertMovies");
 const prisma = new PrismaClient();
 
 async function main() {
+  await insertNowPlayingMovies();
+
   console.log("seeding database");
 
   const maya = await prisma.users.create({
@@ -73,23 +76,32 @@ async function main() {
 
   const theater1 = await prisma.theater.create({
     data: {
-        Location: "Georgia",
-        Address: "123 DriveIn Lane",
-        Capacity: 50,
-        email: "reelwheels1@gmail.com",
-    }
-  })
+      Location: "Georgia",
+      Address: "123 DriveIn Lane",
+      Capacity: 50,
+      email: "reelwheels1@gmail.com",
+    },
+  });
   console.log("Created theater:", theater1);
 
   const theater2 = await prisma.theater.create({
     data: {
-        Location: "Michigan",
-        Address: "456 Movie Street",
-        Capacity: 50,
-        email: "reelwheels2@gmail.com",
+      Location: "Michigan",
+      Address: "456 Movie Street",
+      Capacity: 50,
+      email: "reelwheels2@gmail.com",
     },
   });
   console.log("Created theater:", theater2);
+
+  const showtime1 = await prisma.Showtimes.create({
+    data: {
+      theater_id: 1,
+      movie_id: 786892,
+      times: new Date(2024, 7, 2, 14, 0, 0),
+    },
+  });
+  console.log("Created showtime:", showtime1);
 }
 
 main()
