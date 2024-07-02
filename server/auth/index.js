@@ -6,14 +6,17 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const router = express.Router();
 
-// Register 
+// Register
 router.post('/register', async (req, res) => {
   const { username, password, firstName, lastName, email, address, phoneNumber, birthdate, isAdmin } = req.body;
 
-  try {
-    const saltRounds = 10
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
+  // Validate request body
+  if (!username || !password || !firstName || !lastName || !email) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
 
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = await prisma.users.create({
       data: {
@@ -36,11 +39,14 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// Login 
+// Login
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
   try {
+    if (!username || !password) {
+      return res.status(400).json({ error: 'Username and password are required' });
+    }
 
     const user = await prisma.users.findUnique({
       where: {
@@ -57,6 +63,7 @@ router.post('/login', async (req, res) => {
     if (!passwordMatch) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
+
     const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '1w' });
 
     res.status(200).json({ token });
@@ -67,4 +74,3 @@ router.post('/login', async (req, res) => {
 });
 
 module.exports = router;
-
