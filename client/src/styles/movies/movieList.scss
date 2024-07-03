@@ -1,79 +1,22 @@
-:root {
-  background-color: black;
-  color: white;
-}
-
-a:link {
-  text-decoration: none;
-}
-
-a:visited {
-  text-decoration: none;
-  color: white;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-a:active {
-  text-decoration: none;
-}
-
-.ex {
-  margin-top: 100px;
-  font-size: xx-large;
-  color: aliceblue;
-}
-
-.navBar {
-  z-index: 99;
-  position: fixed;
-  top: 0;
-  left: 0%;
-  width: 100%;
-  overflow: hidden;
-  text-align: center;
-  background-color: black;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.navBarL {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  color: white;
-}
-
 .mLContainer {
   margin: 20px;
   margin-top: 100px;
 }
-
 .movie-list-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
-
 .mLHeading {
   padding-bottom: 50px;
   font-size: xx-large;
   color: rgb(229, 229, 229);
 }
-
 .mLWrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-
 .mlCard-Container {
   display: flex;
   /* could be carousel if removed, just need extra styling */
@@ -81,12 +24,10 @@ a:active {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-
 .mlCard {
   display: flex;
   flex-wrap: wrap;
 }
-
 .mlCardWrapper {
   display: flex;
   flex-direction: row;
@@ -95,16 +36,13 @@ a:active {
   margin-top: 20px;
   margin-bottom: 70px;
 }
-
 .mLImg-Container {
   margin-right: 50px;
 }
-
 .mLImg {
   height: 400px;
   width: auto;
 }
-
 .mLText-Container {
   justify-content: center;
   align-content: center;
@@ -112,17 +50,13 @@ a:active {
   width: 600px;
   margin-right: 20px;
 }
-
 .mLT {
   font-size: xx-large;
   font-style: oblique;
   color: rgb(222, 222, 222);
 }
-
 .mLO {
   font-size: large;
   font-weight: 200;
   color: rgb(195, 192, 192);
 }
-
-/*# sourceMappingURL=index.css.map */

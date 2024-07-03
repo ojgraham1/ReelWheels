@@ -1,4 +1,23 @@
-:root {
-  background-color: white;
-  
+.navBar {
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0%;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  background-color: black;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navBarL {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: white;
 }
