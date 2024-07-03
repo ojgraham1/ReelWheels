@@ -51,9 +51,10 @@ model Theater {
   Location  String
   Address   String
   Capacity  Int
-  email     String
+  email     String      @unique
   showtimes Showtimes[]
 }
+
 
 model MovieAPI {
   id            Int         @id
