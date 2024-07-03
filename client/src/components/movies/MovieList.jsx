@@ -18,19 +18,30 @@ const MovieList = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Trending Movies</h1>
-      <ul>
-        {movies.map((movie) => (
-          <li key={movie.id}>
-            <h2>{movie.title}</h2>
-            <p>{movie.overview}</p>
-            <img
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={movie.title}
-            />
-          </li>
-        ))}
+    <div className="mLContainer">
+      <ul className="movie-list-container">
+        <h1 className="mLHeading">IN THEATERS NOW</h1>
+        <div className="mLWrapper">
+          <div className="mlCard-Container">
+            {movies.map((movie) => (
+              <div className="mlCard">
+                <ul className="mlCardWrapper" key={movie.id}>
+                  <div className="mLImg-Container">
+                    <img
+                      className="mLImg"
+                      src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                      alt={movie.title}
+                    />
+                  </div>
+                  <div className="mLText-Container">
+                    <h2 className="mLT">{movie.title}</h2>
+                    <p className="mLO">{movie.overview}</p>
+                  </div>
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
       </ul>
     </div>
   );
