@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
-
 const { veryTokey, isAdmin } = require("../auth/middleware");
 
 // get all reservations
@@ -52,8 +51,8 @@ router.get("/theater/:theaterId", isAdmin, async (req, res) => {
         },
       },
       include: {
-        user: true, // Include user details
-        showtime: true, // Include showtime details
+        user: true,
+        showtime: true,
       },
     });
     res.json(reservations);
@@ -63,44 +62,49 @@ router.get("/theater/:theaterId", isAdmin, async (req, res) => {
   }
 });
 
-// post reservations by user id
+// Post reservations by user id
 router.post("/user/:userId", veryTokey, async (req, res) => {
   const userId = parseInt(req.params.userId);
   const { quantity, carpass, showtime_id } = req.body;
+
+  if (carpass && quantity > 1) {
+    return res
+      .status(400)
+      .json({ error: "Cannot purchase more than one car pass ticket." });
+  }
+
   try {
     const showtime = await prisma.showtimes.findUnique({
       where: { id: showtime_id },
-      include: { theater: true },
     });
 
     if (!showtime) {
       return res.status(404).json({ error: "Showtime not found" });
     }
 
-    let updatedData = {};
     if (carpass) {
-      if (showtime.theater.carpassAvailable >= quantity) {
-        updatedData.carpassAvailable =
-          showtime.theater.carpassAvailable - quantity;
-      } else {
-        return res
-          .status(400)
-          .json({ error: "Not enough car pass tickets available" });
+      if (showtime.carPassTickets < 1) {
+        return res.status(400).json({ error: "No car pass tickets available" });
       }
+      showtime.carPassTickets -= 1;
     } else {
-      if (showtime.theater.generalAdmissionAvailable >= quantity) {
-        updatedData.generalAdmissionAvailable =
-          showtime.theater.generalAdmissionAvailable - quantity;
-      } else {
+      if (showtime.generalAdmissionTickets < quantity) {
         return res
           .status(400)
           .json({ error: "Not enough general admission tickets available" });
       }
+      showtime.generalAdmissionTickets -= quantity;
     }
 
-    await prisma.theater.update({
-      where: { id: showtime.theater_id },
-      data: updatedData,
+    showtime.totalTickets -= quantity;
+
+    await prisma.showtimes.update({
+      where: { id: showtime_id },
+      data: {
+        carPassTickets: showtime.carPassTickets,
+        generalAdmissionTickets: showtime.generalAdmissionTickets,
+        totalTickets: showtime.totalTickets,
+      },
     });
 
     const newReservation = await prisma.reservations.create({
@@ -108,7 +112,8 @@ router.post("/user/:userId", veryTokey, async (req, res) => {
         quantity,
         carpass,
         showtime_id,
-        user: { connect: { id: userId } },
+        user_id: userId,
+        timePurchased: new Date(),
       },
     });
 
