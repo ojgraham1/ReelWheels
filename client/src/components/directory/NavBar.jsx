@@ -67,11 +67,6 @@ export default function NavBar() {
         ) : (
           <>
             <ul>
-              <NavLink className="nL" to="/register">
-                Register
-              </NavLink>
-            </ul>
-            <ul>
               <NavLink className="nL" to="/login">
                 Log In
               </NavLink>
