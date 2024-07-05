@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function MoviePage() {
   const [Theater, setTheaters] = useState([]);
@@ -29,8 +30,9 @@ export default function MoviePage() {
                     <p className="tAddress">{theater.Address}</p>
                     <p className="tCapacity">{theater.Capacity}</p>
                     <p className="tEmail">{theater.email}</p>
-
-                    <button className="tMoreInfoBut">More Info</button>
+                    <Link to={"/theaters/" + theater.id} key={theater.id}>
+                      <button className="tMoreInfoBut">More Info</button>
+                    </Link>
                   </div>
                 </ul>
               </div>

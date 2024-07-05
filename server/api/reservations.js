@@ -1,11 +1,8 @@
 const express = require("express");
-const express = require("express");
 const router = express.Router();
-const { PrismaClient } = require("@prisma/client");
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-const { veryTokey, isAdmin } = require("../auth/middleware");
 const { veryTokey, isAdmin } = require("../auth/middleware");
 
 // get all reservations
