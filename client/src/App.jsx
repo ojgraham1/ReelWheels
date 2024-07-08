@@ -7,13 +7,13 @@ import NavBar from "./components/directory/NavBar";
 import Home from "./components/directory/Home";
 import Theaters from "./components/theater/TheaterList";
 import TheaterPage from "./components/theater/TheaterPage";
-import Concessions from './components/concessions/foodMenu';
+import Concessions from "./components/concessions/foodMenu";
 import Browse from "./components/movies/BrowseList";
 import BrowsePage from "./components/movies/BrowsePage";
 import BrowseTvPage from "./components/movies/BrowseTvPage";
 import MovieList from "./components/movies/MovieList";
 import MoviePage from "./components/movies/MoviePage";
-import Watchlist from "./components/transactions/WatchList"
+import Watchlist from "./components/transactions/WatchList";
 import Cart from "./components/transactions/Cart";
 import Register from "./components/acc/Register";
 import Login from "./components/acc/Login";
@@ -36,7 +36,7 @@ function App() {
     <div className="App">
       <NavBar />
       <Routes>
-        <Route path="/" element={<Home/>} />
+        <Route path="/" element={<Home />} />
         <Route path="/theaters" element={<Theaters />} />
         <Route path="/theater/:id" element={<TheaterPage />} />
         <Route path="/concessions" element={<Concessions />} />
@@ -49,7 +49,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/account" element={<Account token= {userToken} />} />
+        <Route path="/account" element={<Account token={userToken} />} />
       </Routes>
     </div>
   );
