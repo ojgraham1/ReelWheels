@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-export default function SingleMoviePage() {
+function TheaterPage() {
   const [Theater, setTheaters] = useState([]);
   useEffect(() => {
     const fetchTheaterById = async () => {
@@ -42,3 +42,5 @@ export default function SingleMoviePage() {
     );
   });
 }
+
+export default TheaterPage;
