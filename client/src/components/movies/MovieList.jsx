@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTicket, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
@@ -36,6 +39,16 @@ const MovieList = () => {
                   <div className="mLText-Container">
                     <h2 className="mLT">{movie.title}</h2>
                     <p className="mLO">{movie.overview}</p>
+                    <div className="buttonGT">
+                      <button className="button-Get-Tickets">
+                        <FontAwesomeIcon icon={faTicket} /> Get Tickets
+                      </button>
+                      <div className="mLBtn">
+                        <Link className="mLink" to={`/movies/${movie.id}`}>
+                            <button className="mv-btn-link"><FontAwesomeIcon icon={faCircleInfo} /></button>
+                        </Link>
+                      </div>
+                    </div>
                   </div>
                 </ul>
               </div>
