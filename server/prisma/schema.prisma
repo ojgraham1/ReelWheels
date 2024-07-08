@@ -37,24 +37,25 @@ model Reservations {
 }
 
 model Showtimes {
-  id           Int            @id @default(autoincrement())
-  theater_id   Int
-  movie_id     Int
-  times        DateTime
-  theater      Theater        @relation(fields: [theater_id], references: [id])
-  movie        MovieAPI       @relation(fields: [movie_id], references: [id])
-  reservations Reservations[]
+  id                     Int            @id @default(autoincrement())
+  theater_id             Int
+  movie_id               Int
+  times                  DateTime
+  theater                Theater        @relation(fields: [theater_id], references: [id])
+  movie                  MovieAPI       @relation(fields: [movie_id], references: [id])
+  reservations           Reservations[]
+  totalTickets           Int            @default(100)
+  generalAdmissionTickets Int            @default(50)
+  carPassTickets         Int            @default(50)
 }
 
 model Theater {
   id        Int         @id @default(autoincrement())
   Location  String
   Address   String
-  Capacity  Int
   email     String      @unique
   showtimes Showtimes[]
 }
-
 
 model MovieAPI {
   id            Int         @id
@@ -66,3 +67,7 @@ model MovieAPI {
   vote_average  Float
   showtimes     Showtimes[]
 }
+
+
+
+

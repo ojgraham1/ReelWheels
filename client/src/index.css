@@ -4,8 +4,6 @@
   background-repeat: repeat;
 }
 
-/*# sourceMappingURL=index.css.map */
-
 a:link {
   text-decoration: none;
 }
@@ -14,6 +12,7 @@ a:visited {
   text-decoration: none;
   color: white;
 }
+
 a:hover {
   text-decoration: none;
 }
@@ -22,7 +21,7 @@ a:active {
   text-decoration: none;
 }
 
-.ex{
+.ex {
   margin-top: 100px;
   font-size: xx-large;
   color: aliceblue;
@@ -40,19 +39,20 @@ a:active {
   width: 100%;
   overflow: hidden;
   text-align: center;
-  background-color:black;
+  background-color: black;
   height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .navBarL {
   display: flex;
   gap: 20px;
   list-style: none;
   padding: 0;
   margin: 0;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   color: white;
 }
 
@@ -257,32 +257,38 @@ a:active {
   margin: 20px;
   margin-top: 100px;
 }
-.movie-list-container{
+
+.movie-list-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
-.mLHeading{
+
+.mLHeading {
   padding-bottom: 50px;
   font-size: xx-large;
   color: rgb(229, 229, 229);
 }
-.mLWrapper{
+
+.mLWrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.mlCard-Container{
+
+.mlCard-Container {
   display: flex;
   flex-wrap: wrap;
   padding-top: 10px;
   padding-bottom: 10px;
 }
-.mlCard{
+
+.mlCard {
   display: flex;
   flex-wrap: wrap;
 }
-.mlCardWrapper{
+
+.mlCardWrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -290,26 +296,31 @@ a:active {
   margin-top: 20px;
   margin-bottom: 70px;
 }
-.mLImg-Container{
+
+.mLImg-Container {
   margin-right: 50px;
 }
-.mLImg{
+
+.mLImg {
   height: 400px;
   width: auto;
 }
-.mLText-Container{
+
+.mLText-Container {
   justify-content: center;
   align-content: center;
   text-align: left;
   width: 600px;
   margin-right: 20px;
 }
-.mLT{
+
+.mLT {
   font-size: xx-large;
   font-style: oblique;
   color: rgb(222, 222, 222);
 }
-.mLO{
+
+.mLO {
   font-size: large;
   font-weight: 200;
   color: rgb(195, 192, 192);
