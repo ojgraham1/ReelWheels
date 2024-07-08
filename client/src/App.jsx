@@ -8,9 +8,11 @@ import Home from "./components/directory/Home";
 import Theaters from "./components/theater/TheaterList";
 import TheaterPage from "./components/theater/TheaterPage";
 import Concessions from './components/concessions/foodMenu';
-import Browse from "./components/movies/Browse";
+import Browse from "./components/movies/BrowseList";
+import BrowsePage from "./components/movies/BrowsePage";
+import BrowseTvPage from "./components/movies/BrowseTvPage";
 import MovieList from "./components/movies/MovieList";
-import MoviePage from "./components/theater/TheaterList";
+import MoviePage from "./components/movies/MoviePage";
 import Watchlist from "./components/transactions/WatchList"
 import Cart from "./components/transactions/Cart";
 import Register from "./components/acc/Register";
@@ -39,6 +41,8 @@ function App() {
         <Route path="/theater/:id" element={<TheaterPage />} />
         <Route path="/concessions" element={<Concessions />} />
         <Route path="/browse" element={<Browse />} />
+        <Route path="/browse/:id" element={<BrowsePage />} />
+        <Route path="/browse/tv/:id" element={<BrowseTvPage />} />
         <Route path="/movies" element={<MovieList />} />
         <Route path="/movies/:id" element={<MoviePage />} />
         <Route path="/watchlist" element={<Watchlist />} />
