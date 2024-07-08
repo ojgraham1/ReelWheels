@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-export default function MoviePage() {
+function Theaters() {
   const [Theater, setTheaters] = useState([]);
   useEffect(() => {
     const fetchTheaters = async () => {
@@ -13,6 +13,7 @@ export default function MoviePage() {
         console.error("Error fetching theaters:", error);
       }
     };
+
 
     fetchTheaters();
   });
@@ -43,3 +44,5 @@ export default function MoviePage() {
     </div>
   );
 }
+
+export default Theaters;
