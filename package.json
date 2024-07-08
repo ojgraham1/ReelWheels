@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start-all": "concurrently \"npm run dev --prefix client\" \"node server/index.js\""
+    "start-all": "concurrently \"npm run dev --prefix client\" \"nodemon server/index.js\""
   },
   "devDependencies": {
     "concurrently": "^8.2.2"

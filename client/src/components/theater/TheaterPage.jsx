@@ -1,44 +1,35 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-export default function SingleMoviePage() {
-  const [Theater, setTheaters] = useState([]);
+export default function TheaterPage() {
+  const [theater, setTheater] = useState([]);
+  const { id } = useParams();
+
   useEffect(() => {
-    const fetchTheaterById = async () => {
+    const fetchSingleTheater = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/theater/{$id}");
-        setTheaters(response.data);
+        const response = await axios.get(`http://localhost:3000/theater/${id}`);
+        setTheater(response.data);
       } catch (error) {
-        console.error("Error fetching single theater:", error);
+        console.error("Error fetching theater:", error);
       }
     };
-    fetchTheaterById();
-    return (
-      <div className="singleTContainer">
-        <ul className="single-theater-container">
-          <h1 className="singleTHeading">THEATERS</h1>
-          <div className="singleTWrapper">
-            <div className="single-tCard-Container">
-              {Theater.map((theater) => (
-                <div className="singleTCard">
-                  <ul className="singleTCardWrapper" key={theater.id}>
-                    <div className="singleTText-Container">
-                      <h2 className="singleTLocation">{theater.Location}</h2>
-                      <p className="singleTAddress">{theater.Address}</p>
-                      <p className="singleTCapacity">{theater.Capacity}</p>
-                      <p className="singleTEmail">{theater.email}</p>
-                      <Link to={"/theaters"}>
-                        <button className="tBackBut">Back to List</button>
-                      </Link>
-                    </div>
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </ul>
-      </div>
-    );
+
+    fetchSingleTheater();
   });
+
+  return (
+    <div>
+      <h1>{theater.Location}</h1>
+      <ul>
+        {theater.map((theater) => (
+          <li key={theater.id}>
+            <Link to={`/theater/${theater.id}`}>{theater.name}</Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
