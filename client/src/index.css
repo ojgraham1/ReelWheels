@@ -535,7 +535,83 @@ a:active {
   opacity: 1;
 }
 
-/* Theater Text */
+/* TheaterList.jsx */
 .tText-Container {
   color: white;
+}
+
+/* TheaterPage.jsx */
+.singleTContainer {
+  margin: 20px;
+  margin-top: 100px;
+}
+
+.single-theater-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.singleTHeading {
+  padding-bottom: 20px;
+  font-size: xx-large;
+  color: rgb(229, 229, 229);
+}
+
+.singleTWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.single-tCard-Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.singleTCard {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 0.1);
+}
+
+.singleTCardWrapper {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.singleTText-Container {
+  color: white;
+  text-align: center;
+}
+
+.singleTLocation {
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+.singleTAddress,
+.singleTCapacity,
+.singleTEmail {
+  font-size: large;
+  margin: 5px 0;
+}
+
+.tBackBut {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #555;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tBackBut:hover {
+  background-color: #777;
 }
