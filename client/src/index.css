@@ -2,6 +2,7 @@
   background-image: url(https://cdn.pixabay.com/animation/2023/03/19/02/34/02-34-11-741_512.gif);
   background-color: rgb(0, 0, 0);
   background-repeat: repeat;
+  color: white
 }
 
 a:link {
@@ -549,4 +550,8 @@ a:active {
 
 .slideshowDot.active {
   opacity: 1;
+}
+
+.account {
+  margin-top: 100px;
 }
