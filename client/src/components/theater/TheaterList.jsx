@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-function Theaters() {
+export default function TheaterList() {
   const [Theater, setTheaters] = useState([]);
   useEffect(() => {
     const fetchTheaters = async () => {
@@ -14,7 +14,6 @@ function Theaters() {
       }
     };
 
-
     fetchTheaters();
   });
   return (
@@ -24,14 +23,13 @@ function Theaters() {
         <div className="tWrapper">
           <div className="tCard-Container">
             {Theater.map((theater) => (
-              <div className="tCard">
-                <ul className="tCardWrapper" key={theater.id}>
+              <div className="tCard" key={theater.id}>
+                <ul className="tCardWrapper">
                   <div className="tText-Container">
                     <h2 className="tLocation">{theater.Location}</h2>
                     <p className="tAddress">{theater.Address}</p>
-                    <p className="tCapacity">{theater.Capacity}</p>
                     <p className="tEmail">{theater.email}</p>
-                    <Link to={"/theaters/" + theater.id} key={theater.id}>
+                    <Link to={`/theater/${theater.id}`}>
                       <button className="tMoreInfoBut">More Info</button>
                     </Link>
                   </div>
@@ -44,5 +42,3 @@ function Theaters() {
     </div>
   );
 }
-
-export default Theaters;
