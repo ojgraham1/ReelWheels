@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTicket } from "@fortawesome/free-solid-svg-icons";
+
 
 function Home() {
   const [movies, setMovies] = useState([]);
@@ -56,14 +60,20 @@ function Home() {
                             className="slide"
                             key={index}
                             style={{
-                                backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`                
-                            // backgroundSize: 'fit',
+                              backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`                
                             }}
                         >
                             <div className="overlay">
                                 <div className="overlay-content">
                                     <div className="overlay-info">
                                         <h2 className='overlayTitle'>{movie.title}</h2>
+                                        <div className='overlayBtn'>
+                                          <Link className="mLink" to={`/movies/${movie.id}`}>
+                                            <button className="button-Get-Tickets">
+                                              <FontAwesomeIcon icon={faTicket} /> Get Tickets
+                                            </button>
+                                          </Link>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

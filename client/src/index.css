@@ -384,7 +384,6 @@ a:active {
   font-size: 18px;
   cursor: pointer;
 }
-
 .play-btn {
   margin-bottom: -200px;
   font-size: 50px;
@@ -419,7 +418,6 @@ a:active {
   box-shadow: 0px 0px 12px 3.5px #000000c5;
   transition-duration: 3s;
 }
-
 .mpVideo-Container-enter-done {
   display: none;
   transform: translateY(0%);
@@ -462,7 +460,7 @@ a:active {
   margin-bottom: 100px;
 }
 
-/* Slideshow */
+/* Slideshow Home Page */
 
 .home-container {
   display: flex;
@@ -471,9 +469,10 @@ a:active {
   align-items: center;
 }
 .slideshow {
-  align-items: center;
+  align-content: center;
   margin: 0 auto;
   margin-top: 90px;
+  margin-right: -80px;
   overflow: hidden;
   width: max-content;
 }
@@ -492,9 +491,7 @@ a:active {
 }
 .overlay {
   display: flex;
-  /* flex-wrap: wrap; */
-  /* justify-content: end; */
-  /* margin-top: 650px; */
+  flex-wrap: wrap;
 }
 .overlay-content {
   color: white;
@@ -505,11 +502,19 @@ a:active {
   position: relative;
   z-index: 1;
 }
+.overlay-info{
+  margin-top: 520px;
+  text-align: left;
+}
 .overlayTitle {
   margin-right: 20px;
+  margin-left: 20px;
+}
+.overlayBtn{
+  margin-left: 20px;
 }
 
-/* Buttons */
+/* Buttons for Slideshow in Home Page */
 
 .slideshowDots {
   text-align: center;
@@ -535,6 +540,11 @@ a:active {
   opacity: 1;
 }
 
+
+
+
+
+
 /* TheaterList.jsx */
 .theater-list-container {
   margin: 20px;
@@ -557,7 +567,6 @@ a:active {
   justify-content: center;
   gap: 30px;
 }
-
 .theater-card {
   background-color: rgba(50, 50, 50, 0.8);
   padding: 20px;
@@ -566,25 +575,21 @@ a:active {
   width: 280px;
   transition: transform 0.3s, box-shadow 0.3s;
 }
-
 .theater-card:hover {
   transform: scale(1.05);
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
-
 .theater-location {
   font-size: 1.5rem;
   margin-bottom: 10px;
   color: #ffffff;
   text-shadow: 1px 1px 3px #000000;
 }
-
 .theater-address,
 .theater-email {
   margin-bottom: 8px;
   color: #dddddd;
 }
-
 .theater-more-info-btn {
   background-color: #555;
   color: white;
@@ -594,7 +599,6 @@ a:active {
   cursor: pointer;
   transition: background-color 0.3s, box-shadow 0.3s;
 }
-
 .theater-more-info-btn:hover {
   background-color: #777;
 }

@@ -157,7 +157,7 @@ function Browse() {
                             {activeCategory === "tv" && browseTv.map((tv) => (
                                 <div className="bmCard" key={tv.id}>
                                     <div className="bmImg-Container">
-                                        <Link to={`/browse/${tv.id}`}>
+                                        <Link to={`/browse/tv/${tv.id}`}>
                                             <img className="bmImg" src={`https://image.tmdb.org/t/p/w500${tv.poster_path}`} alt={tv.original_name} />
                                         </Link>
                                     </div>
