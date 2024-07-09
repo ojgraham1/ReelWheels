@@ -1,6 +1,8 @@
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
+const cron = require("node-cron");
+const insertNowPlayingMovies = require("./insertMovies");
 const app = express();
 const port = 3000;
 
@@ -26,6 +28,17 @@ app.use("/reservations", veryTokey, isAdmin, reservationsRoute);
 app.use("/theater", theaterRoute);
 app.use("/showtimes", showtimesRoute);
 app.use("/auth", authRoute);
+app.use("/api/movies", movieApiRoute);
+
+// insertMovies script ran every day at midnight
+cron.schedule("0 0 * * *", () => {
+  console.log("Cron job triggered: Running insertNowPlayingMovies...");
+  insertNowPlayingMovies()
+    .then(() => console.log("Movies inserted/updated successfully."))
+    .catch((error) =>
+      console.error("Error running insertMovies script:", error)
+    );
+});
 
 app.get("/api/movies", async (req, res) => {
   try {
