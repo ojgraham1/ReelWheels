@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTicket, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import ShowtimesModal from "./ShowtimesModal";
 
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
+  const [showtimes, setShowtimes] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -19,6 +22,26 @@ const MovieList = () => {
 
     fetchMovies();
   }, []);
+
+  const handleGetTicketsClick = async (movieId) => {
+    try {
+      console.log(`Fetching showtimes for movie ID: ${movieId}`);
+      const response = await axios.get(
+        `http://localhost:3000/showtimes/${movieId}`
+      );
+      console.log("Showtimes fetched:", response.data);
+      setShowtimes(response.data);
+      setIsModalOpen(true);
+    } catch (error) {
+      console.error("Error fetching showtimes:", error);
+    }
+  };
+
+  const handleCloseModal = () => {
+    console.log("Closing modal");
+    setIsModalOpen(false);
+    setShowtimes([]);
+  };
 
   return (
     <div className="mLContainer">
@@ -40,7 +63,10 @@ const MovieList = () => {
                     <h2 className="mLT">{movie.title}</h2>
                     <p className="mLO">{movie.overview}</p>
                     <div className="buttonGT">
-                      <button className="button-Get-Tickets">
+                      <button
+                        className="button-Get-Tickets"
+                        onClick={() => handleGetTicketsClick(movie.id)}
+                      >
                         <FontAwesomeIcon icon={faTicket} /> Get Tickets
                       </button>
                       <div className="mLBtn">
@@ -58,6 +84,9 @@ const MovieList = () => {
           </div>
         </div>
       </ul>
+      {isModalOpen && (
+        <ShowtimesModal showtimes={showtimes} onClose={handleCloseModal} />
+      )}
     </div>
   );
 };

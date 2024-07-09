@@ -13,4 +13,19 @@ router.get("/", async (req, res) => {
   }
 });
 
+//get Showtimes by Movie ID
+router.get("/:movieId", async (req, res) => {
+  const movieId = parseInt(req.params.movieId);
+  try {
+    const showtimes = await prisma.showtimes.findMany({
+      where: {
+        movie_id: movieId,
+      },
+    });
+    res.status(200).json(showtimes);
+  } catch (error) {
+    res.status(500).json({ msg: error.message });
+  }
+});
+
 module.exports = router;
