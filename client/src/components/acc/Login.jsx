@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { useLoginMutation } from "../../api/sliceAuth";
 import { useNavigate, NavLink } from "react-router-dom";
-import { setToken } from "../../api/sliceAuth";
+import { setToken, setUsername} from "../../api/sliceAuth";
 import { useSelector, useDispatch } from "react-redux";
 
 export default function Login() {
   const token = useSelector((state) => state.auth.token);
+  const Id = useSelector((state) => state.auth.Id);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [login] = useLoginMutation();
@@ -20,11 +21,13 @@ export default function Login() {
     console.log("FORM", form);
     const result = await login(form);
     console.log("RESULT", result);
-    dispatch(setToken(result.data.token));
+    dispatch(setToken(result.data.token))
+    dispatch(setUsername(form.username))
   };
 
   useEffect(() => {
     console.log("token", token);
+    console.log("userId", Id);
     if (token) {
       navigate("/");
     }
