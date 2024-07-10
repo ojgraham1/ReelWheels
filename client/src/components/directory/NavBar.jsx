@@ -1,8 +1,8 @@
-import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import React from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { clearToken } from "../../api/sliceAuth";
- 
+
 export default function NavBar() {
   const token = useSelector((state) => state.auth.token);
   const dispatch = useDispatch();
@@ -42,24 +42,22 @@ export default function NavBar() {
           </NavLink>
         </ul>
         <ul>
-          <NavLink to="/watchlist">
-            Watch List
-          </NavLink>
+          <NavLink to="/watchlist">Watch List</NavLink>
         </ul>
         <ul className="nL">
           <NavLink to="/cart" className="cart-link">
-              Cart
+            Cart
           </NavLink>
         </ul>
         {token ? (
           <>
-          <ul className="nL">
-            <NavLink to="/account" className="account-link">
-              Account
-            </NavLink>
-          </ul>
+            <ul className="nL">
+              <NavLink to="/account" className="account-link">
+                Account
+              </NavLink>
+            </ul>
             <ul>
-              <button className="nL" onClick={handleLogout}>
+              <button className="nL-logout" onClick={handleLogout}>
                 Logout
               </button>
             </ul>
@@ -70,7 +68,7 @@ export default function NavBar() {
               <NavLink className="nL" to="/login">
                 Log In
               </NavLink>
-              </ul>
+            </ul>
           </>
         )}
       </ul>
