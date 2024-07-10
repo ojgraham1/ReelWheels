@@ -15,30 +15,23 @@ export default function TheaterList() {
     };
 
     fetchTheaters();
-  });
+  }, []);
+
   return (
-    <div className="tContainer">
-      <ul className="theater-container">
-        <h1 className="tHeading">THEATERS</h1>
-        <div className="tWrapper">
-          <div className="tCard-Container">
-            {Theater.map((theater) => (
-              <div className="tCard" key={theater.id}>
-                <ul className="tCardWrapper">
-                  <div className="tText-Container">
-                    <h2 className="tLocation">{theater.Location}</h2>
-                    <p className="tAddress">{theater.Address}</p>
-                    <p className="tEmail">{theater.email}</p>
-                    <Link to={`/theater/${theater.id}`}>
-                      <button className="tMoreInfoBut">More Info</button>
-                    </Link>
-                  </div>
-                </ul>
-              </div>
-            ))}
+    <div className="theater-list-container">
+      <h1 className="theater-list-heading">THEATERS</h1>
+      <div className="theater-cards-wrapper">
+        {Theater.map((theater) => (
+          <div className="theater-card" key={theater.id}>
+            <h2 className="theater-location">{theater.Location}</h2>
+            <p className="theater-address">{theater.Address}</p>
+            <p className="theater-email">{theater.email}</p>
+            <Link to={`/theater/${theater.id}`}>
+              <button className="theater-more-info-btn">More Info</button>
+            </Link>
           </div>
-        </div>
-      </ul>
+        ))}
+      </div>
     </div>
   );
 }

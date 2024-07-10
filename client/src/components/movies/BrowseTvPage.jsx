@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import YouTube from "react-youtube";
+import Snackbar from '@mui/material/Snackbar';
+
 
 function BrowseTvPage() {
     const { id } = useParams();
@@ -24,6 +26,7 @@ function BrowseTvPage() {
                 setLoading(false);
             }
         };
+        
 
         fetchMovieData();
     }, [id]);
@@ -32,6 +35,22 @@ function BrowseTvPage() {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         const date = new Date(dateString);
         return date.toLocaleDateString(undefined, options);
+    };
+
+    const [open, setOpen] = useState(false);
+
+    const addToWatchlist = () => {
+        const watchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
+        watchlist.push(details);
+        localStorage.setItem('watchlist', JSON.stringify(watchlist));
+        setOpen(true);
+    };
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+        setOpen(false);
     };
 
     if (loading) return <p>Loading...</p>;
@@ -55,6 +74,13 @@ function BrowseTvPage() {
                             <h4>First Aired {formatDate(details.first_air_date)}</h4>
                             <h5>Vote Rating: {details.vote_average} | Language: {details.original_language}</h5>
                             <p>{details.overview}</p>
+                            <button className='atwBtn' onClick={addToWatchlist}>Add to Watchlist</button>
+                                <Snackbar
+                                    open={open}
+                                    autoHideDuration={2000}
+                                    onClose={handleClose}
+                                    message="Added to Watchlist!"
+                                />
                         </div>
                     </div>
                 </div>

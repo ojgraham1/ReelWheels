@@ -1,5 +1,5 @@
-import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import React from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { clearToken } from "../../api/sliceAuth";
 
@@ -43,9 +43,7 @@ export default function NavBar() {
           </NavLink>
         </ul>
         <ul>
-          <NavLink to="/watchlist">
-            Watch List
-          </NavLink>
+          <NavLink to="/watchlist">Watch List</NavLink>
         </ul>
         <ul className="nL">
           <NavLink to="/cart" className="cart-link">
@@ -60,7 +58,7 @@ export default function NavBar() {
               </NavLink>
             </ul>
             <ul>
-              <button className="nL" onClick={handleLogout}>
+              <button className="nL-logout" onClick={handleLogout}>
                 Logout
               </button>
             </ul>

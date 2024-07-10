@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+import { faCircleInfo, faPlus, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
 
 function Browse() {
@@ -10,6 +10,7 @@ function Browse() {
     const [browseUpcoming, setBrowseUpcoming] = useState([]);
     const [loading, setLoading] = useState(true);
     const [activeCategory, setActiveCategory] = useState("movies");
+    const [watchlist, setWatchlist] = useState(JSON.parse(localStorage.getItem('watchlist')) || []);
 
     // Fetch Movies
     const fetchMovies = () => {
@@ -25,7 +26,7 @@ function Browse() {
             });
     };
 
-    // Fetch Top-Rated Movies
+    // Fetch Top Rated Movies
     const fetchTopRated = () => {
         fetch("https://api.themoviedb.org/3/movie/top_rated?&api_key=60bff7c4b3bc017974f0186538e281a6")
             .then(res => res.json())
@@ -39,7 +40,7 @@ function Browse() {
             });
     };
 
-    // Fetch TV Shows
+    // Fetch Tv Shows
     const fetchTv = () => {
         fetch("https://api.themoviedb.org/3/discover/tv?page=4&api_key=60bff7c4b3bc017974f0186538e281a6")
             .then(res => res.json())
@@ -52,20 +53,38 @@ function Browse() {
                 setLoading(false);
             });
     };
-        // Fetch Upcoming Movies
-        const fetchUpcoming = () => {
-            fetch("https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1&api_key=60bff7c4b3bc017974f0186538e281a6")
-                .then(res => res.json())
-                .then(json => {
-                    setBrowseUpcoming(json.results);
-                    setLoading(false);
-                })
-                .catch(error => {
-                    console.error("Error fetching Upcoming movies:", error);
-                    setLoading(false);
-                });
-        };
-    
+
+    // Fetch Upcoming Movies
+    const fetchUpcoming = () => {
+        fetch("https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1&api_key=60bff7c4b3bc017974f0186538e281a6")
+            .then(res => res.json())
+            .then(json => {
+                setBrowseUpcoming(json.results);
+                setLoading(false);
+            })
+            .catch(error => {
+                console.error("Error fetching Upcoming movies:", error);
+                setLoading(false);
+            });
+    };
+
+    const handleCategoryChange = (category) => {
+        setActiveCategory(category);
+    };
+
+    const toggleWatchlist = (item) => {
+        const isInWatchlist = watchlist.some(watchlistItem => watchlistItem.id === item.id);
+        const updatedWatchlist = isInWatchlist
+            ? watchlist.filter(watchlistItem => watchlistItem.id !== item.id)
+            : [...watchlist, item];
+        setWatchlist(updatedWatchlist);
+        localStorage.setItem('watchlist', JSON.stringify(updatedWatchlist));
+    };
+
+    const isItemInWatchlist = (id) => {
+        return watchlist.some(item => item.id === id);
+    };
+
     useEffect(() => {
         fetchMovies();
         fetchTopRated();
@@ -73,9 +92,6 @@ function Browse() {
         fetchUpcoming();
     }, []);
 
-    const handleCategoryChange = (category) => {
-        setActiveCategory(category);
-    };
 
     return (
         <div className="bmContainer">
@@ -106,7 +122,6 @@ function Browse() {
                     >
                         Upcoming
                     </button>
-
                 </div>
                 {loading && <p>Loading...</p>}
                 {!loading && (
@@ -128,6 +143,12 @@ function Browse() {
                                                 <Link className="link" to={`/browse/${movie.id}`}>
                                                     <button className="brws-btn-link"><FontAwesomeIcon icon={faCircleInfo} /></button>
                                                 </Link>
+                                                <button 
+                                                    className="watchlist-btn"
+                                                    onClick={() => toggleWatchlist(movie)}
+                                                >
+                                                    <FontAwesomeIcon icon={isItemInWatchlist(movie.id) ? faCheck : faPlus} />
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -149,6 +170,12 @@ function Browse() {
                                                 <Link className="link" to={`/browse/${movie.id}`}>
                                                     <button className="brws-btn-link"><FontAwesomeIcon icon={faCircleInfo} /></button>
                                                 </Link>
+                                                <button 
+                                                    className="watchlist-btn"
+                                                    onClick={() => toggleWatchlist(movie)}
+                                                >
+                                                    <FontAwesomeIcon icon={isItemInWatchlist(movie.id) ? faCheck : faPlus} />
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -157,7 +184,7 @@ function Browse() {
                             {activeCategory === "tv" && browseTv.map((tv) => (
                                 <div className="bmCard" key={tv.id}>
                                     <div className="bmImg-Container">
-                                        <Link to={`/browse/${tv.id}`}>
+                                        <Link to={`/browse/tv/${tv.id}`}>
                                             <img className="bmImg" src={`https://image.tmdb.org/t/p/w500${tv.poster_path}`} alt={tv.original_name} />
                                         </Link>
                                     </div>
@@ -166,10 +193,16 @@ function Browse() {
                                             <div className="bmText">
                                                 <h3 className="bmT">{tv.original_name}</h3>
                                             </div>
-                                            <div className="bmBtn">
+                                            <div className="bmButt">
                                                 <Link className="link" to={`/browse/tv/${tv.id}`}>
                                                     <button className="brws-btn-link"><FontAwesomeIcon icon={faCircleInfo} /></button>
                                                 </Link>
+                                                <button 
+                                                    className="watchlist-btn"
+                                                    onClick={() => toggleWatchlist(tv)}
+                                                >
+                                                    <FontAwesomeIcon icon={isItemInWatchlist(tv.id) ? faCheck : faPlus} />
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -191,6 +224,12 @@ function Browse() {
                                                 <Link className="link" to={`/browse/${movie.id}`}>
                                                     <button className="brws-btn-link"><FontAwesomeIcon icon={faCircleInfo} /></button>
                                                 </Link>
+                                                <button 
+                                                    className="watchlist-btn"
+                                                    onClick={() => toggleWatchlist(movie)}
+                                                >
+                                                    <FontAwesomeIcon icon={isItemInWatchlist(movie.id) ? faCheck : faPlus} />
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -205,6 +244,3 @@ function Browse() {
 }
 
 export default Browse;
-
-{/* <FontAwesomeIcon icon="fa-solid fa-plus" /> */}
-{/* <FontAwesomeIcon icon="fa-solid fa-check" /> */}
