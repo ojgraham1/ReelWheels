@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setToken } from "./api/sliceAuth";
+import { setToken} from "./api/sliceAuth";
 import { Routes, Route } from "react-router-dom";
 
 import NavBar from "./components/directory/NavBar";
@@ -20,17 +20,18 @@ import Login from "./components/acc/Login";
 import Account from "./components/acc/Account";
 
 function App() {
-  const [userToken, setUserToken] = useState({});
+  const [userToken, setUserToken] = useState(null);
   const dispatch = useDispatch();
+  
+useEffect(() => {
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    console.log("token", token);
-    if (token) {
-      dispatch(setToken(token));
-      setUserToken(token);
-    }
-  }, [dispatch]);
+  const token = localStorage.getItem("token");
+  console.log("token", token);
+  if (token) {
+    dispatch(setToken(token)); 
+    setUserToken(token);
+  }
+}, [dispatch]);
 
   return (
     <div className="App">
@@ -49,7 +50,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/account" element={<Account token= {userToken} />} />
+        <Route path="/users/:username" element={<Account token= {userToken} />} />
       </Routes>
     </div>
   );

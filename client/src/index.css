@@ -654,6 +654,11 @@ a:active {
   opacity: 1;
 }
 
+
+.account {
+  margin-top: 100px;
+}
+
 /* Home Account Info */
 .home-account-info{
   display: flex;
