@@ -2,6 +2,7 @@
   background-image: url(https://cdn.pixabay.com/animation/2023/03/19/02/34/02-34-11-741_512.gif);
   background-color: rgb(0, 0, 0);
   background-repeat: repeat;
+  color: white;
 }
 
 a:link {
@@ -105,17 +106,19 @@ a:active {
   box-shadow: 0px 0px 8px 11px #fff3c38b;
 }
 .bmText-Container {
+  margin-top: 5px;
   font-size: small;
   color: rgba(195, 192, 192, 0.858);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-content: center;
 }
 .bmText {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 225px;
+  width: 200px;
 }
 .bmT {
   margin-bottom: -5px;
@@ -130,6 +133,11 @@ a:active {
   height: 20px;
   width: 20px;
 }
+.bmButt{
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+}
 .brws-btn-link {
   background-color: rgba(0, 0, 0, 0);
   color: rgba(222, 222, 222, 0.878);
@@ -137,6 +145,13 @@ a:active {
   font-size: 20px;
   margin-top: 20px;
   margin-bottom: -5px;
+  cursor: pointer;
+}
+.watchlist-btn{
+  background-color: rgba(0, 0, 0, 0);
+  color: rgba(222, 222, 222, 0.878);
+  border: none;
+  font-size: large;
   cursor: pointer;
 }
 
@@ -240,6 +255,88 @@ a:active {
 .bpT {
   color: rgb(222, 222, 222);
 }
+.atwBtn{
+  background-color: #bbbbbb30;
+  border: none;
+  box-shadow: 0px 0px 12px 3px #dddddd;
+  color: rgb(216, 216, 216);
+  cursor: pointer;
+  padding: 3px;
+  margin-bottom: 2px;
+  font-size: 13px;
+  transition: all 0.3s ease-in-out;
+}
+.atwBtn:hover {
+  transform: scale(1.1);
+}
+
+
+/* WatchList */
+.watchlistWrapper{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 75px;
+  margin-bottom: 75px;
+}
+.watchlist-page-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px;
+  padding: 10px;
+  height: 100%;
+  width: 100%;
+}
+.watchlist-items{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+.watchlist-item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 350px;
+  margin: 20px;
+  padding: 10px;
+
+}
+.wlImg{
+  justify-content: center;
+  height: 325px;
+  width: auto;
+  box-shadow: 0px 0px 12px 3px #deddddc5;
+}
+.wlIT{
+  height: 40px;
+  width: 200px;
+  font-size: large;
+  font-style: oblique;
+}
+.rfwBtn{
+  background-color: #bbbbbb30;
+  border: none;
+  box-shadow: 0px 0px 12px 3px #deddddc5;
+  color: rgb(216, 216, 216);
+  cursor: pointer;
+  padding: 3px;
+  margin-bottom: 2px;
+  font-size: 13px;
+  font-weight: 400;
+  transition: all 0.3s ease-in-out;
+}
+.rfwBtn:hover {
+  transform: scale(1.1);
+}
+
+
 
 /* Movie List */
 .mLContainer {
@@ -472,7 +569,7 @@ a:active {
   align-content: center;
   margin: 0 auto;
   margin-top: 90px;
-  margin-right: -80px;
+  margin-right: -90px;
   overflow: hidden;
   width: max-content;
 }
@@ -540,6 +637,19 @@ a:active {
   opacity: 1;
 }
 
+/* Home Account Info */
+.home-account-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.info-box{
+  color: white;
+  align-content: center;
+  width: max-content;
+
+}
 
 
 

@@ -92,8 +92,28 @@ function Home() {
                         ))}
                     </div>
                 </div>
-                <div className='home-movies'>
-
+                <div className="home-account-info"
+                            style={{
+                              backgroundImage: `url(https://s.hdnux.com/photos/01/33/15/70/23911998/5/ratio3x2_1800.jpg)`
+                          }}
+              >
+                  <div className="info-box">
+                    <h2>Why register for an account?</h2>
+                    <hr></hr>
+                    <ul>
+                    <p><b>Save tickets & orders:</b> <br></br>
+                      Tickets and snacks are stored in your account, accessible at the push of a button.</p>
+                      <p><b>Save payment methods:</b> 
+                      <br></br>Checkout is a breeze by saving your credit card to your account.</p>
+                      <p><b>Earn and redeem rewards:</b> 
+                      <br></br>Redeem your points for exclusive rewards and experiences.</p>
+                      <p><b>Suggestions based on you:</b>
+                      <br></br>Based on past orders, we can recommend movies you and your preferences.</p>
+                      <p><b>Manage your account:</b>
+                      <br></br>Update your account information, change your password, and more.</p>
+                      <hr></hr>
+                    </ul>
+                  </div>
                 </div>
             </div>
         </div>
