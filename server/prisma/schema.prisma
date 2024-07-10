@@ -54,8 +54,11 @@ model Theater {
   Location  String
   Address   String
   email     String      @unique
+  latitude  Float       @default(0.0)
+  longitude Float       @default(0.0)
   showtimes Showtimes[]
 }
+
 
 model MovieAPI {
   id            Int         @id

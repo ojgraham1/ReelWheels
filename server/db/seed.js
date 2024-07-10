@@ -18,7 +18,7 @@ async function fetchMovieRuntime(movieId) {
     return response.data.runtime;
   } catch (error) {
     console.error(`Error fetching runtime for movie ${movieId}:`, error);
-    return 120; // Default time added incase all fails
+    return 120; // Default time added in case all fails
   }
 }
 
@@ -45,50 +45,7 @@ async function main() {
 
   // Create/update users
   const usersData = [
-    {
-      username: "luckystar",
-      password: "lucky",
-      firstName: "Maya",
-      lastName: "Obeidat",
-      email: "maya@gmail.com",
-      address: "777 Lucky St.",
-      phoneNumber: "(770)777-7777",
-      birthdate: new Date(2001, 2, 1),
-      isAdmin: true,
-    },
-    {
-      username: "princessprisma",
-      password: "princess",
-      firstName: "Thomas",
-      lastName: "Graham",
-      email: "thomas@gmail.com",
-      address: "444 Princess Ln.",
-      phoneNumber: "(404)444-4444",
-      birthdate: new Date(1978, 3, 12),
-      isAdmin: true,
-    },
-    {
-      username: "catattack",
-      password: "kitty",
-      firstName: "Olivia",
-      lastName: "Graham",
-      email: "olivia@gmail.com",
-      address: "999 Kitten Ln.",
-      phoneNumber: "(202)999-999",
-      birthdate: new Date(2000, 7, 26),
-      isAdmin: true,
-    },
-    {
-      username: "bravesfan1",
-      password: "bball",
-      firstName: "Daniel",
-      lastName: "Patterson",
-      email: "daniel@gmail.com",
-      address: "333 Baseball Cr.",
-      phoneNumber: "(470)333-3333",
-      birthdate: new Date(1994, 4, 20),
-      isAdmin: true,
-    },
+    // data gone
   ];
 
   for (const userData of usersData) {
@@ -105,91 +62,132 @@ async function main() {
       Location: "New York",
       Address: "190 Bowery, New York, NY 10012",
       email: "reelwheels1@gmail.com",
+      latitude: 40.72132,
+      longitude: -73.993286,
     },
     {
       Location: "Brooklyn",
       Address: "152 Grand St, Brooklyn, NY 11249",
       email: "reelwheels2@gmail.com",
+      latitude: 40.714623,
+      longitude: -73.961452,
     },
     {
       Location: "San Francisco",
       Address: "1015 Market St, San Francisco, CA 94103",
       email: "reelwheels3@gmail.com",
+      latitude: 37.78268,
+      longitude: -122.410729,
     },
     {
       Location: "West Hollywood",
       Address: "8801 Sunset Blvd, West Hollywood, CA 90069",
       email: "reelwheels4@gmail.com",
+      latitude: 34.09,
+      longitude: -118.386627,
     },
     {
       Location: "Chicago",
       Address: "1438 N Milwaukee Ave, Chicago, IL 60622",
       email: "reelwheels5@gmail.com",
+      latitude: 41.908217,
+      longitude: -87.677137,
     },
     {
       Location: "London",
       Address: "2/3 Peter St, London W1F 0AA, United Kingdom",
       email: "reelwheels6@gmail.com",
+      latitude: 51.5143,
+      longitude: -0.1312,
     },
     {
       Location: "Paris",
       Address: "20 Rue Barbette, 75003 Paris, France",
       email: "reelwheels7@gmail.com",
+      latitude: 48.8598,
+      longitude: 2.3626,
     },
     {
       Location: "Milan",
       Address: "Corso Garibaldi, 20, 20121 Milano MI, Italy",
       email: "reelwheels8@gmail.com",
+      latitude: 45.4789,
+      longitude: 9.1926,
     },
     {
       Location: "Berlin",
       Address: "Torstraße 74, 10119 Berlin, Germany",
       email: "reelwheels9@gmail.com",
+      latitude: 52.5292,
+      longitude: 13.401,
     },
     {
       Location: "Shibuya",
       Address:
         "Japan, 〒150-0041 Tokyo, Shibuya City, Jinnan, 1 Chome−18−2, Frame Jinnan-zaka, 1 F",
       email: "reelwheels10@gmail.com",
+      latitude: 35.661751,
+      longitude: 139.703081,
     },
     {
       Location: "Osaka",
       Address: "1 Chome-9-8 Minamihorie, Nishi Ward, Osaka, 550-0015, Japan",
       email: "reelwheels11@gmail.com",
+      latitude: 34.678395,
+      longitude: 135.49892,
     },
     {
       Location: "Harajuku",
       Address:
         "Japan, 〒150-0001 Tokyo, Shibuya City, Jingumae, 4 Chome-32-7 神崎ビル 2 F",
       email: "reelwheels12@gmail.com",
+      latitude: 35.6702,
+      longitude: 139.704057,
     },
     {
       Location: "Fukuoka",
       Address:
         "Japan, 〒810-0041 Fukuoka, Chuo Ward, Daimyo, 1 Chome-15-35 ２４７ビル 1 F",
       email: "reelwheels13@gmail.com",
+      latitude: 33.589606,
+      longitude: 130.396423,
     },
     {
       Location: "Daikanyama",
       Address:
         "Japan, 〒150-0034 Tokyo, Shibuya City, Daikanyamacho, 1−6, Hirota Daikanyama Building, 1 F",
       email: "reelwheels14@gmail.com",
+      latitude: 35.648888,
+      longitude: 139.703534,
     },
     {
       Location: "Nagoya",
       Address:
         "Japan, 〒460-0008 Aichi, Nagoya, Naka Ward, Sakae, 3 Chome-13-28 1 F",
       email: "reelwheels15@gmail.com",
+      latitude: 35.171238,
+      longitude: 136.905157,
     },
     {
       Location: "Seoul",
       Address: "648 Sinsa-dong, Gangnam District, Seoul, South Korea",
       email: "reelwheels16@gmail.com",
+      latitude: 37.524,
+      longitude: 127.0226,
     },
     {
       Location: "Shanghai",
       Address: "No.291 Fumin Road Xuhui District, 2000030. Shanghai, China",
       email: "reelwheels17@gmail.com",
+      latitude: 31.2208,
+      longitude: 121.4513,
+    },
+    {
+      Location: "Atlanta",
+      Address: "3035 Peachtree Rd, Atlanta, GA 30305",
+      email: "reelwheels18@gmail.com",
+      latitude: 33.838841,
+      longitude: -84.380023,
     },
   ];
 

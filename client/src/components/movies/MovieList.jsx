@@ -25,13 +25,19 @@ const MovieList = () => {
 
   const handleGetTicketsClick = async (movieId) => {
     try {
-      console.log(`Fetching showtimes for movie ID: ${movieId}`);
-      const response = await axios.get(
-        `http://localhost:3000/showtimes/${movieId}`
-      );
-      console.log("Showtimes fetched:", response.data);
-      setShowtimes(response.data);
-      setIsModalOpen(true);
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        const { latitude, longitude } = position.coords;
+        console.log(
+          `Fetching showtimes for movie ID: ${movieId} at (${latitude}, ${longitude})`
+        );
+        const response = await axios.post(
+          `http://localhost:3000/showtimes/nearest`,
+          { latitude, longitude, movieId }
+        );
+        console.log("Showtimes fetched:", response.data);
+        setShowtimes(response.data);
+        setIsModalOpen(true);
+      });
     } catch (error) {
       console.error("Error fetching showtimes:", error);
     }
