@@ -13,7 +13,8 @@ const Account = () => {
     const { data: user, error, isLoading } = useGetUserByUsernameQuery(username);
     const [formData, setFormData] = useState({ ...user });
     const [isEditMode, setIsEditMode] = useState(false); 
-    const [userId, setUserId] = useState(null);
+    // const [userId, setUserId] = useState(null);
+    const userId = 119
 
     const fetchUserId = async () => {
         try {
