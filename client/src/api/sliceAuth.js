@@ -27,7 +27,7 @@ export const { useLoginMutation, useRegisterMutation, useLogoutMutation } = auth
 
 const initialState = {
   token: localStorage.getItem("token") || null,
-  Id: localStorage.getItem("userId") || null
+  userId: localStorage.getItem("userId") || null
 };
   
 const authSlice = createSlice({
@@ -46,9 +46,13 @@ const authSlice = createSlice({
       state.username = action.payload;
       localStorage.setItem ("username", action.payload);
     },
+    setUserId: (state, action) => {
+        state.userId = action.payload;
+        localStorage.setItem ("userId", action.payload);
+        },
   },
 });
 
-export const { setToken, clearToken, setUsername } = authSlice.actions;
+export const { setToken, clearToken, setUsername, setUserId } = authSlice.actions;
 
 export default authSlice.reducer;
