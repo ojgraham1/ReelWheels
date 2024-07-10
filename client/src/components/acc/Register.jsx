@@ -129,7 +129,7 @@ export default function Register() {
             </p>
           </div>
         </div>
-        <div className="right-column">
+        {/* <div className="right-column">
           <div className="info-box">
             <h2>Why register for an account?</h2>
             <hr></hr>
@@ -147,7 +147,7 @@ export default function Register() {
               <hr></hr>
             </ul>
           </div>
-        </div>
+        </div> */}
       </form>
     </div>
   );

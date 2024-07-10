@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import YouTube from 'react-youtube';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlay } from '@fortawesome/free-regular-svg-icons';
+import ShowtimesMovie from '../showtimes/ShowtimesMovie';
 
 function MoviePage() {
     const { id } = useParams();
@@ -78,7 +79,7 @@ function MoviePage() {
                 )}
             </div>
             <div className="mpShowtimes-Container">
-                <h1>Hellooooo Sunshine!</h1>
+                <ShowtimesMovie />
             </div>
         </div>
     );

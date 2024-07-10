@@ -90,8 +90,8 @@ const actionsApi = api.injectEndpoints({
             })
         }),
         createReservation: builder.mutation({
-            query:(body, id)=>({
-                url:`reservations/user/${id}`,
+            query:(body, userId)=>({
+                url:`reservations/user/${userId}`,
                 method:"POST",
                 body:body
             })
@@ -104,30 +104,29 @@ const actionsApi = api.injectEndpoints({
         getShowtimesByTheaterId: builder.query({
             query: (theaterId)=> `theater/${theaterId}/showtimes`
         }),
-        // deleteShowtime:builder.mutation({
-        //     query:()=>({
-        //         url:`reservations/${id}`,
-        //         method:'DELETE'
-        //     })
-        // }),
-        // createShowtime: builder.mutation({
-        //     query:(body)=>({
-        //         url:`theater/${id}/showtimes`,
-        //         method:"POST",
-        //         body:body
-        //     })
-        // }),
-        // updateTheater: builder.mutation({
-        //     query(data){
-        //         const {id, ...body}=data;
-        //         return {
-        //             url: `theater/${id}`,
-        //             method:"PUT",
-        //             body
-        //         }
-        //     }
-        // }),
-
+        createShowtime: builder.mutation({
+            query:(body, theaterId)=>({
+                url:`theater/${theaterId}/showtimes`,
+                method:"POST",
+                body:body
+            })
+        }),
+        updateTheater: builder.mutation({
+            query(data, theaterId, showtimeId){
+                const {id, ...body}=data;
+                return {
+                    url: `theater/${theaterId}/showtimes/${showtimeId}`,
+                    method:"PUT",
+                    body
+                }
+            }
+        }),
+        deleteShowtime:builder.mutation({
+            query:(theaterId, showtimeId)=>({
+                url:`theater/${theaterId}/showtimes/${showtimeId}`,
+                method:'DELETE'
+            })
+        }),
 
         // Movies Actions
 
@@ -161,6 +160,7 @@ export const {
     // Showtimes Actions
     getShowtimes,
     getShowtimesByTheaterId,
+    deleteShowtime,
 
     // Movies Actions
 
