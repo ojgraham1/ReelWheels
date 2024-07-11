@@ -53,25 +53,6 @@ router.get("/user/:userId", veryTokey, async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
-//reservations by user id
-router.get("/user/:userId", veryTokey, async (req, res) => {
-  const userId = parseInt(req.params.userId);
-  try {
-    const reservations = await prisma.reservations.findMany({
-      where: {
-        user_id: userId,
-      },
-      include: {
-        user: true,
-        showtime: true,
-      },
-    });
-    res.json(reservations);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
 
 //reservations by theater id
 router.get("/theater/:theaterId", isAdmin, async (req, res) => {
