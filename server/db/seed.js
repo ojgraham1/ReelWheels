@@ -64,6 +64,8 @@ async function main() {
       email: "reelwheels1@gmail.com",
       latitude: 40.72132,
       longitude: -73.993286,
+      phoneNumber: "212-966-7799",
+      image: "add_image",
     },
     {
       Location: "Brooklyn",
@@ -71,6 +73,8 @@ async function main() {
       email: "reelwheels2@gmail.com",
       latitude: 40.714623,
       longitude: -73.961452,
+      phoneNumber: "718-599-2700",
+      image: "add_image",
     },
     {
       Location: "San Francisco",
@@ -78,6 +82,8 @@ async function main() {
       email: "reelwheels3@gmail.com",
       latitude: 37.78268,
       longitude: -122.410729,
+      phoneNumber: "415-991-2929",
+      image: "add_image",
     },
     {
       Location: "West Hollywood",
@@ -85,6 +91,8 @@ async function main() {
       email: "reelwheels4@gmail.com",
       latitude: 34.09,
       longitude: -118.386627,
+      phoneNumber: "323-655-6205",
+      image: "add_image",
     },
     {
       Location: "Chicago",
@@ -92,6 +100,8 @@ async function main() {
       email: "reelwheels5@gmail.com",
       latitude: 41.908217,
       longitude: -87.677137,
+      phoneNumber: "312-300-0562",
+      image: "add_image",
     },
     {
       Location: "London",
@@ -99,6 +109,8 @@ async function main() {
       email: "reelwheels6@gmail.com",
       latitude: 51.5143,
       longitude: -0.1312,
+      phoneNumber: "+44 207-437-0493",
+      image: "add_image",
     },
     {
       Location: "Paris",
@@ -106,6 +118,8 @@ async function main() {
       email: "reelwheels7@gmail.com",
       latitude: 48.8598,
       longitude: 2.3626,
+      phoneNumber: "+33 1 43 48 80 14",
+      image: "add_image",
     },
     {
       Location: "Milan",
@@ -113,6 +127,8 @@ async function main() {
       email: "reelwheels8@gmail.com",
       latitude: 45.4789,
       longitude: 9.1926,
+      phoneNumber: "+39 02 84349776",
+      image: "add_image",
     },
     {
       Location: "Berlin",
@@ -120,6 +136,8 @@ async function main() {
       email: "reelwheels9@gmail.com",
       latitude: 52.5292,
       longitude: 13.401,
+      phoneNumber: "+49 030 27013724",
+      image: "add_image",
     },
     {
       Location: "Shibuya",
@@ -128,6 +146,8 @@ async function main() {
       email: "reelwheels10@gmail.com",
       latitude: 35.661751,
       longitude: 139.703081,
+      phoneNumber: "03-5428-4393",
+      image: "add_image",
     },
     {
       Location: "Osaka",
@@ -135,6 +155,8 @@ async function main() {
       email: "reelwheels11@gmail.com",
       latitude: 34.678395,
       longitude: 135.49892,
+      phoneNumber: "06-6533-0705",
+      image: "add_image",
     },
     {
       Location: "Harajuku",
@@ -143,6 +165,8 @@ async function main() {
       email: "reelwheels12@gmail.com",
       latitude: 35.6702,
       longitude: 139.704057,
+      phoneNumber: "03-5771-0090",
+      image: "add_image",
     },
     {
       Location: "Fukuoka",
@@ -151,6 +175,8 @@ async function main() {
       email: "reelwheels13@gmail.com",
       latitude: 33.589606,
       longitude: 130.396423,
+      phoneNumber: "092-732-5002",
+      image: "add_image",
     },
     {
       Location: "Daikanyama",
@@ -159,6 +185,8 @@ async function main() {
       email: "reelwheels14@gmail.com",
       latitude: 35.648888,
       longitude: 139.703534,
+      phoneNumber: "03-5456-0085",
+      image: "add_image",
     },
     {
       Location: "Nagoya",
@@ -167,6 +195,8 @@ async function main() {
       email: "reelwheels15@gmail.com",
       latitude: 35.171238,
       longitude: 136.905157,
+      phoneNumber: "052-261-2858",
+      image: "add_image",
     },
     {
       Location: "Seoul",
@@ -174,6 +204,8 @@ async function main() {
       email: "reelwheels16@gmail.com",
       latitude: 37.524,
       longitude: 127.0226,
+      phoneNumber: "+82-02-2138-0948",
+      image: "add_image",
     },
     {
       Location: "Shanghai",
@@ -181,6 +213,8 @@ async function main() {
       email: "reelwheels17@gmail.com",
       latitude: 31.2208,
       longitude: 121.4513,
+      phoneNumber: "+86-021-6025-0570",
+      image: "add_image",
     },
     {
       Location: "Atlanta",
@@ -188,6 +222,8 @@ async function main() {
       email: "reelwheels18@gmail.com",
       latitude: 33.838841,
       longitude: -84.380023,
+      phoneNumber: "678-999-8212",
+      image: "add_image",
     },
   ];
 

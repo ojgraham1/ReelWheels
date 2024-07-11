@@ -56,9 +56,10 @@ model Theater {
   email     String      @unique
   latitude  Float       @default(0.0)
   longitude Float       @default(0.0)
+  image     String?     @default("") 
+  phoneNumber String?
   showtimes Showtimes[]
 }
-
 
 model MovieAPI {
   id            Int         @id
@@ -70,6 +71,8 @@ model MovieAPI {
   vote_average  Float
   showtimes     Showtimes[]
 }
+
+
 
 
 
