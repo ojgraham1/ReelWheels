@@ -51,8 +51,8 @@ export default function TheaterList() {
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
           contentLabel="Theater Info"
-          className="modal"
-          overlayClassName="overlay"
+          className="tlModal"
+          overlayClassName="tlOverlay"
         >
           <div className="tlModalInfo">
             <p> Reel Wheels {selectedTheater.Location}</p>

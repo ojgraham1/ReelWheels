@@ -873,7 +873,7 @@ a:active {
 
 
 /* Theater Pop Up Modal */
-.modal {
+.tlModal {
   display: flex;
   flex-wrap: wrap;
   z-index: 1;
@@ -889,7 +889,7 @@ a:active {
   height: 500px;
   overflow-y: hidden;
 }
-.overlay {
+.tlOverlay {
   position: fixed;
   top: 0;
   left: 0;
