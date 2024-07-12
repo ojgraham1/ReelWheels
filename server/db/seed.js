@@ -59,13 +59,22 @@ async function main() {
 
   const theatersData = [
     {
+      Location: "Atlanta",
+      Address: "3035 Peachtree Rd, Atlanta, GA 30305",
+      email: "reelwheels18@gmail.com",
+      latitude: 33.838841,
+      longitude: -84.380023,
+      phoneNumber: "678-999-8212",
+      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Midtown_atlanta_%28cropped%29.jpg/1000px-Midtown_atlanta_%28cropped%29.jpg",
+    },
+    {
       Location: "New York",
       Address: "190 Bowery, New York, NY 10012",
       email: "reelwheels1@gmail.com",
       latitude: 40.72132,
       longitude: -73.993286,
       phoneNumber: "212-966-7799",
-      image: "add_image",
+      image: "https://www.amny.com/wp-content/uploads/2022/08/GettyImages-523538287.jpg",
     },
     {
       Location: "Brooklyn",
@@ -74,7 +83,7 @@ async function main() {
       latitude: 40.714623,
       longitude: -73.961452,
       phoneNumber: "718-599-2700",
-      image: "add_image",
+      image: "https://mgnyconsulting.com/wp-content/uploads/2022/11/brooklyntower-featured-scaled.webp",
     },
     {
       Location: "San Francisco",
@@ -83,7 +92,7 @@ async function main() {
       latitude: 37.78268,
       longitude: -122.410729,
       phoneNumber: "415-991-2929",
-      image: "add_image",
+      image: "https://images.squarespace-cdn.com/content/v1/5c7f5f60797f746a7d769cab/1708063049157-NMFAB7KBRBY2IG2BWP4E/the+golden+gate+bridge+san+francisco.jpg",
     },
     {
       Location: "West Hollywood",
@@ -92,7 +101,7 @@ async function main() {
       latitude: 34.09,
       longitude: -118.386627,
       phoneNumber: "323-655-6205",
-      image: "add_image",
+      image: "https://s1.it.atcdn.net/wp-content/uploads/2015/05/shutterstock_186048416WeHo.jpg",
     },
     {
       Location: "Chicago",
@@ -101,7 +110,7 @@ async function main() {
       latitude: 41.908217,
       longitude: -87.677137,
       phoneNumber: "312-300-0562",
-      image: "add_image",
+      image: "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iBSTwLG79Zl8/v5/-1x-1.jpg",
     },
     {
       Location: "London",
@@ -110,7 +119,7 @@ async function main() {
       latitude: 51.5143,
       longitude: -0.1312,
       phoneNumber: "+44 207-437-0493",
-      image: "add_image",
+      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/33/f5/de/london.jpg?w=1400&h=1400&s=1",
     },
     {
       Location: "Paris",
@@ -119,7 +128,7 @@ async function main() {
       latitude: 48.8598,
       longitude: 2.3626,
       phoneNumber: "+33 1 43 48 80 14",
-      image: "add_image",
+      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/15/6d/d6/paris.jpg?w=1400&h=1400&s=1",
     },
     {
       Location: "Milan",
@@ -128,7 +137,7 @@ async function main() {
       latitude: 45.4789,
       longitude: 9.1926,
       phoneNumber: "+39 02 84349776",
-      image: "add_image",
+      image: "https://i.natgeofe.com/n/485b2f58-8e2b-4633-a1c5-658bf513e53e/alps-milan-italy_16x9.jpg",
     },
     {
       Location: "Berlin",
@@ -137,7 +146,7 @@ async function main() {
       latitude: 52.5292,
       longitude: 13.401,
       phoneNumber: "+49 030 27013724",
-      image: "add_image",
+      image: "https://www.zicasso.com/static/fc7ac8652d1d916ad0d3be6a1ee37a06/6d821/fc7ac8652d1d916ad0d3be6a1ee37a06.jpg",
     },
     {
       Location: "Shibuya",
@@ -147,7 +156,7 @@ async function main() {
       latitude: 35.661751,
       longitude: 139.703081,
       phoneNumber: "03-5428-4393",
-      image: "add_image",
+      image: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?fm=jpg&w=3000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hpYnV5YXxlbnwwfHwwfHx8MA%3D%3D",
     },
     {
       Location: "Osaka",
@@ -156,7 +165,7 @@ async function main() {
       latitude: 34.678395,
       longitude: 135.49892,
       phoneNumber: "06-6533-0705",
-      image: "add_image",
+      image: "https://blog.sakura.co/wp-content/uploads/2023/03/Sakuraco_osaka6-1.jpg",
     },
     {
       Location: "Harajuku",
@@ -166,7 +175,7 @@ async function main() {
       latitude: 35.6702,
       longitude: 139.704057,
       phoneNumber: "03-5771-0090",
-      image: "add_image",
+      image: "https://www.gotokyo.org/en/story/guide/shibuya-shop/images/shibuyashopping_main.jpg",
     },
     {
       Location: "Fukuoka",
@@ -176,7 +185,7 @@ async function main() {
       latitude: 33.589606,
       longitude: 130.396423,
       phoneNumber: "092-732-5002",
-      image: "add_image",
+      image: "https://a3.cdn.japantravel.com/photo/290-216180/1440x960!/fukuoka-fukuoka-prefecture-216180.jpg",
     },
     {
       Location: "Daikanyama",
@@ -186,7 +195,7 @@ async function main() {
       latitude: 35.648888,
       longitude: 139.703534,
       phoneNumber: "03-5456-0085",
-      image: "add_image",
+      image: "https://byfood.b-cdn.net/api/public/assets/9407/content?optimizer=image",
     },
     {
       Location: "Nagoya",
@@ -196,7 +205,7 @@ async function main() {
       latitude: 35.171238,
       longitude: 136.905157,
       phoneNumber: "052-261-2858",
-      image: "add_image",
+      image: "https://content.r9cdn.net/rimg/dimg/68/67/c5247216-city-2121-165f3326118.jpg?width=1366&height=768&xhint=2169&yhint=1514&crop=true",
     },
     {
       Location: "Seoul",
@@ -205,7 +214,7 @@ async function main() {
       latitude: 37.524,
       longitude: 127.0226,
       phoneNumber: "+82-02-2138-0948",
-      image: "add_image",
+      image: "https://live.staticflickr.com/7681/16652884083_6b0596626b_b.jpg",
     },
     {
       Location: "Shanghai",
@@ -214,16 +223,7 @@ async function main() {
       latitude: 31.2208,
       longitude: 121.4513,
       phoneNumber: "+86-021-6025-0570",
-      image: "add_image",
-    },
-    {
-      Location: "Atlanta",
-      Address: "3035 Peachtree Rd, Atlanta, GA 30305",
-      email: "reelwheels18@gmail.com",
-      latitude: 33.838841,
-      longitude: -84.380023,
-      phoneNumber: "678-999-8212",
-      image: "add_image",
+      image: "https://www.outlooktravelmag.com/media/shanghai-1-1582544504.profileImage.2x-scaled.webp",
     },
   ];
 
