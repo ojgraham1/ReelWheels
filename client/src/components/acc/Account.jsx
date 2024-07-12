@@ -2,42 +2,63 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import {
     useGetUserByUsernameQuery,
+    useGetUserByIdQuery,
     useUpdateUserMutation,
     useGetReservationByUserIdQuery,
 } from '../../api/sliceActions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Account = () => {
     const dispatch = useDispatch();
     const { username } = useParams();
-    const { data: user, error, isLoading } = useGetUserByUsernameQuery(username);
-    const [formData, setFormData] = useState({ ...user });
-    const [isEditMode, setIsEditMode] = useState(false); 
-    // const [userId, setUserId] = useState(null);
-    const userId = 119
+    const [formData, setFormData] = useState({});
+    const [isEditMode, setIsEditMode] = useState(false);
+    const [userId, setUserId] = useState(null);
+    const [reservationsLoading, setReservationsLoading] = useState(true);
+    const [reservationsData, setReservationsData] = useState(null);
+    const [reservationsError, setReservationsError] = useState(null);
 
-    const fetchUserId = async () => {
-        try {
-            const response = await fetch(`http://localhost:3000/users/${user.id}`, {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('token')}` 
-                }
-            });
-            const data = await response.json();
-            setUserId(data.userId);
-        } catch (error) {
-            console.error('Error fetching userId:', error);
-        }
-    };
+    const { data: user, error: userError, isLoading: userLoading } = useGetUserByUsernameQuery(username);
+    const {data: userData, error: userIdError, isLoading: userIdLoading} = useGetUserByIdQuery(userId, {skip:!userId});
+    const { data: reservations, error: userReservationsError } = useGetReservationByUserIdQuery(userId, {skip:!userId});
+    const [updateUser]  = useUpdateUserMutation();
 
     useEffect(() => {
-        fetchUserId(); 
+        if (user) {
+            setFormData({ ...user });
+            setUserId(user.id);
+        }
     }, [user]);
 
-    const { data: reservationsData, error: reservationsError, isLoading: reservationsLoading } = useGetReservationByUserIdQuery(userId || '');
+    useEffect(() => {
 
-    const { mutate: updateUser, isLoading: isUpdating } = useUpdateUserMutation();
+        if (userData) {
+    //         // const fetchUserById =  () => {
+    //         //     console.log("HERE:", useGetUserByIdQuery(userId))
+    //         //     const { data } =  useGetUserByIdQuery(userId);
+    //         //     console.log("data", data)
+    //         //     if (data) {
+                    setFormData(userData); 
+                
+    //         // };
+
+            const fetchReservationsByUserId = async () => {
+               
+                if (reservations) {
+                    setReservationsData(reservations);
+                }
+                if (userReservationsError) {
+                    setReservationsError(userReservationsError);
+                }
+                setReservationsLoading(false); 
+            };
+
+            // fetchUserById();
+            fetchReservationsByUserId();
+        }
+    }, [userData]);
+
+
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -47,18 +68,24 @@ const Account = () => {
         }));
     };
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
-        dispatch(updateUser(formData)); 
-        setIsEditMode(false);
+        try {
+            const updatedUserData = { ...formData, id: userId };
+            const data = await updateUser(updatedUserData);
+            console.log(data)
+            setIsEditMode(false);
+        } catch (error) {
+            console.error('Error updating user:', error);
+        }
     };
 
     const toggleEditMode = () => {
-        setIsEditMode(!isEditMode); 
+        setIsEditMode(!isEditMode);
     };
 
-    if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error.message}</div>;
+    if (userLoading) return <div>Loading...</div>;
+    if (userError) return <div>Error: {userError.message}</div>;
     if (!user) return <div>No user data available</div>;
 
     return (
@@ -117,57 +144,57 @@ const Account = () => {
                                         />
                                         <p className="Birthdate"><b>Birthday:</b></p>
                                         <input
-                                            type="text"
-                                            name="birthdate"
-                                            value={formData.birthdate}
-                                            onChange={handleInputChange}
-                                        />
-                                        <p className="Phone"><b>Phone Number:</b></p>
-                                        <input
-                                            type="text"
-                                            name="phone"
-                                            value={formData.phoneNumber}
-                                            onChange={handleInputChange}
-                                        />
-                                        <br></br>
-                                        <button type="submit">Update Details</button>
-                                    </div>
-                                </ul>
-                            </div>
-                        </div>
-                    </form>
-                ) : (
-                    <button onClick={toggleEditMode}>Edit Profile Details</button>
-                )}
-
-                <div>
-                    {reservationsLoading ? (
-                        <div>Loading reservations...</div>
-                    ) : reservationsError ? (
-                        <div>Error: {reservationsError.message}</div>
-                    ) : reservationsData ? (
-                        <div>
-                            <h2>Reservation History</h2>
-                            <ul>
-                                {reservationsData.map((reservation) => (
-                                    <li key={reservation.id}>
-                                        <p>Theater: {reservation.theaterName}</p>
-                                        <p>Time: {reservation.time}</p>
-                                    </li>
-                                ))}
+                                        type="text"
+                                        name="birthdate"
+                                        value={formData.birthdate}
+                                        onChange={handleInputChange}
+                                    />
+                                    <p className="Phone"><b>Phone Number:</b></p>
+                                    <input
+                                        type="text"
+                                        name="phone"
+                                        value={formData.phoneNumber}
+                                        onChange={handleInputChange}
+                                    />
+                                    <br></br>
+                                    <button type="submit">Update Details</button>
+                                </div>
                             </ul>
                         </div>
-                    ) : (
-                        <div>No reservations found</div>
-                    )}
-                </div>
+                    </div>
+                </form>
+            ) : (
+                <button onClick={toggleEditMode}>Edit Profile Details</button>
+            )}
 
-            </>
-        </div>
-    );
-};
+            <div>
+                {reservationsLoading ? (
+                    <div>Loading reservations...</div>
+                ) : reservationsError ? (
+                    <div>Error: {reservationsError.message}</div>
+                ) : reservationsData ? (
+                    <div>
+                        <h2>Reservation History</h2>
+                        <ul>
+                            {reservationsData.map((reservation) => (
+                                <li key={reservation.id}>
+                                    <p>Theater: {reservation.theaterName}</p>
+                                    <p>Time: {reservation.time}</p>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ) : (
+                    <div>No reservations found</div>
+                )}
+            </div>
 
+        </>
+    </div>
+);
+}
 export default Account;
+
 
 
 
