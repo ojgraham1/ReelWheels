@@ -52,9 +52,9 @@ function Browse() {
   };
 
   // Fetch Tv Shows
-  const fetchTv = () => {
+  const fetchTv = (page = 1) => {
     fetch(
-      "https://api.themoviedb.org/3/discover/tv?page=4&api_key=60bff7c4b3bc017974f0186538e281a6"
+      `https://api.themoviedb.org/3/discover/tv?${page}&api_key=60bff7c4b3bc017974f0186538e281a6`
     )
       .then((res) => res.json())
       .then((json) => {
@@ -68,9 +68,9 @@ function Browse() {
   };
 
   // Fetch Upcoming Movies
-  const fetchUpcoming = () => {
+  const fetchUpcoming = (page = 1) => {
     fetch(
-      "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1&api_key=60bff7c4b3bc017974f0186538e281a6"
+      `https://api.themoviedb.org/3/movie/upcoming?language=en-US&${page}&api_key=60bff7c4b3bc017974f0186538e281a6`
     )
       .then((res) => res.json())
       .then((json) => {
@@ -105,8 +105,8 @@ function Browse() {
   useEffect(() => {
     fetchMovies(currentPage);
     fetchTopRated();
-    fetchTv();
-    fetchUpcoming();
+    fetchTv(currentPage);
+    fetchUpcoming(currentPage);
   }, [currentPage]);
 
   return (
