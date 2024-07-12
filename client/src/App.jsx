@@ -6,7 +6,6 @@ import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/directory/NavBar";
 import Home from "./components/directory/Home";
 import Theaters from "./components/theater/TheaterList";
-import TheaterPage from "./components/theater/TheaterPage";
 import Concessions from './components/concessions/foodMenu';
 import Browse from "./components/movies/BrowseList";
 import BrowsePage from "./components/movies/BrowsePage";
@@ -39,7 +38,6 @@ useEffect(() => {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/theaters" element={<Theaters />} />
-        <Route path="/theater/:id" element={<TheaterPage />} />
         <Route path="/concessions" element={<Concessions />} />
         <Route path="/browse" element={<Browse />} />
         <Route path="/browse/:id" element={<BrowsePage />} />
