@@ -31,40 +31,40 @@ export default function Login() {
     }, [token, navigate]);
 
     return (
-        <div className="login-container">
-            {!token && (
-                <form onSubmit={handleSubmit} className="login-form">
-                    <h2>Login</h2>
-                    <div className="form-group">
-                        <input
-                            type="username"
-                            className="form-control"
-                            placeholder="Username..."
-                            name="username"
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <input
-                            type="password"
-                            className="form-control"
-                            placeholder="Password..."
-                            name="password"
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className="form-submission">
-                        <button type="submit" className="login-btn">
-                            Login
-                        </button>
-                        <p className="noacc">
-                            Don't have an account? <NavLink to="/register">Sign up</NavLink>
-                        </p>
-                    </div>
-                </form>
-            )}
-        </div>
-    );
+      <div className="lgcontainer">
+          <div className="signin-container">
+              <div className="signin-header">
+                  <h1>Log In</h1>
+              </div>
+              {!token && (
+                  <form onSubmit={handleSubmit} className="signin-form">
+                      <div className="form-group">
+                          <input
+                              type="text"
+                              placeholder="Username..."
+                              name="username"
+                              value={form.username}
+                              onChange={handleChange}
+                              required
+                          />
+                      </div>
+                      <div className="form-group">
+                          <input
+                              type="password"
+                              placeholder="Password..."
+                              name="password"
+                              value={form.password}
+                              onChange={handleChange}
+                              required
+                          />
+                      </div>
+                      <button type="submit" className="signin-btn">Sign In</button>
+                  </form>
+              )}
+              <div className="signin-footer">
+                  <p>Don't have an account? <NavLink to="/register">Sign up</NavLink></p>
+              </div>
+          </div>
+      </div>
+  );
 }
-
-
