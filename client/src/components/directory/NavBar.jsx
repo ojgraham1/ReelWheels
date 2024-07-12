@@ -13,7 +13,6 @@ export default function NavBar() {
     dispatch(clearToken());
     navigate("/login");
   };
-
   return (
     <nav className="navBar">
       <ul className="navBarL">
