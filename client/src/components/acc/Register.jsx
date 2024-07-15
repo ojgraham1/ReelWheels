@@ -31,10 +31,12 @@ export default function Register() {
   };
 
   return (
+    <div className="rgcontainer">
     <div className="register-page">
       <form onSubmit={onSubmit} className="register-form">
         <div className="left-column">
           <h1 className="register-title">Sign Up</h1>
+          <hr></hr>
           <h3>Personal Information</h3>
           <hr></hr>
           <div className="form-group">
@@ -129,26 +131,8 @@ export default function Register() {
             </p>
           </div>
         </div>
-        {/* <div className="right-column">
-          <div className="info-box">
-            <h2>Why register for an account?</h2>
-            <hr></hr>
-            <ul>
-            <p><b>Save tickets & orders:</b> <br></br>
-              Tickets and snacks are stored in your account, accessible at the push of a button.</p>
-              <p><b>Save payment methods:</b> 
-              <br></br>Checkout is a breeze by saving your credit card to your account.</p>
-              <p><b>Earn and redeem rewards:</b> 
-              <br></br>Redeem your points for exclusive rewards and experiences.</p>
-              <p><b>Suggestions based on you:</b>
-              <br></br>Based on past orders, we can recommend movies you and your preferences.</p>
-              <p><b>Manage your account:</b>
-              <br></br>Update your account information, change your password, and more.</p>
-              <hr></hr>
-            </ul>
-          </div>
-        </div> */}
       </form>
+    </div>
     </div>
   );
 }
