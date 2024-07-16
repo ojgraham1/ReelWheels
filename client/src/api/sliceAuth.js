@@ -23,13 +23,15 @@ const authApi = api.injectEndpoints({
   }),
 });
 
-export const { useLoginMutation, useRegisterMutation, useLogoutMutation } = authApi;
+export const { useLoginMutation, useRegisterMutation, useLogoutMutation } =
+  authApi;
 
 const initialState = {
   token: localStorage.getItem("token") || null,
-  userId: localStorage.getItem("userId") || null
+  userId: localStorage.getItem("userId") || null,
+  username: localStorage.getItem("username") || null,
 };
-  
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -44,15 +46,16 @@ const authSlice = createSlice({
     },
     setUsername: (state, action) => {
       state.username = action.payload;
-      localStorage.setItem ("username", action.payload);
+      localStorage.setItem("username", action.payload);
     },
     setUserId: (state, action) => {
-        state.userId = action.payload;
-        localStorage.setItem ("userId", action.payload);
-        },
+      state.userId = action.payload;
+      localStorage.setItem("userId", action.payload);
+    },
   },
 });
 
-export const { setToken, clearToken, setUsername, setUserId } = authSlice.actions;
+export const { setToken, clearToken, setUsername, setUserId } =
+  authSlice.actions;
 
 export default authSlice.reducer;
