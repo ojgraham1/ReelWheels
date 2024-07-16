@@ -1,3 +1,13 @@
 @use "main";
-@use "nav";
+@use "directory/nav.scss";
+@use "directory/home.scss";
 @use "movies/movieList.scss";
+@use "movies/moviePage.scss";
+@use "movies/browseList.scss";
+@use "movies/browsePage.scss";
+@use "theater/theaterList.scss";
+@use "theater/theaterModal.scss";
+@use "account/account.scss";
+@use "account/login.scss";
+@use "account/register.scss";
+@use "watchList.scss";
