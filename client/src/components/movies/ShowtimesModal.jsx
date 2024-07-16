@@ -1,8 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import "./ShowtimesModal.css";
 
 const ShowtimesModal = ({ showtimes, onClose }) => {
-  console.log("Rendering modal with showtimes:", showtimes);
+  const [selectedTicketType, setSelectedTicketType] = useState("general");
+  const userId = useSelector((state) => state.auth.userId);
+  const token = useSelector((state) => state.auth.token);
+
+  const handleTicketTypeChange = (e) => {
+    setSelectedTicketType(e.target.value);
+  };
+
+  const handleReserveTickets = async (showtimeId) => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/reservations/user/${userId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            quantity: 1,
+            carpass: selectedTicketType === "carpass",
+            showtime_id: showtimeId,
+          }),
+        }
+      );
+
+      const data = await response.json();
+      if (response.ok) {
+        alert("Reservation successful!");
+        onClose();
+      } else {
+        alert(`Error: ${data.error}`);
+      }
+    } catch (error) {
+      console.error("Error reserving tickets:", error);
+      alert("Failed to reserve tickets.");
+    }
+  };
 
   return (
     <div className="modal">
@@ -16,6 +54,20 @@ const ShowtimesModal = ({ showtimes, onClose }) => {
             {showtimes.map((showtime) => (
               <li key={showtime.id}>
                 {new Date(showtime.times).toLocaleString()}
+                <div>
+                  <label htmlFor="ticketType">Select Ticket Type:</label>
+                  <select
+                    id="ticketType"
+                    value={selectedTicketType}
+                    onChange={handleTicketTypeChange}
+                  >
+                    <option value="general">General Admission</option>
+                    <option value="carpass">Car Pass</option>
+                  </select>
+                  <button onClick={() => handleReserveTickets(showtime.id)}>
+                    Reserve
+                  </button>
+                </div>
               </li>
             ))}
           </ul>
