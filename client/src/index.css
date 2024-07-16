@@ -433,6 +433,22 @@ a:active {
   width: 100%;
   align-items: center;
 }
+.wlHead{
+  height: 50px;
+  margin: 20px;
+}
+.wlMsg{
+  display: flex;
+  flex-wrap: wrap;
+}
+.msg{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  height: 10px;
+}
 .watchlist-items{
   display: flex;
   flex-wrap: wrap;
@@ -890,7 +906,8 @@ a:active {
   bottom: auto;
   margin-right: -50%;
   transform: translate(-50%, -50%);
-  background: rgb(255, 255, 255);
+  box-shadow: 0px 0px 12px 3px #dcd9d9c5;
+  background: whitesmoke;
   width: 1222px;
   height: 500px;
   overflow-y: hidden;
@@ -907,9 +924,10 @@ a:active {
   justify-content: center;
 }
 .tlModalInfo{
+  padding: 10px;
   height: 500px;
   width: 300px;
-  color: rgb(94, 94, 94);
+  color: rgb(71, 71, 71);
 }
 .tlModalImgContainer{
   width: 600px;

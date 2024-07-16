@@ -19,9 +19,11 @@ function Watchlist() {
     return (
         <div className="watchlistWrapper">
             <div className="watchlist-page-container">
-                <h1>Your Watchlist</h1>
+                <h1 className='wlHead'>Your Watchlist</h1>
                 {watchlist.length === 0 ? (
-                    <p>No items in your watchlist.</p>
+                    <div className="wlMsg">
+                        <p className='msg'>No items in your watchlist.</p>
+                    </div>
                 ) : (
                     <div className="watchlist-items">
                         {watchlist.map((item) => (
