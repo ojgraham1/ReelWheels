@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTicket } from "@fortawesome/free-solid-svg-icons";
 
 
 function Home() {
@@ -12,7 +11,7 @@ function Home() {
     const fetchMovies = async () => {
       try {
         const response = await axios.get("http://localhost:3000/api/movies");
-        setMovies(response.data.slice(0, 5));
+        setMovies(response.data.slice(10, 15));
       } catch (error) {
         console.error("Error fetching movies:", error);
       }
@@ -70,7 +69,7 @@ function Home() {
                                         <div className='overlayBtn'>
                                           <Link className="mLink" to={`/movies/${movie.id}`}>
                                             <button className="button-Get-Tickets">
-                                              <FontAwesomeIcon icon={faTicket} /> Get Tickets
+                                              See More Info
                                             </button>
                                           </Link>
                                         </div>
@@ -92,6 +91,7 @@ function Home() {
                         ))}
                     </div>
                 </div>
+              </div>
                 <div className="haWrapper">
                   <div className="haContainer">
                     <div className="haContent">
@@ -115,7 +115,7 @@ function Home() {
                     </div>
                   </div>
                 </div>
-            </div>
+            {/* </div> */}
         </div>
     </div>
   );

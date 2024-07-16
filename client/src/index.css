@@ -74,21 +74,29 @@ a:active {
 
 /* Home Page */
 /* Slideshow Home Page */
-
-.home-container {
+.hsContainer{
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+}
+.home-wrapper{
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-content: center;
+}
+.home-container {
+  justify-content: center;
+  align-content: center;
+  margin-top: 15px;
+  margin-right: 97px;
 }
 .slideshow {
   align-content: center;
   margin: 0 auto;
-  margin-top: 90px;
+  margin-top: 80px;
   overflow: hidden;
   width: max-content;
 }
-
 .slideshowSlider {
   white-space: nowrap;
   transition: ease 1500ms;
@@ -141,7 +149,6 @@ a:active {
   display: flex;
   gap: 10px;
 }
-
 .slideshowDot {
   margin: 15px 7px 0px;
   width: 10px;
@@ -151,7 +158,6 @@ a:active {
   cursor: pointer;
   opacity: 0.5;
 }
-
 .slideshowDot.active {
   opacity: 1;
 }
