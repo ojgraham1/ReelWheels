@@ -4,6 +4,7 @@ import Modal from "react-modal";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import DateTime from "../directory/DateTime";
 
 Modal.setAppElement("#root");
 
@@ -46,6 +47,9 @@ export default function TheaterList() {
   return (
     <div className={`theater-list-container ${modalIsOpen ? 'modal-open' : ''}`}>
       <h1 className="theater-list-heading">THEATERS</h1>
+      <div className="tlDateTime">
+        <DateTime />
+      </div>
       <div className="theater-cards-wrapper">
         {theaters.map((theater) => (
           <div className="theater-card" key={theater.id} onClick={() => openModal(theater)}>

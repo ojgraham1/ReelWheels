@@ -1179,3 +1179,27 @@ input[type="password"] {
 .login-link a:hover {
   text-decoration: underline;
 }
+
+
+/* Theater List Date Time */
+.tlDateTime{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  font-size: larger;
+  font-family: monospace;
+  font-weight: 500;
+  color: rgb(255, 0, 0);
+}
+.mlDateTime{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: -50px;
+  text-align: center;
+  font-size: larger;
+  font-family: monospace;
+  font-weight: 500;
+  color: rgb(255, 0, 0);
+}
