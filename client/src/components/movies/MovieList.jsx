@@ -55,9 +55,9 @@ const MovieList = () => {
       <ul className="movie-list-container">
         <h1 className="mLHeading">IN THEATERS NOW</h1>
         <div className="mLWrapper">
-          <div className="mlDateTime">
+          {/* <div className="mlDateTime">
             <DateTime />
-          </div>
+          </div> */}
           <div className="mlCard-Container">
             {movies.map((movie) => (
               <div className="mlCard" key={movie.id}>

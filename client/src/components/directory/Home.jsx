@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import DateTime from './DateTime';
 
 
 function Home() {
@@ -49,6 +50,10 @@ function Home() {
     <div className="hsContainer">
         <div className="home-wrapper">
             <div className="home-container">
+            <div className="hpDateTime">
+              <DateTime />
+            </div>
+
                 <div className="slideshow">
                     <div
                         className="slideshowSlider"

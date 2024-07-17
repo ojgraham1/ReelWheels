@@ -47,9 +47,9 @@ export default function TheaterList() {
   return (
     <div className={`theater-list-container ${modalIsOpen ? 'modal-open' : ''}`}>
       <h1 className="theater-list-heading">THEATERS</h1>
-      <div className="tlDateTime">
+      {/* <div className="tlDateTime">
         <DateTime />
-      </div>
+      </div> */}
       <div className="theater-cards-wrapper">
         {theaters.map((theater) => (
           <div className="theater-card" key={theater.id} onClick={() => openModal(theater)}>
