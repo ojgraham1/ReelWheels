@@ -1115,7 +1115,7 @@ input[type="password"] {
 }
 
 .rgcontainer h3 {
-color: #000000;
+  color: #000000;
 }
 
 .register-page {
@@ -1178,15 +1178,4 @@ color: #000000;
 
 .login-link a:hover {
   text-decoration: underline;
-}
-
-
-
-
-
-/* Food Menu */
-.fmVid{
-  width: 120%;
-  height: auto;
-  background-color: black;
 }
