@@ -5,7 +5,7 @@ import { clearToken } from "../../api/sliceAuth";
 
 export default function NavBar() {
   const token = useSelector((state) => state.auth.token);
-  const username = useSelector((state) => state.auth.username); 
+  const username = useSelector((state) => state.auth.username);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -75,4 +75,3 @@ export default function NavBar() {
     </nav>
   );
 }
-

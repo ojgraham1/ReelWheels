@@ -74,6 +74,41 @@ a:active {
   transform: scale(1.1);
 }
 
+.search-bar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+  padding: 20px;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  color: black;
+  width: 100%;
+  max-width: 800px;
+  padding: 10px;
+  border-radius: 50px;
+  background-color: #f2f2f2;
+  box-shadow: 0px 0px 12px 6px rgba(178, 0, 0, 0.7725490196);
+}
+
+input {
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  width: 100%;
+  font-size: medium;
+}
+
+input:focus {
+  outline: none;
+}
+
 /* Home Page */
 /* Slideshow Home Page */
 .hsContainer {
