@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
-require('dotenv').config()
-const jwtSecret = process.env.JWTSEC
+require("dotenv").config();
+const jwtSecret = process.env.JWTSEC;
 
 const veryTokey = (req, res, next) => {
   const authHeader = req.headers["authorization"];
@@ -16,6 +16,7 @@ const veryTokey = (req, res, next) => {
     }
 
     if (decodedToken && decodedToken.data) {
+      console.log("Decoded Token Data:", decodedToken.data); // Add this line
       req.user = decodedToken.data;
     }
     next();
