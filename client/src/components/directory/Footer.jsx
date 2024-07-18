@@ -6,7 +6,6 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 function Footer(){
     return(
         <footer>
-            <h3>Footer</h3>
             <a
           href="https://github.com/ojgraham1/ReelWheels"
           target="_blank"
@@ -15,8 +14,8 @@ function Footer(){
         >
           <FontAwesomeIcon
             icon={faGithub}
-            size="3x"
-            style={{ color: "#000000" }}
+            size="2x"
+            style={{ color: "#ffff" }}
           />
         </a>
         <a
