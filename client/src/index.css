@@ -750,6 +750,7 @@ a:active {
 .overlay {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 }
 .overlay-content {
   color: white;
@@ -759,10 +760,12 @@ a:active {
   justify-content: space-around;
   position: relative;
   z-index: 1;
+  width: 100%;
 }
 .overlay-info{
   margin-top: 520px;
   text-align: left;
+  width: 100%;
 }
 .overlayTitle {
   margin-right: 20px;
@@ -770,6 +773,11 @@ a:active {
 }
 .overlayBtn{
   margin-left: 20px;
+}
+.overlayDots{
+  bottom: 0%;
+  margin-bottom: 60px;
+  z-index: 2;
 }
 
 /* Buttons for Slideshow in Home Page */
@@ -782,9 +790,10 @@ a:active {
   left: 50%;
   transform: translateX(-50%);
   display: flex;
+  flex-direction: row;
+  justify-content: center;
   gap: 10px;
 }
-
 .slideshowDot {
   margin: 15px 7px 0px;
   width: 10px;
@@ -794,7 +803,6 @@ a:active {
   cursor: pointer;
   opacity: 0.5;
 }
-
 .slideshowDot.active {
   opacity: 1;
 }
@@ -1182,6 +1190,10 @@ input[type="password"] {
 }
 
 
+
+
+
+
 /* Theater List Date Time */
 .tlDateTime{
   display: flex;
@@ -1216,3 +1228,16 @@ input[type="password"] {
   font-weight: 500;
   color: rgb(255, 0, 0);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
