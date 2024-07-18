@@ -1,0 +1,43 @@
+/* --- Directory --- */
+/* NavBar */
+.navBar {
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0%;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  background-color: black;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navBarL {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: white;
+}
+.navBarL .nL-logout {
+  background-color: rgb(255, 0, 0);
+  height: 40px;
+  width: 111px;
+  border-radius: 50px;
+  border: none;
+  font-size: 15px;
+  font-weight: 500px;
+  color: rgb(255, 255, 255);
+  position: relative;
+  box-shadow: 0px 0px 12px 6px #b20000c5;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.navBarL .nL-logout:hover {
+  transform: scale(1.1);
+}

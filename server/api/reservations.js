@@ -101,34 +101,14 @@ router.get("/theater/:theaterId", isAdmin, async (req, res) => {
 // Post reservations by user id
 router.post("/user/:userId", veryTokey, async (req, res) => {
   const userId = parseInt(req.params.userId);
-  const { quantity, carpass, showtime_id } = req.body;
+  const { quantity, ticketType, showtime_id } = req.body;
 
-  if (carpass && quantity > 1) {
+  if (ticketType === "carpass" && quantity > 1) {
     return res
       .status(400)
       .json({ error: "Cannot purchase more than one car pass ticket." });
   }
 
-  try {
-    const newReservation = await prisma.reservations.create({
-      data: {
-        quantity,
-        carpass,
-        showtime_id,
-        user: {
-          connect: { id: userId }, // Connect reservation to user
-        },
-      },
-    });
-    res.json(newReservation);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
-router.post("/user/:userId", veryTokey, async (req, res) => {
-  const userId = parseInt(req.params.userId);
-  const { quantity, carpass, showtime_id } = req.body;
   try {
     const showtime = await prisma.showtimes.findUnique({
       where: { id: showtime_id },
@@ -138,7 +118,7 @@ router.post("/user/:userId", veryTokey, async (req, res) => {
       return res.status(404).json({ error: "Showtime not found" });
     }
 
-    if (carpass) {
+    if (ticketType === "carpass") {
       if (showtime.carPassTickets < 1) {
         return res.status(400).json({ error: "No car pass tickets available" });
       }
@@ -166,7 +146,7 @@ router.post("/user/:userId", veryTokey, async (req, res) => {
     const newReservation = await prisma.reservations.create({
       data: {
         quantity,
-        carpass,
+        carpass: ticketType === "carpass",
         showtime_id,
         user_id: userId,
         timePurchased: new Date(),
