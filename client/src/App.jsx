@@ -17,6 +17,7 @@ import Cart from "./components/transactions/Cart";
 import Register from "./components/acc/Register";
 import Login from "./components/acc/Login";
 import Account from "./components/acc/Account";
+import Footer from "./components/directory/Footer";
 
 function App() {
   const [userToken, setUserToken] = useState(null);
@@ -50,6 +51,7 @@ useEffect(() => {
         <Route path="/login" element={<Login />} />
         <Route path="/users/:username" element={<Account token= {userToken} />} />
       </Routes>
+      <Footer/>
     </div>
   );
 }

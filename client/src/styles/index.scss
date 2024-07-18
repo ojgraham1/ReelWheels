@@ -1,6 +1,7 @@
 @use "main";
 @use "directory/nav.scss";
 @use "directory/home.scss";
+@use "directory/footer.scss";
 @use "movies/movieList.scss";
 @use "movies/moviePage.scss";
 @use "movies/browseList.scss";
@@ -11,3 +12,4 @@
 @use "account/login.scss";
 @use "account/register.scss";
 @use "watchList.scss";
+
