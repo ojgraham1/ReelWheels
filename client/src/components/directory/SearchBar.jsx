@@ -6,7 +6,7 @@ import { SearchResultsList } from "./SearchResultsList.jsx";
 export default function SearchBar() {
   const [input, setInput] = useState([]);
   const [browseResults, setBrowseResults] = useState([]);
-  // const [tvResults, setTvResults] = useState([]);
+  const [tvResults, setTvResults] = useState([]);
   const fetchData = (value) => {
     fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=60bff7c4b3bc017974f0186538e281a6&query=${value}`
@@ -24,23 +24,23 @@ export default function SearchBar() {
 
         setBrowseResults(results);
       });
-    // fetch(
-    //   `https://api.themoviedb.org/3/search/tv?api_key=60bff7c4b3bc017974f0186538e281a6&query=${value}`
-    // )
-    //   .then((response) => response.json())
-    //   .then((json) => {
-    //     const results = json.results.filter((bTv) => {
-    //       return (
-    //         value &&
-    //         bTv &&
-    //         bTv.original_name &&
-    //         bTv.original_name.toLowerCase().includes(value)
-    //       );
-    //     });
+    fetch(
+      `https://api.themoviedb.org/3/search/tv?api_key=60bff7c4b3bc017974f0186538e281a6&query=${value}`
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        const results = json.results.filter((bTv) => {
+          return (
+            value &&
+            bTv &&
+            bTv.original_name &&
+            bTv.original_name.toLowerCase().includes(value)
+          );
+        });
 
-    //     setTvResults(results);
-    //     console.log("results", results);
-    //   });
+        setTvResults(results);
+        console.log("results", results);
+      });
   };
   const handleChange = (value) => {
     setInput(value);
@@ -63,11 +63,11 @@ export default function SearchBar() {
           <SearchResultsList browseResults={browseResults} />
         )}
       </div>
-      {/* <div className="search-browse-results">
+      <div className="search-browse-results">
         {tvResults && tvResults.length > 0 && (
           <SearchResultsList tvResults={tvResults} />
         )}
-      </div> */}
+      </div>
     </div>
   );
 }

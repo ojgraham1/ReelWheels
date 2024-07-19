@@ -1,26 +1,27 @@
 import PropTypes from "prop-types";
 
-export const SearchResult = ({ browseResults }, { tvResults }) => {
-  console.log("browseResults", browseResults);
+export const SearchResult = ({ result }) => {
+  // console.log("browseResult", browseResult);
+  // console.log("tvResult", tvResult);
   return (
     <div>
       <div
         className="search-result"
-        onClick={(e) => alert(`You selected ${browseResults}!`)}
+        onClick={(e) => alert(`You selected ${result}!`)}
       >
-        {browseResults}
+        {result}
       </div>
-      <div
+      {/* <div
         className="search-result"
-        onClick={(e) => alert(`You selected ${tvResults}!`)}
+        onClick={(e) => alert(`You selected ${tvResult}!`)}
       >
-        {tvResults}
-      </div>
+        {tvResult}
+      </div> */}
     </div>
   );
 };
 
-SearchResult.propTypes = {
-  browseResults: PropTypes.string.isRequired,
-  tvResults: PropTypes.string.isRequired,
-};
+// SearchResult.propTypes = {
+//   browseResult: PropTypes.string.isRequired,
+//   tvResult: PropTypes.string.isRequired,
+// };

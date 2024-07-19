@@ -13,24 +13,29 @@
 import PropTypes from "prop-types";
 import { SearchResult } from "./SearchResult";
 
-export const SearchResultsList = ({ browseResults }, { tvResults }) => {
+export const SearchResultsList = ({ browseResults, tvResults }) => {
   return (
     <div>
-      <div className="results-list">
-        {browseResults.map((browseResults, id) => {
-          return <SearchResult browseResults={browseResults.title} key={id} />;
-        })}
-      </div>
-      {/* <div className="results-list">
-        {tvResults.map((tvResults, id) => {
-          return <SearchResult tvResults={tvResults.title} key={id} />;
-        })}
-      </div> */}
+      {browseResults && browseResults.length > 0 && (
+        <div className="results-list">
+          {browseResults.map((browseResult, id) => {
+            return <SearchResult result={browseResult.title} key={id} />;
+          })}
+        </div>
+      )}
+      {tvResults && tvResults.length > 0 && (
+        <div className="results-list">
+          {tvResults.map((tvResult, id) => {
+            return <SearchResult result={tvResult.original_name} key={id} />;
+          })}
+        </div>
+      )}
+      ;
     </div>
   );
 };
 
-SearchResultsList.propTypes = {
-  browseResults: PropTypes.arrayOf(PropTypes.object).isRequired,
-  // tvResults: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
+// SearchResultsList.propTypes = {
+//   browseResult: PropTypes.arrayOf(PropTypes.object).isRequired,
+//   tvResult: PropTypes.arrayOf(PropTypes.object).isRequired,
+// };
