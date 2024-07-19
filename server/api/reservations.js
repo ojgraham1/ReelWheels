@@ -24,6 +24,10 @@ router.get("/", isAdmin, async (req, res) => {
 router.get("/user/:userId", veryTokey, async (req, res) => {
   const userId = parseInt(req.params.userId);
   try {
+    if (req.user.userId !== userId) {
+      return res.status(403).send("Forbidden");
+    }
+
     const reservations = await prisma.reservations.findMany({
       where: {
         user_id: userId,
@@ -66,6 +70,10 @@ router.get("/theater/:theaterId", isAdmin, async (req, res) => {
 router.post("/user/:userId", veryTokey, async (req, res) => {
   const userId = parseInt(req.params.userId);
   const { quantity, ticketType, showtime_id } = req.body;
+
+  if (req.user.userId !== userId) {
+    return res.status(403).send("Forbidden");
+  }
 
   if (ticketType === "carpass" && quantity > 1) {
     return res
