@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { clearToken } from "../../api/sliceAuth";
+import DateTime from "./DateTime";
 
 export default function NavBar() {
   const token = useSelector((state) => state.auth.token);
@@ -15,6 +16,9 @@ export default function NavBar() {
   };
   return (
     <nav className="navBar">
+      <ul className="nbDateTime"> 
+        <DateTime/>
+      </ul>
       <ul className="navBarL">
         <ul>
           <NavLink className="nL" to="/">

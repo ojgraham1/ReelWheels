@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { setToken } from "./api/sliceAuth";
 import { Routes, Route } from "react-router-dom";
 
@@ -24,16 +24,20 @@ import AboutUs from "./components/acc/AboutUs";
 function App() {
   const [userToken, setUserToken] = useState(null);
   const dispatch = useDispatch();
+  const token = useSelector((state) => state.auth.token);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    console.log("token", token);
+    console.log("Local storage token on load:", token);
     if (token) {
       dispatch(setToken(token));
       setUserToken(token);
     }
   }, [dispatch]);
-  const [results, setResults] = useState([]);
+
+  useEffect(() => {
+    console.log("Redux token on change:", token);
+  }, [token]);
 
   return (
     <div className="App">
@@ -52,6 +56,10 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route
+          path="/users/:username"
+          element={<Account token={userToken} />}
+        />
         <Route
           path="/users/:username"
           element={<Account token={userToken} />}

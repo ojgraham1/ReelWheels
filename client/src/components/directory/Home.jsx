@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import DateTime from './DateTime';
-
 
 function Home() {
   const [movies, setMovies] = useState([]);
@@ -11,7 +9,7 @@ function Home() {
     const fetchMovies = async () => {
       try {
         const response = await axios.get("http://localhost:3000/api/movies");
-        setMovies(response.data.slice(10, 15));
+        setMovies(response.data.slice(0, 5));
       } catch (error) {
         console.error("Error fetching movies:", error);
       }
@@ -47,69 +45,54 @@ function Home() {
 
   return (
     <div className="hsContainer">
-        <div className="home-wrapper">
-            <div className="home-container">
-            <div className="hpDateTime">
-              <DateTime />
-            </div>
-
-                <div className="slideshow">
-                    <div
-                        className="slideshowSlider"
-                        style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
-                    >
-                        {movies.map((movie, index) => (
-                        <div
-                            className="slide"
-                            key={index}
-                            style={{
-                              backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`                
-                            }}
-                        >
-                            <div className="overlay">
-                                <div className="overlay-content">
-                                    <div className="overlay-info">
-                                        <h2 className='overlayTitle'>{movie.title}</h2>
-                                        <div className='overlayBtn'>
-                                          <Link className="mLink" to={`/movies/${movie.id}`}>
-                                            <button className="button-Get-Tickets">
-                                              See More Info
-                                            </button>
-                                          </Link>
-                                        </div>
-                                        <div className="overlayDots">
-                                          <div className="slideshowDots">
-                                              {movies.map((_, idx) => (
-                                                  <div
-                                                      key={idx}
-                                                      className={`slideshowDot${index === idx ? " active" : ""}`}
-                                                      onClick={() => {
-                                                      setIndex(idx);
-                                                      }}
-                                                  ></div>
-                                              ))}
-                                          </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+      <div className="home-wrapper">
+        <div className="home-container">
+          <div className="slideshow">
+            <div
+              className="slideshowSlider"
+              style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
+            >
+              {movies.map((movie, index) => (
+                <div
+                  className="slide"
+                  key={index}
+                  style={{
+                    backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`                
+                  }}
+                >
+                <div className="overlay">
+                  <div className="overlay-content">
+                    <div className="overlay-info">
+                      <h2 className='overlayTitle'>{movie.title}</h2>
+                        <div className='overlayBtn'>
+                          <Link className="mLink" to={`/movies/${movie.id}`}>
+                            <button className="button-Get-Tickets">
+                              See More Info
+                            </button>
+                          </Link>
                         </div>
-                        ))}
-                    </div>
-                    {/* <div className="slideshowDots">
-                        {movies.map((_, idx) => (
-                            <div
+                        <div className="overlayDots">
+                          <div className="slideshowDots">
+                            {movies.map((_, idx) => (
+                              <div
                                 key={idx}
                                 className={`slideshowDot${index === idx ? " active" : ""}`}
                                 onClick={() => {
                                 setIndex(idx);
                                 }}
-                            ></div>
-                        ))}
-                    </div> */}
+                              ></div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="haWrapper">
+              ))}
+            </div>
+          </div>
+        </div>
+              {/* <div className="haWrapper">
                 <div className="haContainer">
                   <div className="haContent">
                     <div className="home-account-info">
@@ -131,8 +114,8 @@ function Home() {
                     </div>
                   </div>
                 </div>
-              </div>
-        </div>
+              </div> */}
+      </div>
     </div>
   );
 }

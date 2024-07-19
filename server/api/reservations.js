@@ -10,21 +10,11 @@ router.get("/", isAdmin, async (req, res) => {
     const reservations = await prisma.reservations.findMany({
       include: {
         user: true,
-        showtime: true,
-      },
-    });
-    res.json(reservations);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
-router.get("/", isAdmin, async (req, res) => {
-  try {
-    const reservations = await prisma.reservations.findMany({
-      include: {
-        user: true,
-        showtime: true,
+        showtime: {
+          include: {
+            theater: true,
+          },
+        },
       },
     });
     res.json(reservations);
@@ -38,35 +28,21 @@ router.get("/", isAdmin, async (req, res) => {
 router.get("/user/:userId", veryTokey, async (req, res) => {
   const userId = parseInt(req.params.userId);
   try {
+    if (req.user.userId !== userId) {
+      return res.status(403).send("Forbidden");
+    }
+
     const reservations = await prisma.reservations.findMany({
       where: {
         user_id: userId,
       },
       include: {
         user: true,
-        showtime: true,
-      },
-    });
-    res.json(reservations);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
-
-//reservations by theater id
-router.get("/theater/:theaterId", isAdmin, async (req, res) => {
-  const theaterId = parseInt(req.params.theaterId);
-  try {
-    const reservations = await prisma.reservations.findMany({
-      where: {
         showtime: {
-          theater_id: theaterId,
+          include: {
+            theater: true,
+          },
         },
-      },
-      include: {
-        user: true, // Include user details
-        showtime: true, // Include showtime details
       },
     });
     res.json(reservations);
@@ -88,7 +64,11 @@ router.get("/theater/:theaterId", isAdmin, async (req, res) => {
       },
       include: {
         user: true,
-        showtime: true,
+        showtime: {
+          include: {
+            theater: true,
+          },
+        },
       },
     });
     res.json(reservations);
@@ -103,6 +83,10 @@ router.post("/user/:userId", veryTokey, async (req, res) => {
   const userId = parseInt(req.params.userId);
   const { quantity, ticketType, showtime_id } = req.body;
 
+  if (req.user.userId !== userId) {
+    return res.status(403).send("Forbidden");
+  }
+
   if (ticketType === "carpass" && quantity > 1) {
     return res
       .status(400)
@@ -112,6 +96,7 @@ router.post("/user/:userId", veryTokey, async (req, res) => {
   try {
     const showtime = await prisma.showtimes.findUnique({
       where: { id: showtime_id },
+      include: { theater: true },
     });
 
     if (!showtime) {
@@ -150,6 +135,13 @@ router.post("/user/:userId", veryTokey, async (req, res) => {
         showtime_id,
         user_id: userId,
         timePurchased: new Date(),
+      },
+      include: {
+        showtime: {
+          include: {
+            theater: true,
+          },
+        },
       },
     });
 
