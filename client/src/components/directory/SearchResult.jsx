@@ -11,7 +11,7 @@ export const SearchResult = ({ browseResults }, { tvResults }) => {
         {browseResults}
       </div>
       <div
-        className="tvsearch-result"
+        className="search-result"
         onClick={(e) => alert(`You selected ${tvResults}!`)}
       >
         {tvResults}

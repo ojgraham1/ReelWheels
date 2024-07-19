@@ -21,16 +21,16 @@ export const SearchResultsList = ({ browseResults }, { tvResults }) => {
           return <SearchResult browseResults={browseResults.title} key={id} />;
         })}
       </div>
-      <div className="tvResults-list">
+      {/* <div className="results-list">
         {tvResults.map((tvResults, id) => {
           return <SearchResult tvResults={tvResults.title} key={id} />;
         })}
-      </div>
+      </div> */}
     </div>
   );
 };
 
 SearchResultsList.propTypes = {
   browseResults: PropTypes.arrayOf(PropTypes.object).isRequired,
-  tvResults: PropTypes.arrayOf(PropTypes.object).isRequired,
+  // tvResults: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
