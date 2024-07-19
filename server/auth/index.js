@@ -2,10 +2,10 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { PrismaClient } = require("@prisma/client");
-require('dotenv').config()
-const jwtSecret = process.env.JWTSEC
+require("dotenv").config();
+const jwtSecret = process.env.JWTSEC;
 
-console.log(jwtSecret)
+console.log(jwtSecret);
 
 const prisma = new PrismaClient();
 const router = express.Router();
@@ -81,7 +81,7 @@ router.post("/login", async (req, res) => {
       { expiresIn: "1w" }
     );
 
-    res.status(200).json({ token });
+    res.status(200).json({ token, userId: user.id });
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
