@@ -44,7 +44,6 @@ const Account = () => {
       setFormData(userData);
       const fetchReservationsByUserId = async () => {
         if (reservations) {
-          console.log("Fetched reservations:", reservations);
           setReservationsData(reservations);
         }
         if (userReservationsError) {

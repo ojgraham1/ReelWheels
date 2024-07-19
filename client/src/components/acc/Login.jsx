@@ -19,22 +19,11 @@ export default function Login() {
     e.preventDefault();
     try {
       const result = await login(form).unwrap();
-      console.log("Login Result:", result);
+
       if (result.token && result.userId) {
         dispatch(setToken(result.token));
-        console.log("Dispatched setToken:", result.token);
         dispatch(setUsername(form.username));
         dispatch(setUserId(result.userId));
-        console.log("Dispatched setUserId:", result.userId);
-
-        console.log(
-          "Local Storage Token after login:",
-          localStorage.getItem("token")
-        );
-        console.log(
-          "Local Storage UserId after login:",
-          localStorage.getItem("userId")
-        );
       } else {
         console.error("Login failed: missing token or userId");
       }
