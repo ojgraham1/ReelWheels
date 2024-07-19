@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import DateTime from './DateTime';
 
 
 function Home() {
@@ -49,6 +49,10 @@ function Home() {
     <div className="hsContainer">
         <div className="home-wrapper">
             <div className="home-container">
+            <div className="hpDateTime">
+              <DateTime />
+            </div>
+
                 <div className="slideshow">
                     <div
                         className="slideshowSlider"
@@ -73,13 +77,26 @@ function Home() {
                                             </button>
                                           </Link>
                                         </div>
+                                        <div className="overlayDots">
+                                          <div className="slideshowDots">
+                                              {movies.map((_, idx) => (
+                                                  <div
+                                                      key={idx}
+                                                      className={`slideshowDot${index === idx ? " active" : ""}`}
+                                                      onClick={() => {
+                                                      setIndex(idx);
+                                                      }}
+                                                  ></div>
+                                              ))}
+                                          </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         ))}
                     </div>
-                    <div className="slideshowDots">
+                    {/* <div className="slideshowDots">
                         {movies.map((_, idx) => (
                             <div
                                 key={idx}
@@ -89,33 +106,32 @@ function Home() {
                                 }}
                             ></div>
                         ))}
-                    </div>
+                    </div> */}
                 </div>
               </div>
-                <div className="haWrapper">
-                  <div className="haContainer">
-                    <div className="haContent">
-                      <div className="home-account-info">
-                        <div className="info-box">
-                          <h2>Why register for an account?</h2>
-                          <ul>
-                          <p><b>Save tickets & orders:</b> <br></br>
-                            Tickets and snacks are stored in your account, accessible at the push of a button.</p>
-                            <p><b>Save payment methods:</b> 
-                            <br></br>Checkout is a breeze by saving your credit card to your account.</p>
-                            <p><b>Earn and redeem rewards:</b> 
-                            <br></br>Redeem your points for exclusive rewards and experiences.</p>
-                            <p><b>Suggestions based on you:</b>
-                            <br></br>Based on past orders, we can recommend movies you and your preferences.</p>
-                            <p><b>Manage your account:</b>
-                            <br></br>Update your account information, change your password, and more.</p>
-                          </ul>
-                        </div>
+              <div className="haWrapper">
+                <div className="haContainer">
+                  <div className="haContent">
+                    <div className="home-account-info">
+                      <div className="info-box">
+                        <h2>Why register for an account?</h2>
+                        <ul>
+                        <p><b>Save tickets & orders:</b> <br></br>
+                          Tickets and snacks are stored in your account, accessible at the push of a button.</p>
+                          <p><b>Save payment methods:</b> 
+                          <br></br>Checkout is a breeze by saving your credit card to your account.</p>
+                          <p><b>Earn and redeem rewards:</b> 
+                          <br></br>Redeem your points for exclusive rewards and experiences.</p>
+                          <p><b>Suggestions based on you:</b>
+                          <br></br>Based on past orders, we can recommend movies you and your preferences.</p>
+                          <p><b>Manage your account:</b>
+                          <br></br>Update your account information, change your password, and more.</p>
+                        </ul>
                       </div>
                     </div>
                   </div>
                 </div>
-            {/* </div> */}
+              </div>
         </div>
     </div>
   );
