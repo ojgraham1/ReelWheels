@@ -14,15 +14,15 @@ const teamMembers = [
     id: 2,
     name: "Maya Obeidat",
     location: "Atlanta, Georgia",
-    image: "https://via.placeholder.com/150", 
+    image: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7", 
     linkedin: "https://www.linkedin.com/in/maya-o-0064b4316/"
   },
   {
     id: 3,
     name: "Daniel Patterson",
     location: "Atlanta, Georgia",
-    image: "https://via.placeholder.com/150", 
-    linkedin: "https://www.linkedin.com/"
+    image: "https://media.licdn.com/dms/image/D4E03AQHxJDNfAE5rsw/profile-displayphoto-shrink_800_800/0/1719191974397?e=1726704000&v=beta&t=1kVfqMFTeH_0rvBgzxm1ElM4kZl1ajIdJQ64pKLJvIc", 
+    linkedin: "https://www.linkedin.com/in/daniel-patterson-29a075314/"
   },
   {
     id: 4,
@@ -54,9 +54,12 @@ function AboutUs() {
 
   return (
     <div className="about">
+      <div className="abouttitle">
       <h1 className={animateTitle ? "slide-in" : ""}>
         Fullstack Academy's Finest
       </h1>
+      </div>
+      <div class="team-scroll-container">
       <div className="team-container">
         {teamMembers.map((member) => (
           <div
@@ -64,12 +67,14 @@ function AboutUs() {
             className="team-member"
             onClick={() => handleClick(member)}
           >
+            <div className="member-info">
             <img
               src={member.image}
               alt={member.name}
               className="bw-image"
             />
             <h3>{member.name}</h3>
+            </div>
           </div>
         ))}
       </div>
@@ -90,8 +95,9 @@ function AboutUs() {
               <FontAwesomeIcon icon={faLinkedin} size="2x" style={{ color: "#0077B5" }} />
             </a>
           </div>
-        </div>
+          </div>
       )}
+      </div>
     </div>
   );
 }
