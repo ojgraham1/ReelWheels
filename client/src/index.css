@@ -74,11 +74,20 @@ a:active {
   transform: scale(1.1);
 }
 
+.nbDateTime {
+  margin-left: -100px;
+  margin-top: -5px;
+  margin-bottom: -5px;
+  color: red;
+  font-size: small;
+  font-family: sans-serif;
+}
+
 /* Home Page */
 /* Slideshow Home Page */
 .hsContainer {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .home-wrapper {
@@ -89,13 +98,16 @@ a:active {
 }
 
 .home-container {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-content: center;
-  margin-top: 15px;
-  margin-right: 97px;
 }
 
 .slideshow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-content: center;
   margin: 0 auto;
   margin-top: 80px;
@@ -112,21 +124,21 @@ a:active {
   display: inline-block;
   background-repeat: no-repeat;
   background-size: contain;
+  overflow: hidden;
   height: 650px;
   width: 100%;
 }
 
 .overlay {
   display: flex;
-  flex-wrap: wrap;
-  width: 100%;
+  flex-direction: column;
 }
 
 .overlay-content {
   color: white;
   text-align: end;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: space-around;
   position: relative;
   z-index: 1;
@@ -151,7 +163,6 @@ a:active {
   margin: 20px;
   margin-bottom: 10px;
   color: rgb(255, 255, 255);
-  /* background-color: #0000000c; */
   text-shadow: -1px 1px 15px #000000;
 }
 
@@ -161,14 +172,12 @@ a:active {
 
 /* Buttons for Slideshow in Home Page */
 .slideshowDots {
-  z-index: 2;
   text-align: center;
   position: absolute;
-  bottom: 70px;
+  bottom: 60px;
+  left: 50%;
   transform: translateX(-50%);
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   gap: 10px;
 }
 
@@ -184,6 +193,10 @@ a:active {
 
 .slideshowDot.active {
   opacity: 1;
+}
+
+.account {
+  margin-top: 100px;
 }
 
 /* Home Account Info */
@@ -224,145 +237,6 @@ a:active {
   width: max-content;
   padding: 15px;
   font-size: large;
-}
-
-/* Slideshow Home Page */
-.home-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.slideshow {
-  align-content: center;
-  margin: 0 auto;
-  margin-top: 90px;
-  margin-right: -90px;
-  overflow: hidden;
-  width: max-content;
-}
-
-.slideshowSlider {
-  white-space: nowrap;
-  transition: ease 1500ms;
-}
-
-.slide {
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 650px;
-  width: 100%;
-}
-
-.overlay {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.overlay-content {
-  color: white;
-  text-align: end;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  position: relative;
-  z-index: 1;
-}
-
-.overlay-info {
-  margin-top: 520px;
-  text-align: left;
-}
-
-.overlayTitle {
-  margin-right: 20px;
-  margin-left: 20px;
-}
-
-.overlayBtn {
-  margin-left: 20px;
-}
-
-/* Buttons for Slideshow in Home Page */
-.slideshowDots {
-  text-align: center;
-  position: absolute;
-  bottom: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-}
-
-.slideshowDot {
-  margin: 15px 7px 0px;
-  width: 10px;
-  height: 10px;
-  background-color: white;
-  border-radius: 50%;
-  cursor: pointer;
-  opacity: 0.5;
-}
-
-.slideshowDot.active {
-  opacity: 1;
-}
-
-.account {
-  margin-top: 100px;
-}
-
-/* Home Account Info */
-.home-account-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.info-box {
-  color: white;
-  align-content: center;
-  width: max-content;
-}
-
-/* Theater List Date Time */
-.tlDateTime {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  text-align: center;
-  font-size: larger;
-  font-family: monospace;
-  font-weight: 500;
-  color: rgb(255, 0, 0);
-}
-
-.mlDateTime {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: -50px;
-  text-align: center;
-  font-size: larger;
-  font-family: monospace;
-  font-weight: 500;
-  color: rgb(255, 0, 0);
-}
-
-.hpDateTime {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 60px;
-  margin-bottom: -50px;
-  text-align: center;
-  font-size: larger;
-  font-family: monospace;
-  font-weight: 500;
-  color: rgb(255, 0, 0);
 }
 
 footer {
