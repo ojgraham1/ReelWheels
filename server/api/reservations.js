@@ -10,7 +10,11 @@ router.get("/", isAdmin, async (req, res) => {
     const reservations = await prisma.reservations.findMany({
       include: {
         user: true,
-        showtime: true,
+        showtime: {
+          include: {
+            theater: true,
+          },
+        },
       },
     });
     res.json(reservations);
@@ -34,7 +38,11 @@ router.get("/user/:userId", veryTokey, async (req, res) => {
       },
       include: {
         user: true,
-        showtime: true,
+        showtime: {
+          include: {
+            theater: true,
+          },
+        },
       },
     });
     res.json(reservations);
@@ -56,7 +64,11 @@ router.get("/theater/:theaterId", isAdmin, async (req, res) => {
       },
       include: {
         user: true,
-        showtime: true,
+        showtime: {
+          include: {
+            theater: true,
+          },
+        },
       },
     });
     res.json(reservations);
@@ -84,6 +96,7 @@ router.post("/user/:userId", veryTokey, async (req, res) => {
   try {
     const showtime = await prisma.showtimes.findUnique({
       where: { id: showtime_id },
+      include: { theater: true },
     });
 
     if (!showtime) {
@@ -122,6 +135,13 @@ router.post("/user/:userId", veryTokey, async (req, res) => {
         showtime_id,
         user_id: userId,
         timePurchased: new Date(),
+      },
+      include: {
+        showtime: {
+          include: {
+            theater: true,
+          },
+        },
       },
     });
 

@@ -223,10 +223,13 @@ const Account = () => {
                 <ul>
                   {reservationsData.map((reservation) => (
                     <li key={reservation.id}>
-                      <p>Theater ID: {reservation.showtime.theater_id}</p>
+                      <p>
+                        Theater Location:{" "}
+                        {reservation.showtime?.theater?.Location}
+                      </p>
                       <p>
                         Time:{" "}
-                        {new Date(reservation.showtime.times).toLocaleString()}
+                        {new Date(reservation.showtime?.times).toLocaleString()}
                       </p>
                     </li>
                   ))}
