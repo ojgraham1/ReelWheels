@@ -4,7 +4,6 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTicket, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import ShowtimesModal from "./ShowtimesModal";
-import DateTime from "../directory/DateTime";
 
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
@@ -55,9 +54,6 @@ const MovieList = () => {
       <ul className="movie-list-container">
         <h1 className="mLHeading">IN THEATERS NOW</h1>
         <div className="mLWrapper">
-          {/* <div className="mlDateTime">
-            <DateTime />
-          </div> */}
           <div className="mlCard-Container">
             {movies.map((movie) => (
               <div className="mlCard" key={movie.id}>

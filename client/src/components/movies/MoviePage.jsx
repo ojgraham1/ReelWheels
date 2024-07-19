@@ -78,9 +78,6 @@ function MoviePage() {
                     </div>
                 )}
             </div>
-            <div className="mpShowtimes-Container">
-                <ShowtimesMovie />
-            </div>
         </div>
     );
 }
