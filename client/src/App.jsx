@@ -35,6 +35,8 @@ function App() {
     }
   }, [dispatch]);
 
+  const [results, setResults] = useState([]);
+
   useEffect(() => {
     console.log("Redux token on change:", token);
   }, [token]);
