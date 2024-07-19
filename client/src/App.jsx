@@ -17,6 +17,8 @@ import Cart from "./components/transactions/Cart";
 import Register from "./components/acc/Register";
 import Login from "./components/acc/Login";
 import Account from "./components/acc/Account";
+import Footer from "./components/directory/Footer";
+import AboutUs from "./components/acc/AboutUs";
 
 function App() {
   const [userToken, setUserToken] = useState(null);
@@ -56,7 +58,13 @@ function App() {
           path="/users/:username"
           element={<Account token={userToken} />}
         />
+        <Route
+          path="/users/:username"
+          element={<Account token={userToken} />}
+        />
+        <Route path="/aboutus" element={<AboutUs />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
