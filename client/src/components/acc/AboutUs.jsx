@@ -53,7 +53,20 @@ function AboutUs() {
   };
 
   return (
+    
     <div className="about">
+        <div className="us">
+        <h1>About Us</h1>
+        <p>We are a team of four students who share a passion for coding.  After three months of learning through FullStack academy, we are able to bring our ideas to life.</p>
+        </div>
+      <div className="Mission">
+        <h2>Our Story</h2>
+        <p>Our mission is simple: to learn, create, and inspire through code. Throughout our learning journey, we encountered challenges that pushed our boundaries and sparked our creativity. From mastering the basics of variables and functions to building complex interactive elements, each milestone brought us closer to our goal of becoming proficient web developers.</p>
+        </div>
+        <div className="The Capstone Project">
+        <h2>The Capstone Project</h2>
+        <p>Inspired by a movie API, Reel Wheels came to life. A website that showcases not only our technical skills but also our creative vision.  From responsive designs that adapt seamlessly across devices to interactive features that engage visitors, every detail was meticulously crafted to demonstrate our capabilities as web developers.</p>
+        </div>
       <div className="abouttitle">
       <h1 className={animateTitle ? "slide-in" : ""}>
         Fullstack Academy's Finest

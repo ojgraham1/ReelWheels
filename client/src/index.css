@@ -979,12 +979,15 @@ footer .about-us-link:hover {
 .team-scroll-container {
   overflow-x: auto;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .team-container {
   display: flex;
-  gap: 20px;
-  justify-content: flex-start;
+  gap: 40px;
   padding: 20px 0;
 }
 
@@ -1011,7 +1014,7 @@ footer .about-us-link:hover {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.9);
   padding: 10px;
   border-radius: 0 0 8px 8px;
   color: white;
@@ -1021,13 +1024,12 @@ footer .about-us-link:hover {
 .member-info h3 {
   margin-top: 10px;
   font-size: 18px;
-  color: white;
+  color: rgba(255, 255, 255, 0.8);
   text-align: left;
   padding: 0 10px;
 }
 
 .popup {
-  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -1045,6 +1047,7 @@ footer .about-us-link:hover {
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   text-align: center;
+  color: black;
 }
 
 .popup-content h2 {
@@ -1062,11 +1065,10 @@ footer .about-us-link:hover {
 }
 
 img {
-  width: 100%;
-  height: auto;
+  width: 250px;
+  height: 250px;
   object-fit: cover;
-  margin-bottom: 10px;
-  border-radius: 8px;
+  transition: transform 0.2s ease-in-out;
 }
 
 .linkedin {
