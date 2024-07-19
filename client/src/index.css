@@ -84,6 +84,11 @@ a:active {
   min-width: 200px;
 }
 
+.search-bar {
+  display: flex;
+  flex-direction: row;
+}
+
 .input-wrapper {
   width: 100%;
   height: 2.5rem;
