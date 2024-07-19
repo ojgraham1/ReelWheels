@@ -16,7 +16,7 @@ const veryTokey = (req, res, next) => {
     }
 
     if (decodedToken && decodedToken.data) {
-      console.log("Decoded Token Data:", decodedToken.data); // Add this line
+      console.log("Decoded Token Data:", decodedToken.data);
       req.user = decodedToken.data;
     }
     next();
