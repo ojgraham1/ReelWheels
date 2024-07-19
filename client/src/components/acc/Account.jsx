@@ -221,18 +221,30 @@ const Account = () => {
                 </h3>
                 <hr></hr>
                 <ul>
-                  {reservationsData.map((reservation) => (
-                    <li key={reservation.id}>
-                      <p>
-                        Theater Location:{" "}
-                        {reservation.showtime?.theater?.Location}
-                      </p>
-                      <p>
-                        Time:{" "}
-                        {new Date(reservation.showtime?.times).toLocaleString()}
-                      </p>
-                    </li>
-                  ))}
+                  {reservationsData.map((reservation) => {
+                    console.log("Reservation ID:", reservation.id);
+                    console.log("Reservation Data:", reservation);
+                    return (
+                      <li key={reservation.id}>
+                        <p>Theater Location: {reservation.theaterLocation}</p>
+                        <p>
+                          Time:{" "}
+                          {reservation.time
+                            ? new Date(reservation.time).toLocaleString()
+                            : "Invalid Date"}
+                        </p>
+                        <p>Movie: {reservation.movieName}</p>
+                        <p>
+                          Purchase Time:{" "}
+                          {reservation.purchaseTime
+                            ? new Date(
+                                reservation.purchaseTime
+                              ).toLocaleString()
+                            : "Invalid Date"}
+                        </p>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             ) : (

@@ -13,6 +13,7 @@ router.get("/", isAdmin, async (req, res) => {
         showtime: {
           include: {
             theater: true,
+            movie: true,
           },
         },
       },
@@ -24,7 +25,7 @@ router.get("/", isAdmin, async (req, res) => {
   }
 });
 
-//reservations by user id
+// reservations by user id
 router.get("/user/:userId", veryTokey, async (req, res) => {
   const userId = parseInt(req.params.userId);
   try {
@@ -41,18 +42,50 @@ router.get("/user/:userId", veryTokey, async (req, res) => {
         showtime: {
           include: {
             theater: true,
+            movie: true,
           },
         },
       },
     });
-    res.json(reservations);
+
+    // Log reservations to ensure they include necessary fields
+    console.log("Raw reservations:", reservations);
+
+    // Formatting reservations to include necessary fields
+    const formattedReservations = reservations.map((reservation) => {
+      const { showtime } = reservation;
+      const theaterLocation = showtime?.theater?.Location || "Unknown Location";
+      const movieName = showtime?.movie?.title || "Unknown Movie";
+      const time = showtime?.times;
+
+      console.log("Formatted Reservation Data:", {
+        id: reservation.id,
+        theaterLocation,
+        time,
+        movieName,
+        purchaseTime: reservation.timePurchased,
+      });
+
+      return {
+        id: reservation.id,
+        theaterLocation,
+        time,
+        movieName,
+        purchaseTime: reservation.timePurchased,
+      };
+    });
+
+    // Log formatted reservations
+    console.log("Formatted reservations:", formattedReservations);
+
+    res.json(formattedReservations);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal server error" });
   }
 });
 
-//reservations by theater id
+// reservations by theater id
 router.get("/theater/:theaterId", isAdmin, async (req, res) => {
   const theaterId = parseInt(req.params.theaterId);
   try {
@@ -67,6 +100,7 @@ router.get("/theater/:theaterId", isAdmin, async (req, res) => {
         showtime: {
           include: {
             theater: true,
+            movie: true,
           },
         },
       },
@@ -96,7 +130,7 @@ router.post("/user/:userId", veryTokey, async (req, res) => {
   try {
     const showtime = await prisma.showtimes.findUnique({
       where: { id: showtime_id },
-      include: { theater: true },
+      include: { theater: true, movie: true },
     });
 
     if (!showtime) {
@@ -140,6 +174,7 @@ router.post("/user/:userId", veryTokey, async (req, res) => {
         showtime: {
           include: {
             theater: true,
+            movie: true,
           },
         },
       },
