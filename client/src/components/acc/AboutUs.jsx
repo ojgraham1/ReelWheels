@@ -53,64 +53,80 @@ function AboutUs() {
   };
 
   return (
-    
-    <div className="about">
-        <div className="us">
-        <h1>About Us</h1>
-        <p>We are a team of four students who share a passion for coding.  After three months of learning through FullStack academy, we are able to bring our ideas to life.</p>
-        </div>
-      <div className="Mission">
-        <h2>Our Story</h2>
-        <p>Our mission is simple: to learn, create, and inspire through code. Throughout our learning journey, we encountered challenges that pushed our boundaries and sparked our creativity. From mastering the basics of variables and functions to building complex interactive elements, each milestone brought us closer to our goal of becoming proficient web developers.</p>
-        </div>
-        <div className="The Capstone Project">
-        <h2>The Capstone Project</h2>
-        <p>Inspired by a movie API, Reel Wheels came to life. A website that showcases not only our technical skills but also our creative vision.  From responsive designs that adapt seamlessly across devices to interactive features that engage visitors, every detail was meticulously crafted to demonstrate our capabilities as web developers.</p>
-        </div>
-      <div className="abouttitle">
-      <h1 className={animateTitle ? "slide-in" : ""}>
-        Fullstack Academy's Finest
-      </h1>
+    <div className="about-us">
+    <div className="about-container">
+      <div className="about-header">
+        <h1 className="about-title">About Us</h1>
+        <h3 className="about-subtitle">
+          We are a team of four students who share a passion for coding. After three months of learning through FullStack academy, we are able to bring our ideas to life.
+        </h3>
       </div>
-      <div class="team-scroll-container">
-      <div className="team-container">
-        {teamMembers.map((member) => (
-          <div
-            key={member.id}
-            className="team-member"
-            onClick={() => handleClick(member)}
-          >
-            <div className="member-info">
-            <img
-              src={member.image}
-              alt={member.name}
-              className="bw-image"
-            />
-            <h3>{member.name}</h3>
+
+      <div className="about-section">
+        <h2 className="about-section-title">Our Story</h2>
+        <p className="about-section-content">
+          Our mission is simple: to learn, create, and inspire through code. Throughout our learning journey, we encountered challenges that pushed our boundaries and sparked our creativity. From mastering the basics of variables and functions to building complex interactive elements, each milestone brought us closer to our goal of becoming proficient web developers.
+        </p>
+      </div>
+
+      <div className="about-section">
+        <h2 className="about-section-title">The Capstone Project</h2>
+        <p className="about-section-content">
+          Inspired by a movie API, Reel Wheels came to life. A website that showcases not only our technical skills but also our creative vision. From responsive designs that adapt seamlessly across devices to interactive features that engage visitors, every detail was meticulously crafted to demonstrate our capabilities as web developers.
+        </p>
+      </div>
+
+      <div className={`about-title ${animateTitle ? "slide-in" : ""}`}>
+        Fullstack Academy's Finest
+      </div>
+
+      <div className="team-scroll-container">
+        <div className="team-container">
+          {teamMembers.map((member) => (
+            <div
+              key={member.id}
+              className="team-member"
+              onClick={() => handleClick(member)}
+            >
+              <div className="member-info">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="member-image"
+                />
+                <h3 className="member-name">{member.name}</h3>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {selectedMember && (
+          <div className="popup">
+            <div className="popup-content">
+              <span className="close" onClick={handleClose}>&times;</span>
+              <h2 className="popup-name">{selectedMember.name}</h2>
+              <img
+                src={selectedMember.image}
+                alt={selectedMember.name}
+                className="popup-image"
+              />
+              <p className="popup-location">Located in {selectedMember.location}</p>
+              <p className="popup-learn-more">
+                Learn more about {selectedMember.name}
+              </p>
+              <a
+                href={selectedMember.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="linkedin"
+              >
+                <FontAwesomeIcon icon={faLinkedin} size="2x" style={{ color: "#0077B5" }} />
+              </a>
             </div>
           </div>
-        ))}
+        )}
       </div>
-      {selectedMember && (
-        <div className="popup">
-          <div className="popup-content">
-            <span className="close" onClick={handleClose}>&times;</span>
-            <h2>{selectedMember.name}</h2>
-            <img src={selectedMember.image} alt={selectedMember.name} className="color-image" />
-            <p>Located in {selectedMember.location}</p>
-            <p>Learn more about {selectedMember.name}</p>
-            <a
-              href={selectedMember.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="linkedin"
-            >
-              <FontAwesomeIcon icon={faLinkedin} size="2x" style={{ color: "#0077B5" }} />
-            </a>
-          </div>
-          </div>
-      )}
-      </div>
+    </div>
     </div>
   );
 }
