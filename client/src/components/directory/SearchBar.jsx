@@ -1,25 +1,27 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { SearchResults } from "./SearchResults.jsx";
+import { SearchResultsList } from "./SearchResultsList.jsx";
 
 export default function SearchBar() {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState([]);
+  const [browseResults, setBrowseResults] = useState([]);
   const fetchData = (value) => {
     fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=60bff7c4b3bc017974f0186538e281a6&query=${value}`
     )
       .then((response) => response.json())
       .then((json) => {
-        const results = json.filter((movie) => {
+        const results = json.results.filter((bMovie) => {
           return (
             value &&
-            movie &&
-            movie.title &&
-            movie.title.toLowerCase().includes(value)
+            bMovie &&
+            bMovie.title &&
+            bMovie.title.toLowerCase().includes(value)
           );
         });
-        console.log(results);
+
+        setBrowseResults(results);
       });
   };
   const handleChange = (value) => {
@@ -30,7 +32,7 @@ export default function SearchBar() {
     <div className="search-bar-container">
       <div className="input-wrapper">
         <div className="search-bar">
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
+          <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" />
           <input
             placeholder="Search Bar..."
             value={input}
@@ -38,8 +40,10 @@ export default function SearchBar() {
           />
         </div>
       </div>
-      <div className="search-results">
-        <SearchResults />
+      <div className="search-browse-results">
+        {browseResults && browseResults.length > 0 && (
+          <SearchResultsList browseResults={browseResults} />
+        )}
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setToken } from "./api/sliceAuth";
 import { Routes, Route } from "react-router-dom";
@@ -31,11 +31,12 @@ function App() {
       setUserToken(token);
     }
   }, [dispatch]);
+  const [results, setResults] = useState([]);
 
   return (
     <div className="App">
       <NavBar />
-      <SearchBar />
+      <SearchBar setResults={setResults} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/theaters" element={<Theaters />} />
