@@ -57,6 +57,7 @@ router.get("/user/:userId", veryTokey, async (req, res) => {
       const theaterLocation = showtime?.theater?.Location || "Unknown Location";
       const movieName = showtime?.movie?.title || "Unknown Movie";
       const time = showtime?.times;
+      const ticketType = reservation.carpass ? "Car Pass" : "General Admission";
 
       console.log("Formatted Reservation Data:", {
         id: reservation.id,
@@ -64,6 +65,7 @@ router.get("/user/:userId", veryTokey, async (req, res) => {
         time,
         movieName,
         purchaseTime: reservation.timePurchased,
+        ticketType,
       });
 
       return {
@@ -72,6 +74,7 @@ router.get("/user/:userId", veryTokey, async (req, res) => {
         time,
         movieName,
         purchaseTime: reservation.timePurchased,
+        ticketType,
       };
     });
 
