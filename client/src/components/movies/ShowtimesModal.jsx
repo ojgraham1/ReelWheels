@@ -28,7 +28,7 @@ const ShowtimesModal = ({ showtimes, onClose }) => {
           },
           body: JSON.stringify({
             quantity,
-            carpass: selectedTicketType === "carpass",
+            ticketType: selectedTicketType,
             showtime_id: showtimeId,
           }),
         }

@@ -45,7 +45,14 @@ const Account = () => {
       const fetchReservationsByUserId = async () => {
         if (reservations) {
           console.log("Fetched reservations:", reservations);
-          setReservationsData(reservations);
+          setReservationsData(
+            reservations.map((reservation) => ({
+              ...reservation,
+              ticketType: reservation.carpass
+                ? "Car Pass"
+                : "General Admission",
+            }))
+          );
         }
         if (userReservationsError) {
           setReservationsError(userReservationsError);

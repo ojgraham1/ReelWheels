@@ -48,10 +48,8 @@ router.get("/user/:userId", veryTokey, async (req, res) => {
       },
     });
 
-    // Log reservations to ensure they include necessary fields
     console.log("Raw reservations:", reservations);
 
-    // Formatting reservations to include necessary fields
     const formattedReservations = reservations.map((reservation) => {
       const { showtime } = reservation;
       const theaterLocation = showtime?.theater?.Location || "Unknown Location";
@@ -78,7 +76,6 @@ router.get("/user/:userId", veryTokey, async (req, res) => {
       };
     });
 
-    // Log formatted reservations
     console.log("Formatted reservations:", formattedReservations);
 
     res.json(formattedReservations);
@@ -119,6 +116,13 @@ router.get("/theater/:theaterId", isAdmin, async (req, res) => {
 router.post("/user/:userId", veryTokey, async (req, res) => {
   const userId = parseInt(req.params.userId);
   const { quantity, ticketType, showtime_id } = req.body;
+
+  console.log("Received reservation data:", {
+    userId,
+    quantity,
+    ticketType,
+    showtime_id,
+  });
 
   if (req.user.userId !== userId) {
     return res.status(403).send("Forbidden");
@@ -183,6 +187,7 @@ router.post("/user/:userId", veryTokey, async (req, res) => {
       },
     });
 
+    console.log("Created reservation:", newReservation);
     res.json(newReservation);
   } catch (error) {
     console.error(error);
