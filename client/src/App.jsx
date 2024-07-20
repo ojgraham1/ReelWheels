@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { setToken} from "./api/sliceAuth";
+import { useDispatch, useSelector } from "react-redux";
+import { setToken } from "./api/sliceAuth";
 import { Routes, Route } from "react-router-dom";
 
 import NavBar from "./components/directory/NavBar";
 import Home from "./components/directory/Home";
 import Theaters from "./components/theater/TheaterList";
-import Concessions from './components/concessions/foodMenu';
+import Concessions from "./components/concessions/foodMenu";
 import Browse from "./components/movies/BrowseList";
 import BrowsePage from "./components/movies/BrowsePage";
 import BrowseTvPage from "./components/movies/BrowseTvPage";
 import MovieList from "./components/movies/MovieList";
 import MoviePage from "./components/movies/MoviePage";
-import Watchlist from "./components/transactions/WatchList"
+import Watchlist from "./components/transactions/WatchList";
 import Cart from "./components/transactions/Cart";
 import Register from "./components/acc/Register";
 import Login from "./components/acc/Login";
@@ -23,22 +23,24 @@ import AboutUs from "./components/acc/AboutUs";
 function App() {
   const [userToken, setUserToken] = useState(null);
   const dispatch = useDispatch();
-  
-useEffect(() => {
+  const token = useSelector((state) => state.auth.token);
 
-  const token = localStorage.getItem("token");
-  console.log("token", token);
-  if (token) {
-    dispatch(setToken(token)); 
-    setUserToken(token);
-  }
-}, [dispatch]);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      dispatch(setToken(token));
+      setUserToken(token);
+    }
+  }, [dispatch]);
+
+  useEffect(() => {}, [token]);
 
   return (
     <div className="App">
       <NavBar />
       <Routes>
-        <Route path="/" element={<Home/>} />
+        <Route path="/" element={<Home />} />
         <Route path="/theaters" element={<Theaters />} />
         <Route path="/concessions" element={<Concessions />} />
         <Route path="/browse" element={<Browse />} />
@@ -50,10 +52,17 @@ useEffect(() => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/users/:username" element={<Account token= {userToken} />} />
-        <Route path="/aboutus" element={<AboutUs/>}/>
+        <Route
+          path="/users/:username"
+          element={<Account token={userToken} />}
+        />
+        <Route
+          path="/users/:username"
+          element={<Account token={userToken} />}
+        />
+        <Route path="/aboutus" element={<AboutUs />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

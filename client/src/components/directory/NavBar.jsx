@@ -3,10 +3,11 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { clearToken } from "../../api/sliceAuth";
 import DateTime from "./DateTime";
+import "../../styles/directory/nav.scss";
 
 export default function NavBar() {
   const token = useSelector((state) => state.auth.token);
-  const username = useSelector((state) => state.auth.username); 
+  const username = useSelector((state) => state.auth.username);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -14,69 +15,71 @@ export default function NavBar() {
     dispatch(clearToken());
     navigate("/login");
   };
+
   return (
     <nav className="navBar">
-      <ul className="nbDateTime"> 
-        <DateTime/>
-      </ul>
+      <div className="nbDateTime">
+        <DateTime />
+      </div>
       <ul className="navBarL">
-        <ul>
+        <li>
           <NavLink className="nL" to="/">
             Home
           </NavLink>
-        </ul>
-        <ul>
+        </li>
+        <li>
           <NavLink className="nL" to="/theaters">
             Theaters
           </NavLink>
-        </ul>
-        <ul>
+        </li>
+        <li>
           <NavLink className="nL" to="/concessions">
             Wine & Dine
           </NavLink>
-        </ul>
-        <ul>
+        </li>
+        <li>
           <NavLink className="nL" to="/browse">
             Browse Movies
           </NavLink>
-        </ul>
-        <ul>
+        </li>
+        <li>
           <NavLink className="nL" to="/movies">
             Now Playing
           </NavLink>
-        </ul>
-        <ul>
-          <NavLink to="/watchlist">Watch List</NavLink>
-        </ul>
-        <ul className="nL">
-          <NavLink to="/cart" className="cart-link">
+        </li>
+        <li>
+          <NavLink className="nL" to="/watchlist">
+            Watch List
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className="nL" to="/cart">
             Cart
           </NavLink>
-        </ul>
+        </li>
         {token ? (
           <>
-            <ul className="nL">
-              <NavLink to={`/users/${username}`} className="account-link">
+            <li>
+              <NavLink className="nL" to={`/users/${username}`}>
                 Account
               </NavLink>
-            </ul>
-            <ul>
+            </li>
+            <li>
               <button className="nL-logout" onClick={handleLogout}>
                 Logout
               </button>
-            </ul>
+            </li>
           </>
         ) : (
           <>
-            <ul>
+            <li>
               <NavLink className="nL" to="/login">
                 Log In
               </NavLink>
-            </ul>
+            </li>
           </>
         )}
       </ul>
     </nav>
   );
 }
-
