@@ -27,16 +27,14 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    console.log("Local storage token on load:", token);
+
     if (token) {
       dispatch(setToken(token));
       setUserToken(token);
     }
   }, [dispatch]);
 
-  useEffect(() => {
-    console.log("Redux token on change:", token);
-  }, [token]);
+  useEffect(() => {}, [token]);
 
   return (
     <div className="App">

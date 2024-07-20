@@ -44,7 +44,6 @@ const Account = () => {
       setFormData(userData);
       const fetchReservationsByUserId = async () => {
         if (reservations) {
-          console.log("Fetched reservations:", reservations);
           setReservationsData(reservations);
         }
         if (userReservationsError) {
@@ -223,14 +222,14 @@ const Account = () => {
                 <ul>
                   {reservationsData.map((reservation) => (
                     <li key={reservation.id}>
+                      <p>Theater Location: {reservation.theaterLocation}</p>
+                      <p>Movie: {reservation.movieName}</p>
+                      <p>Time: {new Date(reservation.time).toLocaleString()}</p>
                       <p>
-                        Theater Location:{" "}
-                        {reservation.showtime?.theater?.Location}
+                        Purchase Time:{" "}
+                        {new Date(reservation.purchaseTime).toLocaleString()}
                       </p>
-                      <p>
-                        Time:{" "}
-                        {new Date(reservation.showtime?.times).toLocaleString()}
-                      </p>
+                      <p>Ticket Type: {reservation.ticketType}</p>
                     </li>
                   ))}
                 </ul>

@@ -13,6 +13,7 @@ router.get("/", isAdmin, async (req, res) => {
         showtime: {
           include: {
             theater: true,
+            movie: true,
           },
         },
       },
@@ -24,7 +25,7 @@ router.get("/", isAdmin, async (req, res) => {
   }
 });
 
-//reservations by user id
+// reservations by user id
 router.get("/user/:userId", veryTokey, async (req, res) => {
   const userId = parseInt(req.params.userId);
   try {
@@ -41,18 +42,50 @@ router.get("/user/:userId", veryTokey, async (req, res) => {
         showtime: {
           include: {
             theater: true,
+            movie: true,
           },
         },
       },
     });
-    res.json(reservations);
+
+    console.log("Raw reservations:", reservations);
+
+    const formattedReservations = reservations.map((reservation) => {
+      const { showtime } = reservation;
+      const theaterLocation = showtime?.theater?.Location || "Unknown Location";
+      const movieName = showtime?.movie?.title || "Unknown Movie";
+      const time = showtime?.times;
+      const ticketType = reservation.carpass ? "Car Pass" : "General Admission";
+
+      console.log("Formatted Reservation Data:", {
+        id: reservation.id,
+        theaterLocation,
+        time,
+        movieName,
+        purchaseTime: reservation.timePurchased,
+        ticketType,
+      });
+
+      return {
+        id: reservation.id,
+        theaterLocation,
+        time,
+        movieName,
+        purchaseTime: reservation.timePurchased,
+        ticketType,
+      };
+    });
+
+    console.log("Formatted reservations:", formattedReservations);
+
+    res.json(formattedReservations);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal server error" });
   }
 });
 
-//reservations by theater id
+// reservations by theater id
 router.get("/theater/:theaterId", isAdmin, async (req, res) => {
   const theaterId = parseInt(req.params.theaterId);
   try {
@@ -67,6 +100,7 @@ router.get("/theater/:theaterId", isAdmin, async (req, res) => {
         showtime: {
           include: {
             theater: true,
+            movie: true,
           },
         },
       },
@@ -83,6 +117,13 @@ router.post("/user/:userId", veryTokey, async (req, res) => {
   const userId = parseInt(req.params.userId);
   const { quantity, ticketType, showtime_id } = req.body;
 
+  console.log("Received reservation data:", {
+    userId,
+    quantity,
+    ticketType,
+    showtime_id,
+  });
+
   if (req.user.userId !== userId) {
     return res.status(403).send("Forbidden");
   }
@@ -96,7 +137,7 @@ router.post("/user/:userId", veryTokey, async (req, res) => {
   try {
     const showtime = await prisma.showtimes.findUnique({
       where: { id: showtime_id },
-      include: { theater: true },
+      include: { theater: true, movie: true },
     });
 
     if (!showtime) {
@@ -140,11 +181,13 @@ router.post("/user/:userId", veryTokey, async (req, res) => {
         showtime: {
           include: {
             theater: true,
+            movie: true,
           },
         },
       },
     });
 
+    console.log("Created reservation:", newReservation);
     res.json(newReservation);
   } catch (error) {
     console.error(error);
