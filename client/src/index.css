@@ -83,6 +83,11 @@ a:active {
   font-family: sans-serif;
 }
 
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .navBar {
+    width: fit-content;
+  }
+}
 /* Home Page */
 /* Slideshow Home Page */
 .hsContainer {
@@ -93,6 +98,7 @@ a:active {
 .home-wrapper {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   align-content: center;
 }
