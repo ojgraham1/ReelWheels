@@ -4,6 +4,7 @@ import "./ShowtimesModal.css";
 
 const ShowtimesModal = ({ showtimes, onClose }) => {
   const [selectedTicketType, setSelectedTicketType] = useState("general");
+  const [quantity, setQuantity] = useState(1);
   const userId = useSelector((state) => state.auth.userId);
   const token = useSelector((state) => state.auth.token);
 
@@ -11,37 +12,47 @@ const ShowtimesModal = ({ showtimes, onClose }) => {
     setSelectedTicketType(e.target.value);
   };
 
-  // Commenting out the Reserve Tickets function for now
-  // const handleReserveTickets = async (showtimeId) => {
-  //   try {
-  //     const response = await fetch(
-  //       `http://localhost:3000/reservations/user/${userId}`,
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //         body: JSON.stringify({
-  //           quantity: 1,
-  //           carpass: selectedTicketType === "carpass",
-  //           showtime_id: showtimeId,
-  //         }),
-  //       }
-  //     );
+  const handleQuantityChange = (e) => {
+    setQuantity(e.target.value);
+  };
 
-  //     const data = await response.json();
-  //     if (response.ok) {
-  //       alert("Reservation successful!");
-  //       onClose();
-  //     } else {
-  //       alert(`Error: ${data.error}`);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error reserving tickets:", error);
-  //     alert("Failed to reserve tickets.");
-  //   }
-  // };
+  const handleReserveTickets = async (showtimeId) => {
+    try {
+      console.log("Sending reservation data:", {
+        userId,
+        quantity,
+        ticketType: selectedTicketType,
+        showtime_id: showtimeId,
+      });
+
+      const response = await fetch(
+        `http://localhost:3000/reservations/user/${userId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            quantity,
+            ticketType: selectedTicketType,
+            showtime_id: showtimeId,
+          }),
+        }
+      );
+
+      const data = await response.json();
+      if (response.ok) {
+        alert("Reservation successful!");
+        onClose();
+      } else {
+        alert(`Error: ${data.error}`);
+      }
+    } catch (error) {
+      console.error("Error reserving tickets:", error);
+      alert("Failed to reserve tickets.");
+    }
+  };
 
   return (
     <div className="modal">
@@ -65,11 +76,15 @@ const ShowtimesModal = ({ showtimes, onClose }) => {
                     <option value="general">General Admission</option>
                     <option value="carpass">Car Pass</option>
                   </select>
-                  <button
-                    onClick={() => {
-                      alert("Maya is annoying");
-                    }}
-                  >
+                  <label htmlFor="quantity">Quantity:</label>
+                  <input
+                    type="number"
+                    id="quantity"
+                    value={quantity}
+                    onChange={handleQuantityChange}
+                    min="1"
+                  />
+                  <button onClick={() => handleReserveTickets(showtime.id)}>
                     Reserve
                   </button>
                 </div>

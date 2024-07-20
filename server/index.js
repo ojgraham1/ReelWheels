@@ -24,7 +24,7 @@ const { veryTokey, isAdmin } = require("./auth/middleware");
 
 //Routes
 app.use("/users", usersRoute);
-app.use("/reservations", veryTokey, isAdmin, reservationsRoute);
+app.use("/reservations", veryTokey, reservationsRoute);
 app.use("/theater", theaterRoute);
 app.use("/showtimes", showtimesRoute);
 app.use("/auth", authRoute);

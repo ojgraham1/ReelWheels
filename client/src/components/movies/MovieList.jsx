@@ -4,7 +4,6 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTicket, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import ShowtimesModal from "./ShowtimesModal";
-import DateTime from "../directory/DateTime";
 
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
@@ -28,14 +27,12 @@ const MovieList = () => {
     try {
       navigator.geolocation.getCurrentPosition(async (position) => {
         const { latitude, longitude } = position.coords;
-        console.log(
-          `Fetching showtimes for movie ID: ${movieId} at (${latitude}, ${longitude})`
-        );
+
         const response = await axios.post(
           `http://localhost:3000/showtimes/nearest`,
           { latitude, longitude, movieId }
         );
-        console.log("Showtimes fetched:", response.data);
+
         setShowtimes(response.data);
         setIsModalOpen(true);
       });
@@ -45,7 +42,6 @@ const MovieList = () => {
   };
 
   const handleCloseModal = () => {
-    console.log("Closing modal");
     setIsModalOpen(false);
     setShowtimes([]);
   };
@@ -55,9 +51,6 @@ const MovieList = () => {
       <ul className="movie-list-container">
         <h1 className="mLHeading">IN THEATERS NOW</h1>
         <div className="mLWrapper">
-          {/* <div className="mlDateTime">
-            <DateTime />
-          </div> */}
           <div className="mlCard-Container">
             {movies.map((movie) => (
               <div className="mlCard" key={movie.id}>

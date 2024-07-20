@@ -4,7 +4,7 @@ import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
   root: {
-    padding: "20px",
+    paddingTop: "2px",
     textAlign: "center",
   },
   button: {
