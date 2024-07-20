@@ -127,7 +127,7 @@ input:focus {
   color: black;
 }
 
-.results-list {
+.browse-Result-List {
   color: black;
   width: 100%;
   background-color: white;
@@ -136,7 +136,20 @@ input:focus {
   box-shadow: 0px 0px 8px #ddd;
   border-radius: 10px;
   margin-top: 1rem;
-  max-height: 300px;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.tv-Result-List {
+  color: black;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 8px #ddd;
+  border-radius: 10px;
+  margin-top: 1rem;
+  max-height: 150px;
   overflow-y: auto;
 }
 
@@ -146,6 +159,7 @@ input:focus {
 
 .search-result:hover {
   background-color: #efefef;
+  cursor: pointer;
 }
 
 /* Home Page */
