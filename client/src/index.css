@@ -34,25 +34,60 @@ a:active {
   z-index: 99;
   position: fixed;
   top: 0;
-  left: 0%;
+  left: 0;
   width: 100%;
-  overflow: hidden;
-  text-align: center;
   background-color: black;
-  height: 60px;
+  height: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+  font-family: "Roboto", sans-serif;
+  padding: 0 20px;
+}
+
+.navBarContent {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  justify-content: space-between;
+}
+
+.nbDateTime {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: red;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  margin-right: 20px;
 }
 
 .navBarL {
   display: flex;
-  gap: 20px;
+  gap: 30px;
   list-style: none;
   padding: 0;
   margin: 0;
-  font-family: Georgia, "Times New Roman", Times, serif;
   color: white;
+  font-size: 1.2rem;
+  font-family: "Merriweather", serif;
+}
+
+.navBarL li {
+  display: flex;
+  align-items: center;
+}
+
+.navBarL .nL {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.navBarL .nL:hover {
+  color: red;
 }
 
 .navBarL .nL-logout {
@@ -61,33 +96,18 @@ a:active {
   width: 111px;
   border-radius: 50px;
   border: none;
-  font-size: 15px;
-  font-weight: 500px;
+  font-size: 1.1rem;
   color: rgb(255, 255, 255);
-  position: relative;
   box-shadow: 0px 0px 12px 6px rgba(178, 0, 0, 0.7725490196);
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  font-family: "Roboto", sans-serif;
 }
 
 .navBarL .nL-logout:hover {
   transform: scale(1.1);
 }
 
-.nbDateTime {
-  margin-left: -100px;
-  margin-top: -5px;
-  margin-bottom: -5px;
-  color: red;
-  font-size: small;
-  font-family: sans-serif;
-}
-
-@media screen and (min-width: 320px) and (max-width: 480px) {
-  .navBar {
-    width: fit-content;
-  }
-}
 /* Home Page */
 /* Slideshow Home Page */
 .hsContainer {
@@ -98,7 +118,6 @@ a:active {
 .home-wrapper {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
   justify-content: center;
   align-content: center;
 }
