@@ -74,6 +74,20 @@ a:active {
   transform: scale(1.1);
 }
 
+.nbDateTime {
+  margin-left: -100px;
+  margin-top: -5px;
+  margin-bottom: -5px;
+  color: red;
+  font-size: small;
+  font-family: sans-serif;
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .navBar {
+    width: fit-content;
+  }
+}
 /* Home Page */
 /* Slideshow Home Page */
 .hsContainer {
