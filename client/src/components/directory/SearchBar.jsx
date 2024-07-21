@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { SearchResultsList } from "./SearchResultsList.jsx";
+import PropTypes from "prop-types";
 
 export default function SearchBar() {
   const [input, setInput] = useState([]);
@@ -94,3 +95,9 @@ export default function SearchBar() {
     </div>
   );
 }
+
+SearchBar.PropTypesc = {
+  browseResults: PropTypes.arrayOf(PropTypes.object).isRequired,
+  browseResult: PropTypes.arrayOf(PropTypes.object).isRequired,
+  tvResults: PropTypes.arrayOf(PropTypes.object).isRequired,
+};

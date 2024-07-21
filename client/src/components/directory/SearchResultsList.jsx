@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { SearchResult } from "./SearchResult";
 
 export const SearchResultsList = ({
@@ -34,13 +33,4 @@ export const SearchResultsList = ({
       </div>
     </div>
   );
-};
-
-SearchResultsList.propTypes = {
-  browseResults: PropTypes.arrayOf(PropTypes.object).isRequired,
-  browseResult: PropTypes.arrayOf(PropTypes.object).isRequired,
-  tvResults: PropTypes.arrayOf(PropTypes.object).isRequired,
-  tvResult: PropTypes.arrayOf(PropTypes.object).isRequired,
-  nowPlayingResults: PropTypes.arrayOf(PropTypes.object).isRequired,
-  nowPlayingResult: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
