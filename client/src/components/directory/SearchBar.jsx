@@ -7,6 +7,7 @@ export default function SearchBar() {
   const [input, setInput] = useState([]);
   const [browseResults, setBrowseResults] = useState([]);
   const [tvResults, setTvResults] = useState([]);
+  const [nowPlayingResults, setNowPlayingResults] = useState([]);
   const fetchData = (value) => {
     fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=60bff7c4b3bc017974f0186538e281a6&query=${value}`
@@ -21,7 +22,7 @@ export default function SearchBar() {
             bMovie.title.toLowerCase().includes(value)
           );
         });
-
+        console.log("browseResults", results);
         setBrowseResults(results);
       });
     fetch(
@@ -39,7 +40,21 @@ export default function SearchBar() {
         });
 
         setTvResults(results);
-        console.log("results", results);
+        console.log("tv Results", results);
+      });
+    fetch(`http://localhost:3000/api/movies/`)
+      .then((response) => response.json())
+      .then((json) => {
+        const results = json.filter((npMovie) => {
+          return (
+            value &&
+            npMovie &&
+            npMovie.title &&
+            npMovie.title.toLowerCase().includes(value)
+          );
+        });
+        setNowPlayingResults(results);
+        console.log("nowPlayingResults", results);
       });
   };
   const handleChange = (value) => {
@@ -59,11 +74,19 @@ export default function SearchBar() {
         </div>
       </div>
       <div className="search-browse-results">
+        {/* <h1>Now Playing</h1> */}
+        {nowPlayingResults && nowPlayingResults.length > 0 && (
+          <SearchResultsList nowPlayingResults={nowPlayingResults} />
+        )}
+      </div>
+      <div className="search-browse-results">
+        {/* <h1>All Movies</h1> */}
         {browseResults && browseResults.length > 0 && (
           <SearchResultsList browseResults={browseResults} />
         )}
       </div>
       <div className="search-browse-results">
+        {/* <h1>TV Shows</h1> */}
         {tvResults && tvResults.length > 0 && (
           <SearchResultsList tvResults={tvResults} />
         )}
