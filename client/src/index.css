@@ -416,6 +416,198 @@ footer .about-us-link:hover {
   font-size: 22px;
 }
 
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .mLContainer {
+    margin: 20px;
+    margin-left: -20px;
+    margin-top: 100px;
+  }
+  .mLWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .mLHeading {
+    font-size: 20px;
+  }
+  .movie-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+  }
+  .mlCard-Container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .mlCardWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: fit-content;
+    margin-top: 20px;
+    margin-bottom: 70px;
+  }
+  .mlCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 300px;
+  }
+  .mLImg-Container {
+    width: 250px;
+  }
+  .mLImg {
+    height: auto;
+    width: 250px;
+  }
+  .mLText-Container {
+    width: 250px;
+  }
+  .mLT {
+    font-size: 25px;
+  }
+  .mLO {
+    display: none;
+  }
+  .button-Get-Tickets {
+    height: 35px;
+    width: 90px;
+    border-radius: 20px;
+    font-size: 12px;
+  }
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .mLContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .movie-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+  }
+  .mlCard-Container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 500px;
+    margin-top: 20px;
+    margin-left: 0%;
+    margin-right: 0%;
+    margin-bottom: 70px;
+  }
+  .mlCardWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 500px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .mlCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 400px;
+  }
+  .mLImg-Container {
+    width: 350px;
+  }
+  .mLImg {
+    height: auto;
+    width: 350px;
+  }
+  .mLText-Container {
+    width: 350px;
+    padding: 5px;
+  }
+  .mLT {
+    font-size: 25px;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .movie-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+  }
+  .mlCard-Container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .mlCardWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: fit-content;
+    margin-top: 20px;
+    margin-bottom: 70px;
+  }
+  .mLText-Container {
+    width: fit-content;
+  }
+}
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+  .movie-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+  }
+  .mlCard-Container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .mlCardWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 1000px;
+    margin-top: 20px;
+    margin-bottom: 70px;
+  }
+}
+@media screen and (min-width: 1201px) {
+  .movie-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+  }
+  .mlCard-Container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .mlCardWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 1250px;
+    margin-top: 20px;
+    margin-bottom: 70px;
+  }
+}
 /* Movie Page */
 .movie-page-container {
   position: relative;
