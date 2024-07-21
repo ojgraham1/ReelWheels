@@ -28,7 +28,7 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    console.log("Local storage token on load:", token);
+
     if (token) {
       dispatch(setToken(token));
       setUserToken(token);
@@ -37,9 +37,9 @@ function App() {
 
   const [results, setResults] = useState([]);
 
-  useEffect(() => {
-    console.log("Redux token on change:", token);
-  }, [token]);
+  const [results, setResults] = useState([]);
+
+  useEffect(() => {}, [token]);
 
   return (
     <div className="App">

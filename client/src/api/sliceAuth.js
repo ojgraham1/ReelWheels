@@ -37,7 +37,6 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setToken: (state, action) => {
-      console.log("Setting token in reducer:", action.payload);
       state.token = action.payload;
       localStorage.setItem("token", action.payload);
     },
@@ -50,7 +49,6 @@ const authSlice = createSlice({
       localStorage.setItem("username", action.payload);
     },
     setUserId: (state, action) => {
-      console.log("Setting userId in reducer:", action.payload);
       state.userId = action.payload;
       localStorage.setItem("userId", action.payload);
     },

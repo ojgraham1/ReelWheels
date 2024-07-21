@@ -27,14 +27,12 @@ const MovieList = () => {
     try {
       navigator.geolocation.getCurrentPosition(async (position) => {
         const { latitude, longitude } = position.coords;
-        console.log(
-          `Fetching showtimes for movie ID: ${movieId} at (${latitude}, ${longitude})`
-        );
+
         const response = await axios.post(
           `http://localhost:3000/showtimes/nearest`,
           { latitude, longitude, movieId }
         );
-        console.log("Showtimes fetched:", response.data);
+
         setShowtimes(response.data);
         setIsModalOpen(true);
       });
@@ -44,7 +42,6 @@ const MovieList = () => {
   };
 
   const handleCloseModal = () => {
-    console.log("Closing modal");
     setIsModalOpen(false);
     setShowtimes([]);
   };

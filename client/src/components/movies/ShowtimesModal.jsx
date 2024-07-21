@@ -18,6 +18,13 @@ const ShowtimesModal = ({ showtimes, onClose }) => {
 
   const handleReserveTickets = async (showtimeId) => {
     try {
+      console.log("Sending reservation data:", {
+        userId,
+        quantity,
+        ticketType: selectedTicketType,
+        showtime_id: showtimeId,
+      });
+
       const response = await fetch(
         `http://localhost:3000/reservations/user/${userId}`,
         {
@@ -28,7 +35,7 @@ const ShowtimesModal = ({ showtimes, onClose }) => {
           },
           body: JSON.stringify({
             quantity,
-            carpass: selectedTicketType === "carpass",
+            ticketType: selectedTicketType,
             showtime_id: showtimeId,
           }),
         }
