@@ -57,6 +57,7 @@ function BrowsePage() {
         <div
             className="browse-page-container"
             style={{
+                className: 'bpImg',
                 backgroundImage: `url(https://image.tmdb.org/t/p/original${details.backdrop_path})`
             }}
         >
