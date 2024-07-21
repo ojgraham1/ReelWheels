@@ -170,4 +170,20 @@
 }
 
 @media screen and (min-width: 2000px) {
+  .mpText-Container {
+    width: 800px;
+  }
+  .mpInfo{
+    margin-left: 100px;
+    margin-bottom: 400px;
+  }
+  .mpVideo-Container.show {
+    margin-top: 480px;
+    transition-duration: 5s;
+  }
+  .mpVideo-Container.exit{
+    margin-top: -1000px;
+    transition-duration: 5s;
+
+  }
 }
