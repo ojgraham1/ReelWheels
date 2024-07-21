@@ -1536,14 +1536,120 @@ input[type=password] {
   color: rgb(216, 216, 216);
   cursor: pointer;
   padding: 3px;
+  margin-top: -15px;
   margin-bottom: 2px;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 400;
   transition: all 0.3s ease-in-out;
 }
 
 .rfwBtn:hover {
   transform: scale(1.1);
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .wlHead {
+    font-size: x-large;
+  }
+  .watchlist-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 90px;
+    margin: 5px;
+    padding: 10px;
+  }
+  .wlImg {
+    justify-content: center;
+    height: 130px;
+    width: auto;
+    box-shadow: 0px 0px 12px 3px rgba(222, 221, 221, 0.7725490196);
+  }
+  .wlIT {
+    margin-top: 15px;
+    width: 90px;
+    font-size: 10px;
+  }
+  .rfwBtn {
+    margin-top: -15px;
+    font-size: 8px;
+    box-shadow: 0px 0px 5px 2px rgba(222, 221, 221, 0.7725490196);
+  }
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .watchlist-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 150px;
+    margin: 10px;
+    padding: 10px;
+  }
+  .wlImg {
+    justify-content: center;
+    height: 205px;
+    width: auto;
+    box-shadow: 0px 0px 12px 3px rgba(222, 221, 221, 0.7725490196);
+  }
+  .wlIT {
+    width: 150px;
+    font-size: medium;
+  }
+  .rfwBtn {
+    margin-top: -15px;
+    font-size: 10px;
+    box-shadow: 0px 0px 7px 3px rgba(222, 221, 221, 0.7725490196);
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .watchlist-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 200px;
+    margin: 20px;
+    padding: 10px;
+  }
+  .wlImg {
+    justify-content: center;
+    height: 275px;
+    width: auto;
+    box-shadow: 0px 0px 12px 3px rgba(222, 221, 221, 0.7725490196);
+  }
+  .rfwBtn {
+    margin-top: -15px;
+    font-size: 14px;
+    box-shadow: 0px 0px 8px 4px rgba(222, 221, 221, 0.7725490196);
+  }
+}
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+  .watchlist-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 200px;
+    margin: 20px;
+    padding: 10px;
+  }
+  .wlImg {
+    justify-content: center;
+    height: 275px;
+    width: auto;
+    box-shadow: 0px 0px 12px 3px rgba(222, 221, 221, 0.7725490196);
+  }
+  .rfwBtn {
+    margin-top: -15px;
+    font-size: 16px;
+    box-shadow: 0px 0px 9px 5px rgba(222, 221, 221, 0.7725490196);
+  }
 }
 
 /*# sourceMappingURL=index.css.map */
