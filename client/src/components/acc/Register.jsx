@@ -36,9 +36,8 @@ export default function Register() {
       <form onSubmit={onSubmit} className="register-form">
         <div className="left-column">
           <h1 className="register-title">Sign Up</h1>
-          <hr></hr>
+          {/* <hr></hr> */}
           <h3>Personal Information</h3>
-          <hr></hr>
           <div className="form-group">
             <input
               type="text"
@@ -101,7 +100,6 @@ export default function Register() {
             />
           </div>
           <h3>Account Information</h3>
-          <hr></hr>
           <div className="form-group">
             <input
               type="username"
