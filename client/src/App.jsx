@@ -37,8 +37,6 @@ function App() {
 
   const [results, setResults] = useState([]);
 
-  const [results, setResults] = useState([]);
-
   useEffect(() => {}, [token]);
 
   return (
