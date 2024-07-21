@@ -89,7 +89,13 @@
 // Mobile Devices
 @media screen and (min-width: 320px) and (max-width: 480px) {
   .navBar{
-    width: fit-content;
+    width: max-content;
+  }
+  .navBarL{
+    font-size: xx-small;
+  }
+  .nbDateTime{
+    font-size: xx-small;
   }
 }
 

@@ -14,8 +14,8 @@ const teamMembers = [
     id: 2,
     name: "Maya Obeidat",
     location: "Atlanta, Georgia",
-    image: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7", 
-    linkedin: "https://www.linkedin.com/in/maya-o-0064b4316/"
+    image: "https://media.licdn.com/dms/image/D4D03AQHAfxLZWzm8hQ/profile-displayphoto-shrink_800_800/0/1721518143296?e=1726704000&v=beta&t=c-WSVcM_Rh0juTtk9jBsdt6Qg2-U7CBRjMhKeGqxgCQ", 
+    linkedin: "https://www.linkedin.com/in/maya-obeidat-0064b4316/"
   },
   {
     id: 3,

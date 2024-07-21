@@ -28,6 +28,11 @@ a:active {
   color: aliceblue;
 }
 
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  :root {
+    width: 100%;
+  }
+}
 /* --- Directory --- */
 /* NavBar */
 .navBar {
@@ -119,7 +124,13 @@ a:active {
 
 @media screen and (min-width: 320px) and (max-width: 480px) {
   .navBar {
-    width: fit-content;
+    width: max-content;
+  }
+  .navBarL {
+    font-size: xx-small;
+  }
+  .nbDateTime {
+    font-size: xx-small;
   }
 }
 /* Home Page */
@@ -280,6 +291,7 @@ a:active {
 }
 
 footer {
+  z-index: 99;
   background-color: black;
   padding: 10px;
   text-align: center;
@@ -848,7 +860,7 @@ footer .about-us-link:hover {
   color: white;
   text-align: center;
   padding: 2px;
-  z-index: 1;
+  z-index: 2;
 }
 
 .theater-location {
@@ -862,6 +874,42 @@ footer .about-us-link:hover {
   background: rgba(140, 140, 140, 0.168);
 }
 
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .theater-list-container {
+    margin: 20px;
+    margin-top: 100px;
+    margin-bottom: 80px;
+  }
+  .theater-card {
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+  }
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .theater-list-container {
+    margin: 20px;
+    margin-top: 100px;
+    margin-bottom: 80px;
+  }
+  .theater-card {
+    width: 175px;
+    height: 175px;
+    margin: 10px;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .theater-list-container {
+    margin: 20px;
+    margin-top: 100px;
+    margin-bottom: 80px;
+  }
+  .theater-card {
+    width: 225px;
+    height: 225px;
+    margin: 10px;
+  }
+}
 .tlModal {
   display: flex;
   flex-wrap: wrap;
@@ -918,6 +966,132 @@ footer .about-us-link:hover {
   background-color: #777;
 }
 
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .tlModal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    width: 300px;
+    height: 450px;
+    overflow-y: auto;
+  }
+  .tlModalInfo {
+    height: 150px;
+    font-size: x-small;
+    margin-bottom: 20px;
+  }
+  .tlModalImgContainer {
+    width: max-content;
+    height: 200px;
+    margin-bottom: 20px;
+  }
+  .tlModalImg {
+    width: max-content;
+    height: 200px;
+  }
+  .tlModalGeoLoc {
+    max-height: 200px;
+    max-width: 300px;
+  }
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .tlModal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 325px;
+    height: 450px;
+    overflow-y: auto;
+  }
+  .tlModalInfo {
+    height: 150px;
+    font-size: x-small;
+    margin-bottom: 20px;
+  }
+  .tlModalImgContainer {
+    width: max-content;
+    height: 200px;
+    margin-bottom: 20px;
+  }
+  .tlModalImg {
+    width: max-content;
+    height: 200px;
+  }
+  .tlModalGeoLoc {
+    max-height: 200px;
+    max-width: 400px;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .tlModal {
+    display: flex;
+    flex-wrap: wrap;
+    position: fixed;
+    box-shadow: 0px 0px 12px 3px rgba(220, 217, 217, 0.7725490196);
+    background: whitesmoke;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    width: 700px;
+    height: 400px;
+    overflow-y: scroll;
+  }
+  .tlModalInfo {
+    margin-top: -10px;
+    height: 200px;
+    width: 265px;
+    font-size: 15px;
+  }
+  .tlModalImgContainer {
+    margin-top: 15px;
+    width: 400px;
+  }
+  .tlModalImg {
+    object-fit: cover;
+    height: 250px;
+  }
+  .tlModalGeoLoc {
+    margin: 15px;
+    width: 900px;
+    height: 350px;
+  }
+}
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+  .tlModal {
+    display: flex;
+    flex-wrap: wrap;
+    position: fixed;
+    box-shadow: 0px 0px 12px 3px rgba(220, 217, 217, 0.7725490196);
+    background: whitesmoke;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    width: 900px;
+    height: 450px;
+    overflow-y: scroll;
+  }
+  .tlModalInfo {
+    margin-top: -10px;
+    height: 200px;
+    width: 265px;
+    font-size: 15px;
+  }
+  .tlModalImgContainer {
+    margin-top: 15px;
+    width: 600px;
+  }
+  .tlModalImg {
+    object-fit: cover;
+    height: 250px;
+  }
+  .tlModalGeoLoc {
+    margin: 15px;
+    width: 900px;
+    height: 400px;
+  }
+}
 .about-us {
   background-color: black;
   margin-bottom: 20px;
