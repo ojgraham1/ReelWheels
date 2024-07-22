@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,11 +6,23 @@ import { faTicket, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import ShowtimesModal from "./ShowtimesModal";
 
 const MovieList = () => {
+  const [movieSlide, setMovieSlide] = useState([]);
   const [movies, setMovies] = useState([]);
   const [showtimes, setShowtimes] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
+    // slideshow
+    const fetchMovieSlide = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/api/movies");
+        setMovieSlide(response.data.slice(0, 5));
+      } catch (error) {
+        console.error("Error fetching movies:", error);
+      }
+    };
+
+    // movie list
     const fetchMovies = async () => {
       try {
         const response = await axios.get("http://localhost:3000/api/movies");
@@ -20,8 +32,35 @@ const MovieList = () => {
       }
     };
 
+    fetchMovieSlide();
     fetchMovies();
   }, []);
+
+  const delay = 5000;
+  const [index, setIndex] = useState(0);
+  const timeoutRef = React.useRef(null);
+
+  function resetTimeout() {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  }
+
+  useEffect(() => {
+    resetTimeout();
+    timeoutRef.current = setTimeout(
+      () =>
+        setIndex((prevIndex) =>
+          prevIndex === movieSlide.length - 1 ? 0 : prevIndex + 1
+        ),
+      delay
+    );
+
+    return () => {
+      resetTimeout();
+    };
+  }, [index, movieSlide.length]);
+
 
   const handleGetTicketsClick = async (movieId) => {
     try {
@@ -49,8 +88,67 @@ const MovieList = () => {
   return (
     <div className="mLContainer">
       <ul className="movie-list-container">
-        <h1 className="mLHeading">IN THEATERS NOW</h1>
+        <div className="slideshow">
+          <div
+            className="slideshowSlider"
+            style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
+          >
+            <div className="slideshowComponent">
+              {movieSlide.map((movie, index) => (
+                <div
+                  className="slide"
+                  key={index}
+                  style={{
+                    backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`                
+                  }}
+                >
+                  <div className="overlay">
+                    <div className="overlay-content">
+                      <div className="overlay-info">
+                        <h2 className='overlayTitle'>{movie.title}</h2>
+                          <div className='overlayBtn'>
+                            <Link className="mLink" to={`/movies/${movie.id}`}>
+                              <button className="button-Get-Tickets">
+                                See More Info
+                              </button>
+                            </Link>
+                          </div>
+                          {/* <div className="overlayDots">
+                            <div className="slideshowDots">
+                              {movieSlide.map((_, idx) => (
+                                <div
+                                  key={idx}
+                                  className={`slideshowDot${index === idx ? " active" : ""}`}
+                                  onClick={() => {
+                                  setIndex(idx);
+                                  }}
+                                ></div>
+                              ))}
+                            </div>
+                          </div> */}
+                        </div>
+                      </div>
+                    </div>
+                  </div>                
+                ))}
+              </div>
+            </div>
+          <div className="overlayDots">
+            <div className="slideshowDots">
+              {movieSlide.map((_, idx) => (
+                <div
+                  key={idx}
+                  className={`slideshowDot${index === idx ? " active" : ""}`}
+                  onClick={() => {
+                  setIndex(idx);
+                  }}
+                ></div>
+              ))}
+            </div>
+          </div>
+        </div>
         <div className="mLWrapper">
+        <h1 className="mLHeading">IN THEATERS NOW</h1>
           <div className="mlCard-Container">
             {movies.map((movie) => (
               <div className="mlCard" key={movie.id}>

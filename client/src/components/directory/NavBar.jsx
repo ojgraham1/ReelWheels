@@ -24,7 +24,7 @@ export default function NavBar() {
       <ul className="navBarL">
         <li>
           <NavLink className="nL" to="/">
-            Home
+            Now Playing
           </NavLink>
         </li>
         <li>
@@ -43,18 +43,8 @@ export default function NavBar() {
           </NavLink>
         </li>
         <li>
-          <NavLink className="nL" to="/movies">
-            Now Playing
-          </NavLink>
-        </li>
-        <li>
           <NavLink className="nL" to="/watchlist">
             Watch List
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className="nL" to="/cart">
-            Cart
           </NavLink>
         </li>
         {token ? (

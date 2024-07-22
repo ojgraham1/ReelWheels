@@ -1,39 +1,127 @@
 /* Movie List */
 .mLContainer {
-  margin: 20px;
-  margin-top: 100px;
+  margin-top: -15px;
 }
-
 .movie-list-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
 
+// Slideshow
+.slideshow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin: 50px;
+  margin-top: 80px;
+  overflow: hidden;
+  width: max-content;
+  position: relative;
+}
+.slideshowSlider {
+  white-space: nowrap;
+  transition: ease 1500ms;
+}
+.slide {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  overflow: hidden;
+  overflow-x: hidden;
+  // height: 650px;
+  padding: 10px;
+  width: 100%;
+}
+.overlay {
+  display: flex;
+  flex-direction: column;
+}
+.overlay-content {
+  color: white;
+  text-align: end;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+.overlay-info {
+  margin-top: 520px;
+  text-align: left;
+  width: 100%;
+}
+.overlayTitle {
+  margin-right: 20px;
+  margin-left: 20px;
+  margin: 20px;
+  margin-bottom: 10px;
+  color: rgb(255, 255, 255);
+  text-shadow: -1px 1px 15px #000000;
+}
+.overlayBtn {
+  margin-left: 20px;
+}
+
+/* Buttons for Slideshow in Home Page */
+.overlayDots{
+  display: flex;
+  width: 300px;
+  justify-content: center;
+  bottom: -4%;
+  // height: 200px;
+  margin-left: 350px;
+  // margin-bottom: 20px;
+  // margin-top: 200px;
+  z-index: 3;
+}
+.slideshowDots {
+  text-align: center;
+  position: relative;
+  top: -50px;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+.slideshowDot {
+  margin: 15px 7px 0px;
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.5;
+}
+.slideshowDot.active {
+  opacity: 1;
+}
+
+// Now Playing
 .mLHeading {
   padding-bottom: 50px;
+  text-align: center;
   font-size: xx-large;
   color: rgb(229, 229, 229);
 }
-
 .mLWrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-
 .mlCard-Container {
   display: flex;
   flex-wrap: wrap;
   padding-top: 10px;
   padding-bottom: 10px;
 }
-
 .mlCard {
   display: flex;
   flex-wrap: wrap;
 }
-
 .mlCardWrapper {
   display: flex;
   flex-direction: row;
@@ -42,16 +130,13 @@
   margin-top: 20px;
   margin-bottom: 70px;
 }
-
 .mLImg-Container {
   margin-right: 50px;
 }
-
 .mLImg {
   height: 400px;
   width: auto;
 }
-
 .mLText-Container {
   justify-content: center;
   align-content: center;
@@ -59,13 +144,11 @@
   width: 600px;
   margin-right: 20px;
 }
-
 .mLT {
   font-size: xx-large;
   font-style: oblique;
   color: rgb(222, 222, 222);
 }
-
 .mLO {
   font-size: large;
   font-weight: 200;
@@ -88,8 +171,6 @@
 .button-Get-Tickets:hover {
   transform: scale(1.1);
 }
-// .buttonGT {
-// }
 .mLBtn {
   height: 60px;
   width: 60px;
@@ -214,7 +295,6 @@
     justify-content: center;
     align-content: center;
     width: 400px;
-    // margin: 10px;
   }
   .mLImg-Container{
     width: 350px;
