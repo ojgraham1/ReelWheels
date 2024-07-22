@@ -8,18 +8,19 @@ import {
 import { Link } from "react-router-dom";
 
 function Browse() {
+  // State variables for different categories and loading state
   const [browseMovies, setBrowseMovies] = useState([]);
   const [browseTopRated, setBrowseTopRated] = useState([]);
   const [browseTv, setBrowseTv] = useState([]);
   const [browseUpcoming, setBrowseUpcoming] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [activeCategory, setActiveCategory] = useState("movies");
-  const [watchlist, setWatchlist] = useState(
+  const [activeCategory, setActiveCategory] = useState("movies"); // Default active category
+  const [watchlist, setWatchlist] = useState( // Retrieve watchlist from local storage
     JSON.parse(localStorage.getItem("watchlist")) || []
   );
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);  // Pagination: current page state
 
-  // Fetch Movies
+ // Function to fetch movies based on category and page number
   const fetchMovies = (page = 1) => {
     fetch(
       `https://api.themoviedb.org/3/discover/movie?&page=${page}&api_key=60bff7c4b3bc017974f0186538e281a6`
@@ -35,7 +36,7 @@ function Browse() {
       });
   };
 
-  // Fetch Top Rated Movies
+ // Function to fetch top rated movies
   const fetchTopRated = () => {
     fetch(
       "https://api.themoviedb.org/3/movie/top_rated?&api_key=60bff7c4b3bc017974f0186538e281a6"
@@ -51,7 +52,7 @@ function Browse() {
       });
   };
 
-  // Fetch Tv Shows
+ // Function to fetch TV shows based on category and page number
   const fetchTv = (page = 1) => {
     fetch(
       `https://api.themoviedb.org/3/discover/tv?${page}&api_key=60bff7c4b3bc017974f0186538e281a6`
@@ -67,7 +68,7 @@ function Browse() {
       });
   };
 
-  // Fetch Upcoming Movies
+  // Function to fetch upcoming movies based on category and page number
   const fetchUpcoming = (page = 1) => {
     fetch(
       `https://api.themoviedb.org/3/movie/upcoming?language=en-US&${page}&api_key=60bff7c4b3bc017974f0186538e281a6`
@@ -83,10 +84,12 @@ function Browse() {
       });
   };
 
+    // Function to handle category change
   const handleCategoryChange = (category) => {
     setActiveCategory(category);
   };
 
+    // Function to toggle item in watchlist
   const toggleWatchlist = (item) => {
     const isInWatchlist = watchlist.some(
       (watchlistItem) => watchlistItem.id === item.id
@@ -98,16 +101,18 @@ function Browse() {
     localStorage.setItem("watchlist", JSON.stringify(updatedWatchlist));
   };
 
+    // Function to check if item is in watchlist
   const isItemInWatchlist = (id) => {
     return watchlist.some((item) => item.id === id);
   };
 
+   // Effect to fetch data on component mount and when currentPage changes
   useEffect(() => {
     fetchMovies(currentPage);
     fetchTopRated();
     fetchTv(currentPage);
     fetchUpcoming(currentPage);
-  }, [currentPage]);
+  }, [currentPage]); // Dependency array ensures useEffect runs when currentPage changes
 
   return (
     <div className="bmContainer">

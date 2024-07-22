@@ -21,20 +21,21 @@ import Footer from "./components/directory/Footer";
 import AboutUs from "./components/acc/AboutUs";
 
 function App() {
-  const [userToken, setUserToken] = useState(null);
+  const [userToken, setUserToken] = useState(null); // State to hold user token
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.auth.token);
+  const token = useSelector((state) => state.auth.token); // Select token
 
   useEffect(() => {
+    // Effect to check for token in local storage
     const token = localStorage.getItem("token");
 
     if (token) {
-      dispatch(setToken(token));
+      dispatch(setToken(token)); // Dispatch action to set token
       setUserToken(token);
     }
-  }, [dispatch]);
+  }, [dispatch]); //Run the function once
 
-  useEffect(() => {}, [token]);
+  useEffect(() => {}, [token]); // Effect to monitor changes in token
 
   return (
     <div className="App">

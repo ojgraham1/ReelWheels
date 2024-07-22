@@ -7,21 +7,21 @@ import ShowtimesMovie from '../showtimes/ShowtimesMovie';
 
 function MoviePage() {
     const { id } = useParams();
-    const [videoKey, setVideoKey] = useState(null);
-    const [details, setDetails] = useState(null);
+    const [videoKey, setVideoKey] = useState(null); // State to store YouTube video key
+    const [details, setDetails] = useState(null); // State to store movie details
     const [loading, setLoading] = useState(true);
-    const [showTrailer, setShowTrailer] = useState(false);
+    const [showTrailer, setShowTrailer] = useState(false); // State to manage trailer visibility
 
     useEffect(() => {
         const fetchMovieData = async () => {
             try {
                 const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=60bff7c4b3bc017974f0186538e281a6&append_to_response=videos`);
-                const data = await response.json();
-
+                const data = await response.json(); // Fetching movie data from API
+                 // Finding the trailer video from the results
                 const trailer = data.videos.results.find(video => video.type === 'Trailer' && video.site === 'YouTube');
-                setVideoKey(trailer ? trailer.key : null);
+                setVideoKey(trailer ? trailer.key : null); // Setting video key if trailer exists
                 
-                setDetails(data);
+                setDetails(data); // Setting movie details
                 setLoading(false);
             } catch (error) {
                 console.error(`Error fetching data for ID ${id}:`, error);
@@ -29,9 +29,10 @@ function MoviePage() {
             }
         };
 
-        fetchMovieData();
+        fetchMovieData(); // Fetch movie data when component mounts or id parameter changes
     }, [id]);
 
+     // Function to format date in a readable format
     const formatDate = (dateString) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         const date = new Date(dateString);

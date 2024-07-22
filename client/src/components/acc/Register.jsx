@@ -1,11 +1,9 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useRegisterMutation } from "../../api/sliceAuth";
 import { useState } from "react";
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-//import { faTicket } from '@fortawesome/free-solid-svg-icons'; 
 
 export default function Register() {
-  const [addNewUser] = useRegisterMutation();
+  const [addNewUser] = useRegisterMutation(); // Using register mutation hook from Redux slice
   const navigate = useNavigate();
   const [form, setForm] = useState({
     username: "",
@@ -18,16 +16,18 @@ export default function Register() {
     birthdate: "",
   });
 
+    // Function to handle input change in the form fields
   const onChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  // Function to handle form submission
   const onSubmit = async (e) => {
     e.preventDefault();
-    const results = await addNewUser(form);
-    console.log(results);
+    const results = await addNewUser(form); // Calling register mutation with form data
+    console.log(results); // Logging the registration results 
     alert("Registration complete! Be sure to log in to access your account!");
-    navigate('/login');
+    navigate('/login'); // Redirect to login page
   };
 
   return (

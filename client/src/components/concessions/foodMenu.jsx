@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Container, Typography, Box } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
+// styling for food menu page
 const useStyles = makeStyles({
   root: {
     paddingTop: "2px",

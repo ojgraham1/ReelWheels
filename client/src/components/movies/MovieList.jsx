@@ -6,10 +6,11 @@ import { faTicket, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import ShowtimesModal from "./ShowtimesModal";
 
 const MovieList = () => {
-  const [movies, setMovies] = useState([]);
-  const [showtimes, setShowtimes] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [movies, setMovies] = useState([]); // State to store movies fetched from API
+  const [showtimes, setShowtimes] = useState([]); // State to store showtimes for a selected movie
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal open/close
 
+  // Fetching movies from API
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -20,27 +21,29 @@ const MovieList = () => {
       }
     };
 
-    fetchMovies();
+    fetchMovies(); // Triggering fetchMovies function 
   }, []);
 
+   // Function to handle clicking on Get Tickets button
   const handleGetTicketsClick = async (movieId) => {
     try {
-      navigator.geolocation.getCurrentPosition(async (position) => {
-        const { latitude, longitude } = position.coords;
+      navigator.geolocation.getCurrentPosition(async (position) => { // Getting current geolocation coordinates
+        const { latitude, longitude } = position.coords; // getting latitude and longitude
 
         const response = await axios.post(
           `http://localhost:3000/showtimes/nearest`,
           { latitude, longitude, movieId }
-        );
+        ); // Sending POST request to fetch nearest showtimes for the movie
 
-        setShowtimes(response.data);
-        setIsModalOpen(true);
+        setShowtimes(response.data); // Setting fetched showtimes
+        setIsModalOpen(true); // Opening the modal to display showtimes
       });
     } catch (error) {
       console.error("Error fetching showtimes:", error);
     }
   };
-
+  
+   // Function to close the modal
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setShowtimes([]);

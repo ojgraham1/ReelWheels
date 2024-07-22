@@ -5,25 +5,29 @@ import { setToken, setUsername, setUserId } from "../../api/sliceAuth";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function Login() {
-  const token = useSelector((state) => state.auth.token);
-  const dispatch = useDispatch();
+  const token = useSelector((state) => state.auth.token); // Selecting token 
+  const dispatch = useDispatch(); 
   const navigate = useNavigate();
-  const [login] = useLoginMutation();
-  const [form, setForm] = useState({ username: "", password: "" });
+  const [login] = useLoginMutation(); // Using login mutation hook from Redux slice
+  const [form, setForm] = useState({ username: "", password: "" }); // State for login form fields
 
+
+  // Function to handle input change in the form fields
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+   // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const result = await login(form).unwrap();
+      const result = await login(form).unwrap(); // Calling login mutation
 
       if (result.token && result.userId) {
-        dispatch(setToken(result.token));
-        dispatch(setUsername(form.username));
-        dispatch(setUserId(result.userId));
+        // If login is successful and token and userId are received
+        dispatch(setToken(result.token)); // Dispatching action to set token
+        dispatch(setUsername(form.username)); // Dispatching action to set username
+        dispatch(setUserId(result.userId)); // Dispatching action to set userId
       } else {
         console.error("Login failed: missing token or userId");
       }
@@ -32,9 +36,10 @@ export default function Login() {
     }
   };
 
+  // Effect to redirect to home page if token exists (user is logged in)
   useEffect(() => {
     if (token) {
-      navigate("/");
+      navigate("/");  // Redirect to home page
     }
   }, [token, navigate]);
 
