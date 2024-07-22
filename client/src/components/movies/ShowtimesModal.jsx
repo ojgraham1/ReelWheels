@@ -93,6 +93,7 @@ const ShowtimesModal = ({ showtimes, onClose }) => {
                       value={quantity}
                       onChange={handleQuantityChange}
                       min="1"
+                      max={selectedTicketType === "carpass" ? "1" : undefined}
                     />
                   </div>
                   <button onClick={() => handleReserveTickets(showtime.id)}>
