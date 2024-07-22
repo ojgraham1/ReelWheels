@@ -124,7 +124,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 1250px;
+  width: 100%;
   margin-top: 20px;
   margin-bottom: 70px;
 }
@@ -192,7 +192,7 @@
 }
 
 // Mobile Devices
-@media screen and (min-width: 320px) and (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .mLContainer {
     margin: 20px;
     margin-left: -20px;
@@ -417,5 +417,26 @@
     width: 1250px;
     margin-top: 20px;
     margin-bottom: 70px;
+  }
+}
+
+// Ultra wide screens
+@media screen and (min-width: 2560px) {
+  .mlCardWrapper {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .slideshow {
+    margin: 100px 0;
+  }
+
+  .slide {
+    height: 800px;
+  }
+
+  .overlay {
+    justify-content: space-between;
   }
 }
