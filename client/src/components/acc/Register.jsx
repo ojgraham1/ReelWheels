@@ -1,8 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useRegisterMutation } from "../../api/sliceAuth";
 import { useState } from "react";
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-//import { faTicket } from '@fortawesome/free-solid-svg-icons'; 
 
 export default function Register() {
   const [addNewUser] = useRegisterMutation();
@@ -15,7 +13,9 @@ export default function Register() {
     email: "",
     address: "",
     phoneNumber: "",
-    birthdate: "",
+    birthMonth: "",
+    birthDay: "",
+    birthYear: "",
   });
 
   const onChange = (e) => {
@@ -24,114 +24,147 @@ export default function Register() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const results = await addNewUser(form);
-    console.log(results);
-    alert("Registration complete! Be sure to log in to access your account!");
-    navigate('/login');
+
+    const birthdateString = `${form.birthYear}-${String(Number(form.birthMonth)).padStart(2, '0')}-${String(Number(form.birthDay) + 1).padStart(2, '0')}`;
+    const birthdate = new Date(`${birthdateString}T00:00:00Z`);
+
+    const formData = { ...form, birthdate };
+
+    try {
+      const results = await addNewUser(formData);
+      console.log(results);
+      alert("Registration complete! Be sure to log in to access your account!");
+      navigate('/login');
+    } catch (error) {
+      console.error("Registration error:", error);
+      alert("An error occurred during registration. Please try again.");
+    }
   };
 
   return (
     <div className="rgcontainer">
-    <div className="register-page">
-      <form onSubmit={onSubmit} className="register-form">
-        <div className="left-column">
-          <h1 className="register-title">Sign Up</h1>
-          {/* <hr></hr> */}
-          <h3>Personal Information</h3>
-          <div className="form-group">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="First Name..."
-              name="firstName"
-              onChange={onChange}
-              required
-            />
+      <div className="register-page">
+        <form onSubmit={onSubmit} className="register-form">
+          <div className="left-column">
+            <h1 className="register-title">Sign Up</h1>
+            <h3>Personal Information</h3>
+            <div className="form-group">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="First Name..."
+                name="firstName"
+                onChange={onChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Last Name..."
+                name="lastName"
+                onChange={onChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="email"
+                className="form-control"
+                placeholder="Email..."
+                name="email"
+                onChange={onChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Address..."
+                name="address"
+                onChange={onChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Phone Number..."
+                name="phoneNumber"
+                onChange={onChange}
+                required
+              />
+            </div>
+            <div className="bdform-group">
+              <input
+                type="number"
+                className="form-control"
+                placeholder="MM"
+                name="birthMonth"
+                value={form.birthMonth}
+                onChange={onChange}
+                min="1"
+                max="12"
+                required
+              />
+              <input
+                type="number"
+                className="form-control"
+                placeholder="DD"
+                name="birthDay"
+                value={form.birthDay}
+                onChange={onChange}
+                min="1"
+                max="31"
+                required
+              />
+              <input
+                type="number"
+                className="form-control"
+                placeholder="YYYY"
+                name="birthYear"
+                value={form.birthYear}
+                onChange={onChange}
+                min="1900"
+                max={new Date().getFullYear()}
+                required
+              />
+            </div>
+            <h3>Account Information</h3>
+            <div className="form-group">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Username..."
+                name="username"
+                onChange={onChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Password..."
+                name="password"
+                onChange={onChange}
+                required
+              />
+            </div>
+            <div className="form-submission">
+              <button type="submit" className="submit-btn">
+                Sign Up
+              </button>
+              <p className="login-link">
+                Have an account? <NavLink to="/login">Login</NavLink>
+              </p>
+            </div>
           </div>
-          <div className="form-group">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Last Name..."
-              name="lastName"
-              onChange={onChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="email"
-              className="form-control"
-              id="exampleInputEmail1"
-              placeholder="Email..."
-              name="email"
-              onChange={onChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Address..."
-              name="address"
-              onChange={onChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Phone Number..."
-              name="phoneNumber"
-              onChange={onChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Birthdate..."
-              name="birthdate"
-              onChange={onChange}
-              required
-            />
-          </div>
-          <h3>Account Information</h3>
-          <div className="form-group">
-            <input
-              type="username"
-              className="form-control"
-              placeholder="Username..."
-              name="username"
-              onChange={onChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="password"
-              className="form-control"
-              placeholder="Password..."
-              name="password"
-              onChange={onChange}
-              required
-            />
-          </div>
-          <div className="form-submission">
-            <button type="submit" className="submit-btn">
-              Sign Up
-            </button>
-            <p className="login-link">
-              Have an account? <NavLink to="/login">Login</NavLink>
-            </p>
-          </div>
-        </div>
-      </form>
-    </div>
+        </form>
+      </div>
     </div>
   );
 }
-

@@ -1962,6 +1962,12 @@ input[type=password] {
   box-shadow: inset 5px 5px 11px rgba(0, 0, 0, 0.2), inset -5px -5px 11px rgba(255, 255, 255, 0.75);
 }
 
+.bdform-group {
+  display: flex;
+  width: 400px;
+  gap: 20px;
+}
+
 .submit-btn {
   border: none;
   outline: none;
@@ -2006,6 +2012,11 @@ input[type=password] {
   .form-control {
     width: 222px;
   }
+  .bdform-group {
+    display: flex;
+    width: 260px;
+    gap: 10px;
+  }
 }
 @media screen and (min-width: 375px) and (max-width: 480px) {
   .register-form {
@@ -2014,6 +2025,11 @@ input[type=password] {
   .form-control {
     width: 300px;
   }
+  .bdform-group {
+    display: flex;
+    width: 300px;
+    gap: 20px;
+  }
 }
 @media screen and (min-width: 481px) and (max-width: 768px) {
   .register-form {
@@ -2021,6 +2037,11 @@ input[type=password] {
   }
   .form-control {
     width: 300px;
+  }
+  .bdform-group {
+    display: flex;
+    width: 300px;
+    gap: 20px;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1024px) {
