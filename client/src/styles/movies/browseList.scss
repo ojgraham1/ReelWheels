@@ -95,6 +95,38 @@
   cursor: pointer;
 }
 
+/* Pagination Controls */
+.pagination-controls {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+}
+
+.pagination-btn {
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 24px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.pagination-btn:disabled {
+  color: rgba(255, 255, 255, 0.5);
+  cursor: not-allowed;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  transform: scale(1.1);
+}
+
+.pagination-page {
+  font-size: 18px;
+  color: white;
+}
+
 /* Browse List Categories */
 .lib-cat-w {
   margin: 5px;
@@ -145,12 +177,12 @@
     margin-left: 6%;
     font-size: 25px;
   }
-  .category-nav{
+  .category-nav {
     margin: 0%;
     margin-top: -30px;
     margin-left: 6%;
   }
-  .category-btn{
+  .category-btn {
     font-size: small;
   }
   .bmCard {
@@ -186,7 +218,7 @@
     font-size: 12px;
     margin-top: -10px;
   }
-  .bmButt{
+  .bmButt {
     margin-top: -20px;
     width: 20px;
   }
@@ -217,11 +249,11 @@
     margin-left: 6%;
     font-size: 25px;
   }
-  .category-nav{
+  .category-nav {
     margin: 0%;
     margin-left: 6%;
   }
-  .category-btn{
+  .category-btn {
     margin-top: -50px;
     font-size: larger;
   }
@@ -258,7 +290,7 @@
   .bmT {
     font-size: 18px;
   }
-  .bmButt{
+  .bmButt {
     margin-top: -20px;
     width: 60px;
   }
