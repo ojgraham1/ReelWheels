@@ -56,7 +56,7 @@ export default function NavBar() {
             </li>
             <li>
               <button className="nL-logout" onClick={handleLogout}>
-                Logout
+                Sign Out
               </button>
             </li>
           </>

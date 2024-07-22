@@ -91,21 +91,27 @@ a:active {
 }
 
 .navBarL .nL-logout {
-  background-color: rgb(255, 0, 0);
-  height: 40px;
-  width: 111px;
-  border-radius: 50px;
+  font-family: "Merriweather", serif;
   border: none;
-  font-size: 1.1rem;
-  color: rgb(255, 255, 255);
-  box-shadow: 0px 0px 12px 6px rgba(178, 0, 0, 0.7725490196);
+  outline: none;
+  background: none;
+  width: 100%;
+  margin: 0.6rem 0 1rem 0;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  font-family: "Roboto", sans-serif;
+  font-size: 1.1rem;
+  color: #ffffff;
+  text-transform: capitalize;
+  margin-top: 15px;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 10px;
+  background-color: rgba(39, 39, 39, 0.2666666667);
+  box-shadow: 5px 5px 11px rgba(101, 101, 101, 0.2), -1px -1px 5px rgba(255, 255, 255, 0.75);
 }
 
 .navBarL .nL-logout:hover {
-  transform: scale(1.1);
+  transition: color 0.3s;
+  color: rgb(255, 0, 0);
+  box-shadow: inset 5px 5px 11px rgba(0, 0, 0, 0.2), inset -1px -1px 5px rgba(255, 255, 255, 0.75);
 }
 
 .nbDateTime {
