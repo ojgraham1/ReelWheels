@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
+// team members with their details
 const teamMembers = [
   {
     id: 1,
@@ -14,8 +15,8 @@ const teamMembers = [
     id: 2,
     name: "Maya Obeidat",
     location: "Atlanta, Georgia",
-    image: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7", 
-    linkedin: "https://www.linkedin.com/in/maya-o-0064b4316/"
+    image: "https://media.licdn.com/dms/image/D4D03AQHAfxLZWzm8hQ/profile-displayphoto-shrink_800_800/0/1721518143296?e=1726704000&v=beta&t=c-WSVcM_Rh0juTtk9jBsdt6Qg2-U7CBRjMhKeGqxgCQ", 
+    linkedin: "https://www.linkedin.com/in/maya-obeidat-0064b4316/"
   },
   {
     id: 3,
@@ -34,24 +35,27 @@ const teamMembers = [
 ];
 
 function AboutUs() {
-  const [selectedMember, setSelectedMember] = useState(null);
-  const [animateTitle, setAnimateTitle] = useState(false);
+  const [selectedMember, setSelectedMember] = useState(null);  // State to track selected team member
+  const [animateTitle, setAnimateTitle] = useState(false); // State for animating the title
 
   useEffect(() => {
-    setAnimateTitle(true);
+    setAnimateTitle(true); // Trigger animation when component mounts
     return () => {
       setAnimateTitle(false);
     };
   }, []);
 
+   // Function to handle click on a team member card
   const handleClick = (member) => {
-    setSelectedMember(member);
+    setSelectedMember(member); // Set the selected member when clicked
   };
 
+  // Function to close the popup
   const handleClose = () => {
-    setSelectedMember(null);
+    setSelectedMember(null); // Reset selected member to close the popup
   };
 
+  
   return (
     <div className="about-us">
     <div className="about-container">

@@ -3,28 +3,32 @@ import { useSelector } from "react-redux";
 import "./ShowtimesModal.css";
 
 const ShowtimesModal = ({ showtimes, onClose }) => {
-  const [selectedTicketType, setSelectedTicketType] = useState("general");
-  const [quantity, setQuantity] = useState(1);
-  const userId = useSelector((state) => state.auth.userId);
-  const token = useSelector((state) => state.auth.token);
+  const [selectedTicketType, setSelectedTicketType] = useState("general"); // State to manage selected ticket type
+  const [quantity, setQuantity] = useState(1); // State to manage ticket quantity
+  const userId = useSelector((state) => state.auth.userId); // Extracting userId
+  const token = useSelector((state) => state.auth.token); // Extracting token
 
+  // Handler to update selected ticket type
   const handleTicketTypeChange = (e) => {
     setSelectedTicketType(e.target.value);
   };
 
+  // Handler to update ticket quantity
   const handleQuantityChange = (e) => {
     setQuantity(e.target.value);
   };
 
+    // Handler to reserve tickets
   const handleReserveTickets = async (showtimeId) => {
     try {
+          // Logging reservation data to console
       console.log("Sending reservation data:", {
         userId,
         quantity,
         ticketType: selectedTicketType,
         showtime_id: showtimeId,
       });
-
+      // Sending reservation request to server
       const response = await fetch(
         `http://localhost:3000/reservations/user/${userId}`,
         {
@@ -43,8 +47,8 @@ const ShowtimesModal = ({ showtimes, onClose }) => {
 
       const data = await response.json();
       if (response.ok) {
-        alert("Reservation successful!");
-        onClose();
+        alert("Reservation successful!"); // Showing success alert
+        onClose();  // Closing modal after successful reservation
       } else {
         alert(`Error: ${data.error}`);
       }
@@ -62,28 +66,39 @@ const ShowtimesModal = ({ showtimes, onClose }) => {
         </span>
         <h2>Showtimes</h2>
         {showtimes.length > 0 ? (
-          <ul>
+          <ul className="showtime-list">
             {showtimes.map((showtime) => (
-              <li key={showtime.id}>
-                {new Date(showtime.times).toLocaleString()}
-                <div>
-                  <label htmlFor="ticketType">Select Ticket Type:</label>
-                  <select
-                    id="ticketType"
-                    value={selectedTicketType}
-                    onChange={handleTicketTypeChange}
-                  >
-                    <option value="general">General Admission</option>
-                    <option value="carpass">Car Pass</option>
-                  </select>
-                  <label htmlFor="quantity">Quantity:</label>
-                  <input
-                    type="number"
-                    id="quantity"
-                    value={quantity}
-                    onChange={handleQuantityChange}
-                    min="1"
-                  />
+              <li key={showtime.id} className="showtime-item">
+                <div className="showtime-box">
+                  {new Date(showtime.times).toLocaleString([], {
+                    weekday: "long",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    hour12: true,
+                  })}
+                </div>
+                <div className="showtime-details">
+                  <div>
+                    <label htmlFor="ticketType">Ticket Type:</label>
+                    <select
+                      id="ticketType"
+                      value={selectedTicketType}
+                      onChange={handleTicketTypeChange}
+                    >
+                      <option value="general">General Admission</option>
+                      <option value="carpass">Car Pass</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="quantity">Quantity:</label>
+                    <input
+                      type="number"
+                      id="quantity"
+                      value={quantity}
+                      onChange={handleQuantityChange}
+                      min="1"
+                    />
+                  </div>
                   <button onClick={() => handleReserveTickets(showtime.id)}>
                     Reserve
                   </button>

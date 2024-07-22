@@ -6,6 +6,7 @@ const insertNowPlayingMovies = require("./insertMovies");
 const app = express();
 const port = 3000;
 
+// add API
 const TMDB_API_KEY =
   process.env.TMDB_API_KEY || "60bff7c4b3bc017974f0186538e281a6";
 const TMDB_BASE_URL = "https://api.themoviedb.org/3";
@@ -40,6 +41,7 @@ cron.schedule("0 0 * * *", () => {
     );
 });
 
+//fetch movies from TMDB API
 app.get("/api/movies", async (req, res) => {
   try {
     const response = await axios.get(`${TMDB_BASE_URL}/trending/movie/week`, {
@@ -54,6 +56,7 @@ app.get("/api/movies", async (req, res) => {
   }
 });
 
+// start the server on port
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });

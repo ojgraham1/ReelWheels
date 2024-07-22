@@ -4,21 +4,25 @@ import YouTube from "react-youtube";
 import Snackbar from '@mui/material/Snackbar';
 
 function BrowsePage() {
-    const { id } = useParams();
+    const { id } = useParams(); // Extracting 'id' parameter from URL using useParams hook
+
+    // State variables to manage video key, movie details, loading state, and Snackbar visibility
     const [videoKey, setVideoKey] = useState(null);
     const [details, setDetails] = useState(null);
     const [loading, setLoading] = useState(true);
 
+     // Function to fetch movie data using 'id' parameter from API
     useEffect(() => {
         const fetchMovieData = async () => {
             try {
                 const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=60bff7c4b3bc017974f0186538e281a6&append_to_response=videos`);
                 const data = await response.json();
 
+                // Finding the trailer from the results and setting the video key
                 const trailer = data.videos.results.find(video => video.type === 'Trailer' && video.site === 'YouTube');
-                setVideoKey(trailer ? trailer.key : null);
+                setVideoKey(trailer ? trailer.key : null); // Setting video key if trailer is found
 
-                setDetails(data);
+                setDetails(data); // Setting movie details
                 setLoading(false);
             } catch (error) {
                 console.error(`Error fetching data for ID ${id}:`, error);
@@ -26,9 +30,10 @@ function BrowsePage() {
             }
         };
 
-        fetchMovieData();
+        fetchMovieData(); // Invoking fetchMovieData function when 'id' or 'setDetails' changes
     }, [id]);
 
+     // Function to format date into a readable format
     const formatDate = (dateString) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         const date = new Date(dateString);
@@ -37,6 +42,7 @@ function BrowsePage() {
 
     const [open, setOpen] = useState(false);
 
+ // Function to add movie to watchlist
     const addToWatchlist = () => {
         const watchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
         watchlist.push(details);
@@ -44,6 +50,7 @@ function BrowsePage() {
         setOpen(true);
     };
 
+    // Function to handle Snackbar close event
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
           return;
@@ -57,6 +64,7 @@ function BrowsePage() {
         <div
             className="browse-page-container"
             style={{
+                className: 'bpImg',
                 backgroundImage: `url(https://image.tmdb.org/t/p/original${details.backdrop_path})`
             }}
         >

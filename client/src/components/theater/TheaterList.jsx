@@ -7,8 +7,10 @@ import L from "leaflet";
 
 Modal.setAppElement("#root");
 
+// Remove default Leaflet icon URLs to resolve missing icon issue
 delete L.Icon.Default.prototype._getIconUrl;
 
+// Override default Leaflet icon URLs with custom ones
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png",
   iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
@@ -16,28 +18,30 @@ L.Icon.Default.mergeOptions({
 });
 
 export default function TheaterList() {
-  const [theaters, setTheaters] = useState([]);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [selectedTheater, setSelectedTheater] = useState(null);
+  const [theaters, setTheaters] = useState([]); // State to hold theaters data
+  const [modalIsOpen, setModalIsOpen] = useState(false); // State to manage modal open/close
+  const [selectedTheater, setSelectedTheater] = useState(null); // State to hold selected theater data
 
   useEffect(() => {
     const fetchTheaters = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/theater");
-        setTheaters(response.data);
+        const response = await axios.get("http://localhost:3000/theater"); // Fetch theaters data from API
+        setTheaters(response.data); // Update theaters state with fetched data
       } catch (error) {
         console.error("Error fetching theaters:", error);
       }
     };
 
-    fetchTheaters();
+    fetchTheaters(); // Call fetchTheaters function
   }, []);
 
+   // Function to open modal and set selected theater data
   const openModal = (theater) => {
     setSelectedTheater(theater);
     setModalIsOpen(true);
   };
 
+  // Function to close modal and reset selected theater data
   const closeModal = () => {
     setModalIsOpen(false);
     setSelectedTheater(null);
@@ -80,7 +84,7 @@ export default function TheaterList() {
             <MapContainer
               center={[selectedTheater.latitude, selectedTheater.longitude]}
               zoom={15}
-              style={{ height: "500px", width: "100%" }}
+              style={{ height: "100%", width: "100%" }}
             >
               <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -3,33 +3,34 @@ import { api } from "./api";
 // waiting on showtimes and movies, 
 // might have to edit certain inputs.
 
+// Define actionsApi using api.injectEndpoints
 const actionsApi = api.injectEndpoints({
     endpoints: (builder)=>({
         // Users Actions
         getUsers: builder.query({
-            query: ()=> 'users',
+            query: ()=> 'users', // GET request to fetch all users
         }),
         getUserById: builder.query({
-            query: (id)=> `users/${id}`
+            query: (id)=> `users/${id}`  // GET request to fetch user by ID
         }),
         getUserByUsername: builder.query({
-            query: (username)=> `users/username/${username}`
+            query: (username)=> `users/username/${username}` // GET request to fetch user by username
         }),
         deleteUser:builder.mutation({
-            query:(id)=>({
+            query:(id)=>({ // DELETE request to delete user by ID
                 url:`users/${id}`,
                 method:'DELETE'
             })
         }),
         createUser: builder.mutation({
-            query:(body)=>({
+            query:(body)=>({ // POST request to create a new user
                 url:'users',
                 method:"POST",
                 body:body
             })
         }),
         updateUser: builder.mutation({
-            query(data){
+            query(data){ // PUT request to update user details
                 const {id, ...body}=data;
                 return {
                     url: `users/${id}`,
@@ -41,29 +42,29 @@ const actionsApi = api.injectEndpoints({
 
         // Theater Actions
         getTheaters: builder.query({
-            query: ()=> 'theater',
+            query: ()=> 'theater',  // GET request to fetch all theaters
         }),
-        getTheaterById: builder.query({
-            query: (id)=> `theater/${id}`
+        getTheaterById: builder.query({  
+            query: (id)=> `theater/${id}` // GET request to fetch theater by ID
         }),
-        getTheaterByLocation: builder.query({
+        getTheaterByLocation: builder.query({ // GET request to fetch theaters by location
             query: (location)=> `theater/location/${location}`
         }),
         deleteTheater:builder.mutation({
-            query:(id)=>({
+            query:(id)=>({ // DELETE request to delete theater by ID
                 url:`theater/${id}`,
                 method:'DELETE'
             })
         }),
         createTheater: builder.mutation({
-            query:(body)=>({
+            query:(body)=>({ // POST request to create a new theater
                 url:'theater',
                 method:"POST",
                 body:body
             })
         }),
         updateTheater: builder.mutation({
-            query(data){
+            query(data){ // PUT request to update theater details
                 const {id, ...body}=data;
                 return {
                     url: `theater/${id}`,
@@ -75,22 +76,22 @@ const actionsApi = api.injectEndpoints({
 
         // Reservations Actions
         getReservations: builder.query({
-            query: ()=> 'reservations',
+            query: ()=> 'reservations', // GET request to fetch all reservations
         }),
         getReservationByUserId: builder.query({
-            query: (userId)=> `reservations/user/${userId}`
+            query: (userId)=> `reservations/user/${userId}` // GET request to fetch reservations by user ID
         }),
         getReservationByTheaterId: builder.query({
-            query: (theaterId)=> `reservations/theater/${theaterId}`
+            query: (theaterId)=> `reservations/theater/${theaterId}`  // GET request to fetch reservations by theater ID
         }),
-        deleteReservation:builder.mutation({
-            query:(id)=>({
+        deleteReservation:builder.mutation({ 
+            query:(id)=>({ // DELETE request to delete reservation by ID
                 url:`reservations/${id}`,
                 method:'DELETE'
             })
         }),
         createReservation: builder.mutation({
-            query:(body, userId)=>({
+            query:(body, userId)=>({ // POST request to create a new reservation for a specific user
                 url:`reservations/user/${userId}`,
                 method:"POST",
                 body:body
@@ -99,20 +100,20 @@ const actionsApi = api.injectEndpoints({
 
         // Showtimes Actions
         getShowtimes: builder.query({
-            query: ()=> 'showtimes',
+            query: ()=> 'showtimes', // GET request to fetch all showtimes
         }),
         getShowtimesByTheaterId: builder.query({
-            query: (theaterId)=> `theater/${theaterId}/showtimes`
+            query: (theaterId)=> `theater/${theaterId}/showtimes` // GET request to fetch showtimes by theater ID
         }),
         createShowtime: builder.mutation({
-            query:(body, theaterId)=>({
+            query:(body, theaterId)=>({ // POST request to create a new showtime for a specific theater
                 url:`theater/${theaterId}/showtimes`,
                 method:"POST",
                 body:body
             })
         }),
         updateTheater: builder.mutation({
-            query(data, theaterId, showtimeId){
+            query(data, theaterId, showtimeId){ // PUT request to update showtime details
                 const {id, ...body}=data;
                 return {
                     url: `theater/${theaterId}/showtimes/${showtimeId}`,
@@ -122,14 +123,11 @@ const actionsApi = api.injectEndpoints({
             }
         }),
         deleteShowtime:builder.mutation({
-            query:(theaterId, showtimeId)=>({
+            query:(theaterId, showtimeId)=>({ // DELETE request to delete showtime by theater ID and showtime ID
                 url:`theater/${theaterId}/showtimes/${showtimeId}`,
                 method:'DELETE'
             })
         }),
-
-        // Movies Actions
-
     }),
 });
 
@@ -161,8 +159,6 @@ export const {
     getShowtimes,
     getShowtimesByTheaterId,
     deleteShowtime,
-
-    // Movies Actions
 
 
 } = actionsApi;
