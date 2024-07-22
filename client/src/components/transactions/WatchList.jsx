@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react';
 
 function Watchlist() {
-    const [watchlist, setWatchlist] = useState([]);
+    const [watchlist, setWatchlist] = useState([]); // State to hold watchlist items
 
     useEffect(() => {
+        // Fetch watchlist from local storage on component mount
         const savedWatchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
+         // Filter out duplicate items based on 'id' using Set and Array.from
         const uniqueWatchlist = Array.from(new Set(savedWatchlist.map(item => item.id)))
             .map(id => savedWatchlist.find(item => item.id === id));
+             // Set watchlist state with unique items
         setWatchlist(uniqueWatchlist);
     }, []);
 
+      // Function to remove item from watchlist
     const removeFromWatchlist = (id) => {
-        const updatedWatchlist = watchlist.filter(item => item.id !== id);
-        setWatchlist(updatedWatchlist);
+        const updatedWatchlist = watchlist.filter(item => item.id !== id); // Filter out item by id
+        setWatchlist(updatedWatchlist); // Update watchlist state
         localStorage.setItem('watchlist', JSON.stringify(updatedWatchlist));
     };
 

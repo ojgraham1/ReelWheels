@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
+// team members with their details
 const teamMembers = [
   {
     id: 1,
@@ -34,24 +35,27 @@ const teamMembers = [
 ];
 
 function AboutUs() {
-  const [selectedMember, setSelectedMember] = useState(null);
-  const [animateTitle, setAnimateTitle] = useState(false);
+  const [selectedMember, setSelectedMember] = useState(null);  // State to track selected team member
+  const [animateTitle, setAnimateTitle] = useState(false); // State for animating the title
 
   useEffect(() => {
-    setAnimateTitle(true);
+    setAnimateTitle(true); // Trigger animation when component mounts
     return () => {
       setAnimateTitle(false);
     };
   }, []);
 
+   // Function to handle click on a team member card
   const handleClick = (member) => {
-    setSelectedMember(member);
+    setSelectedMember(member); // Set the selected member when clicked
   };
 
+  // Function to close the popup
   const handleClose = () => {
-    setSelectedMember(null);
+    setSelectedMember(null); // Reset selected member to close the popup
   };
 
+  
   return (
     <div className="about-us">
     <div className="about-container">
