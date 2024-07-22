@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import {
   useGetUserByUsernameQuery,
   useGetUserByIdQuery,
@@ -11,7 +11,12 @@ import { useDispatch } from "react-redux";
 const Account = () => {
   const dispatch = useDispatch();
   const { username } = useParams();
-  const [formData, setFormData] = useState({});
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    birthMonth: "",
+    birthDay: "",
+    birthYear: "",
+  });
   const [isEditMode, setIsEditMode] = useState(false);
   const [userId, setUserId] = useState(null);
   const [reservationsLoading, setReservationsLoading] = useState(true);
@@ -34,7 +39,13 @@ const Account = () => {
 
   useEffect(() => {
     if (user) {
-      setFormData({ ...user });
+      const [birthYear, birthMonth, birthDay] = user.birthdate.split("-");
+      setFormData({
+        ...user,
+        birthMonth: String(Number(birthMonth) + 1).padStart(2, '0'),
+        birthDay: String(Number(birthDay) + 1).padStart(2, '0'),
+        birthYear,
+      });
       setUserId(user.id);
     }
   }, [user]);
@@ -66,11 +77,16 @@ const Account = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      const updatedUserData = { ...formData, id: userId };
+      const birthdateString = `${formData.birthYear}-${String(Number(formData.birthMonth)).padStart(2, '0')}-${String(Number(formData.birthDay) + 1).padStart(2, '0')}`;
+      const birthdate = new Date(`${birthdateString}T00:00:00Z`);
+      const updatedUserData = { ...formData, birthdate, id: userId };
+      delete updatedUserData.birthMonth;
+      delete updatedUserData.birthDay;
+      delete updatedUserData.birthYear;
       const data = await updateUser(updatedUserData);
       console.log(data);
       setIsEditMode(false);
-      history.go(0);
+      navigate(0);
     } catch (error) {
       console.error("Error updating user:", error);
     }
@@ -88,12 +104,17 @@ const Account = () => {
   if (userError) return <div>Error: {userError.message}</div>;
   if (!user) return <div>No user data available</div>;
 
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    const date = new Date(dateString);
+    return date.toLocaleDateString(undefined, options);
+  };
+
   return (
     <div className="accPage">
       <div className="accWrapper">
         <div className="account">
           <h1>Account Profile</h1>
-          {/* <hr></hr> */}
           <>
             {!isEditMode && (
               <div className="account-details">
@@ -117,7 +138,7 @@ const Account = () => {
                   <b>Email:</b> {user.email}
                 </p>
                 <p className="Birthdate">
-                  <b>Birthday:</b> {user.birthdate}
+                  <b>Birthday:</b> {formatDate(user.birthdate)}
                 </p>
                 <p className="Phone">
                   <b>Phone:</b> {user.phoneNumber}
@@ -182,18 +203,44 @@ const Account = () => {
                         <p className="Birthdate">
                           <b>Birthday:</b>
                         </p>
-                        <input
-                          type="text"
-                          name="birthdate"
-                          value={formData.birthdate}
-                          onChange={handleInputChange}
-                        />
+                        <div className="birthdate-inputs">
+                          <input
+                            className="birthdate-input"
+                            type="number"
+                            name="birthMonth"
+                            value={formData.birthMonth}
+                            onChange={handleInputChange}
+                            placeholder="MM"
+                            min="1"
+                            max="12"
+                          />
+                          <input
+                            className="birthdate-input"
+                            type="number"
+                            name="birthDay"
+                            value={formData.birthDay}
+                            onChange={handleInputChange}
+                            placeholder="DD"
+                            min="1"
+                            max="31"
+                          />
+                          <input
+                            className="birthdate-input"
+                            type="number"
+                            name="birthYear"
+                            value={formData.birthYear}
+                            onChange={handleInputChange}
+                            placeholder="YYYY"
+                            min="1900"
+                            max={new Date().getFullYear()}
+                          />
+                        </div>
                         <p className="Phone">
                           <b>Phone Number:</b>
                         </p>
                         <input
                           type="text"
-                          name="phone"
+                          name="phoneNumber"
                           value={formData.phoneNumber}
                           onChange={handleInputChange}
                         />
@@ -223,7 +270,7 @@ const Account = () => {
                     <hr></hr>
                     <ul>
                       {reservationsData.map((reservation) => (
-                        <li key={reservation.id}>
+                        <li className="resList" key={reservation.id}>
                           <p>Theater Location: {reservation.theaterLocation}</p>
                           <p>Movie: {reservation.movieName}</p>
                           <p>Time: {new Date(reservation.time).toLocaleString()}</p>
@@ -232,6 +279,7 @@ const Account = () => {
                             {new Date(reservation.purchaseTime).toLocaleString()}
                           </p>
                           <p>Ticket Type: {reservation.ticketType}</p>
+                          <hr></hr>
                         </li>
                       ))}
                     </ul>
@@ -243,9 +291,8 @@ const Account = () => {
             )}
           </>
         </div>
+      </div>
     </div>
-    </div>
-
   );
 };
 

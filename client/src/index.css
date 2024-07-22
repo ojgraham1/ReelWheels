@@ -1628,6 +1628,7 @@ footer .about-us-link:hover {
 }
 
 .account {
+  width: 60%;
   max-width: 1000px;
   font-family: Arial, Helvetica, sans-serif;
   color: #333333;
@@ -1734,6 +1735,15 @@ footer .about-us-link:hover {
   box-shadow: inset 5px 5px 11px rgba(0, 0, 0, 0.2), inset -5px -5px 11px rgba(255, 255, 255, 0.75);
 }
 
+.birthdate-inputs {
+  display: flex;
+  gap: 20px;
+}
+
+.birthdate-input {
+  width: 75px;
+}
+
 .reservation-history ul {
   list-style-type: none;
   padding: 0;
@@ -1747,6 +1757,45 @@ footer .about-us-link:hover {
   margin: 0;
 }
 
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .account {
+    width: 270px;
+  }
+  .edit-details input {
+    width: 90%;
+  }
+  .edit-details button {
+    width: 290px;
+  }
+  .birthdate-inputs {
+    gap: 10px;
+  }
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .account {
+    width: 400px;
+  }
+  .edit-details input {
+    width: 90%;
+  }
+  .edit-details button {
+    width: 390px;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .account {
+    width: 700px;
+  }
+  .edit-details input {
+    width: 90%;
+  }
+  .edit-details button {
+    width: 690px;
+  }
+  .birthdate-inputs {
+    width: 400px;
+  }
+}
 /*login*/
 .lgcontainer {
   display: flex;
