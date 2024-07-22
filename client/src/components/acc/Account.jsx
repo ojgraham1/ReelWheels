@@ -89,158 +89,163 @@ const Account = () => {
   if (!user) return <div>No user data available</div>;
 
   return (
-    <div className="account">
-      <h1>Account Profile</h1>
-      <hr></hr>
-      <>
-        {!isEditMode && (
-          <div className="account-details">
-            <h3>
-              <b>Personal Information</b>
-            </h3>
-            <hr />
-            <p className="Username">
-              <b>Username:</b> {user.username}
-            </p>
-            <p className="First">
-              <b>First Name:</b> {user.firstName}
-            </p>
-            <p className="Last">
-              <b>Last Name:</b> {user.lastName}
-            </p>
-            <p className="Address">
-              <b>Address:</b> {user.address}
-            </p>
-            <p className="Email">
-              <b>Email:</b> {user.email}
-            </p>
-            <p className="Birthdate">
-              <b>Birthday:</b> {user.birthdate}
-            </p>
-            <p className="Phone">
-              <b>Phone:</b> {user.phoneNumber}
-            </p>
-            <button onClick={toggleEditMode}>Edit Profile Details</button>
-          </div>
-        )}
-        {isEditMode && (
-          <form onSubmit={handleFormSubmit}>
-            <div className="edit-details">
-              <div key={user.id}>
-                <ul>
-                  <div className="detail">
-                    <h3>
-                      <b>Account Details</b>
-                    </h3>
-                    <p>
-                      <b>Username:</b>
-                    </p>
-                    <input
-                      type="text"
-                      name="username"
-                      value={formData.username}
-                      onChange={handleInputChange}
-                    />
-                    <p className="First">
-                      <b>First Name:</b>
-                    </p>
-                    <input
-                      type="text"
-                      name="firstName"
-                      value={formData.firstName}
-                      onChange={handleInputChange}
-                    />
-                    <p className="Last">
-                      <b>Last Name:</b>
-                    </p>
-                    <input
-                      type="text"
-                      name="lastName"
-                      value={formData.lastName}
-                      onChange={handleInputChange}
-                    />
-                    <p className="Address">
-                      <b>Address:</b>
-                    </p>
-                    <input
-                      type="text"
-                      name="address"
-                      value={formData.address}
-                      onChange={handleInputChange}
-                    />
-                    <p className="Email">
-                      <b>Email:</b>
-                    </p>
-                    <input
-                      type="text"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                    />
-                    <p className="Birthdate">
-                      <b>Birthday:</b>
-                    </p>
-                    <input
-                      type="text"
-                      name="birthdate"
-                      value={formData.birthdate}
-                      onChange={handleInputChange}
-                    />
-                    <p className="Phone">
-                      <b>Phone Number:</b>
-                    </p>
-                    <input
-                      type="text"
-                      name="phone"
-                      value={formData.phoneNumber}
-                      onChange={handleInputChange}
-                    />
-                    <br></br>
-                    <button type="button" onClick={handleGoBack}>
-                      Go Back
-                    </button>
-                    <button type="submit">Update Details</button>
-                  </div>
-                </ul>
-              </div>
-            </div>
-          </form>
-        )}
-
-        {!isEditMode && (
-          <div className="reservation-history">
-            {reservationsLoading ? (
-              <div>Loading reservations...</div>
-            ) : reservationsError ? (
-              <div>Error: {reservationsError.message}</div>
-            ) : reservationsData ? (
-              <div>
+    <div className="accPage">
+      <div className="accWrapper">
+        <div className="account">
+          <h1>Account Profile</h1>
+          {/* <hr></hr> */}
+          <>
+            {!isEditMode && (
+              <div className="account-details">
                 <h3>
-                  <b>Reservation History</b>
+                  <b>Personal Information</b>
                 </h3>
-                <hr></hr>
-                <ul>
-                  {reservationsData.map((reservation) => (
-                    <li key={reservation.id}>
-                      <p>Theater Location: {reservation.theaterLocation}</p>
-                      <p>Movie: {reservation.movieName}</p>
-                      <p>Time: {new Date(reservation.time).toLocaleString()}</p>
-                      <p>
-                        Purchase Time:{" "}
-                        {new Date(reservation.purchaseTime).toLocaleString()}
-                      </p>
-                      <p>Ticket Type: {reservation.ticketType}</p>
-                    </li>
-                  ))}
-                </ul>
+                <hr />
+                <p className="Username">
+                  <b>Username:</b> {user.username}
+                </p>
+                <p className="First">
+                  <b>First Name:</b> {user.firstName}
+                </p>
+                <p className="Last">
+                  <b>Last Name:</b> {user.lastName}
+                </p>
+                <p className="Address">
+                  <b>Address:</b> {user.address}
+                </p>
+                <p className="Email">
+                  <b>Email:</b> {user.email}
+                </p>
+                <p className="Birthdate">
+                  <b>Birthday:</b> {user.birthdate}
+                </p>
+                <p className="Phone">
+                  <b>Phone:</b> {user.phoneNumber}
+                </p>
+                <button onClick={toggleEditMode}>Edit Profile Details</button>
               </div>
-            ) : (
-              <div>No Reservations Found</div>
             )}
-          </div>
-        )}
-      </>
+            {isEditMode && (
+              <form onSubmit={handleFormSubmit}>
+                <div className="edit-details">
+                  <div key={user.id}>
+                    <ul>
+                      <div className="detail">
+                        <h3>
+                          <b>Account Details</b>
+                        </h3>
+                        <p>
+                          <b>Username:</b>
+                        </p>
+                        <input
+                          type="text"
+                          name="username"
+                          value={formData.username}
+                          onChange={handleInputChange}
+                        />
+                        <p className="First">
+                          <b>First Name:</b>
+                        </p>
+                        <input
+                          type="text"
+                          name="firstName"
+                          value={formData.firstName}
+                          onChange={handleInputChange}
+                        />
+                        <p className="Last">
+                          <b>Last Name:</b>
+                        </p>
+                        <input
+                          type="text"
+                          name="lastName"
+                          value={formData.lastName}
+                          onChange={handleInputChange}
+                        />
+                        <p className="Address">
+                          <b>Address:</b>
+                        </p>
+                        <input
+                          type="text"
+                          name="address"
+                          value={formData.address}
+                          onChange={handleInputChange}
+                        />
+                        <p className="Email">
+                          <b>Email:</b>
+                        </p>
+                        <input
+                          type="text"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                        />
+                        <p className="Birthdate">
+                          <b>Birthday:</b>
+                        </p>
+                        <input
+                          type="text"
+                          name="birthdate"
+                          value={formData.birthdate}
+                          onChange={handleInputChange}
+                        />
+                        <p className="Phone">
+                          <b>Phone Number:</b>
+                        </p>
+                        <input
+                          type="text"
+                          name="phone"
+                          value={formData.phoneNumber}
+                          onChange={handleInputChange}
+                        />
+                        <br></br>
+                        <button type="button" onClick={handleGoBack}>
+                          Go Back
+                        </button>
+                        <button type="submit">Update Details</button>
+                      </div>
+                    </ul>
+                  </div>
+                </div>
+              </form>
+            )}
+
+            {!isEditMode && (
+              <div className="reservation-history">
+                {reservationsLoading ? (
+                  <div>Loading reservations...</div>
+                ) : reservationsError ? (
+                  <div>Error: {reservationsError.message}</div>
+                ) : reservationsData ? (
+                  <div>
+                    <h3>
+                      <b>Reservation History</b>
+                    </h3>
+                    <hr></hr>
+                    <ul>
+                      {reservationsData.map((reservation) => (
+                        <li key={reservation.id}>
+                          <p>Theater Location: {reservation.theaterLocation}</p>
+                          <p>Movie: {reservation.movieName}</p>
+                          <p>Time: {new Date(reservation.time).toLocaleString()}</p>
+                          <p>
+                            Purchase Time:{" "}
+                            {new Date(reservation.purchaseTime).toLocaleString()}
+                          </p>
+                          <p>Ticket Type: {reservation.ticketType}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : (
+                  <div>No Reservations Found</div>
+                )}
+              </div>
+            )}
+          </>
+        </div>
     </div>
+    </div>
+
   );
 };
 

@@ -1,14 +1,26 @@
 /*account*/
-
+.accPage{
+  // margin: 20px;
+  margin-bottom: 75px;
+}
+.accWrapper{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
 .account {
-  margin-top: 50px;
-  max-width: 2000px;
-  padding: 20px;
-  background-color: #ffffff;
+  max-width: 1000px;
   font-family: Arial, Helvetica, sans-serif;
   color: #333333;
-  height: 100%;
-  background-color: #f3f4f6;
+  background-color: #e0e0e0;
+  height: auto;
+  margin: 1rem;
+  margin-top: 100px;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow:
+  10px 10px 22px rgba(104, 104, 104, 0.479),
+  -10px -10px 22px rgba(255, 255, 255, 0.75);
 }
 
 .account button {
@@ -25,7 +37,17 @@
 .account button:hover {
   color: #800000;
 }
-
+.account h1{
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-align: center;
+}
+.account h3{
+  font-size: 20px;
+  font-weight: 500;
+  color: #d10000;;
+}
 .account h1,
 .account h3 {
   margin-bottom: 10px;
@@ -41,25 +63,71 @@
 .reservation-history {
   margin-bottom: 20px;
 }
-
+.edit-details{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.detail{
+  margin-left: -40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
 .edit-details input {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #cccccc;
+  // width: 100%;
+  // padding: 8px;
+  // margin-bottom: 10px;
+  // border: 1px solid #cccccc;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  background: none;
+  background-color: #e0e0e0;
+  padding: 0.8rem 1.1rem;
+  border-radius: 20px;
+  margin: 0.5rem 0 1rem 0;
+  font-size: 1.2rem;
+  color: #d10000;;
+  box-shadow:
+    inset 5px 5px 11px rgba(0, 0, 0, 0.2),
+    inset -5px -5px 11px rgba(255, 255, 255, 0.75);
+
 }
 
 .edit-details button {
-  padding: 10px 20px;
-  margin-right: 10px;
-  background-color: #ec1c24;
-  color: white;
+  // padding: 10px 20px;
+  // margin-right: 10px;
+  // background-color: #ec1c24;
+  // color: white;
+  // border: none;
+  // cursor: pointer;
   border: none;
+  outline: none;
+  background: none;
+  width: 775px;
+  margin: 0.6rem 0 1rem 0;
   cursor: pointer;
+  font-size: 1.2rem;
+  color: #d10000;;
+  text-transform: capitalize;
+  padding: 0.9rem;
+  border-radius: 20px;
+  background-color: #e0e0e0;
+  box-shadow:
+    10px 10px 22px rgba(0, 0, 0, 0.2),
+    -10px -10px 22px rgba(255, 255, 255, 0.75);
+
 }
 
 .edit-details button:hover {
-  opacity: 0.8;
+  // opacity: 0.8;
+  box-shadow:
+    inset 5px 5px 11px rgba(0, 0, 0, 0.2),
+    inset -5px -5px 11px rgba(255, 255, 255, 0.75);
 }
 
 .reservation-history ul {
