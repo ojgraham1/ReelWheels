@@ -11,7 +11,12 @@ export const SearchResultsList = ({
         {nowPlayingResults && nowPlayingResults.length > 0 && (
           <div className="nowPlaying-Result-List">
             {nowPlayingResults.map((nowPlayingResult, id) => {
-              return <SearchResult result={nowPlayingResult.title} key={id} />;
+              return (
+                <SearchResult
+                  result={nowPlayingResult.title}
+                  key={id}
+                ></SearchResult>
+              );
             })}
           </div>
         )}
@@ -29,7 +34,6 @@ export const SearchResultsList = ({
             })}
           </div>
         )}
-        ;
       </div>
     </div>
   );

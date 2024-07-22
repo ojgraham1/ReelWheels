@@ -79,14 +79,14 @@ export default function SearchBar() {
         {nowPlayingResults && nowPlayingResults.length > 0 && (
           <SearchResultsList nowPlayingResults={nowPlayingResults} />
         )}
-      </div>
-      <div className="search-browse-results">
+        {/* </div> */}
+        {/* <div className="search-browse-results"> */}
         {/* <h1>All Movies</h1> */}
         {browseResults && browseResults.length > 0 && (
           <SearchResultsList browseResults={browseResults} />
         )}
-      </div>
-      <div className="search-browse-results">
+        {/* </div> */}
+        {/* <div className="search-browse-results"> */}
         {/* <h1>TV Shows</h1> */}
         {tvResults && tvResults.length > 0 && (
           <SearchResultsList tvResults={tvResults} />
