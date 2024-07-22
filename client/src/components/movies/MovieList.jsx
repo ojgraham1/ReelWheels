@@ -26,7 +26,33 @@ const MovieList = () => {
     const fetchMovies = async () => {
       try {
         const response = await axios.get("http://localhost:3000/api/movies");
-        setMovies(response.data);
+        const movies = response.data;
+
+        // Get user's current location
+        navigator.geolocation.getCurrentPosition(async (position) => {
+          const { latitude, longitude } = position.coords;
+
+          // Fetch showtimes for the nearest theater for each movie
+          const moviesWithShowtimes = await Promise.all(
+            movies.map(async (movie) => {
+              const response = await axios.post(
+                "http://localhost:3000/showtimes/nearest",
+                {
+                  latitude,
+                  longitude,
+                  movieId: movie.id,
+                }
+              );
+              return { ...movie, showtimes: response.data };
+            })
+          );
+
+          // Sort movies based on whether they have showtimes
+          moviesWithShowtimes.sort(
+            (a, b) => b.showtimes.length - a.showtimes.length
+          );
+          setMovies(moviesWithShowtimes);
+        });
       } catch (error) {
         console.error("Error fetching movies:", error);
       }
@@ -164,12 +190,14 @@ const MovieList = () => {
                     <h2 className="mLT">{movie.title}</h2>
                     <p className="mLO">{movie.overview}</p>
                     <div className="buttonGT">
-                      <button
-                        className="button-Get-Tickets"
-                        onClick={() => handleGetTicketsClick(movie.id)}
-                      >
-                        <FontAwesomeIcon icon={faTicket} /> Get Tickets
-                      </button>
+                      {movie.showtimes.length > 0 && (
+                        <button
+                          className="button-Get-Tickets"
+                          onClick={() => handleGetTicketsClick(movie.id)}
+                        >
+                          <FontAwesomeIcon icon={faTicket} /> Get Tickets
+                        </button>
+                      )}
                       <div className="mLBtn">
                         <Link className="mLink" to={`/movies/${movie.id}`}>
                           <button className="mv-btn-link">
