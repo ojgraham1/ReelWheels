@@ -550,6 +550,22 @@ footer .about-us-link:hover {
     justify-content: space-between;
   }
 }
+@media screen and (min-width: 5120px) and (max-width: 5279px) {
+  .slideshow {
+    margin: 100px 0;
+  }
+  .slide {
+    height: 1000px;
+  }
+  .overlayTitle {
+    font-size: 3rem;
+  }
+  .button-Get-Tickets {
+    height: 50px;
+    width: 150px;
+    font-size: 18px;
+  }
+}
 /* Movie Page */
 .movie-page-container {
   position: relative;
