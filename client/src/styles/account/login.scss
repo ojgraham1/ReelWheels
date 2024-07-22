@@ -1,23 +1,30 @@
+
 /*login*/
 .lgcontainer {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f3f4f6;
+  background-color: #00000000;
 }
 
 .signin-container {
+  background-color: #e0e0e0;
   width: 400px;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  height: auto;
+  margin: 1rem;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow:
+  10px 10px 22px rgba(104, 104, 104, 0.479),
+  -10px -10px 22px rgba(255, 255, 255, 0.75);
 }
 
 .signin-header {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  font-weight: 500;
   text-align: center;
-  margin-bottom: 20px;
 }
 
 .signin-header h1 {
@@ -38,27 +45,42 @@
 
 input[type="text"],
 input[type="password"] {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: none;
   outline: none;
+  background: none;
+  background-color: #e0e0e0;
+  padding: 0.8rem 1.1rem;
+  border-radius: 20px;
+  margin: 0.5rem 0 1rem 0;
+  font-size: 1.2rem;
+  color: #d10000;;
+  box-shadow:
+    inset 5px 5px 11px rgba(0, 0, 0, 0.2),
+    inset -5px -5px 11px rgba(255, 255, 255, 0.75);
 }
 
 .signin-btn {
-  background-color: red;
-  color: #fff;
   border: none;
-  padding: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  border-radius: 4px;
+  outline: none;
+  background: none;
+  width: 100%;
+  margin: 0.6rem 0 1rem 0;
   cursor: pointer;
+  font-size: 1.2rem;
+  color: #d10000;;
+  text-transform: capitalize;
+  padding: 0.9rem;
+  border-radius: 20px;
+  background-color: #e0e0e0;
+  box-shadow:
+    10px 10px 22px rgba(0, 0, 0, 0.2),
+    -10px -10px 22px rgba(255, 255, 255, 0.75);
 }
 
 .signin-btn:hover {
-  background-color: #800000;
+  box-shadow:
+    inset 5px 5px 11px rgba(0, 0, 0, 0.2),
+    inset -5px -5px 11px rgba(255, 255, 255, 0.75);
 }
 
 .signin-footer {
@@ -72,7 +94,7 @@ input[type="password"] {
 }
 
 .signin-footer a {
-  color: red;
+  color: #d10000;;
   text-decoration: none;
   font-weight: 600;
 }

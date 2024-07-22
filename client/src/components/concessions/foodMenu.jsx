@@ -19,7 +19,7 @@ const useStyles = makeStyles({
     flexDirection: "column",
     justifyContent: "center",
     margin: "30px 0",
-    backgroundColor: "black",
+    width: "100%",
   },
   videoContainer: {
     display: "flex",
@@ -27,7 +27,7 @@ const useStyles = makeStyles({
     justifyContent: "center",
     marginLeft: "-115px",
     paddingTop: "50px",
-    width: "fit-content",
+    width: "120%",
     backgroundColor: "black",
   },
   mediaItem: {
@@ -50,7 +50,7 @@ const useStyles = makeStyles({
     marginTop: "20px",
     padding: "10px",
     paddingLeft: "20px",
-    width: "1359px",
+    width: "max-content",
     height: "200px",
     backgroundColor: "black",
     fontSize:"80px",
@@ -64,7 +64,7 @@ const useStyles = makeStyles({
     fontWeight: "none",
   },
   img: {
-    width: "120%",
+    width: "100%",
     height: "auto",
     backgroundAttachment: "fixed",
     transition: "0.5s ease",
