@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,6 +10,10 @@ const MovieList = () => {
   const [movies, setMovies] = useState([]);
   const [showtimes, setShowtimes] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [index, setIndex] = useState(0);
+  const timeoutRef = useRef(null);
+
+  const delay = 5000;
 
   useEffect(() => {
     // slideshow
@@ -37,11 +41,7 @@ const MovieList = () => {
             movies.map(async (movie) => {
               const response = await axios.post(
                 "http://localhost:3000/showtimes/nearest",
-                {
-                  latitude,
-                  longitude,
-                  movieId: movie.id,
-                }
+                { latitude, longitude, movieId: movie.id }
               );
               return { ...movie, showtimes: response.data };
             })
@@ -62,15 +62,11 @@ const MovieList = () => {
     fetchMovies();
   }, []);
 
-  const delay = 5000;
-  const [index, setIndex] = useState(0);
-  const timeoutRef = React.useRef(null);
-
-  function resetTimeout() {
+  const resetTimeout = () => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
-  }
+  };
 
   useEffect(() => {
     resetTimeout();
@@ -86,7 +82,6 @@ const MovieList = () => {
       resetTimeout();
     };
   }, [index, movieSlide.length]);
-
 
   const handleGetTicketsClick = async (movieId) => {
     try {
@@ -113,68 +108,54 @@ const MovieList = () => {
 
   return (
     <div className="mLContainer">
-      <ul className="movie-list-container">
-        <div className="slideshow">
-          <div
-            className="slideshowSlider"
-            style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
-          >
-            <div className="slideshowComponent">
-              {movieSlide.map((movie, index) => (
-                <div
-                  className="slide"
-                  key={index}
-                  style={{
-                    backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`                
-                  }}
-                >
-                  <div className="overlay">
-                    <div className="overlay-content">
-                      <div className="overlay-info">
-                        <h2 className='overlayTitle'>{movie.title}</h2>
-                          <div className='overlayBtn'>
-                            <Link className="mLink" to={`/movies/${movie.id}`}>
-                              <button className="button-Get-Tickets">
-                                See More Info
-                              </button>
-                            </Link>
-                          </div>
-                          {/* <div className="overlayDots">
-                            <div className="slideshowDots">
-                              {movieSlide.map((_, idx) => (
-                                <div
-                                  key={idx}
-                                  className={`slideshowDot${index === idx ? " active" : ""}`}
-                                  onClick={() => {
-                                  setIndex(idx);
-                                  }}
-                                ></div>
-                              ))}
-                            </div>
-                          </div> */}
-                        </div>
-                      </div>
+      <div className="slideshow">
+        <div
+          className="slideshowSlider"
+          style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
+        >
+          {movieSlide.map((movie, idx) => (
+            <div
+              className="slide"
+              key={idx}
+              style={{
+                backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
+              }}
+            >
+              <div className="overlay">
+                <div className="overlay-content">
+                  <div className="overlay-info">
+                    <h2 className="overlayTitle">{movie.title}</h2>
+                    <div className="overlayBtn">
+                      <Link className="mLink" to={`/movies/${movie.id}`}>
+                        <button className="button-Get-Tickets">
+                          See More Info
+                        </button>
+                      </Link>
                     </div>
-                  </div>                
-                ))}
+                  </div>
+                </div>
               </div>
             </div>
-          <div className="overlayDots">
-            <div className="slideshowDots">
-              {movieSlide.map((_, idx) => (
-                <div
-                  key={idx}
-                  className={`slideshowDot${index === idx ? " active" : ""}`}
-                  onClick={() => {
+          ))}
+        </div>
+        <div className="overlayDots">
+          <div className="slideshowDots">
+            {movieSlide.map((_, idx) => (
+              <div
+                key={idx}
+                className={`slideshowDot${index === idx ? " active" : ""}`}
+                onClick={() => {
                   setIndex(idx);
-                  }}
-                ></div>
-              ))}
-            </div>
+                }}
+              ></div>
+            ))}
           </div>
         </div>
+      </div>
+
+      <ul className="movie-list-container">
         <div className="mLWrapper">
-        <h1 className="mLHeading">IN THEATERS NOW</h1>
+          <h1 className="mLHeading">IN THEATERS NOW</h1>
           <div className="mlCard-Container">
             {movies.map((movie) => (
               <div className="mlCard" key={movie.id}>

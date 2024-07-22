@@ -168,86 +168,72 @@ footer .about-us-link:hover {
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  margin: 50px;
-  margin-top: 80px;
+  margin: 50px 0;
   overflow: hidden;
-  width: max-content;
+  width: 100%;
   position: relative;
 }
 
 .slideshowSlider {
-  white-space: nowrap;
+  display: flex;
   transition: ease 1500ms;
 }
 
 .slide {
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-size: contain;
-  overflow: hidden;
-  overflow-x: hidden;
-  padding: 10px;
+  flex-shrink: 0;
   width: 100%;
+  height: 650px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  position: relative;
 }
 
 .overlay {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  background: none;
 }
 
 .overlay-content {
   color: white;
-  text-align: end;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  position: relative;
-  z-index: 1;
-  width: 100%;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0);
+  border-radius: 10px;
 }
 
 .overlay-info {
-  margin-top: 520px;
   text-align: left;
-  width: 100%;
+  margin-bottom: 20px;
 }
 
 .overlayTitle {
-  margin-right: 20px;
-  margin-left: 20px;
-  margin: 20px;
-  margin-bottom: 10px;
+  margin: 0;
   color: rgb(255, 255, 255);
   text-shadow: -1px 1px 15px #000000;
 }
 
 .overlayBtn {
-  margin-left: 20px;
+  margin-top: 10px;
 }
 
-/* Buttons for Slideshow in Home Page */
 .overlayDots {
   display: flex;
-  width: 300px;
   justify-content: center;
-  bottom: -4%;
-  margin-left: 350px;
-  z-index: 3;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  z-index: 2;
 }
 
 .slideshowDots {
-  text-align: center;
-  position: relative;
-  top: -50px;
-  bottom: 0px;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   gap: 10px;
 }
 
 .slideshowDot {
-  margin: 15px 7px 0px;
   width: 10px;
   height: 10px;
   background-color: white;
