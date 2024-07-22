@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import YouTube from 'react-youtube';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlay } from '@fortawesome/free-regular-svg-icons';
-import ShowtimesMovie from '../showtimes/ShowtimesMovie';
 
 function MoviePage() {
     const { id } = useParams();
@@ -46,6 +45,7 @@ function MoviePage() {
             <div
                 className="movie-page-container"
                 style={{
+                    className: 'mpImg',
                     backgroundImage: `url(https://image.tmdb.org/t/p/original${details.backdrop_path})`
                 }}
             >

@@ -4,7 +4,6 @@ import { setToken } from "./api/sliceAuth";
 import { Routes, Route } from "react-router-dom";
 
 import NavBar from "./components/directory/NavBar";
-import Home from "./components/directory/Home";
 import Theaters from "./components/theater/TheaterList";
 import Concessions from "./components/concessions/foodMenu";
 import Browse from "./components/movies/BrowseList";
@@ -13,7 +12,6 @@ import BrowseTvPage from "./components/movies/BrowseTvPage";
 import MovieList from "./components/movies/MovieList";
 import MoviePage from "./components/movies/MoviePage";
 import Watchlist from "./components/transactions/WatchList";
-import Cart from "./components/transactions/Cart";
 import Register from "./components/acc/Register";
 import Login from "./components/acc/Login";
 import Account from "./components/acc/Account";
@@ -41,16 +39,14 @@ function App() {
     <div className="App">
       <NavBar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<MovieList />} />
+        <Route path="/movies/:id" element={<MoviePage />} />
         <Route path="/theaters" element={<Theaters />} />
         <Route path="/concessions" element={<Concessions />} />
         <Route path="/browse" element={<Browse />} />
         <Route path="/browse/:id" element={<BrowsePage />} />
         <Route path="/browse/tv/:id" element={<BrowseTvPage />} />
-        <Route path="/movies" element={<MovieList />} />
-        <Route path="/movies/:id" element={<MoviePage />} />
         <Route path="/watchlist" element={<Watchlist />} />
-        <Route path="/cart" element={<Cart />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route

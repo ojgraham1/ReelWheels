@@ -57,7 +57,7 @@
   color: white;
   text-align: center;
   padding: 2px;
-  z-index: 1;
+  z-index: 2;
 }
 .theater-location {
   padding: 2px;
@@ -68,4 +68,54 @@
   font-size: 1.2rem;
   font-weight: 100;
   background: rgba(140, 140, 140, 0.168);
+}
+
+// Mobile Devices
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .theater-list-container{
+    margin: 20px;
+    margin-top: 100px;
+    margin-bottom: 80px;
+  }
+  .theater-card{
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+  }
+}
+
+// iPads and Tablets
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .theater-list-container{
+    margin: 20px;
+    margin-top: 100px;
+    margin-bottom: 80px;
+  }
+  .theater-card{
+    width: 175px;
+    height: 175px;
+    margin: 10px;
+  }
+}
+
+// Small Screens and Laptops
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .theater-list-container{
+    margin: 20px;
+    margin-top: 100px;
+    margin-bottom: 80px;
+  }
+  .theater-card{
+    width: 225px;
+    height: 225px;
+    margin: 10px;
+  }
+}
+
+// Desktops and Large Screens
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+}
+
+// Extra large screens
+@media screen and (min-width: 1201px) {
 }

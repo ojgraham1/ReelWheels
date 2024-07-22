@@ -66,28 +66,39 @@ const ShowtimesModal = ({ showtimes, onClose }) => {
         </span>
         <h2>Showtimes</h2>
         {showtimes.length > 0 ? (
-          <ul>
+          <ul className="showtime-list">
             {showtimes.map((showtime) => (
-              <li key={showtime.id}>
-                {new Date(showtime.times).toLocaleString()}
-                <div>
-                  <label htmlFor="ticketType">Select Ticket Type:</label>
-                  <select
-                    id="ticketType"
-                    value={selectedTicketType}
-                    onChange={handleTicketTypeChange}
-                  >
-                    <option value="general">General Admission</option>
-                    <option value="carpass">Car Pass</option>
-                  </select>
-                  <label htmlFor="quantity">Quantity:</label>
-                  <input
-                    type="number"
-                    id="quantity"
-                    value={quantity}
-                    onChange={handleQuantityChange}
-                    min="1"
-                  />
+              <li key={showtime.id} className="showtime-item">
+                <div className="showtime-box">
+                  {new Date(showtime.times).toLocaleString([], {
+                    weekday: "long",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    hour12: true,
+                  })}
+                </div>
+                <div className="showtime-details">
+                  <div>
+                    <label htmlFor="ticketType">Ticket Type:</label>
+                    <select
+                      id="ticketType"
+                      value={selectedTicketType}
+                      onChange={handleTicketTypeChange}
+                    >
+                      <option value="general">General Admission</option>
+                      <option value="carpass">Car Pass</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="quantity">Quantity:</label>
+                    <input
+                      type="number"
+                      id="quantity"
+                      value={quantity}
+                      onChange={handleQuantityChange}
+                      min="1"
+                    />
+                  </div>
                   <button onClick={() => handleReserveTickets(showtime.id)}>
                     Reserve
                   </button>
