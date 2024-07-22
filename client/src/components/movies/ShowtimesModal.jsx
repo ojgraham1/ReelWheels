@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import "./ShowtimesModal.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 
 const ShowtimesModal = ({ showtimes, onClose }) => {
   const [selectedTicketType, setSelectedTicketType] = useState("general"); // State to manage selected ticket type
@@ -61,15 +63,15 @@ const ShowtimesModal = ({ showtimes, onClose }) => {
   return (
     <div className="modal">
       <div className="modal-content">
-        <span className="close-button" onClick={onClose}>
+        <span className="modal-close-button" onClick={onClose}>
           &times;
         </span>
         <h2>Showtimes</h2>
         {showtimes.length > 0 ? (
-          <ul className="showtime-list">
+          <ul className="modal-showtime-list">
             {showtimes.map((showtime) => (
-              <li key={showtime.id} className="showtime-item">
-                <div className="showtime-box">
+              <li key={showtime.id} className="modal-showtime-item">
+                <div className="modal-showtime-box">
                   {new Date(showtime.times).toLocaleString([], {
                     weekday: "long",
                     hour: "2-digit",
@@ -77,7 +79,7 @@ const ShowtimesModal = ({ showtimes, onClose }) => {
                     hour12: true,
                   })}
                 </div>
-                <div className="showtime-details">
+                <div className="modal-showtime-details">
                   <div>
                     <label htmlFor="ticketType">Ticket Type:</label>
                     <select
@@ -97,9 +99,13 @@ const ShowtimesModal = ({ showtimes, onClose }) => {
                       value={quantity}
                       onChange={handleQuantityChange}
                       min="1"
+                      max={selectedTicketType === "carpass" ? "1" : undefined}
                     />
                   </div>
-                  <button onClick={() => handleReserveTickets(showtime.id)}>
+                  <button
+                    onClick={() => handleReserveTickets(showtime.id)}
+                    className="modal-button"
+                  >
                     Reserve
                   </button>
                 </div>
@@ -109,6 +115,11 @@ const ShowtimesModal = ({ showtimes, onClose }) => {
         ) : (
           <p>No showtimes available.</p>
         )}
+        <div className="modal-filler-message">
+          <FontAwesomeIcon icon={faExclamationTriangle} className="icon" />
+          Please note that your spot is not fully guaranteed until your ticket
+          is purchased at the drive-in.
+        </div>
       </div>
     </div>
   );
