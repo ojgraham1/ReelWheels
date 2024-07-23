@@ -23,66 +23,49 @@ function Browse() {
   );
   const [currentPage, setCurrentPage] = useState(1); // Pagination: current page state
 
-  // Function to fetch movies based on category and page number
-  const fetchMovies = (page = 1) => {
-    fetch(
-      `https://api.themoviedb.org/3/discover/movie?&page=${page}&api_key=60bff7c4b3bc017974f0186538e281a6`
-    )
-      .then((res) => res.json())
-      .then((json) => {
-        setBrowseMovies(json.results);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching movies:", error);
-        setLoading(false);
-      });
-  };
+  // Function to fetch items based on category and page number
+  const fetchItems = (category, page = 1) => {
+    let url = "";
+    switch (category) {
+      case "movies":
+        url = `https://api.themoviedb.org/3/discover/movie?&page=${page}&api_key=60bff7c4b3bc017974f0186538e281a6`;
+        break;
+      case "topRated":
+        url = `https://api.themoviedb.org/3/movie/top_rated?&page=${page}&api_key=60bff7c4b3bc017974f0186538e281a6`;
+        break;
+      case "tv":
+        url = `https://api.themoviedb.org/3/discover/tv?&page=${page}&api_key=60bff7c4b3bc017974f0186538e281a6`;
+        break;
+      case "upcoming":
+        url = `https://api.themoviedb.org/3/movie/upcoming?&page=${page}&api_key=60bff7c4b3bc017974f0186538e281a6`;
+        break;
+      default:
+        break;
+    }
 
-  // Function to fetch top rated movies
-  const fetchTopRated = () => {
-    fetch(
-      "https://api.themoviedb.org/3/movie/top_rated?&api_key=60bff7c4b3bc017974f0186538e281a6"
-    )
+    fetch(url)
       .then((res) => res.json())
       .then((json) => {
-        setBrowseTopRated(json.results);
+        switch (category) {
+          case "movies":
+            setBrowseMovies(json.results);
+            break;
+          case "topRated":
+            setBrowseTopRated(json.results);
+            break;
+          case "tv":
+            setBrowseTv(json.results);
+            break;
+          case "upcoming":
+            setBrowseUpcoming(json.results);
+            break;
+          default:
+            break;
+        }
         setLoading(false);
       })
       .catch((error) => {
-        console.error("Error fetching Top-Rated movies:", error);
-        setLoading(false);
-      });
-  };
-
-  // Function to fetch TV shows based on category and page number
-  const fetchTv = (page = 1) => {
-    fetch(
-      `https://api.themoviedb.org/3/discover/tv?${page}&api_key=60bff7c4b3bc017974f0186538e281a6`
-    )
-      .then((res) => res.json())
-      .then((json) => {
-        setBrowseTv(json.results);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching TV shows:", error);
-        setLoading(false);
-      });
-  };
-
-  // Function to fetch upcoming movies based on category and page number
-  const fetchUpcoming = (page = 1) => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/upcoming?language=en-US&${page}&api_key=60bff7c4b3bc017974f0186538e281a6`
-    )
-      .then((res) => res.json())
-      .then((json) => {
-        setBrowseUpcoming(json.results);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching Upcoming movies:", error);
+        console.error(`Error fetching ${category} items:`, error);
         setLoading(false);
       });
   };
@@ -90,6 +73,8 @@ function Browse() {
   // Function to handle category change
   const handleCategoryChange = (category) => {
     setActiveCategory(category);
+    setCurrentPage(1);
+    setLoading(true);
   };
 
   // Function to toggle item in watchlist
@@ -109,13 +94,10 @@ function Browse() {
     return watchlist.some((item) => item.id === id);
   };
 
-  // Effect to fetch data on component mount and when currentPage changes
+  // Effect to fetch data on component mount and when currentPage or activeCategory changes
   useEffect(() => {
-    fetchMovies(currentPage);
-    fetchTopRated();
-    fetchTv(currentPage);
-    fetchUpcoming(currentPage);
-  }, [currentPage]); // Dependency array ensures useEffect runs when currentPage changes
+    fetchItems(activeCategory, currentPage);
+  }, [currentPage, activeCategory]);
 
   return (
     <div className="bmContainer">
