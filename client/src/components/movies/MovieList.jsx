@@ -15,7 +15,7 @@ const MovieList = () => {
   const timeoutRef = useRef(null);
 
   const delay = 5000;
-console.log(process.env.NODE_ENV)
+
   useEffect(() => {
     // slideshow
     const fetchMovieSlide = async () => {
@@ -158,14 +158,10 @@ console.log(process.env.NODE_ENV)
         <div className="qrCodeContainer">
           <div className="logoVContainer">
             <div className="qrCodeContent">
-            <div className="logoOverlay">
-              <h1>Go Mobile!</h1>
-                <img 
-                  className="qrCode"
-                  src="../../frame.png"
-                  alt="qrCode"
-                />
-            </div>
+              <div className="logoOverlay">
+                <h1>Go Mobile!</h1>
+                <img className="qrCode" src="../../frame.png" alt="qrCode" />
+              </div>
             </div>
           </div>
         </div>
