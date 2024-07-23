@@ -90,6 +90,7 @@ a:active {
   color: red;
 }
 
+<<<<<<< HEAD
 .navBarL .nL-logout {
   font-family: "Merriweather", serif;
   border: none;
@@ -112,6 +113,19 @@ a:active {
   transition: color 0.3s;
   color: rgb(255, 0, 0);
   box-shadow: inset 5px 5px 11px rgba(0, 0, 0, 0.2), inset -1px -1px 5px rgba(255, 255, 255, 0.75);
+=======
+.navBarL .nL-logout-icon {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.navBarL .nL-logout-icon:hover {
+  transform: scale(1.1);
+>>>>>>> main
 }
 
 .nbDateTime {
@@ -255,86 +269,72 @@ footer .about-us-link:hover {
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  margin: 50px;
-  margin-top: 80px;
+  margin: 50px 0;
   overflow: hidden;
-  width: max-content;
+  width: 100%;
   position: relative;
 }
 
 .slideshowSlider {
-  white-space: nowrap;
+  display: flex;
   transition: ease 1500ms;
 }
 
 .slide {
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-size: contain;
-  overflow: hidden;
-  overflow-x: hidden;
-  padding: 10px;
+  flex-shrink: 0;
   width: 100%;
+  height: 650px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  position: relative;
 }
 
 .overlay {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  background: none;
 }
 
 .overlay-content {
   color: white;
-  text-align: end;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  position: relative;
-  z-index: 1;
-  width: 100%;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0);
+  border-radius: 10px;
 }
 
 .overlay-info {
-  margin-top: 520px;
   text-align: left;
-  width: 100%;
+  margin-bottom: 20px;
 }
 
 .overlayTitle {
-  margin-right: 20px;
-  margin-left: 20px;
-  margin: 20px;
-  margin-bottom: 10px;
+  margin: 0;
   color: rgb(255, 255, 255);
   text-shadow: -1px 1px 15px #000000;
 }
 
 .overlayBtn {
-  margin-left: 20px;
+  margin-top: 10px;
 }
 
-/* Buttons for Slideshow in Home Page */
 .overlayDots {
   display: flex;
-  width: 300px;
   justify-content: center;
-  bottom: -4%;
-  margin-left: 350px;
-  z-index: 3;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  z-index: 2;
 }
 
 .slideshowDots {
-  text-align: center;
-  position: relative;
-  top: -50px;
-  bottom: 0px;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   gap: 10px;
 }
 
 .slideshowDot {
-  margin: 15px 7px 0px;
   width: 10px;
   height: 10px;
   background-color: white;
@@ -376,7 +376,7 @@ footer .about-us-link:hover {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 1250px;
+  width: 100%;
   margin-top: 20px;
   margin-bottom: 70px;
 }
@@ -443,7 +443,7 @@ footer .about-us-link:hover {
   font-size: 22px;
 }
 
-@media screen and (min-width: 320px) and (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .mLContainer {
     margin: 20px;
     margin-left: -20px;
@@ -633,6 +633,38 @@ footer .about-us-link:hover {
     width: 1250px;
     margin-top: 20px;
     margin-bottom: 70px;
+  }
+}
+@media screen and (min-width: 2560px) {
+  .mlCardWrapper {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .slideshow {
+    margin: 100px 0;
+  }
+  .slide {
+    height: 800px;
+  }
+  .overlay {
+    justify-content: space-between;
+  }
+}
+@media screen and (min-width: 5120px) and (max-width: 5279px) {
+  .slideshow {
+    margin: 100px 0;
+  }
+  .slide {
+    height: 1000px;
+  }
+  .overlayTitle {
+    font-size: 3rem;
+  }
+  .button-Get-Tickets {
+    height: 50px;
+    width: 150px;
+    font-size: 18px;
   }
 }
 /* Movie Page */
@@ -930,6 +962,38 @@ footer .about-us-link:hover {
   border: none;
   font-size: large;
   cursor: pointer;
+}
+
+/* Pagination Controls */
+.pagination-controls {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+}
+
+.pagination-btn {
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 24px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.pagination-btn:disabled {
+  color: rgba(255, 255, 255, 0.5);
+  cursor: not-allowed;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  transform: scale(1.1);
+}
+
+.pagination-page {
+  font-size: 18px;
+  color: white;
 }
 
 /* Browse List Categories */
@@ -2082,31 +2146,29 @@ input[type=password] {
 /* WatchList */
 .watchlistWrapper {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column; /* Ensure vertical alignment */
+  align-items: center;
   margin-top: 75px;
   margin-bottom: 75px;
 }
 
 .watchlist-page-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column; /* Ensure vertical alignment */
+  align-items: center;
   margin: 20px;
   padding: 10px;
-  height: 100%;
   width: 100%;
-  align-items: center;
 }
 
 .wlHead {
-  height: 50px;
   margin: 20px;
 }
 
 .wlMsg {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 20px; /* Add space between heading and message */
 }
 
 .msg {
@@ -2115,7 +2177,6 @@ input[type=password] {
   justify-content: center;
   align-items: center;
   margin: 5px;
-  height: 10px;
 }
 
 .watchlist-items {
@@ -2124,7 +2185,6 @@ input[type=password] {
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 100%;
   width: 100%;
 }
 

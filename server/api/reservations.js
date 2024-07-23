@@ -135,6 +135,21 @@ router.post("/user/:userId", veryTokey, async (req, res) => {
   }
 
   try {
+    // Check user for a car pass reservation
+    const existingCarPassReservation = await prisma.reservations.findFirst({
+      where: {
+        user_id: userId,
+        showtime_id: showtime_id,
+        carpass: true,
+      },
+    });
+
+    if (existingCarPassReservation) {
+      return res.status(400).json({
+        error: "You already have a car pass reservation for this showtime.",
+      });
+    }
+
     const showtime = await prisma.showtimes.findUnique({
       where: { id: showtime_id },
       include: { theater: true, movie: true },

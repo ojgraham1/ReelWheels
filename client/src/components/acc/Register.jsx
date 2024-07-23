@@ -3,7 +3,7 @@ import { useRegisterMutation } from "../../api/sliceAuth";
 import { useState } from "react";
 
 export default function Register() {
-  const [addNewUser] = useRegisterMutation();
+  const [addNewUser] = useRegisterMutation(); // Using register mutation hook from Redux slice
   const navigate = useNavigate();
   const [form, setForm] = useState({
     username: "",
@@ -18,23 +18,28 @@ export default function Register() {
     birthYear: "",
   });
 
+    // Function to handle input change in the form fields
   const onChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  // Function to handle form submission
   const onSubmit = async (e) => {
     e.preventDefault();
 
+// Constructing a formatted date string based on form inputs (assuming form is an object containing birthYear, birthMonth, and birthDay)
     const birthdateString = `${form.birthYear}-${String(Number(form.birthMonth)).padStart(2, '0')}-${String(Number(form.birthDay) + 1).padStart(2, '0')}`;
+    // Creating a Date object from the formatted date string
     const birthdate = new Date(`${birthdateString}T00:00:00Z`);
-
+// Creating a new object formData by spreading properties from the original form and adding birthdate as a Date object
     const formData = { ...form, birthdate };
 
     try {
-      const results = await addNewUser(formData);
-      console.log(results);
+      // Attempting to add a new user with formData
+      const results = await addNewUser(formData); 
+      console.log(results); // Logging the registration results 
       alert("Registration complete! Be sure to log in to access your account!");
-      navigate('/login');
+      navigate('/login'); // Redirect to login page
     } catch (error) {
       console.error("Registration error:", error);
       alert("An error occurred during registration. Please try again.");

@@ -9,34 +9,42 @@ import {
 import { useDispatch } from "react-redux";
 
 const Account = () => {
-  const dispatch = useDispatch();
-  const { username } = useParams();
-  const navigate = useNavigate();
+  const dispatch = useDispatch(); // Accessing Redux dispatch function
+  const { username } = useParams(); // Extracting username parameter from URL
   const [formData, setFormData] = useState({
-    birthMonth: "",
+      birthMonth: "",
     birthDay: "",
     birthYear: "",
-  });
-  const [isEditMode, setIsEditMode] = useState(false);
-  const [userId, setUserId] = useState(null);
-  const [reservationsLoading, setReservationsLoading] = useState(true);
-  const [reservationsData, setReservationsData] = useState(null);
-  const [reservationsError, setReservationsError] = useState(null);
+  }); // State for form data
+  const [isEditMode, setIsEditMode] = useState(false); // State for edit mode toggle
+  const [userId, setUserId] = useState(null); // State to store user ID
+  const [reservationsLoading, setReservationsLoading] = useState(true); // State for reservations loading status
+  const [reservationsData, setReservationsData] = useState(null); // State for reservations data
+  const [reservationsError, setReservationsError] = useState(null); // State for reservations error
 
+
+  // Query to fetch user data by username
   const {
     data: user,
     error: userError,
     isLoading: userLoading,
   } = useGetUserByUsernameQuery(username);
+
+  // Query to fetch user data by user ID
   const {
     data: userData,
     error: userIdError,
     isLoading: userIdLoading,
   } = useGetUserByIdQuery(userId, { skip: !userId });
+
+  // Query to fetch reservations data by user ID
   const { data: reservations, error: userReservationsError } =
     useGetReservationByUserIdQuery(userId, { skip: !userId });
+
+    // Mutation hook for updating user data
   const [updateUser] = useUpdateUserMutation();
 
+  // Effect to initialize form data and user ID when `user` data changes
   useEffect(() => {
     if (user) {
       const [birthYear, birthMonth, birthDay] = user.birthdate.split("-");
@@ -50,6 +58,7 @@ const Account = () => {
     }
   }, [user]);
 
+   // Effect to fetch reservations data when `userData`, `reservations`, or `userReservationsError` changes
   useEffect(() => {
     if (userData) {
       setFormData(userData);
@@ -66,6 +75,7 @@ const Account = () => {
     }
   }, [userData, reservations, userReservationsError]);
 
+  // Function to handle input change in the form fields
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -74,6 +84,7 @@ const Account = () => {
     }));
   };
 
+   // Function to handle form submission (updating user details)
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -84,22 +95,27 @@ const Account = () => {
       delete updatedUserData.birthDay;
       delete updatedUserData.birthYear;
       const data = await updateUser(updatedUserData);
-      console.log(data);
-      setIsEditMode(false);
-      navigate(0);
+
+      console.log(data); // Logging updated user data 
+      setIsEditMode(false); // Exit edit mode
+      navigate(0); // Refresh the page
+
     } catch (error) {
       console.error("Error updating user:", error);
     }
   };
 
+  // Function to toggle edit mode
   const toggleEditMode = () => {
     setIsEditMode(!isEditMode);
   };
 
+   // Function to handle going back from edit mode
   const handleGoBack = () => {
     setIsEditMode(false);
   };
 
+   // Conditional rendering based on loading, error, and data states
   if (userLoading) return <div>Loading...</div>;
   if (userError) return <div>Error: {userError.message}</div>;
   if (!user) return <div>No user data available</div>;

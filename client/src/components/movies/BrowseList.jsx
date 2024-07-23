@@ -4,89 +4,80 @@ import {
   faCircleInfo,
   faPlus,
   faCheck,
+  faArrowLeft,
+  faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 function Browse() {
+  // State variables for different categories and loading state
   const [browseMovies, setBrowseMovies] = useState([]);
   const [browseTopRated, setBrowseTopRated] = useState([]);
   const [browseTv, setBrowseTv] = useState([]);
   const [browseUpcoming, setBrowseUpcoming] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [activeCategory, setActiveCategory] = useState("movies");
+  const [activeCategory, setActiveCategory] = useState("movies"); // Default active category
   const [watchlist, setWatchlist] = useState(
+    // Retrieve watchlist from local storage
     JSON.parse(localStorage.getItem("watchlist")) || []
   );
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1); // Pagination: current page state
 
-  // Fetch Movies
-  const fetchMovies = (page = 1) => {
-    fetch(
-      `https://api.themoviedb.org/3/discover/movie?&page=${page}&api_key=60bff7c4b3bc017974f0186538e281a6`
-    )
+  // Function to fetch items based on category and page number
+  const fetchItems = (category, page = 1) => {
+    let url = "";
+    switch (category) {
+      case "movies":
+        url = `https://api.themoviedb.org/3/discover/movie?&page=${page}&api_key=60bff7c4b3bc017974f0186538e281a6`;
+        break;
+      case "topRated":
+        url = `https://api.themoviedb.org/3/movie/top_rated?&page=${page}&api_key=60bff7c4b3bc017974f0186538e281a6`;
+        break;
+      case "tv":
+        url = `https://api.themoviedb.org/3/discover/tv?&page=${page}&api_key=60bff7c4b3bc017974f0186538e281a6`;
+        break;
+      case "upcoming":
+        url = `https://api.themoviedb.org/3/movie/upcoming?&page=${page}&api_key=60bff7c4b3bc017974f0186538e281a6`;
+        break;
+      default:
+        break;
+    }
+
+    fetch(url)
       .then((res) => res.json())
       .then((json) => {
-        setBrowseMovies(json.results);
+        switch (category) {
+          case "movies":
+            setBrowseMovies(json.results);
+            break;
+          case "topRated":
+            setBrowseTopRated(json.results);
+            break;
+          case "tv":
+            setBrowseTv(json.results);
+            break;
+          case "upcoming":
+            setBrowseUpcoming(json.results);
+            break;
+          default:
+            break;
+        }
         setLoading(false);
       })
       .catch((error) => {
-        console.error("Error fetching movies:", error);
+        console.error(`Error fetching ${category} items:`, error);
         setLoading(false);
       });
   };
 
-  // Fetch Top Rated Movies
-  const fetchTopRated = () => {
-    fetch(
-      "https://api.themoviedb.org/3/movie/top_rated?&api_key=60bff7c4b3bc017974f0186538e281a6"
-    )
-      .then((res) => res.json())
-      .then((json) => {
-        setBrowseTopRated(json.results);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching Top-Rated movies:", error);
-        setLoading(false);
-      });
-  };
-
-  // Fetch Tv Shows
-  const fetchTv = (page = 1) => {
-    fetch(
-      `https://api.themoviedb.org/3/discover/tv?${page}&api_key=60bff7c4b3bc017974f0186538e281a6`
-    )
-      .then((res) => res.json())
-      .then((json) => {
-        setBrowseTv(json.results);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching TV shows:", error);
-        setLoading(false);
-      });
-  };
-
-  // Fetch Upcoming Movies
-  const fetchUpcoming = (page = 1) => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/upcoming?language=en-US&${page}&api_key=60bff7c4b3bc017974f0186538e281a6`
-    )
-      .then((res) => res.json())
-      .then((json) => {
-        setBrowseUpcoming(json.results);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching Upcoming movies:", error);
-        setLoading(false);
-      });
-  };
-
+  // Function to handle category change
   const handleCategoryChange = (category) => {
     setActiveCategory(category);
+    setCurrentPage(1);
+    setLoading(true);
   };
 
+  // Function to toggle item in watchlist
   const toggleWatchlist = (item) => {
     const isInWatchlist = watchlist.some(
       (watchlistItem) => watchlistItem.id === item.id
@@ -98,16 +89,15 @@ function Browse() {
     localStorage.setItem("watchlist", JSON.stringify(updatedWatchlist));
   };
 
+  // Function to check if item is in watchlist
   const isItemInWatchlist = (id) => {
     return watchlist.some((item) => item.id === id);
   };
 
+  // Effect to fetch data on component mount and when currentPage or activeCategory changes
   useEffect(() => {
-    fetchMovies(currentPage);
-    fetchTopRated();
-    fetchTv(currentPage);
-    fetchUpcoming(currentPage);
-  }, [currentPage]);
+    fetchItems(activeCategory, currentPage);
+  }, [currentPage, activeCategory]);
 
   return (
     <div className="bmContainer">
@@ -150,13 +140,19 @@ function Browse() {
         {loading && <p>Loading...</p>}
         <div className="pagination-controls">
           <button
+            className="pagination-btn"
             onClick={() => setCurrentPage(currentPage - 1)}
             disabled={currentPage === 1}
           >
-            Previous
+            <FontAwesomeIcon icon={faArrowLeft} />
           </button>
-          <span>Page {currentPage}</span>
-          <button onClick={() => setCurrentPage(currentPage + 1)}>Next</button>
+          <span className="pagination-page">Page {currentPage}</span>
+          <button
+            className="pagination-btn"
+            onClick={() => setCurrentPage(currentPage + 1)}
+          >
+            <FontAwesomeIcon icon={faArrowRight} />
+          </button>
         </div>
         {!loading && (
           <div className="bmWrapper">

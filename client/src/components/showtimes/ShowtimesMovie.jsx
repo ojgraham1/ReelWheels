@@ -1,8 +1,3 @@
-// export default function ShowtimesMovie() {
-//     return (
-//         <div className="ex">Hello Showtimes!</div>
-//     );
-// };
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";

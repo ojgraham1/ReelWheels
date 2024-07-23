@@ -6,20 +6,22 @@ import Snackbar from '@mui/material/Snackbar';
 
 function BrowseTvPage() {
     const { id } = useParams();
+    // State variables to manage video key, TV show details, loading state, and Snackbar visibility
     const [videoKey, setVideoKey] = useState(null);
     const [details, setDetails] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    // Function to fetch TV show data using 'id' parameter from API
     useEffect(() => {
         const fetchMovieData = async () => {
             try {
                 const response = await fetch(`https://api.themoviedb.org/3/tv/${id}?api_key=60bff7c4b3bc017974f0186538e281a6&append_to_response=videos`);
                 const data = await response.json();
-
+                // Finding the trailer from the results and setting the video key
                 const trailer = data.videos.results.find(video => video.type === 'Trailer' && video.site === 'YouTube');
-                setVideoKey(trailer ? trailer.key : null);
+                setVideoKey(trailer ? trailer.key : null); // Setting video key if trailer is found
 
-                setDetails(data);
+                setDetails(data); // Setting TV show details
                 setLoading(false);
             } catch (error) {
                 console.error(`Error fetching data for Tv ID ${id}:`, error);
@@ -28,9 +30,10 @@ function BrowseTvPage() {
         };
         
 
-        fetchMovieData();
+        fetchMovieData(); // Invoking fetchTvShowData function when 'id' or 'setDetails' changes
     }, [id]);
 
+     // Function to format date into a readable format
     const formatDate = (dateString) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         const date = new Date(dateString);
@@ -38,14 +41,15 @@ function BrowseTvPage() {
     };
 
     const [open, setOpen] = useState(false);
-
+    // Function to add TV show to watchlist
     const addToWatchlist = () => {
-        const watchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
-        watchlist.push(details);
-        localStorage.setItem('watchlist', JSON.stringify(watchlist));
-        setOpen(true);
+        const watchlist = JSON.parse(localStorage.getItem('watchlist')) || []; // Retrieving watchlist from localStorage
+        watchlist.push(details); // Adding current TV show details to watchlist
+        localStorage.setItem('watchlist', JSON.stringify(watchlist)); // Saving updated watchlist to localStorage
+        setOpen(true); // Opening Snackbar to confirm addition to watchlist
     };
 
+    // Function to handle Snackbar close event
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
           return;

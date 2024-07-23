@@ -1,7 +1,9 @@
 /* Movie List */
+
 .mLContainer {
   margin-top: -15px;
 }
+
 .movie-list-container {
   display: flex;
   flex-wrap: wrap;
@@ -14,81 +16,72 @@
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  margin: 50px;
-  margin-top: 80px;
+  margin: 50px 0;
   overflow: hidden;
-  width: max-content;
+  width: 100%;
   position: relative;
 }
+
 .slideshowSlider {
-  white-space: nowrap;
+  display: flex;
   transition: ease 1500ms;
 }
+
 .slide {
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-size: contain;
-  overflow: hidden;
-  overflow-x: hidden;
-  // height: 650px;
-  padding: 10px;
+  flex-shrink: 0;
   width: 100%;
+  height: 650px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  position: relative;
 }
+
 .overlay {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  background: none;
 }
+
 .overlay-content {
   color: white;
-  text-align: end;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  position: relative;
-  z-index: 1;
-  width: 100%;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0);
+  border-radius: 10px;
 }
+
 .overlay-info {
-  margin-top: 520px;
   text-align: left;
-  width: 100%;
+  margin-bottom: 20px;
 }
+
 .overlayTitle {
-  margin-right: 20px;
-  margin-left: 20px;
-  margin: 20px;
-  margin-bottom: 10px;
+  margin: 0;
   color: rgb(255, 255, 255);
   text-shadow: -1px 1px 15px #000000;
 }
+
 .overlayBtn {
-  margin-left: 20px;
+  margin-top: 10px;
 }
 
-/* Buttons for Slideshow in Home Page */
-.overlayDots{
+.overlayDots {
   display: flex;
-  width: 300px;
   justify-content: center;
-  bottom: -4%;
-  // height: 200px;
-  margin-left: 350px;
-  // margin-bottom: 20px;
-  // margin-top: 200px;
-  z-index: 3;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  z-index: 2;
 }
+
 .slideshowDots {
-  text-align: center;
-  position: relative;
-  top: -50px;
-  bottom: 0px;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   gap: 10px;
 }
+
 .slideshowDot {
-  margin: 15px 7px 0px;
   width: 10px;
   height: 10px;
   background-color: white;
@@ -96,6 +89,7 @@
   cursor: pointer;
   opacity: 0.5;
 }
+
 .slideshowDot.active {
   opacity: 1;
 }
@@ -107,36 +101,43 @@
   font-size: xx-large;
   color: rgb(229, 229, 229);
 }
+
 .mLWrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
 .mlCard-Container {
   display: flex;
   flex-wrap: wrap;
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
 .mlCard {
   display: flex;
   flex-wrap: wrap;
 }
+
 .mlCardWrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 1250px;
+  width: 100%;
   margin-top: 20px;
   margin-bottom: 70px;
 }
+
 .mLImg-Container {
   margin-right: 50px;
 }
+
 .mLImg {
   height: 400px;
   width: auto;
 }
+
 .mLText-Container {
   justify-content: center;
   align-content: center;
@@ -144,16 +145,19 @@
   width: 600px;
   margin-right: 20px;
 }
+
 .mLT {
   font-size: xx-large;
   font-style: oblique;
   color: rgb(222, 222, 222);
 }
+
 .mLO {
   font-size: large;
   font-weight: 200;
   color: rgb(195, 192, 192);
 }
+
 .button-Get-Tickets {
   background-color: rgb(255, 0, 0);
   height: 40px;
@@ -168,13 +172,16 @@
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
+
 .button-Get-Tickets:hover {
   transform: scale(1.1);
 }
+
 .mLBtn {
   height: 60px;
   width: 60px;
 }
+
 .mv-btn-link {
   background-color: rgba(0, 0, 0, 0);
   color: rgba(210, 210, 210, 0.704);
@@ -185,26 +192,30 @@
 }
 
 // Mobile Devices
-@media screen and (min-width: 320px) and (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .mLContainer {
     margin: 20px;
     margin-left: -20px;
     margin-top: 100px;
   }
-  .mLWrapper{
+
+  .mLWrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
-  .mLHeading{
+
+  .mLHeading {
     font-size: 20px;
   }
+
   .movie-list-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
   }
+
   .mlCard-Container {
     display: flex;
     flex-wrap: wrap;
@@ -212,6 +223,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
   }
+
   .mlCardWrapper {
     display: flex;
     flex-direction: column;
@@ -220,51 +232,59 @@
     margin-top: 20px;
     margin-bottom: 70px;
   }
+
   .mlCard {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: center;
     align-content: center;
     width: 300px;
   }
-  .mLImg-Container{
+
+  .mLImg-Container {
     width: 250px;
   }
-  .mLImg{
+
+  .mLImg {
     height: auto;
     width: 250px;
   }
+
   .mLText-Container {
     width: 250px;
   }
-  .mLT{
+
+  .mLT {
     font-size: 25px;
   }
-  .mLO{
+
+  .mLO {
     display: none;
   }
+
   .button-Get-Tickets {
     height: 35px;
     width: 90px;
     border-radius: 20px;
     font-size: 12px;
   }
-  
 }
 
 // iPads and Tablets
 @media screen and (min-width: 481px) and (max-width: 768px) {
-  .mLContainer{
+  .mLContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
+
   .movie-list-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
   }
+
   .mlCard-Container {
     display: flex;
     flex-wrap: wrap;
@@ -277,8 +297,8 @@
     margin-left: 0%;
     margin-right: 0%;
     margin-bottom: 70px;
-
   }
+
   .mlCardWrapper {
     display: flex;
     flex-direction: column;
@@ -286,28 +306,31 @@
     width: 500px;
     padding-top: 10px;
     padding-bottom: 10px;
-
   }
 
   .mlCard {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: center;
     align-content: center;
     width: 400px;
   }
-  .mLImg-Container{
+
+  .mLImg-Container {
     width: 350px;
   }
-  .mLImg{
+
+  .mLImg {
     height: auto;
     width: 350px;
   }
+
   .mLText-Container {
     width: 350px;
     padding: 5px;
   }
-  .mLT{
+
+  .mLT {
     font-size: 25px;
   }
 }
@@ -320,6 +343,7 @@
     justify-content: center;
     align-content: center;
   }
+
   .mlCard-Container {
     display: flex;
     flex-wrap: wrap;
@@ -327,6 +351,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
   }
+
   .mlCardWrapper {
     display: flex;
     flex-direction: row;
@@ -335,6 +360,7 @@
     margin-top: 20px;
     margin-bottom: 70px;
   }
+
   .mLText-Container {
     width: fit-content;
   }
@@ -348,6 +374,7 @@
     justify-content: center;
     align-content: center;
   }
+
   .mlCard-Container {
     display: flex;
     flex-wrap: wrap;
@@ -355,6 +382,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
   }
+
   .mlCardWrapper {
     display: flex;
     flex-direction: row;
@@ -363,7 +391,6 @@
     margin-top: 20px;
     margin-bottom: 70px;
   }
-
 }
 
 // Extra large screens
@@ -374,6 +401,7 @@
     justify-content: center;
     align-content: center;
   }
+
   .mlCard-Container {
     display: flex;
     flex-wrap: wrap;
@@ -381,6 +409,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
   }
+
   .mlCardWrapper {
     display: flex;
     flex-direction: row;
@@ -388,5 +417,47 @@
     width: 1250px;
     margin-top: 20px;
     margin-bottom: 70px;
+  }
+}
+
+// Ultra wide screens
+@media screen and (min-width: 2560px) {
+  .mlCardWrapper {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .slideshow {
+    margin: 100px 0;
+  }
+
+  .slide {
+    height: 800px;
+  }
+
+  .overlay {
+    justify-content: space-between;
+  }
+}
+
+// Daniels screens
+@media screen and (min-width: 5120px) and (max-width: 5279px) {
+  .slideshow {
+    margin: 100px 0;
+  }
+
+  .slide {
+    height: 1000px;
+  }
+
+  .overlayTitle {
+    font-size: 3rem;
+  }
+
+  .button-Get-Tickets {
+    height: 50px;
+    width: 150px;
+    font-size: 18px;
   }
 }
