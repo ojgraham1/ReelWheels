@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { SearchResultsList } from "./SearchResultsList.jsx";
+import { TvSearchResultsList } from "./SearchResultsList.jsx";
 import PropTypes from "prop-types";
 
 export default function SearchBar() {
@@ -89,7 +90,7 @@ export default function SearchBar() {
         {/* <div className="search-browse-results"> */}
         {/* <h1>TV Shows</h1> */}
         {tvResults && tvResults.length > 0 && (
-          <SearchResultsList tvResults={tvResults} />
+          <TvSearchResultsList tvResults={tvResults} />
         )}
       </div>
     </div>

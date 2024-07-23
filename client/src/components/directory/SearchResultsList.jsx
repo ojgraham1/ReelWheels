@@ -1,10 +1,7 @@
 import { SearchResult } from "./SearchResult";
+import { TvSearchResult } from "./SearchResult";
 
-export const SearchResultsList = ({
-  browseResults,
-  tvResults,
-  nowPlayingResults,
-}) => {
+export const SearchResultsList = ({ browseResults, nowPlayingResults }) => {
   return (
     <div>
       <div className="Results-Lists">
@@ -42,6 +39,15 @@ export const SearchResultsList = ({
             })}
           </div>
         )}
+      </div>
+    </div>
+  );
+};
+
+export const TvSearchResultsList = ({ tvResults }) => {
+  return (
+    <div>
+      <div className="Results-Lists">
         {tvResults && tvResults.length > 0 && (
           <div className="tv-Result-List">
             <div className="subcategory">
@@ -49,9 +55,9 @@ export const SearchResultsList = ({
             </div>
             {tvResults.map((tvResult) => {
               return (
-                <SearchResult
-                  result={tvResult.original_name}
-                  category="TV Shows"
+                <TvSearchResult
+                  tvResult={tvResult.original_name}
+                  tvCategory="TV Shows"
                   key={tvResult.id}
                   id={tvResult.id}
                 />

@@ -10,8 +10,25 @@ export const SearchResult = ({ id, result, category }) => {
     </div>
   );
 };
+export const TvSearchResult = ({ id, tvResult, tvCategory }) => {
+  const navigate = useNavigate();
+  return (
+    <div
+      className="search-result"
+      onClick={(e) => navigate(`/browse/tv/${id}`)}
+    >
+      <div>{tvResult}</div>
+      <div className="category-result">{tvCategory}</div>
+    </div>
+  );
+};
 SearchResult.propTypes = {
   id: PropTypes.number.isRequired,
   result: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
+};
+TvSearchResult.propTypes = {
+  id: PropTypes.number.isRequired,
+  result: PropTypes.string.isRequired,
+  tvCategory: PropTypes.string.isRequired,
 };
