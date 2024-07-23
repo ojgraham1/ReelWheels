@@ -40,7 +40,7 @@ export default function NavBar() {
         </li>
         <li>
           <NavLink className="nL" to="/browse">
-            Browse Movies
+            Archives
           </NavLink>
         </li>
         <li>
