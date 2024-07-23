@@ -183,7 +183,22 @@ a:active {
   .navBar .navBarL .nL:hover {
     color: #c20000;
   }
-  .navBar .navBarL .nL-logout, .navBar .navBarL .nLin {
+  .navBar .navBarL .nL-logout-icon {
+    font-family: "Merriweather", serif;
+    border: none;
+    outline: none;
+    background: none;
+    width: 100%;
+    margin: 0.6rem 0 1rem 0;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #c20000;
+    text-transform: capitalize;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 10px;
+    box-shadow: 5px 5px 11px rgba(101, 101, 101, 0.2), -1px -1px 5px rgba(255, 255, 255, 0.75);
+  }
+  .navBar .navBarL .nLin {
     font-family: "Merriweather", serif;
     border: none;
     outline: none;
@@ -198,7 +213,8 @@ a:active {
     border-radius: 10px;
     box-shadow: 5px 5px 11px rgba(101, 101, 101, 0.2), -1px -1px 5px rgba(255, 255, 255, 0.75);
   }
-  .navBar .navBarL .nL-logout, .navBar .navBarL .nLin:hover {
+  .navBar .navBarL .nL-logout-icon:hover, .navBar .navBarL .nLin:hover {
+    transform: none;
     transition: color 0.3s;
     color: #c20000;
     box-shadow: inset 5px 5px 11px rgba(0, 0, 0, 0.2), inset -1px -1px 5px rgba(255, 255, 255, 0.75);
