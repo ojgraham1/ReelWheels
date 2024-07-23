@@ -2,12 +2,12 @@ import React from "react";
 import { Button, Container, Typography, Box } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
-
 const useStyles = makeStyles({
   root: {
     paddingTop: "2px",
     textAlign: "center",
   },
+  // Added !important to force React to override the default MUI styles
   button: {
     margin: "20px 0 !important",
     backgroundColor: "red !important",
@@ -104,7 +104,7 @@ const useStyles = makeStyles({
   },
 
   // Media Queries
-  '@media (min-width: 320px) and (max-width: 480px)': {
+  "@media (min-width: 320px) and (max-width: 480px)": {
     mediaItem: {
       marginLeft: "0",
       width: "100%",
@@ -141,7 +141,7 @@ const useStyles = makeStyles({
       fontSize: "10px",
     },
   },
-  '@media (min-width: 481px) and (max-width: 768px)': {
+  "@media (min-width: 481px) and (max-width: 768px)": {
     mediaItem: {
       marginLeft: "0",
       width: "100%",
@@ -174,9 +174,8 @@ const useStyles = makeStyles({
       width: "350px",
       fontSize: "11px",
     },
-
   },
-  '@media (min-width: 769px) and (max-width: 1024px)': {
+  "@media (min-width: 769px) and (max-width: 1024px)": {
     mediaItem: {
       marginLeft: "0",
       width: "100%",
@@ -210,7 +209,7 @@ const useStyles = makeStyles({
       fontSize: "15px",
     },
   },
-  '@media (min-width: 1025px) and (max-width: 1200px)': {
+  "@media (min-width: 1025px) and (max-width: 1200px)": {
     mediaItem: {
       marginLeft: "0",
       width: "100%",
@@ -244,10 +243,10 @@ const useStyles = makeStyles({
       fontSize: "20px",
     },
   },
-  '@media (min-width: 1201px) and (max-width: 1380px)': {
-    mediaContainer:{
+  "@media (min-width: 1201px) and (max-width: 1380px)": {
+    mediaContainer: {
       width: "fit-content",
-    },  
+    },
     mediaItem: {
       marginLeft: "0",
       width: "100%",
@@ -297,8 +296,13 @@ export default function Concessions() {
             playsInline
             preload="metadata"
             className={classes.video}
-            />
-          <Typography className={classes.head} variant="h5" component="h1" gutterBottom>
+          />
+          <Typography
+            className={classes.head}
+            variant="h5"
+            component="h1"
+            gutterBottom
+          >
             Movies with a menu.
             <Typography className={classes.headP}>
               Featuring high quality and locally sourced ingredients.
