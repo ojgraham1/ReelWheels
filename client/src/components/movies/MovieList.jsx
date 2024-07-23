@@ -15,7 +15,7 @@ const MovieList = () => {
   const timeoutRef = useRef(null);
 
   const delay = 5000;
-
+console.log(process.env.NODE_ENV)
   useEffect(() => {
     // slideshow
     const fetchMovieSlide = async () => {
