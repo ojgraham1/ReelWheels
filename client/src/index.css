@@ -269,6 +269,7 @@ input:focus {
 }
 
 .search-icon {
+  margin-top: 3.5px;
   color: black;
 }
 
@@ -353,6 +354,9 @@ input:focus {
   .input-wrapper {
     width: 280px;
   }
+  input {
+    width: 260px;
+  }
   .Results-Lists {
     width: 260px;
   }
@@ -360,6 +364,9 @@ input:focus {
 @media screen and (min-width: 481px) and (max-width: 768px) {
   .input-wrapper {
     width: 380px;
+  }
+  input {
+    width: 360px;
   }
   .Results-Lists {
     width: 360px;
@@ -369,6 +376,9 @@ input:focus {
   .input-wrapper {
     width: 400px;
   }
+  input {
+    width: 380px;
+  }
   .Results-Lists {
     width: 380px;
   }
@@ -377,16 +387,22 @@ input:focus {
   .input-wrapper {
     width: 500px;
   }
+  input {
+    width: 480px;
+  }
   .Results-Lists {
     width: 480px;
   }
 }
 @media screen and (min-width: 1201px) {
   .input-wrapper {
-    width: 300px;
+    width: 600px;
+  }
+  input {
+    width: 580px;
   }
   .Results-Lists {
-    width: 280px;
+    width: 580px;
   }
 }
 footer {
