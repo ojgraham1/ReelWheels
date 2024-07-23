@@ -22,3 +22,23 @@ a:active {
   font-size: xx-large;
   color: aliceblue;
 }
+
+// Mobile Devices
+@media screen and (min-width: 320px) and (max-width: 480px) {
+}
+
+// iPads and Tablets
+@media screen and (min-width: 481px) and (max-width: 768px) {
+}
+
+// Small Screens and Laptops
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+}
+
+// Desktops and Large Screens
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+}
+
+// Extra large screens
+@media screen and (min-width: 1201px) {
+}

@@ -12,12 +12,15 @@ export const SearchResultsList = ({ browseResults, nowPlayingResults }) => {
             </div>
             {nowPlayingResults.map((nowPlayingResult) => {
               return (
-                <SearchResult
-                  result={nowPlayingResult.title}
-                  category="Now Playing"
-                  key={nowPlayingResult.id}
-                  id={nowPlayingResult.id}
-                />
+                <div className="resLi">
+                  {/* <hr></hr> */}
+                  <SearchResult
+                    result={nowPlayingResult.title}
+                    category="Now Playing"
+                    key={nowPlayingResult.id}
+                    id={nowPlayingResult.id}
+                  />
+                </div>
               );
             })}
           </div>
@@ -29,12 +32,14 @@ export const SearchResultsList = ({ browseResults, nowPlayingResults }) => {
             </div>
             {browseResults.map((browseResult) => {
               return (
-                <SearchResult
-                  result={browseResult.title}
-                  category="All Movies"
-                  key={browseResult.id}
-                  id={browseResult.id}
-                />
+                <div className="resLi">
+                  <SearchResult
+                    result={browseResult.title}
+                    category="All Movies"
+                    key={browseResult.id}
+                    id={browseResult.id}
+                  />
+                </div>
               );
             })}
           </div>
@@ -55,12 +60,14 @@ export const TvSearchResultsList = ({ tvResults }) => {
             </div>
             {tvResults.map((tvResult) => {
               return (
-                <TvSearchResult
-                  tvResult={tvResult.original_name}
-                  tvCategory="TV Shows"
-                  key={tvResult.id}
-                  id={tvResult.id}
-                />
+                <div className="resLi">
+                  <TvSearchResult
+                    tvResult={tvResult.original_name}
+                    tvCategory="TV Shows"
+                    key={tvResult.id}
+                    id={tvResult.id}
+                  />
+                </div>
               );
             })}
           </div>
