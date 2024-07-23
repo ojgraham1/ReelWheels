@@ -162,7 +162,7 @@ console.log(process.env.NODE_ENV)
               <h1>Go Mobile!</h1>
                 <img 
                   className="qrCode"
-                  src="../../public/frame.png"
+                  src="../../frame.png"
                   alt="qrCode"
                 />
             </div>
