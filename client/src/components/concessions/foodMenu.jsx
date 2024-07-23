@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Container, Typography, Box } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
-// styling for food menu page
+
 const useStyles = makeStyles({
   root: {
     paddingTop: "2px",
@@ -24,6 +24,7 @@ const useStyles = makeStyles({
     flexDirection: "column",
     justifyContent: "center",
     margin: "30px 0",
+    marginBottom: "50px",
     width: "100%",
   },
   videoContainer: {
@@ -101,6 +102,185 @@ const useStyles = makeStyles({
     width: "500px",
     fontWeight: "medium",
   },
+
+  // Media Queries
+  '@media (min-width: 320px) and (max-width: 480px)': {
+    mediaItem: {
+      marginLeft: "0",
+      width: "100%",
+    },
+    videoContainer: {
+      marginLeft: "0",
+      width: "100%",
+    },
+    head: {
+      fontFamily: "inherit",
+      fontWeight: "bold",
+      fontSize: "20px",
+      textAlign: "left",
+      height: "80px",
+      width: "fit-content",
+    },
+    headP: {
+      fontFamily: "inherit",
+      fontSize: "10px",
+      fontWeight: "none",
+    },
+    button: {
+      width: "80px",
+      height: "20px",
+      padding: "10px",
+      fontSize: "0.39rem",
+      margin: "10px 0",
+    },
+    text: {
+      fontSize: "20px",
+    },
+    p: {
+      width: "250px",
+      fontSize: "10px",
+    },
+  },
+  '@media (min-width: 481px) and (max-width: 768px)': {
+    mediaItem: {
+      marginLeft: "0",
+      width: "100%",
+    },
+    videoContainer: {
+      marginLeft: "0",
+      width: "100%",
+    },
+    head: {
+      fontSize: "30px",
+      height: "100px",
+      width: "fit-content",
+    },
+    headP: {
+      fontFamily: "inherit",
+      fontSize: "15px",
+      fontWeight: "none",
+    },
+    button: {
+      width: "100px",
+      height: "30px",
+      padding: "10px",
+      fontSize: "0.5rem",
+      margin: "10px 0",
+    },
+    text: {
+      fontSize: "30px",
+    },
+    p: {
+      width: "350px",
+      fontSize: "11px",
+    },
+
+  },
+  '@media (min-width: 769px) and (max-width: 1024px)': {
+    mediaItem: {
+      marginLeft: "0",
+      width: "100%",
+    },
+    videoContainer: {
+      marginLeft: "0",
+      width: "100%",
+    },
+    head: {
+      fontSize: "50px",
+      height: "200px",
+      width: "fit-content",
+    },
+    headP: {
+      fontFamily: "inherit",
+      fontSize: "20px",
+      fontWeight: "none",
+    },
+    button: {
+      width: "100px",
+      height: "40px",
+      padding: "10px",
+      fontSize: "9px",
+      margin: "10px 0",
+    },
+    text: {
+      fontSize: "50px",
+    },
+    p: {
+      width: "500px",
+      fontSize: "15px",
+    },
+  },
+  '@media (min-width: 1025px) and (max-width: 1200px)': {
+    mediaItem: {
+      marginLeft: "0",
+      width: "100%",
+    },
+    videoContainer: {
+      marginLeft: "0",
+      width: "100%",
+    },
+    head: {
+      fontSize: "60px",
+      height: "200px",
+      width: "fit-content",
+    },
+    headP: {
+      fontFamily: "inherit",
+      fontSize: "20px",
+      fontWeight: "none",
+    },
+    button: {
+      width: "140px",
+      height: "50px",
+      padding: "10px",
+      fontSize: "13px",
+      margin: "10px 0",
+    },
+    text: {
+      fontSize: "60px",
+    },
+    p: {
+      width: "500px",
+      fontSize: "20px",
+    },
+  },
+  '@media (min-width: 1201px) and (max-width: 1380px)': {
+    mediaContainer:{
+      width: "fit-content",
+    },  
+    mediaItem: {
+      marginLeft: "0",
+      width: "100%",
+    },
+    videoContainer: {
+      marginLeft: "0",
+      width: "100%",
+    },
+    head: {
+      fontSize: "60px",
+      height: "200px",
+      width: "fit-content",
+    },
+    headP: {
+      fontFamily: "inherit",
+      fontSize: "20px",
+      fontWeight: "none",
+    },
+    button: {
+      width: "140px",
+      height: "50px",
+      padding: "10px",
+      fontSize: "13px",
+      margin: "10px 0",
+    },
+    text: {
+      fontSize: "60px",
+    },
+    p: {
+      width: "500px",
+      fontSize: "20px",
+    },
+  },
 });
 
 export default function Concessions() {
@@ -117,13 +297,8 @@ export default function Concessions() {
             playsInline
             preload="metadata"
             className={classes.video}
-          />
-          <Typography
-            className={classes.head}
-            variant="h5"
-            component="h1"
-            gutterBottom
-          >
+            />
+          <Typography className={classes.head} variant="h5" component="h1" gutterBottom>
             Movies with a menu.
             <Typography className={classes.headP}>
               Featuring high quality and locally sourced ingredients.
