@@ -156,19 +156,23 @@ const MovieList = () => {
       </div>
       <div className="qrCodeWrapper">
         <div className="qrCodeContainer">
-          <div className="qrCodeContent">
-            <h1>Go Mobile!</h1>
-            <img 
-              className="qrCode"
-              src="../../public/frame.png"
-              alt="qrCode"
-            />
+          <div className="logoVContainer">
+            <div className="qrCodeContent">
+            <div className="logoOverlay">
+              <h1>Go Mobile!</h1>
+                <img 
+                  className="qrCode"
+                  src="../../public/frame.png"
+                  alt="qrCode"
+                />
+            </div>
+            </div>
           </div>
         </div>
       </div>
       <ul className="movie-list-container">
         <div className="browseSearchBar">
-          <SearchBar setResults={setResults} />;
+          <SearchBar setResults={setResults} />
           <div className="mLWrapper">
             <h1 className="mLHeading">IN THEATERS NOW</h1>
             <div className="mlCard-Container">
