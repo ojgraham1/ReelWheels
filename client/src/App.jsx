@@ -15,6 +15,7 @@ import Watchlist from "./components/transactions/WatchList";
 import Register from "./components/acc/Register";
 import Login from "./components/acc/Login";
 import Account from "./components/acc/Account";
+import SearchBar from "./components/directory/SearchBar";
 import Footer from "./components/directory/Footer";
 import AboutUs from "./components/acc/AboutUs";
 
@@ -38,6 +39,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
+
       <Routes>
         <Route path="/" element={<MovieList />} />
         <Route path="/movies/:id" element={<MoviePage />} />
