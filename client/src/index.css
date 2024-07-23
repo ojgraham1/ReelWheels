@@ -90,30 +90,6 @@ a:active {
   color: red;
 }
 
-<<<<<<< HEAD
-.navBarL .nL-logout {
-  font-family: "Merriweather", serif;
-  border: none;
-  outline: none;
-  background: none;
-  width: 100%;
-  margin: 0.6rem 0 1rem 0;
-  cursor: pointer;
-  font-size: 1.1rem;
-  color: #ffffff;
-  text-transform: capitalize;
-  margin-top: 15px;
-  padding: 0.5rem 1rem 0.5rem 1rem;
-  border-radius: 10px;
-  background-color: rgba(39, 39, 39, 0.2666666667);
-  box-shadow: 5px 5px 11px rgba(101, 101, 101, 0.2), -1px -1px 5px rgba(255, 255, 255, 0.75);
-}
-
-.navBarL .nL-logout:hover {
-  transition: color 0.3s;
-  color: rgb(255, 0, 0);
-  box-shadow: inset 5px 5px 11px rgba(0, 0, 0, 0.2), inset -1px -1px 5px rgba(255, 255, 255, 0.75);
-=======
 .navBarL .nL-logout-icon {
   background: none;
   border: none;
@@ -125,11 +101,10 @@ a:active {
 
 .navBarL .nL-logout-icon:hover {
   transform: scale(1.1);
->>>>>>> main
 }
 
 .nbDateTime {
-  margin-left: -15px;
+  margin-left: -100px;
   margin-top: -5px;
   margin-bottom: -5px;
   color: red;
