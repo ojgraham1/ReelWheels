@@ -4,13 +4,13 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTicket, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import ShowtimesModal from "./ShowtimesModal";
+import SearchBar from "../directory/SearchBar";
 
 const MovieList = () => {
   const [movieSlide, setMovieSlide] = useState([]); // State variable to hold movie slide
   const [movies, setMovies] = useState([]); // State to store movies fetched from API
   const [showtimes, setShowtimes] = useState([]); // State to store showtimes for a selected movie
   const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal open/close
-
 
   // Fetching movies from API
   useEffect(() => {
@@ -64,13 +64,13 @@ const MovieList = () => {
     fetchMovies();
   }, []);
 
-   // Timeout delay for automatic slideshow of movie slides
+  // Timeout delay for automatic slideshow of movie slides
   const delay = 5000;
   // State and ref to manage index for movie slides
   const [index, setIndex] = useState(0);
   const timeoutRef = React.useRef(null);
 
-    // Function to reset the slideshow timeout
+  // Function to reset the slideshow timeout
   function resetTimeout() {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
@@ -92,10 +92,10 @@ const MovieList = () => {
     };
   }, [index, movieSlide.length]);
 
-
   const handleGetTicketsClick = async (movieId) => {
     try {
-      navigator.geolocation.getCurrentPosition(async (position) => { // Getting current geolocation coordinates
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        // Getting current geolocation coordinates
         const { latitude, longitude } = position.coords; // getting latitude and longitude
 
         const response = await axios.post(
@@ -110,13 +110,14 @@ const MovieList = () => {
       console.error("Error fetching showtimes:", error);
     }
   };
-  
-   // Function to close the modal
+
+  // Function to close the modal
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setShowtimes([]);
   };
 
+  const [results, setResults] = useState([]);
   return (
     <div className="mLContainer">
       <ul className="movie-list-container">
@@ -131,21 +132,21 @@ const MovieList = () => {
                   className="slide"
                   key={index}
                   style={{
-                    backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`                
+                    backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
                   }}
                 >
                   <div className="overlay">
                     <div className="overlay-content">
                       <div className="overlay-info">
-                        <h2 className='overlayTitle'>{movie.title}</h2>
-                          <div className='overlayBtn'>
-                            <Link className="mLink" to={`/movies/${movie.id}`}>
-                              <button className="button-Get-Tickets">
-                                See More Info
-                              </button>
-                            </Link>
-                          </div>
-                          {/* <div className="overlayDots">
+                        <h2 className="overlayTitle">{movie.title}</h2>
+                        <div className="overlayBtn">
+                          <Link className="mLink" to={`/movies/${movie.id}`}>
+                            <button className="button-Get-Tickets">
+                              See More Info
+                            </button>
+                          </Link>
+                        </div>
+                        {/* <div className="overlayDots">
                             <div className="slideshowDots">
                               {movieSlide.map((_, idx) => (
                                 <div
@@ -158,13 +159,13 @@ const MovieList = () => {
                               ))}
                             </div>
                           </div> */}
-                        </div>
                       </div>
                     </div>
-                  </div>                
-                ))}
-              </div>
+                  </div>
+                </div>
+              ))}
             </div>
+          </div>
           <div className="overlayDots">
             <div className="slideshowDots">
               {movieSlide.map((_, idx) => (
@@ -172,50 +173,53 @@ const MovieList = () => {
                   key={idx}
                   className={`slideshowDot${index === idx ? " active" : ""}`}
                   onClick={() => {
-                  setIndex(idx);
+                    setIndex(idx);
                   }}
                 ></div>
               ))}
             </div>
           </div>
         </div>
-        <div className="mLWrapper">
-        <h1 className="mLHeading">IN THEATERS NOW</h1>
-          <div className="mlCard-Container">
-            {movies.map((movie) => (
-              <div className="mlCard" key={movie.id}>
-                <ul className="mlCardWrapper">
-                  <div className="mLImg-Container">
-                    <img
-                      className="mLImg"
-                      src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                      alt={movie.title}
-                    />
-                  </div>
-                  <div className="mLText-Container">
-                    <h2 className="mLT">{movie.title}</h2>
-                    <p className="mLO">{movie.overview}</p>
-                    <div className="buttonGT">
-                      {movie.showtimes.length > 0 && (
-                        <button
-                          className="button-Get-Tickets"
-                          onClick={() => handleGetTicketsClick(movie.id)}
-                        >
-                          <FontAwesomeIcon icon={faTicket} /> Get Tickets
-                        </button>
-                      )}
-                      <div className="mLBtn">
-                        <Link className="mLink" to={`/movies/${movie.id}`}>
-                          <button className="mv-btn-link">
-                            <FontAwesomeIcon icon={faCircleInfo} />
+        <div className="browseSearchBar">
+          <SearchBar setResults={setResults} />;
+          <div className="mLWrapper">
+            <h1 className="mLHeading">IN THEATERS NOW</h1>
+            <div className="mlCard-Container">
+              {movies.map((movie) => (
+                <div className="mlCard" key={movie.id}>
+                  <ul className="mlCardWrapper">
+                    <div className="mLImg-Container">
+                      <img
+                        className="mLImg"
+                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                        alt={movie.title}
+                      />
+                    </div>
+                    <div className="mLText-Container">
+                      <h2 className="mLT">{movie.title}</h2>
+                      <p className="mLO">{movie.overview}</p>
+                      <div className="buttonGT">
+                        {movie.showtimes.length > 0 && (
+                          <button
+                            className="button-Get-Tickets"
+                            onClick={() => handleGetTicketsClick(movie.id)}
+                          >
+                            <FontAwesomeIcon icon={faTicket} /> Get Tickets
                           </button>
-                        </Link>
+                        )}
+                        <div className="mLBtn">
+                          <Link className="mLink" to={`/movies/${movie.id}`}>
+                            <button className="mv-btn-link">
+                              <FontAwesomeIcon icon={faCircleInfo} />
+                            </button>
+                          </Link>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </ul>
-              </div>
-            ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </ul>

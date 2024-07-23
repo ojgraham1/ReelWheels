@@ -34,14 +34,12 @@ function App() {
     }
   }, [dispatch]); //Run the function once
 
-  const [results, setResults] = useState([]);
-
   useEffect(() => {}, [token]); // Effect to monitor changes in token
 
   return (
     <div className="App">
       <NavBar />
-      <SearchBar setResults={setResults} />
+
       <Routes>
         <Route path="/" element={<MovieList />} />
         <Route path="/movies/:id" element={<MoviePage />} />

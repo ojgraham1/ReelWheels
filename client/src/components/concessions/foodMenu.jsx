@@ -9,11 +9,11 @@ const useStyles = makeStyles({
     textAlign: "center",
   },
   button: {
-    margin: "20px 0",
-    backgroundColor: "red",
-    width: "200px",
-    padding: "15px",
-    borderRadius: "50px",
+    margin: "20px 0 !important",
+    backgroundColor: "red !important",
+    width: "200px !important",
+    padding: "15px !important",
+    borderRadius: "50px !important",
   },
   mediaContainer: {
     display: "flex",
@@ -54,7 +54,7 @@ const useStyles = makeStyles({
     width: "max-content",
     height: "200px",
     backgroundColor: "black",
-    fontSize:"80px",
+    fontSize: "80px",
     fontFamily: "inherit",
     fontWeight: "bold",
     textAlign: "left",
@@ -114,9 +114,14 @@ export default function Concessions() {
             preload="metadata"
             className={classes.video}
           />
-          <Typography className={classes.head} variant="h5" component="h1" gutterBottom>
+          <Typography
+            className={classes.head}
+            variant="h5"
+            component="h1"
+            gutterBottom
+          >
             Movies with a menu.
-            <Typography className={classes.headP} >
+            <Typography className={classes.headP}>
               Featuring high quality and locally sourced ingredients.
             </Typography>
             <Button
@@ -125,7 +130,7 @@ export default function Concessions() {
               href="../public/ReelWheelsMenu.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              sx={{ color: 'black' }}
+              sx={{ color: "black" }}
             >
               View Full Menu
             </Button>
@@ -172,8 +177,12 @@ export default function Concessions() {
           <Box className={classes.mediaItem} key={index}>
             <img src={item.src} alt={item.alt} className={classes.img} />
             <Box className={classes.overlay}>
-              <Typography variant="h3" className={classes.text}>{item.text}</Typography>
-              <Typography variant="subtitle1" className={classes.p}>{item.p}</Typography>
+              <Typography variant="h3" className={classes.text}>
+                {item.text}
+              </Typography>
+              <Typography variant="subtitle1" className={classes.p}>
+                {item.p}
+              </Typography>
             </Box>
           </Box>
         ))}
