@@ -3,7 +3,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { clearToken } from "../../api/sliceAuth";
 import DateTime from "./DateTime";
-import "../../styles/directory/nav.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 export default function NavBar() {
   const token = useSelector((state) => state.auth.token);
@@ -39,7 +40,7 @@ export default function NavBar() {
         </li>
         <li>
           <NavLink className="nL" to="/browse">
-            Browse Movies
+            Archives
           </NavLink>
         </li>
         <li>
@@ -55,8 +56,8 @@ export default function NavBar() {
               </NavLink>
             </li>
             <li>
-              <button className="nL-logout" onClick={handleLogout}>
-                Logout
+              <button className="nL-logout-icon" onClick={handleLogout}>
+                <FontAwesomeIcon icon={faSignOutAlt} />
               </button>
             </li>
           </>
