@@ -76,6 +76,9 @@
   cursor: pointer;
   font-size: 24px;
 }
+.vLogo{
+  display: none;
+}
 // Hamburger Menu for Mobile Devices, iPads, and Small Screens
 @media screen and (min-width: 320px) and (max-width: 1024px) {
   .navBar {
@@ -132,7 +135,11 @@
         right: 0;  
         top: 0;
       }
-      
+      .vLogo{
+        display: block;
+        padding: 5px;
+        height: 215px;      
+      }
       li {
         margin-left: 10px;
         margin-top: -10px;
