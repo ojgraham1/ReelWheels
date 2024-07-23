@@ -255,7 +255,7 @@ a:active {
   align-items: center;
 }
 
-input {
+.searchInput {
   background-color: transparent;
   border: none;
   height: 100%;
@@ -264,7 +264,7 @@ input {
   margin-left: 5px;
 }
 
-input:focus {
+.searchInput:focus {
   outline: none;
 }
 
@@ -354,7 +354,7 @@ input:focus {
   .input-wrapper {
     width: 280px;
   }
-  input {
+  .searchInput {
     width: 260px;
   }
   .Results-Lists {
@@ -365,7 +365,7 @@ input:focus {
   .input-wrapper {
     width: 380px;
   }
-  input {
+  .searchInput {
     width: 360px;
   }
   .Results-Lists {
@@ -376,7 +376,7 @@ input:focus {
   .input-wrapper {
     width: 400px;
   }
-  input {
+  .searchInput {
     width: 380px;
   }
   .Results-Lists {
@@ -387,7 +387,7 @@ input:focus {
   .input-wrapper {
     width: 500px;
   }
-  input {
+  .searchInput {
     width: 480px;
   }
   .Results-Lists {
@@ -398,7 +398,7 @@ input:focus {
   .input-wrapper {
     width: 600px;
   }
-  input {
+  .searchInput {
     width: 580px;
   }
   .Results-Lists {
@@ -2132,8 +2132,7 @@ footer .about-us-link:hover {
   margin-bottom: 20px;
 }
 
-input[type=text],
-input[type=password] {
+.logInput {
   border: none;
   outline: none;
   background: none;
