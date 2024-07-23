@@ -73,9 +73,11 @@ function Browse() {
 
   // Function to handle category change
   const handleCategoryChange = (category) => {
-    setActiveCategory(category);
-    setCurrentPage(1);
-    setLoading(true);
+    if (category !== activeCategory) {
+      setActiveCategory(category);
+      setCurrentPage(1);
+      setLoading(true);
+    }
   };
 
   // Function to toggle item in watchlist
@@ -99,10 +101,12 @@ function Browse() {
   useEffect(() => {
     fetchItems(activeCategory, currentPage);
   }, [currentPage, activeCategory]);
+
   const [results, setResults] = useState([]);
+
   return (
     <div className="browseSearchBar">
-      // <SearchBar setResults={setResults} />;
+      <SearchBar setResults={setResults} />;
       <div className="bmContainer">
         <div className="browse-movies-container">
           <h1 className="bmHeading">Browse Our Library</h1>
@@ -112,6 +116,7 @@ function Browse() {
                 activeCategory === "movies" ? "active" : ""
               }`}
               onClick={() => handleCategoryChange("movies")}
+              disabled={activeCategory === "movies"}
             >
               Movies
             </button>
@@ -120,6 +125,7 @@ function Browse() {
                 activeCategory === "topRated" ? "active" : ""
               }`}
               onClick={() => handleCategoryChange("topRated")}
+              disabled={activeCategory === "topRated"}
             >
               Top Rated
             </button>
@@ -128,6 +134,7 @@ function Browse() {
                 activeCategory === "tv" ? "active" : ""
               }`}
               onClick={() => handleCategoryChange("tv")}
+              disabled={activeCategory === "tv"}
             >
               TV Shows
             </button>
@@ -136,6 +143,7 @@ function Browse() {
                 activeCategory === "upcoming" ? "active" : ""
               }`}
               onClick={() => handleCategoryChange("upcoming")}
+              disabled={activeCategory === "upcoming"}
             >
               Upcoming
             </button>
