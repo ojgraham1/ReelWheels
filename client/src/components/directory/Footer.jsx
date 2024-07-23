@@ -1,6 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { NavLink} from "react-router-dom";
 
 // Footer with link to Github and About Us page
 function Footer(){
@@ -18,12 +19,12 @@ function Footer(){
             style={{ color: "#ffff" }}
           />
         </a>
-        <a
-            href="/aboutus"
+        <NavLink
+            to="/aboutus"
             className="aboutus"
         >
             About Us
-        </a>
+        </NavLink>
         </footer>
     )
 }
