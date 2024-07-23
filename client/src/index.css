@@ -115,7 +115,7 @@ a:active {
 }
 
 .nbDateTime {
-  margin-left: -100px;
+  margin-left: -15px;
   margin-top: -5px;
   margin-bottom: -5px;
   color: red;
@@ -123,15 +123,96 @@ a:active {
   font-family: sans-serif;
 }
 
-@media screen and (min-width: 320px) and (max-width: 480px) {
+.hamburger {
+  display: none;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 1024px) {
   .navBar {
-    width: max-content;
+    position: fixed;
+    justify-content: space-between;
   }
-  .navBarL {
-    font-size: xx-small;
+  .navBar .nbDateTime {
+    height: 100px;
+    margin: 15px;
   }
-  .nbDateTime {
-    font-size: xx-small;
+  .navBar .hamburger {
+    z-index: 999;
+    margin: 45px;
+    display: inline-block;
+    cursor: pointer;
+  }
+  .navBar .hamburger div {
+    width: 30px;
+    height: 4px;
+    background-color: #ffffff;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+  .navBar .hamburger.open .bar1 {
+    transform: rotate(-45deg) translate(-7.5px, 8px);
+    width: 30px;
+    margin: none;
+  }
+  .navBar .hamburger.open .bar2 {
+    opacity: 0;
+  }
+  .navBar .hamburger.open .bar3 {
+    transform: rotate(45deg) translate(-6px, -7px);
+    width: 30px;
+  }
+  .navBar .navBarL {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    top: 0;
+    right: -222px;
+    width: 222px;
+    height: 100%;
+    background-color: black;
+    transition: right 0.4s;
+  }
+  .navBar .navBarL.open {
+    right: 0;
+    top: 0;
+  }
+  .navBar .navBarL li {
+    margin-left: 10px;
+    margin-top: -10px;
+    padding: 10px;
+  }
+  .navBar .navBarL .nL {
+    text-decoration: none;
+    color: white;
+  }
+  .navBar .navBarL .nL:hover {
+    color: #c20000;
+  }
+  .navBar .navBarL .nL-logout, .navBar .navBarL .nLin {
+    font-family: "Merriweather", serif;
+    border: none;
+    outline: none;
+    background: none;
+    width: 100%;
+    margin: 0.6rem 0 1rem 0;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #ffffff;
+    text-transform: capitalize;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 10px;
+    box-shadow: 5px 5px 11px rgba(101, 101, 101, 0.2), -1px -1px 5px rgba(255, 255, 255, 0.75);
+  }
+  .navBar .navBarL .nL-logout, .navBar .navBarL .nLin:hover {
+    transition: color 0.3s;
+    color: #c20000;
+    box-shadow: inset 5px 5px 11px rgba(0, 0, 0, 0.2), inset -1px -1px 5px rgba(255, 255, 255, 0.75);
   }
 }
 footer {

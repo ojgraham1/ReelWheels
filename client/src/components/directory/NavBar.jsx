@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { clearToken } from "../../api/sliceAuth";
@@ -11,9 +11,19 @@ export default function NavBar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [hamburgerOpen, setHamburgerOpen] = useState(false);
+  const toggleHamburger = () => {
+    setHamburgerOpen(!hamburgerOpen);
+  };
+
   const handleLogout = () => {
     dispatch(clearToken());
     navigate("/login");
+    setHamburgerOpen(false);
+  };
+
+  const closeMenu = () => {
+    setHamburgerOpen(false);
   };
 
   return (
@@ -21,36 +31,44 @@ export default function NavBar() {
       <div className="nbDateTime">
         <DateTime />
       </div>
-      <ul className="navBarL">
+      <div
+        className={`hamburger ${hamburgerOpen ? "open" : ""}`}
+        onClick={toggleHamburger}
+      >
+        <div className="bar1"></div>
+        <div className="bar2"></div>
+        <div className="bar3"></div>
+      </div>
+      <ul className={`navBarL ${hamburgerOpen ? "open" : ""}`}>
         <li>
-          <NavLink className="nL" to="/">
+          <NavLink className="nL" to="/" onClick={closeMenu}>
             Now Playing
           </NavLink>
         </li>
         <li>
-          <NavLink className="nL" to="/theaters">
+          <NavLink className="nL" to="/theaters" onClick={closeMenu}>
             Theaters
           </NavLink>
         </li>
         <li>
-          <NavLink className="nL" to="/concessions">
+          <NavLink className="nL" to="/concessions" onClick={closeMenu}>
             Wine & Dine
           </NavLink>
         </li>
         <li>
-          <NavLink className="nL" to="/browse">
+          <NavLink className="nL" to="/browse" onClick={closeMenu}>
             Browse Movies
           </NavLink>
         </li>
         <li>
-          <NavLink className="nL" to="/watchlist">
+          <NavLink className="nL" to="/watchlist" onClick={closeMenu}>
             Watch List
           </NavLink>
         </li>
         {token ? (
           <>
             <li>
-              <NavLink className="nL" to={`/users/${username}`}>
+              <NavLink className="nL" to={`/users/${username}`} onClick={closeMenu}>
                 Account
               </NavLink>
             </li>
@@ -61,13 +79,11 @@ export default function NavBar() {
             </li>
           </>
         ) : (
-          <>
-            <li>
-              <NavLink className="nL" to="/login">
-                Log In
-              </NavLink>
-            </li>
-          </>
+          <li>
+            <NavLink className="nLin" to="/login" onClick={closeMenu}>
+              Log In
+            </NavLink>
+          </li>
         )}
       </ul>
     </nav>
