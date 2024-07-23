@@ -44,7 +44,7 @@ export default function NavBar() {
         <div className="vLogoContent">
           <video
             className="vLogo"
-            src="/../../public/vLogo.mp4"
+            src="/../../vLogo.mp4"
             autoPlay
             loop
             playsInline
