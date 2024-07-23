@@ -4,7 +4,7 @@ const cors = require("cors");
 const cron = require("node-cron");
 const insertNowPlayingMovies = require("./insertMovies");
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 3000;
 
 // add API
 const TMDB_API_KEY =
