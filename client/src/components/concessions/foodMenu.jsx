@@ -14,6 +14,10 @@ const useStyles = makeStyles({
     width: "200px !important",
     padding: "15px !important",
     borderRadius: "50px !important",
+    transition: "background-color 0.3s ease-in-out",
+    "&:hover": {
+      backgroundColor: "#cc0000 !important",
+    },
   },
   mediaContainer: {
     display: "flex",

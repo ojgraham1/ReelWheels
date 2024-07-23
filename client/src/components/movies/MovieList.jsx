@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,12 +7,15 @@ import ShowtimesModal from "./ShowtimesModal";
 import SearchBar from "../directory/SearchBar";
 
 const MovieList = () => {
-  const [movieSlide, setMovieSlide] = useState([]); // State variable to hold movie slide
-  const [movies, setMovies] = useState([]); // State to store movies fetched from API
-  const [showtimes, setShowtimes] = useState([]); // State to store showtimes for a selected movie
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal open/close
+  const [movieSlide, setMovieSlide] = useState([]);
+  const [movies, setMovies] = useState([]);
+  const [showtimes, setShowtimes] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [index, setIndex] = useState(0);
+  const timeoutRef = useRef(null);
 
-  // Fetching movies from API
+  const delay = 5000;
+
   useEffect(() => {
     // slideshow
     const fetchMovieSlide = async () => {
@@ -39,11 +42,7 @@ const MovieList = () => {
             movies.map(async (movie) => {
               const response = await axios.post(
                 "http://localhost:3000/showtimes/nearest",
-                {
-                  latitude,
-                  longitude,
-                  movieId: movie.id,
-                }
+                { latitude, longitude, movieId: movie.id }
               );
               return { ...movie, showtimes: response.data };
             })
@@ -64,18 +63,11 @@ const MovieList = () => {
     fetchMovies();
   }, []);
 
-  // Timeout delay for automatic slideshow of movie slides
-  const delay = 5000;
-  // State and ref to manage index for movie slides
-  const [index, setIndex] = useState(0);
-  const timeoutRef = React.useRef(null);
-
-  // Function to reset the slideshow timeout
-  function resetTimeout() {
+  const resetTimeout = () => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
-  }
+  };
 
   useEffect(() => {
     resetTimeout();
@@ -95,23 +87,21 @@ const MovieList = () => {
   const handleGetTicketsClick = async (movieId) => {
     try {
       navigator.geolocation.getCurrentPosition(async (position) => {
-        // Getting current geolocation coordinates
-        const { latitude, longitude } = position.coords; // getting latitude and longitude
+        const { latitude, longitude } = position.coords;
 
         const response = await axios.post(
           `http://localhost:3000/showtimes/nearest`,
           { latitude, longitude, movieId }
-        ); // Sending POST request to fetch nearest showtimes for the movie
+        );
 
-        setShowtimes(response.data); // Setting fetched showtimes
-        setIsModalOpen(true); // Opening the modal to display showtimes
+        setShowtimes(response.data);
+        setIsModalOpen(true);
       });
     } catch (error) {
       console.error("Error fetching showtimes:", error);
     }
   };
 
-  // Function to close the modal
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setShowtimes([]);
@@ -120,106 +110,89 @@ const MovieList = () => {
   const [results, setResults] = useState([]);
   return (
     <div className="mLContainer">
-      <ul className="movie-list-container">
-        <div className="slideshow">
-          <div
-            className="slideshowSlider"
-            style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
-          >
-            <div className="slideshowComponent">
-              {movieSlide.map((movie, index) => (
-                <div
-                  className="slide"
-                  key={index}
-                  style={{
-                    backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
-                  }}
-                >
-                  <div className="overlay">
-                    <div className="overlay-content">
-                      <div className="overlay-info">
-                        <h2 className="overlayTitle">{movie.title}</h2>
-                        <div className="overlayBtn">
-                          <Link className="mLink" to={`/movies/${movie.id}`}>
-                            <button className="button-Get-Tickets">
-                              See More Info
-                            </button>
-                          </Link>
-                        </div>
-                        {/* <div className="overlayDots">
-                            <div className="slideshowDots">
-                              {movieSlide.map((_, idx) => (
-                                <div
-                                  key={idx}
-                                  className={`slideshowDot${index === idx ? " active" : ""}`}
-                                  onClick={() => {
-                                  setIndex(idx);
-                                  }}
-                                ></div>
-                              ))}
-                            </div>
-                          </div> */}
-                      </div>
+      <div className="slideshow">
+        <div
+          className="slideshowSlider"
+          style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
+        >
+          {movieSlide.map((movie, idx) => (
+            <div
+              className="slide"
+              key={idx}
+              style={{
+                backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
+              }}
+            >
+              <div className="overlay">
+                <div className="overlay-content">
+                  <div className="overlay-info">
+                    <h2 className="overlayTitle">{movie.title}</h2>
+                    <div className="overlayBtn">
+                      <Link className="mLink" to={`/movies/${movie.id}`}>
+                        <button className="button-Get-Tickets">
+                          See More Info
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
-              ))}
+              </div>
             </div>
-          </div>
-          <div className="overlayDots">
-            <div className="slideshowDots">
-              {movieSlide.map((_, idx) => (
-                <div
-                  key={idx}
-                  className={`slideshowDot${index === idx ? " active" : ""}`}
-                  onClick={() => {
-                    setIndex(idx);
-                  }}
-                ></div>
-              ))}
-            </div>
+          ))}
+        </div>
+        <div className="overlayDots">
+          <div className="slideshowDots">
+            {movieSlide.map((_, idx) => (
+              <div
+                key={idx}
+                className={`slideshowDot${index === idx ? " active" : ""}`}
+                onClick={() => {
+                  setIndex(idx);
+                }}
+              ></div>
+            ))}
           </div>
         </div>
-        <div className="browseSearchBar">
-          <SearchBar setResults={setResults} />;
-          <div className="mLWrapper">
-            <h1 className="mLHeading">IN THEATERS NOW</h1>
-            <div className="mlCard-Container">
-              {movies.map((movie) => (
-                <div className="mlCard" key={movie.id}>
-                  <ul className="mlCardWrapper">
-                    <div className="mLImg-Container">
-                      <img
-                        className="mLImg"
-                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                        alt={movie.title}
-                      />
-                    </div>
-                    <div className="mLText-Container">
-                      <h2 className="mLT">{movie.title}</h2>
-                      <p className="mLO">{movie.overview}</p>
-                      <div className="buttonGT">
-                        {movie.showtimes.length > 0 && (
-                          <button
-                            className="button-Get-Tickets"
-                            onClick={() => handleGetTicketsClick(movie.id)}
-                          >
-                            <FontAwesomeIcon icon={faTicket} /> Get Tickets
+      </div>
+
+      <ul className="movie-list-container">
+        <div className="mLWrapper">
+          <h1 className="mLHeading">IN THEATERS NOW</h1>
+          <div className="mlCard-Container">
+            {movies.map((movie) => (
+              <div className="mlCard" key={movie.id}>
+                <ul className="mlCardWrapper">
+                  <div className="mLImg-Container">
+                    <img
+                      className="mLImg"
+                      src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                      alt={movie.title}
+                    />
+                  </div>
+                  <div className="mLText-Container">
+                    <h2 className="mLT">{movie.title}</h2>
+                    <p className="mLO">{movie.overview}</p>
+                    <div className="buttonGT">
+                      {movie.showtimes.length > 0 && (
+                        <button
+                          className="button-Get-Tickets"
+                          onClick={() => handleGetTicketsClick(movie.id)}
+                        >
+                          <FontAwesomeIcon icon={faTicket} /> Get Tickets
+                        </button>
+                      )}
+                      <div className="mLBtn">
+                        <Link className="mLink" to={`/movies/${movie.id}`}>
+                          <button className="mv-btn-link">
+                            <FontAwesomeIcon icon={faCircleInfo} />
                           </button>
-                        )}
-                        <div className="mLBtn">
-                          <Link className="mLink" to={`/movies/${movie.id}`}>
-                            <button className="mv-btn-link">
-                              <FontAwesomeIcon icon={faCircleInfo} />
-                            </button>
-                          </Link>
-                        </div>
+                        </Link>
                       </div>
                     </div>
-                  </ul>
-                </div>
-              ))}
-            </div>
+                  </div>
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </ul>
