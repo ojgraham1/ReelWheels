@@ -21,7 +21,7 @@ export default function SearchBar() {
             value &&
             bMovie &&
             bMovie.title &&
-            bMovie.title.toLowerCase().includes(value)
+            bMovie.title.toLowerCase().includes(value.toLowerCase())
           );
         });
         console.log("browseResults", results);
@@ -37,7 +37,7 @@ export default function SearchBar() {
             value &&
             bTv &&
             bTv.original_name &&
-            bTv.original_name.toLowerCase().includes(value)
+            bTv.original_name.toLowerCase().includes(value.toLowerCase())
           );
         });
 
@@ -52,7 +52,7 @@ export default function SearchBar() {
             value &&
             npMovie &&
             npMovie.title &&
-            npMovie.title.toLowerCase().includes(value)
+            npMovie.title.toLowerCase().includes(value.toLowerCase())
           );
         });
         setNowPlayingResults(results);
