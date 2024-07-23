@@ -13,6 +13,7 @@ const TMDB_BASE_URL = "https://api.themoviedb.org/3";
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(__dirname + "/../client/dist"));
 
 // Route import
 const usersRoute = require("./api/users");
