@@ -28,6 +28,7 @@ a:active {
   color: aliceblue;
 }
 
+/* --- Directory --- */
 /* NavBar */
 .navBar {
   z-index: 99;
@@ -117,10 +118,6 @@ a:active {
   font-size: 24px;
 }
 
-.vLogo {
-  display: none;
-}
-
 @media screen and (min-width: 320px) and (max-width: 1024px) {
   .navBar {
     position: fixed;
@@ -173,11 +170,6 @@ a:active {
   .navBar .navBarL.open {
     right: 0;
     top: 0;
-  }
-  .navBar .navBarL .vLogo {
-    display: block;
-    padding: 5px;
-    height: 215px;
   }
   .navBar .navBarL li {
     margin-left: 10px;
@@ -269,36 +261,7 @@ input:focus {
 }
 
 .search-icon {
-  margin-top: 3.5px;
   color: black;
-}
-
-.rListContainer {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  width: max-content;
-}
-
-.subcategory {
-  margin-left: 10px;
-  color: rgb(208, 0, 0);
-}
-
-.resLi {
-  margin-top: -10px;
-  margin-left: 10px;
-}
-
-.srTitle {
-  color: black;
-}
-
-.category-result {
-  color: rgba(155, 10, 10, 0.57);
-  margin-bottom: 5px;
 }
 
 .browse-Result-List {
@@ -345,66 +308,10 @@ input:focus {
 }
 
 .search-result:hover {
-  margin-right: 10px;
   background-color: #efefef;
   cursor: pointer;
 }
 
-@media screen and (min-width: 320px) and (max-width: 480px) {
-  .input-wrapper {
-    width: 280px;
-  }
-  input {
-    width: 260px;
-  }
-  .Results-Lists {
-    width: 260px;
-  }
-}
-@media screen and (min-width: 481px) and (max-width: 768px) {
-  .input-wrapper {
-    width: 380px;
-  }
-  input {
-    width: 360px;
-  }
-  .Results-Lists {
-    width: 360px;
-  }
-}
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-  .input-wrapper {
-    width: 400px;
-  }
-  input {
-    width: 380px;
-  }
-  .Results-Lists {
-    width: 380px;
-  }
-}
-@media screen and (min-width: 1025px) and (max-width: 1200px) {
-  .input-wrapper {
-    width: 500px;
-  }
-  input {
-    width: 480px;
-  }
-  .Results-Lists {
-    width: 480px;
-  }
-}
-@media screen and (min-width: 1201px) {
-  .input-wrapper {
-    width: 600px;
-  }
-  input {
-    width: 580px;
-  }
-  .Results-Lists {
-    width: 580px;
-  }
-}
 footer {
   z-index: 99;
   background-color: black;
@@ -619,25 +526,6 @@ footer .about-us-link:hover {
   font-size: 22px;
 }
 
-.qrCodeContainer {
-  padding: 10px;
-}
-
-.qrCodeContent {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  font-family: "Merriweather", serif;
-  font-size: large;
-  color: #d40000;
-}
-
-.qrCode {
-  height: 200px;
-  width: auto;
-}
-
 @media screen and (max-width: 480px) {
   .mLContainer {
     margin: 20px;
@@ -702,9 +590,6 @@ footer .about-us-link:hover {
     border-radius: 20px;
     font-size: 12px;
   }
-  .qrCodeWrapper, .qrCodeContainer, .qrCodeContent, .qrCode {
-    display: none;
-  }
 }
 @media screen and (min-width: 481px) and (max-width: 768px) {
   .mLContainer {
@@ -759,9 +644,6 @@ footer .about-us-link:hover {
   }
   .mLT {
     font-size: 25px;
-  }
-  .qrCodeWrapper, .qrCodeContainer, .qrCodeContent, .qrCode {
-    display: none;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1024px) {
@@ -975,6 +857,7 @@ footer .about-us-link:hover {
 .mpTitle {
   margin-left: 10px;
   font-style: oblique;
+  /* color: white; */
 }
 
 .mpt {
@@ -1001,6 +884,7 @@ footer .about-us-link:hover {
     background-size: cover;
     background-position: center;
     width: fit-content;
+    height: max-content;
     overflow: hidden;
     position: relative;
     bottom: -100px;
@@ -1036,17 +920,13 @@ footer .about-us-link:hover {
 }
 @media screen and (min-width: 2000px) {
   .mpText-Container {
-    width: 900px;
+    width: 800px;
   }
   .mpInfo {
     margin-left: 100px;
     margin-bottom: 400px;
-    justify-content: center;
-    align-content: center;
   }
   .mpVideo-Container.show {
-    justify-content: center;
-    align-content: center;
     margin-top: 480px;
     transition-duration: 5s;
   }
@@ -1377,7 +1257,7 @@ footer .about-us-link:hover {
   margin-top: 1px;
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  min-height: 100vh;
   color: white;
   position: relative;
 }
