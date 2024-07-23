@@ -53,6 +53,7 @@ export default function Login() {
           <form onSubmit={handleSubmit} className="signin-form">
             <div className="form-group">
               <input
+                className="logInput"
                 type="text"
                 placeholder="Username..."
                 name="username"
@@ -63,6 +64,7 @@ export default function Login() {
             </div>
             <div className="form-group">
               <input
+                className="logInput"
                 type="password"
                 placeholder="Password..."
                 name="password"

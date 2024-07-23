@@ -69,7 +69,8 @@ export default function SearchBar() {
         <div className="search-bar">
           <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" />
           <input
-            placeholder="Search Bar..."
+            className="searchInput"
+            placeholder="Search..."
             value={input}
             onChange={(e) => handleChange(e.target.value)}
           />
