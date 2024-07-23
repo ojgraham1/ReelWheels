@@ -103,98 +103,6 @@ a:active {
   transform: scale(1.1);
 }
 
-.search-bar-container {
-  padding-top: 10vh;
-  width: 40%;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 200px;
-}
-
-.search-bar {
-  display: flex;
-  flex-direction: row;
-}
-
-.input-wrapper {
-  width: 100%;
-  height: 2.5rem;
-  border: none;
-  border-radius: 10px;
-  padding: 0 15px;
-  box-shadow: 0px 0px 8px #ddd;
-  background-color: white;
-  display: flex;
-  align-items: center;
-}
-
-input {
-  background-color: transparent;
-  border: none;
-  height: 100%;
-  font-size: 1.25rem;
-  width: 100%;
-  margin-left: 5px;
-}
-
-input:focus {
-  outline: none;
-}
-
-.search-icon {
-  color: black;
-}
-
-.browse-Result-List {
-  color: black;
-  width: 100%;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0px 0px 8px #ddd;
-  border-radius: 10px;
-  margin-top: 1rem;
-  max-height: 150px;
-  overflow-y: auto;
-}
-
-.tv-Result-List {
-  color: black;
-  width: 100%;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0px 0px 8px #ddd;
-  border-radius: 10px;
-  margin-top: 1rem;
-  max-height: 150px;
-  overflow-y: auto;
-}
-
-.nowPlaying-Result-List {
-  color: black;
-  width: 100%;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0px 0px 8px #ddd;
-  border-radius: 10px;
-  margin-top: 1rem;
-  max-height: 150px;
-  overflow-y: auto;
-}
-
-.search-result {
-  padding: 10px 20px;
-}
-
-.search-result:hover {
-  background-color: #efefef;
-  cursor: pointer;
-}
-
 .nbDateTime {
   margin-left: -100px;
   margin-top: -5px;
@@ -312,6 +220,98 @@ input:focus {
     box-shadow: inset 5px 5px 11px rgba(0, 0, 0, 0.2), inset -1px -1px 5px rgba(255, 255, 255, 0.75);
   }
 }
+.search-bar-container {
+  padding-top: 10vh;
+  width: 40%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 200px;
+}
+
+.search-bar {
+  display: flex;
+  flex-direction: row;
+}
+
+.input-wrapper {
+  width: 100%;
+  height: 2.5rem;
+  border: none;
+  border-radius: 10px;
+  padding: 0 15px;
+  box-shadow: 0px 0px 8px #ddd;
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+
+input {
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  font-size: 1.25rem;
+  width: 100%;
+  margin-left: 5px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.search-icon {
+  color: black;
+}
+
+.browse-Result-List {
+  color: black;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 8px #ddd;
+  border-radius: 10px;
+  margin-top: 1rem;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.tv-Result-List {
+  color: black;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 8px #ddd;
+  border-radius: 10px;
+  margin-top: 1rem;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.nowPlaying-Result-List {
+  color: black;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 8px #ddd;
+  border-radius: 10px;
+  margin-top: 1rem;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.search-result {
+  padding: 10px 20px;
+}
+
+.search-result:hover {
+  background-color: #efefef;
+  cursor: pointer;
+}
+
 footer {
   z-index: 99;
   background-color: black;
@@ -889,8 +889,7 @@ footer .about-us-link:hover {
     position: relative;
     bottom: -100px;
   }
-  .movie-page-container,
-  .mpImg {
+  .movie-page-container, .mpImg {
     margin-top: -110px;
     object-fit: contain;
     width: fit-content;
@@ -1104,8 +1103,7 @@ footer .about-us-link:hover {
   border: none;
   background-color: rgba(0, 0, 0, 0);
   color: white;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: x-large;
   font-weight: 300;
   text-shadow: -1px 1px 11px #fffcbc;
@@ -1351,8 +1349,7 @@ footer .about-us-link:hover {
     overflow: hidden;
     position: relative;
   }
-  .browse-page-container,
-  .bpImg {
+  .browse-page-container, .bpImg {
     object-fit: contain;
     width: fit-content;
   }
@@ -1787,7 +1784,7 @@ footer .about-us-link:hover {
 }
 
 .linkedin {
-  color: #0077b5;
+  color: #0077B5;
   text-decoration: none;
   margin-top: 10px;
   display: inline-block;
@@ -1815,8 +1812,7 @@ footer .about-us-link:hover {
   margin-top: 100px;
   padding: 2rem;
   border-radius: 20px;
-  box-shadow: 10px 10px 22px rgba(104, 104, 104, 0.479),
-    -10px -10px 22px rgba(255, 255, 255, 0.75);
+  box-shadow: 10px 10px 22px rgba(104, 104, 104, 0.479), -10px -10px 22px rgba(255, 255, 255, 0.75);
 }
 
 .account button {
@@ -1890,8 +1886,7 @@ footer .about-us-link:hover {
   margin: 0.5rem 0 1rem 0;
   font-size: 1.2rem;
   color: #d10000;
-  box-shadow: inset 5px 5px 11px rgba(0, 0, 0, 0.2),
-    inset -5px -5px 11px rgba(255, 255, 255, 0.75);
+  box-shadow: inset 5px 5px 11px rgba(0, 0, 0, 0.2), inset -5px -5px 11px rgba(255, 255, 255, 0.75);
 }
 
 .edit-details button {
@@ -1907,13 +1902,11 @@ footer .about-us-link:hover {
   padding: 0.9rem;
   border-radius: 20px;
   background-color: #e0e0e0;
-  box-shadow: 10px 10px 22px rgba(0, 0, 0, 0.2),
-    -10px -10px 22px rgba(255, 255, 255, 0.75);
+  box-shadow: 10px 10px 22px rgba(0, 0, 0, 0.2), -10px -10px 22px rgba(255, 255, 255, 0.75);
 }
 
 .edit-details button:hover {
-  box-shadow: inset 5px 5px 11px rgba(0, 0, 0, 0.2),
-    inset -5px -5px 11px rgba(255, 255, 255, 0.75);
+  box-shadow: inset 5px 5px 11px rgba(0, 0, 0, 0.2), inset -5px -5px 11px rgba(255, 255, 255, 0.75);
 }
 
 .birthdate-inputs {
@@ -1993,8 +1986,7 @@ footer .about-us-link:hover {
   margin: 1rem;
   padding: 2rem;
   border-radius: 20px;
-  box-shadow: 10px 10px 22px rgba(104, 104, 104, 0.479),
-    -10px -10px 22px rgba(255, 255, 255, 0.75);
+  box-shadow: 10px 10px 22px rgba(104, 104, 104, 0.479), -10px -10px 22px rgba(255, 255, 255, 0.75);
 }
 
 .signin-header {
@@ -2020,8 +2012,8 @@ footer .about-us-link:hover {
   margin-bottom: 20px;
 }
 
-input[type="text"],
-input[type="password"] {
+input[type=text],
+input[type=password] {
   border: none;
   outline: none;
   background: none;
@@ -2031,8 +2023,7 @@ input[type="password"] {
   margin: 0.5rem 0 1rem 0;
   font-size: 1.2rem;
   color: #d10000;
-  box-shadow: inset 5px 5px 11px rgba(0, 0, 0, 0.2),
-    inset -5px -5px 11px rgba(255, 255, 255, 0.75);
+  box-shadow: inset 5px 5px 11px rgba(0, 0, 0, 0.2), inset -5px -5px 11px rgba(255, 255, 255, 0.75);
 }
 
 .signin-btn {
@@ -2048,13 +2039,11 @@ input[type="password"] {
   padding: 0.9rem;
   border-radius: 20px;
   background-color: #e0e0e0;
-  box-shadow: 10px 10px 22px rgba(0, 0, 0, 0.2),
-    -10px -10px 22px rgba(255, 255, 255, 0.75);
+  box-shadow: 10px 10px 22px rgba(0, 0, 0, 0.2), -10px -10px 22px rgba(255, 255, 255, 0.75);
 }
 
 .signin-btn:hover {
-  box-shadow: inset 5px 5px 11px rgba(0, 0, 0, 0.2),
-    inset -5px -5px 11px rgba(255, 255, 255, 0.75);
+  box-shadow: inset 5px 5px 11px rgba(0, 0, 0, 0.2), inset -5px -5px 11px rgba(255, 255, 255, 0.75);
 }
 
 .signin-footer {
@@ -2117,8 +2106,7 @@ input[type="password"] {
   margin: 1rem;
   padding: 2rem;
   border-radius: 20px;
-  box-shadow: 10px 10px 22px rgba(104, 104, 104, 0.479),
-    -10px -10px 22px rgba(255, 255, 255, 0.75);
+  box-shadow: 10px 10px 22px rgba(104, 104, 104, 0.479), -10px -10px 22px rgba(255, 255, 255, 0.75);
 }
 
 .register-title {
@@ -2145,8 +2133,7 @@ input[type="password"] {
   margin: 0.5rem 0 1rem 0;
   font-size: 1.2rem;
   color: #d10000;
-  box-shadow: inset 5px 5px 11px rgba(0, 0, 0, 0.2),
-    inset -5px -5px 11px rgba(255, 255, 255, 0.75);
+  box-shadow: inset 5px 5px 11px rgba(0, 0, 0, 0.2), inset -5px -5px 11px rgba(255, 255, 255, 0.75);
 }
 
 .bdform-group {
@@ -2168,13 +2155,11 @@ input[type="password"] {
   padding: 0.9rem;
   border-radius: 20px;
   background-color: #e0e0e0;
-  box-shadow: 10px 10px 22px rgba(0, 0, 0, 0.2),
-    -10px -10px 22px rgba(255, 255, 255, 0.75);
+  box-shadow: 10px 10px 22px rgba(0, 0, 0, 0.2), -10px -10px 22px rgba(255, 255, 255, 0.75);
 }
 
 .submit-btn:hover {
-  box-shadow: inset 5px 5px 11px rgba(0, 0, 0, 0.2),
-    inset -5px -5px 11px rgba(255, 255, 255, 0.75);
+  box-shadow: inset 5px 5px 11px rgba(0, 0, 0, 0.2), inset -5px -5px 11px rgba(255, 255, 255, 0.75);
 }
 
 .login-link {
