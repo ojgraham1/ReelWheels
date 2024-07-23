@@ -22,7 +22,6 @@
   display: flex;
   align-items: center;
 }
-
 input {
   background-color: transparent;
   border: none;
@@ -31,11 +30,9 @@ input {
   width: 100%;
   margin-left: 5px;
 }
-
 input:focus {
   outline: none;
 }
-
 .search-icon {
   color: black;
 }
@@ -78,7 +75,6 @@ input:focus {
 .search-result {
   padding: 10px 20px;
 }
-
 .search-result:hover {
   background-color: #efefef;
   cursor: pointer;

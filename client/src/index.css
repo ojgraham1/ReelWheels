@@ -28,7 +28,6 @@ a:active {
   color: aliceblue;
 }
 
-/* --- Directory --- */
 /* NavBar */
 .navBar {
   z-index: 99;
@@ -857,7 +856,6 @@ footer .about-us-link:hover {
 .mpTitle {
   margin-left: 10px;
   font-style: oblique;
-  /* color: white; */
 }
 
 .mpt {
@@ -920,13 +918,17 @@ footer .about-us-link:hover {
 }
 @media screen and (min-width: 2000px) {
   .mpText-Container {
-    width: 800px;
+    width: 900px;
   }
   .mpInfo {
     margin-left: 100px;
     margin-bottom: 400px;
+    justify-content: center;
+    align-content: center;
   }
   .mpVideo-Container.show {
+    justify-content: center;
+    align-content: center;
     margin-top: 480px;
     transition-duration: 5s;
   }
