@@ -164,6 +164,20 @@
   cursor: pointer;
   font-size: 22px;
 }
+.qrCodeWrapper{
+}
+.qrCodeContainer{
+
+}
+.qrCodeContent{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.qrCode{
+  height: 200px;
+  width: auto;
+}
 
 // Mobile Devices
 @media screen and (max-width: 480px) {
@@ -230,6 +244,9 @@
     border-radius: 20px;
     font-size: 12px;
   }
+  .qrCodeWrapper, .qrCodeContainer, .qrCodeContent, .qrCode{
+    display: none;
+  }
 }
 
 // iPads and Tablets
@@ -287,6 +304,9 @@
   }
   .mLT {
     font-size: 25px;
+  }
+  .qrCodeWrapper, .qrCodeContainer, .qrCodeContent, .qrCode{
+    display: none;
   }
 }
 

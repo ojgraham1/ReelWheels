@@ -154,7 +154,18 @@ const MovieList = () => {
           </div>
         </div>
       </div>
-
+      <div className="qrCodeWrapper">
+        <div className="qrCodeContainer">
+          <div className="qrCodeContent">
+            <h1>Go Mobile!</h1>
+            <img 
+              className="qrCode"
+              src="../../public/frame.png"
+              alt="qrCode"
+            />
+          </div>
+        </div>
+      </div>
       <ul className="movie-list-container">
         <div className="browseSearchBar">
           <SearchBar setResults={setResults} />;

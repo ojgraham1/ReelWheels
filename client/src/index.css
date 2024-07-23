@@ -525,6 +525,17 @@ footer .about-us-link:hover {
   font-size: 22px;
 }
 
+.qrCodeContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.qrCode {
+  height: 200px;
+  width: auto;
+}
+
 @media screen and (max-width: 480px) {
   .mLContainer {
     margin: 20px;
@@ -589,6 +600,9 @@ footer .about-us-link:hover {
     border-radius: 20px;
     font-size: 12px;
   }
+  .qrCodeWrapper, .qrCodeContainer, .qrCodeContent, .qrCode {
+    display: none;
+  }
 }
 @media screen and (min-width: 481px) and (max-width: 768px) {
   .mLContainer {
@@ -643,6 +657,9 @@ footer .about-us-link:hover {
   }
   .mLT {
     font-size: 25px;
+  }
+  .qrCodeWrapper, .qrCodeContainer, .qrCodeContent, .qrCode {
+    display: none;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1024px) {
