@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "start-all": "concurrently \"npm run dev --prefix client\" \"node server/index.js\""
+    "start-all": "concurrently \"npm run dev --prefix client\" \"node server/index.js\"",
+    "build": "npm i && cd client && npm i --legacy-peer-deps && npm run build && cd ../server && npm i && npm run seed"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"

@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Container, Typography, Box } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
+
 const useStyles = makeStyles({
   root: {
     paddingTop: "2px",
@@ -284,7 +285,7 @@ const useStyles = makeStyles({
 
 export default function Concessions() {
   const classes = useStyles();
-
+  const buttonLink =  process.env.NODE_ENV === "production"? "./ReelWheelsMenu.pdf": "../public/ReelWheelsMenu.pdf"
   return (
     <Container className={classes.root}>
       <Box className={classes.mediaContainer}>
@@ -310,7 +311,7 @@ export default function Concessions() {
             <Button
               variant="contained"
               className={classes.button}
-              href="../public/ReelWheelsMenu.pdf"
+              href = {buttonLink}
               target="_blank"
               rel="noopener noreferrer"
               sx={{ color: "black" }}
