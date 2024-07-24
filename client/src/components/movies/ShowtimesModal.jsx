@@ -56,7 +56,7 @@ const ShowtimesModal = ({ showtimes, onClose }) => {
       }
     } catch (error) {
       console.error("Error reserving tickets:", error);
-      alert("Failed to reserve tickets.");
+      alert("Please create an account to reserve your tickets.");
     }
   };
 
