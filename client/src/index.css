@@ -1568,18 +1568,19 @@ a:visited {
   .browse-page-container {
     height: max-content;
     width: max-content;
-    display: flex;
+    position: relative;
+    overflow: hidden;
   }
   .bpVideo-Container {
     display: none;
   }
-  .bpText-Container {
-    width: 300px;
+  .bpInfo {
+    margin-top: -100px;
+    padding-bottom: 100px;
   }
-}
-@media screen and (min-width: 1600px) {
   .bpText-Container {
-    width: 800px;
+    height: fit-content;
+    width: 300px;
   }
 }
 /* TheaterList.jsx */
