@@ -71,8 +71,12 @@ function BrowsePage() {
             <div className="browse-page-overlay"></div>
             {details && (
                 <div className="browse-page-content">
-                    <div className="bpVideo-Container">
-                        {videoKey && <YouTube videoId={videoKey} />}
+                    <div className="bvid-content">
+                        <div className="bpVideo-Container">
+                            <div className="bvid">
+                                {videoKey && <YouTube videoId={videoKey} />}
+                            </div>
+                        </div>
                     </div>
                     <div className="bpInfo">
                         <div className="bpText-Container">

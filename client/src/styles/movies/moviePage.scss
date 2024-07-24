@@ -111,13 +111,13 @@
   margin-bottom: 100px;
 }
 
-// Mobile Devices
+// Mobile Devices, iPads, Small and Large Screens
 @media screen and (min-width: 320px) and (max-width: 860px) {
   .movie-page-container {
     background-size: cover;
     background-position: center;
-    // width: fit-content;
-    width: auto;
+    width: max-content;
+    // width: auto;
     // height: 100vh;
     height: auto;
     overflow: hidden;
