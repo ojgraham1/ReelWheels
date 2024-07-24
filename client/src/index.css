@@ -1104,8 +1104,8 @@ a:visited {
   .movie-page-container {
     background-size: cover;
     background-position: center;
-    width: fit-content;
-    height: fit-content;
+    width: auto;
+    height: auto;
     overflow: hidden;
     position: relative;
     bottom: -100px;
@@ -1124,18 +1124,20 @@ a:visited {
   }
   .mpText-Container {
     margin-top: 300px;
-    height: min-content;
+    height: auto;
   }
   .play-btn {
     margin-bottom: -300px;
   }
   .vid-content {
+    width: auto;
     height: 600px;
     margin-top: -425px;
     margin-bottom: -350px;
   }
   .mpVideo-Container.show {
     margin-top: 120px;
+    width: auto;
   }
 }
 @media screen and (min-width: 2000px) {
