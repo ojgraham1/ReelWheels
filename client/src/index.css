@@ -1104,8 +1104,8 @@ a:visited {
   .movie-page-container {
     background-size: cover;
     background-position: center;
-    width: fit-content;
-    height: fit-content;
+    width: auto;
+    height: auto;
     overflow: hidden;
     position: relative;
     bottom: -100px;
@@ -1124,18 +1124,20 @@ a:visited {
   }
   .mpText-Container {
     margin-top: 300px;
-    height: min-content;
+    height: auto;
   }
   .play-btn {
     margin-bottom: -300px;
   }
   .vid-content {
+    width: auto;
     height: 600px;
     margin-top: -425px;
     margin-bottom: -350px;
   }
   .mpVideo-Container.show {
     margin-top: 120px;
+    width: auto;
   }
 }
 @media screen and (min-width: 2000px) {
@@ -1564,23 +1566,29 @@ a:visited {
   transform: scale(1.1);
 }
 
-@media screen and (min-width: 320px) and (max-width: 1025px) {
+@media screen and (min-width: 320px) and (max-width: 1269px) {
   .browse-page-container {
-    height: max-content;
-    width: max-content;
+    height: auto;
+    width: auto;
     position: relative;
     overflow: hidden;
   }
   .bpVideo-Container {
-    display: none;
+    height: auto;
   }
   .bpInfo {
     margin-top: -100px;
     padding-bottom: 100px;
+    width: auto;
   }
   .bpText-Container {
     height: fit-content;
-    width: 300px;
+    width: auto;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .bpText-Container {
+    width: 800px;
   }
 }
 /* TheaterList.jsx */
