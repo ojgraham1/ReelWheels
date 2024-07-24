@@ -183,11 +183,19 @@
   width: auto;
 }
 // Mobile Devices
-@media screen and (max-width: 480px) {
+@media screen  and (min-width: 320px) and (max-width: 480px) {
   .mLContainer {
     margin: 20px;
-    margin-left: -20px;
     margin-top: 100px;
+  }
+  .slide {
+    height: 200px;
+  }
+  .overlayTitle {
+    font-size: 15px;
+  }
+  .overlayBtn{
+    height: 10px;
   }
   .mLWrapper {
     display: flex;
@@ -259,6 +267,15 @@
     flex-direction: column;
     justify-content: center;
   }
+  .slide {
+    height: 300px;
+  }
+  .overlayTitle {
+    font-size: 25px;
+  }
+  .overlayBtn{
+    height: 10px;
+  }
   .movie-list-container {
     display: flex;
     flex-wrap: wrap;
@@ -278,7 +295,6 @@
     margin-right: 0%;
     margin-bottom: 70px;
   }
-
   .mlCardWrapper {
     display: flex;
     flex-direction: column;
@@ -321,7 +337,15 @@
     justify-content: center;
     align-content: center;
   }
-
+  .slide {
+    height: 400px;
+  }
+  .overlayTitle {
+    font-size: 20px;
+  }
+  .overlayBtn{
+    height: 10px;
+  }
   .mlCard-Container {
     display: flex;
     flex-wrap: wrap;
@@ -329,7 +353,6 @@
     padding-top: 10px;
     padding-bottom: 10px;
   }
-
   .mlCardWrapper {
     display: flex;
     flex-direction: row;
@@ -338,7 +361,6 @@
     margin-top: 20px;
     margin-bottom: 70px;
   }
-
   .mLText-Container {
     width: fit-content;
   }
@@ -346,11 +368,28 @@
 
 // Desktops and Large Screens
 @media screen and (min-width: 1025px) and (max-width: 1200px) {
+  .mLContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .slideshow{
+    margin-left: 15px;
+  }
   .movie-list-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
+  }
+  .slide {
+    height: 400px;
+  }
+  .overlayTitle {
+    font-size: 25px;
+  }
+  .overlayBtn{
+    height: 10px;
   }
   .mlCard-Container {
     display: flex;
@@ -370,7 +409,24 @@
 }
 
 // Extra large screens
-@media screen and (min-width: 1201px) {
+@media screen and (min-width: 1201px) and (max-width: 2559px) {
+  .mLContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .slideshow{
+    width: 100%;
+  }
+  .slide {
+    height: 600px;
+  }
+  .overlayTitle {
+    font-size: 55px;
+  }
+  .overlayBtn{
+    height: 30px;
+  }
   .movie-list-container {
     display: flex;
     flex-wrap: wrap;
@@ -395,7 +451,25 @@
 }
 
 // Ultra wide screens
-@media screen and (min-width: 2560px) {
+@media screen and (min-width: 2560px) and (max-width: 5119px) {
+  .mLContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .slideshow{
+    margin-left: -10px;
+    width: 100%;
+  }
+  .slide {
+    height: 1000px;
+  }
+  .overlayTitle {
+    font-size: 65px;
+  }
+  .overlayBtn{
+    height: 10px;
+  }
   .mlCardWrapper {
     width: 80%;
     margin-left: auto;
@@ -414,14 +488,23 @@
 
 // Daniels screens
 @media screen and (min-width: 5120px) and (max-width: 5279px) {
-  .slideshow {
-    margin: 100px 0;
+  .mLContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .slideshow{
+    margin-left: -10px;
+    width: 100%;
   }
   .slide {
-    height: 1000px;
+    height: 1500px;
   }
   .overlayTitle {
-    font-size: 3rem;
+    font-size: 115px;
+  }
+  .overlayBtn{
+    height: 50px;
   }
   .button-Get-Tickets {
     height: 50px;
