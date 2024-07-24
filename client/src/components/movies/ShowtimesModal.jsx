@@ -32,7 +32,7 @@ const ShowtimesModal = ({ showtimes, onClose }) => {
       });
       // Sending reservation request to server
       const response = await fetch(
-        `http://localhost:3000/reservations/user/${userId}`,
+        `/reservations/user/${userId}`,
         {
           method: "POST",
           headers: {

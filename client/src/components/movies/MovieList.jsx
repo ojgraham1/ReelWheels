@@ -20,7 +20,7 @@ const MovieList = () => {
     // slideshow
     const fetchMovieSlide = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/movies");
+        const response = await axios.get("/api/movies");
         setMovieSlide(response.data.slice(0, 5));
       } catch (error) {
         console.error("Error fetching movies:", error);
@@ -30,7 +30,7 @@ const MovieList = () => {
     // movie list
     const fetchMovies = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/movies");
+        const response = await axios.get("/api/movies");
         const movies = response.data;
 
         // Get user's current location
@@ -41,7 +41,7 @@ const MovieList = () => {
           const moviesWithShowtimes = await Promise.all(
             movies.map(async (movie) => {
               const response = await axios.post(
-                "http://localhost:3000/showtimes/nearest",
+                "/showtimes/nearest",
                 { latitude, longitude, movieId: movie.id }
               );
               return { ...movie, showtimes: response.data };
@@ -90,7 +90,7 @@ const MovieList = () => {
         const { latitude, longitude } = position.coords;
 
         const response = await axios.post(
-          `http://localhost:3000/showtimes/nearest`,
+          `/showtimes/nearest`,
           { latitude, longitude, movieId }
         );
 

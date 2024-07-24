@@ -25,7 +25,7 @@ export default function TheaterList() {
   useEffect(() => {
     const fetchTheaters = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/theater"); // Fetch theaters data from API
+        const response = await axios.get("/theater"); // Fetch theaters data from API
         setTheaters(response.data); // Update theaters state with fetched data
       } catch (error) {
         console.error("Error fetching theaters:", error);

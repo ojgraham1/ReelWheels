@@ -44,7 +44,7 @@ export default function SearchBar() {
         setTvResults(results);
         console.log("tv Results", results);
       });
-    fetch(`http://localhost:3000/api/movies/`)
+    fetch(`/api/movies/`)
       .then((response) => response.json())
       .then((json) => {
         const results = json.filter((npMovie) => {
