@@ -93,7 +93,6 @@
 .mpTitle {
   margin-left: 10px;
   font-style: oblique;
-  /* color: white; */
 }
 .mpt {
   margin-top: -15px;
@@ -118,7 +117,8 @@
     background-size: cover;
     background-position: center;
     width: fit-content;
-    height: max-content;
+    // height: 100vh;
+    // height: max-content;
     overflow: hidden;
     position: relative;
     bottom: -100px;
@@ -153,37 +153,25 @@
   }
 }
 
-// iPads and Tablets
-@media screen and (min-width: 481px) and (max-width: 768px) {
-}
-
-// Small Screens and Laptops
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-}
-
-// Desktops and Large Screens
-@media screen and (min-width: 1025px) and (max-width: 1200px) {
-}
-
-// Extra large screens
-@media screen and (min-width: 1201px) {
-}
-
+// Ultra Wide Screens
 @media screen and (min-width: 2000px) {
   .mpText-Container {
-    width: 800px;
+    width: 900px;
   }
   .mpInfo{
     margin-left: 100px;
     margin-bottom: 400px;
+    justify-content: center;
+    align-content: center;
   }
   .mpVideo-Container.show {
+    justify-content: center;
+    align-content: center;
     margin-top: 480px;
     transition-duration: 5s;
   }
   .mpVideo-Container.exit{
     margin-top: -1000px;
     transition-duration: 5s;
-
   }
 }

@@ -8,9 +8,11 @@ const useStyles = makeStyles({
     paddingTop: "2px",
     textAlign: "center",
   },
+  // Added !important to force React to override the default MUI styles
   button: {
     margin: "20px 0 !important",
     backgroundColor: "red !important",
+    color: "white !important",
     width: "200px !important",
     padding: "15px !important",
     borderRadius: "50px !important",
@@ -53,21 +55,21 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    marginTop: "20px",
-    padding: "10px",
+    marginTop: "20px !important",
+    padding: "10px !important",
     paddingLeft: "20px",
     width: "max-content",
-    height: "200px",
+    height: "200px !important",
     backgroundColor: "black",
-    fontSize: "80px",
-    fontFamily: "inherit",
-    fontWeight: "bold",
+    fontSize: "80px !important",
+    fontFamily: "inherit !important",
+    fontWeight: "bold !important",
     textAlign: "left",
   },
   headP: {
-    fontFamily: "inherit",
-    fontSize: "20px",
-    fontWeight: "none",
+    fontFamily: "inherit !important",
+    fontSize: "20px !important ",
+    fontWeight: "none !important",
   },
   img: {
     width: "100%",
@@ -104,7 +106,7 @@ const useStyles = makeStyles({
   },
 
   // Media Queries
-  '@media (min-width: 320px) and (max-width: 480px)': {
+  "@media (min-width: 320px) and (max-width: 480px)": {
     mediaItem: {
       marginLeft: "0",
       width: "100%",
@@ -116,32 +118,32 @@ const useStyles = makeStyles({
     head: {
       fontFamily: "inherit",
       fontWeight: "bold",
-      fontSize: "20px",
+      fontSize: "20px !important",
       textAlign: "left",
-      height: "80px",
+      height: "80px !important",
       width: "fit-content",
     },
     headP: {
       fontFamily: "inherit",
-      fontSize: "10px",
+      fontSize: "10px !important",
       fontWeight: "none",
     },
     button: {
-      width: "80px",
+      width: "86px !important",
       height: "20px",
-      padding: "10px",
-      fontSize: "0.39rem",
+      padding: "12px !important",
+      fontSize: "0.39rem !important",
       margin: "10px 0",
     },
     text: {
-      fontSize: "20px",
+      fontSize: "20px !important",
     },
     p: {
-      width: "250px",
-      fontSize: "10px",
+      width: "250px !important",
+      fontSize: "10px !important",
     },
   },
-  '@media (min-width: 481px) and (max-width: 768px)': {
+  "@media (min-width: 481px) and (max-width: 768px)": {
     mediaItem: {
       marginLeft: "0",
       width: "100%",
@@ -151,32 +153,31 @@ const useStyles = makeStyles({
       width: "100%",
     },
     head: {
-      fontSize: "30px",
-      height: "100px",
+      fontSize: "30px !important",
+      height: "100px !important",
       width: "fit-content",
     },
     headP: {
       fontFamily: "inherit",
-      fontSize: "15px",
+      fontSize: "15px !important",
       fontWeight: "none",
     },
     button: {
       width: "100px",
-      height: "30px",
+      height: "45px !important",
       padding: "10px",
       fontSize: "0.5rem",
       margin: "10px 0",
     },
     text: {
-      fontSize: "30px",
+      fontSize: "30px !important",
     },
     p: {
-      width: "350px",
-      fontSize: "11px",
+      width: "350px !important",
+      fontSize: "11px !important",
     },
-
   },
-  '@media (min-width: 769px) and (max-width: 1024px)': {
+  "@media (min-width: 769px) and (max-width: 1024px)": {
     mediaItem: {
       marginLeft: "0",
       width: "100%",
@@ -186,31 +187,31 @@ const useStyles = makeStyles({
       width: "100%",
     },
     head: {
-      fontSize: "50px",
-      height: "200px",
-      width: "fit-content",
+      fontSize: "50px !important",
+      height: "200px !important",
+      width: "fit-content !important",
     },
     headP: {
       fontFamily: "inherit",
-      fontSize: "20px",
+      fontSize: "20px !important",
       fontWeight: "none",
     },
     button: {
       width: "100px",
-      height: "40px",
+      height: "50px !important",
       padding: "10px",
       fontSize: "9px",
       margin: "10px 0",
     },
     text: {
-      fontSize: "50px",
+      fontSize: "50px !important",
     },
     p: {
-      width: "500px",
-      fontSize: "15px",
+      width: "500px !important",
+      fontSize: "15px !important",
     },
   },
-  '@media (min-width: 1025px) and (max-width: 1200px)': {
+  "@media (min-width: 1025px) and (max-width: 1200px)": {
     mediaItem: {
       marginLeft: "0",
       width: "100%",
@@ -244,10 +245,10 @@ const useStyles = makeStyles({
       fontSize: "20px",
     },
   },
-  '@media (min-width: 1201px) and (max-width: 1380px)': {
-    mediaContainer:{
+  "@media (min-width: 1201px) and (max-width: 1380px)": {
+    mediaContainer: {
       width: "fit-content",
-    },  
+    },
     mediaItem: {
       marginLeft: "0",
       width: "100%",
@@ -285,7 +286,7 @@ const useStyles = makeStyles({
 
 export default function Concessions() {
   const classes = useStyles();
-
+  const buttonLink =  process.env.NODE_ENV === "production"? "./ReelWheelsMenu.pdf": "../public/ReelWheelsMenu.pdf"
   return (
     <Container className={classes.root}>
       <Box className={classes.mediaContainer}>
@@ -297,8 +298,13 @@ export default function Concessions() {
             playsInline
             preload="metadata"
             className={classes.video}
-            />
-          <Typography className={classes.head} variant="h5" component="h1" gutterBottom>
+          />
+          <Typography
+            className={classes.head}
+            variant="h5"
+            component="h1"
+            gutterBottom
+          >
             Movies with a menu.
             <Typography className={classes.headP}>
               Featuring high quality and locally sourced ingredients.
@@ -306,7 +312,7 @@ export default function Concessions() {
             <Button
               variant="contained"
               className={classes.button}
-              href="../public/ReelWheelsMenu.pdf"
+              href = {buttonLink}
               target="_blank"
               rel="noopener noreferrer"
               sx={{ color: "black" }}

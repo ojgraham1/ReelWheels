@@ -103,7 +103,6 @@
   gap: 10px;
   padding: 20px;
 }
-
 .pagination-btn {
   background-color: transparent;
   border: none;
@@ -112,16 +111,13 @@
   font-size: 24px;
   transition: transform 0.3s ease-in-out;
 }
-
 .pagination-btn:disabled {
   color: rgba(255, 255, 255, 0.5);
   cursor: not-allowed;
 }
-
 .pagination-btn:hover:not(:disabled) {
   transform: scale(1.1);
 }
-
 .pagination-page {
   font-size: 18px;
   color: white;
@@ -163,7 +159,7 @@
   color: white;
 }
 
-// Mobile Devices
+// Mobile Devices and iPads
 @media screen and (min-width: 320px) and (max-width: 768px) {
   .bmContainer {
     display: flex;
@@ -231,11 +227,7 @@
   }
 }
 
-// iPads and Tablets
-// @media screen and (min-width: 481px) and (max-width: 768px) {
-// }
-
-// Small Screens and Laptops
+// Small Screens, Laptops, Desktops, and Large Screens
 @media screen and (min-width: 769px) and (max-width: 1200px) {
   .bmContainer {
     display: flex;
@@ -301,12 +293,4 @@
     margin-top: 2px;
     font-size: 15px;
   }
-}
-
-// Desktops and Large Screens
-// @media screen and (min-width: 1025px) and (max-width: 1200px) {
-// }
-
-// Extra large screens
-@media screen and (min-width: 1201px) {
 }

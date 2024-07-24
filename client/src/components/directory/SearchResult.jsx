@@ -5,7 +5,7 @@ export const SearchResult = ({ id, result, category }) => {
   const navigate = useNavigate();
   return (
     <div className="search-result" onClick={(e) => navigate(`/browse/${id}`)}>
-      <div>{result}</div>
+      <div className="srTitle">{result}</div>
       <div className="category-result">{category}</div>
     </div>
   );
@@ -17,7 +17,7 @@ export const TvSearchResult = ({ id, tvResult, tvCategory }) => {
       className="search-result"
       onClick={(e) => navigate(`/browse/tv/${id}`)}
     >
-      <div>{tvResult}</div>
+      <div className="srTitle">{tvResult}</div>
       <div className="category-result">{tvCategory}</div>
     </div>
   );

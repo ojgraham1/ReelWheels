@@ -41,6 +41,15 @@ export default function NavBar() {
         <div className="bar3"></div>
       </div>
       <ul className={`navBarL ${hamburgerOpen ? "open" : ""}`}>
+        <div className="vLogoContent">
+          <video
+            className="vLogo"
+            src="/../../vLogo.mp4"
+            autoPlay
+            loop
+            playsInline
+          />
+        </div>
         <li>
           <NavLink className="nL" to="/" onClick={closeMenu}>
             Now Playing

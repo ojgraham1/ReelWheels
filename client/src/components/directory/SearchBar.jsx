@@ -21,7 +21,7 @@ export default function SearchBar() {
             value &&
             bMovie &&
             bMovie.title &&
-            bMovie.title.toLowerCase().includes(value)
+            bMovie.title.toLowerCase().includes(value.toLowerCase())
           );
         });
         console.log("browseResults", results);
@@ -37,7 +37,7 @@ export default function SearchBar() {
             value &&
             bTv &&
             bTv.original_name &&
-            bTv.original_name.toLowerCase().includes(value)
+            bTv.original_name.toLowerCase().includes(value.toLowerCase())
           );
         });
 
@@ -52,7 +52,7 @@ export default function SearchBar() {
             value &&
             npMovie &&
             npMovie.title &&
-            npMovie.title.toLowerCase().includes(value)
+            npMovie.title.toLowerCase().includes(value.toLowerCase())
           );
         });
         setNowPlayingResults(results);
@@ -69,26 +69,29 @@ export default function SearchBar() {
         <div className="search-bar">
           <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" />
           <input
-            placeholder="Search Bar..."
+            className="searchInput"
+            placeholder="Search..."
             value={input}
             onChange={(e) => handleChange(e.target.value)}
           />
         </div>
       </div>
-      <div className="search-browse-results">
-        {nowPlayingResults && nowPlayingResults.length > 0 && (
-          <SearchResultsList nowPlayingResults={nowPlayingResults} />
-        )}
-      </div>
-      <div className="search-browse-results">
-        {browseResults && browseResults.length > 0 && (
-          <SearchResultsList browseResults={browseResults} />
-        )}
-      </div>
-      <div className="search-browse-results">
-        {tvResults && tvResults.length > 0 && (
-          <TvSearchResultsList tvResults={tvResults} />
-        )}
+      <div  className="rListContainer">
+        <div className="search-browse-results">
+          {nowPlayingResults && nowPlayingResults.length > 0 && (
+            <SearchResultsList nowPlayingResults={nowPlayingResults} />
+          )}
+        </div>
+        <div className="search-browse-results">
+          {browseResults && browseResults.length > 0 && (
+            <SearchResultsList browseResults={browseResults} />
+          )}
+        </div>
+        <div className="search-browse-results">
+          {tvResults && tvResults.length > 0 && (
+            <TvSearchResultsList tvResults={tvResults} />
+          )}
+        </div>
       </div>
     </div>
   );
