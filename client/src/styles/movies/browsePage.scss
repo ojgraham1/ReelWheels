@@ -80,14 +80,21 @@
 // Mobile Devices, iPads, Small and Large Screens
 @media screen and (min-width: 320px) and (max-width: 1269px) {
   .browse-page-container {
+    background-size: cover;
+    background-position: center;
     height: auto;
-    width: auto;
+    width: max-content;
     position: relative;
     overflow: hidden;
   }
   .bpVideo-Container {
     height: auto;
   }
+  .bvid-content {
+    width: auto;
+    height: auto;
+  }
+
   .bpInfo {
     margin-top: -100px;
     padding-bottom: 100px;
