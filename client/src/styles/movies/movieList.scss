@@ -206,7 +206,7 @@
     font-size: 20px;
   }
   .movie-list-container {
-    
+    margin-left: -35px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -295,6 +295,12 @@
     margin-left: 0%;
     margin-right: 0%;
     margin-bottom: 70px;
+  }
+  .mLWrapper{
+    margin-right: -100px;
+  }
+  .mLHeading{
+    margin-left: -120px;
   }
   .mlCardWrapper {
     display: flex;
