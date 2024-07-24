@@ -136,11 +136,11 @@ const useStyles = makeStyles({
       margin: "10px 0",
     },
     text: {
-      fontSize: "20px",
+      fontSize: "20px !important",
     },
     p: {
-      width: "250px",
-      fontSize: "10px",
+      width: "250px !important",
+      fontSize: "10px !important",
     },
   },
   "@media (min-width: 481px) and (max-width: 768px)": {
@@ -170,11 +170,11 @@ const useStyles = makeStyles({
       margin: "10px 0",
     },
     text: {
-      fontSize: "30px",
+      fontSize: "30px !important",
     },
     p: {
-      width: "350px",
-      fontSize: "11px",
+      width: "350px !important",
+      fontSize: "11px !important",
     },
   },
   "@media (min-width: 769px) and (max-width: 1024px)": {
@@ -204,11 +204,11 @@ const useStyles = makeStyles({
       margin: "10px 0",
     },
     text: {
-      fontSize: "50px",
+      fontSize: "50px !important",
     },
     p: {
-      width: "500px",
-      fontSize: "15px",
+      width: "500px !important",
+      fontSize: "15px !important",
     },
   },
   "@media (min-width: 1025px) and (max-width: 1200px)": {
