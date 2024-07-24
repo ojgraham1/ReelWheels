@@ -1,20 +1,20 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-// Definitely need to check back in on this, second guessing myself majorly
-export const api = createApi ({
-    reducerPath: 'api',
-    baseQuery: fetchBaseQuery ({
-        baseUrl: 'http://localhost:3000/',
-        prepareHeaders: (headers, { getState }) => {
-            console.log("prepareHeaders");
-            console.log(getState());
-            const token = getState().auth?.token;
-            console.log("TOKEN", token);
-            if (token) {
-                headers.set('authorization', `Bearer ${token}`)
-            }
-            headers.set('Content-Type', 'application/json');
-            return headers;
-        },
-    }),
-    endpoints: ()=> ({})
+
+export const api = createApi({
+  reducerPath: "api", //Where the API state will be stored
+  baseQuery: fetchBaseQuery({
+    baseUrl: "http://localhost:3000/", // Specifies the base URL for API requests
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth?.token; // Retrieves the authentication token 
+
+      if (token) {
+        headers.set("authorization", `Bearer ${token}`); // Sets the Authorization header with the Bearer token if available
+      }
+      headers.set("Content-Type", "application/json");
+      return headers;
+    },
+  }),
+  endpoints: () => ({}), // Placeholder for defining API endpoints
 });
+
+//

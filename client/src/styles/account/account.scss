@@ -1,0 +1,175 @@
+/*account*/
+.accPage{
+  margin-bottom: 75px;
+}
+.accWrapper{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.account {
+  width: 60%;
+  max-width: 1000px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333333;
+  background-color: #e0e0e0;
+  height: auto;
+  margin: 1rem;
+  margin-top: 100px;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow:
+  10px 10px 22px rgba(104, 104, 104, 0.479),
+  -10px -10px 22px rgba(255, 255, 255, 0.75);
+}
+.account button {
+  background-color: transparent;
+  color: red;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: color 0.3s ease;
+}
+.account button:hover {
+  color: #800000;
+}
+.account h1{
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-align: center;
+}
+.account h3{
+  font-size: 20px;
+  font-weight: 500;
+  color: #d10000;;
+}
+.account h1,
+.account h3 {
+  margin-bottom: 10px;
+}
+.account hr {
+  border: 1px solid #cccccc;
+  margin: 20px 0;
+}
+.account-details,
+.edit-details,
+.reservation-history {
+  margin-bottom: 20px;
+}
+.edit-details{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.detail{
+  margin-left: -40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.edit-details input {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  background: none;
+  background-color: #e0e0e0;
+  padding: 0.8rem 1.1rem;
+  border-radius: 20px;
+  margin: 0.5rem 0 1rem 0;
+  font-size: 1.2rem;
+  color: #d10000;;
+  box-shadow:
+    inset 5px 5px 11px rgba(0, 0, 0, 0.2),
+    inset -5px -5px 11px rgba(255, 255, 255, 0.75);
+}
+.edit-details button {
+  border: none;
+  outline: none;
+  background: none;
+  width: 775px;
+  margin: 0.6rem 0 1rem 0;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #d10000;;
+  text-transform: capitalize;
+  padding: 0.9rem;
+  border-radius: 20px;
+  background-color: #e0e0e0;
+  box-shadow:
+    10px 10px 22px rgba(0, 0, 0, 0.2),
+    -10px -10px 22px rgba(255, 255, 255, 0.75);
+
+}
+.edit-details button:hover {
+  box-shadow:
+    inset 5px 5px 11px rgba(0, 0, 0, 0.2),
+    inset -5px -5px 11px rgba(255, 255, 255, 0.75);
+}
+.birthdate-inputs{
+  display: flex;
+  gap: 20px;
+}
+.birthdate-input {
+  width: 75px;
+}
+.reservation-history ul {
+  list-style-type: none;
+  padding: 0;
+}
+.reservation-history li {
+  margin-bottom: 10px;
+}
+.reservation-history p {
+  margin: 0;
+}
+
+// Mobile Devices
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .account{
+    width: 270px;
+  }
+  .edit-details input {
+    width: 90%;
+  }
+  .edit-details button{
+    width: 290px;
+  }
+  .birthdate-inputs{
+    gap: 10px;
+  }
+}
+
+// iPads and Tablets
+@media screen and (min-width: 481px) and (max-width: 768px) {
+.account{
+    width: 400px;
+  }
+  .edit-details input {
+    width: 90%;
+  }
+  .edit-details button{
+    width: 390px;
+  }
+}
+
+// Small Screens and Laptops
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .account{
+    width: 700px;
+  }
+  .edit-details input {
+    width: 90%;
+  }
+  .edit-details button{
+    width: 690px;
+  }
+  .birthdate-inputs {
+    width: 400px;
+  }
+}

@@ -1,0 +1,90 @@
+/*login*/
+.lgcontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #00000000;
+}
+.signin-container {
+  background-color: #e0e0e0;
+  width: 400px;
+  height: auto;
+  margin: 1rem;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow:
+  10px 10px 22px rgba(104, 104, 104, 0.479),
+  -10px -10px 22px rgba(255, 255, 255, 0.75);
+}
+.signin-header {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-align: center;
+}
+.signin-header h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+}
+.signin-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.logInput{
+  border: none;
+  outline: none;
+  background: none;
+  background-color: #e0e0e0;
+  padding: 0.8rem 1.1rem;
+  border-radius: 20px;
+  margin: 0.5rem 0 1rem 0;
+  font-size: 1.2rem;
+  color: #d10000;;
+  box-shadow:
+    inset 5px 5px 11px rgba(0, 0, 0, 0.2),
+    inset -5px -5px 11px rgba(255, 255, 255, 0.75);
+}
+.signin-btn {
+  border: none;
+  outline: none;
+  background: none;
+  width: 100%;
+  margin: 0.6rem 0 1rem 0;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #d10000;;
+  text-transform: capitalize;
+  padding: 0.9rem;
+  border-radius: 20px;
+  background-color: #e0e0e0;
+  box-shadow:
+    10px 10px 22px rgba(0, 0, 0, 0.2),
+    -10px -10px 22px rgba(255, 255, 255, 0.75);
+}
+.signin-btn:hover {
+  box-shadow:
+    inset 5px 5px 11px rgba(0, 0, 0, 0.2),
+    inset -5px -5px 11px rgba(255, 255, 255, 0.75);
+}
+.signin-footer {
+  text-align: center;
+  margin-top: 20px;
+}
+.signin-footer p {
+  font-size: 14px;
+  color: #666;
+}
+.signin-footer a {
+  color: #d10000;;
+  text-decoration: none;
+  font-weight: 600;
+}
+.signin-footer a:hover {
+  text-decoration: underline;
+}

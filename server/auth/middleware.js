@@ -1,10 +1,15 @@
 const jwt = require("jsonwebtoken");
-const jwtSecret = "shh";
+require("dotenv").config();
+const jwtSecret = process.env.JWTSEC;
 
+// add authorization for routes using token
+
+// authorization for normal users
 const veryTokey = (req, res, next) => {
-  const authHeader = req.headers["authorization"];
+  const authHeader = req.headers["authorization"]; 
   const token = authHeader && authHeader.split(" ")[1];
 
+// extract the authorization header from the request
   if (!token) {
     return res.sendStatus(401);
   }
@@ -15,12 +20,13 @@ const veryTokey = (req, res, next) => {
     }
 
     if (decodedToken && decodedToken.data) {
+      console.log("Decoded Token Data:", decodedToken.data);
       req.user = decodedToken.data;
     }
     next();
   });
 };
-
+// authorization for admins
 const isAdmin = (req, res, next) => {
   if (req.user && req.user.isadmin === true) {
     next();

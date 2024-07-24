@@ -33,6 +33,13 @@ function generateShowtimes(runtime, startTime) {
   return showtimes;
 }
 
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
 async function main() {
   await insertNowPlayingMovies();
 
@@ -43,20 +50,6 @@ async function main() {
   await prisma.showtimes.deleteMany({});
   await prisma.theater.deleteMany({});
 
-  // Create/update users
-  const usersData = [
-    // data gone
-  ];
-
-  for (const userData of usersData) {
-    const user = await prisma.users.upsert({
-      where: { email: userData.email },
-      update: userData,
-      create: userData,
-    });
-    console.log(user);
-  }
-
   const theatersData = [
     {
       Location: "Atlanta",
@@ -65,7 +58,8 @@ async function main() {
       latitude: 33.838841,
       longitude: -84.380023,
       phoneNumber: "678-999-8212",
-      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Midtown_atlanta_%28cropped%29.jpg/1000px-Midtown_atlanta_%28cropped%29.jpg",
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Midtown_atlanta_%28cropped%29.jpg/1000px-Midtown_atlanta_%28cropped%29.jpg",
     },
     {
       Location: "New York",
@@ -74,7 +68,8 @@ async function main() {
       latitude: 40.72132,
       longitude: -73.993286,
       phoneNumber: "212-966-7799",
-      image: "https://www.amny.com/wp-content/uploads/2022/08/GettyImages-523538287.jpg",
+      image:
+        "https://www.amny.com/wp-content/uploads/2022/08/GettyImages-523538287.jpg",
     },
     {
       Location: "Brooklyn",
@@ -83,7 +78,8 @@ async function main() {
       latitude: 40.714623,
       longitude: -73.961452,
       phoneNumber: "718-599-2700",
-      image: "https://mgnyconsulting.com/wp-content/uploads/2022/11/brooklyntower-featured-scaled.webp",
+      image:
+        "https://mgnyconsulting.com/wp-content/uploads/2022/11/brooklyntower-featured-scaled.webp",
     },
     {
       Location: "San Francisco",
@@ -92,7 +88,8 @@ async function main() {
       latitude: 37.78268,
       longitude: -122.410729,
       phoneNumber: "415-991-2929",
-      image: "https://images.squarespace-cdn.com/content/v1/5c7f5f60797f746a7d769cab/1708063049157-NMFAB7KBRBY2IG2BWP4E/the+golden+gate+bridge+san+francisco.jpg",
+      image:
+        "https://images.squarespace-cdn.com/content/v1/5c7f5f60797f746a7d769cab/1708063049157-NMFAB7KBRBY2IG2BWP4E/the+golden+gate+bridge+san+francisco.jpg",
     },
     {
       Location: "West Hollywood",
@@ -101,7 +98,8 @@ async function main() {
       latitude: 34.09,
       longitude: -118.386627,
       phoneNumber: "323-655-6205",
-      image: "https://s1.it.atcdn.net/wp-content/uploads/2015/05/shutterstock_186048416WeHo.jpg",
+      image:
+        "https://s1.it.atcdn.net/wp-content/uploads/2015/05/shutterstock_186048416WeHo.jpg",
     },
     {
       Location: "Chicago",
@@ -110,7 +108,8 @@ async function main() {
       latitude: 41.908217,
       longitude: -87.677137,
       phoneNumber: "312-300-0562",
-      image: "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iBSTwLG79Zl8/v5/-1x-1.jpg",
+      image:
+        "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iBSTwLG79Zl8/v5/-1x-1.jpg",
     },
     {
       Location: "London",
@@ -119,7 +118,8 @@ async function main() {
       latitude: 51.5143,
       longitude: -0.1312,
       phoneNumber: "+44 207-437-0493",
-      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/33/f5/de/london.jpg?w=1400&h=1400&s=1",
+      image:
+        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/33/f5/de/london.jpg?w=1400&h=1400&s=1",
     },
     {
       Location: "Paris",
@@ -128,7 +128,8 @@ async function main() {
       latitude: 48.8598,
       longitude: 2.3626,
       phoneNumber: "+33 1 43 48 80 14",
-      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/15/6d/d6/paris.jpg?w=1400&h=1400&s=1",
+      image:
+        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/15/6d/d6/paris.jpg?w=1400&h=1400&s=1",
     },
     {
       Location: "Milan",
@@ -137,7 +138,8 @@ async function main() {
       latitude: 45.4789,
       longitude: 9.1926,
       phoneNumber: "+39 02 84349776",
-      image: "https://i.natgeofe.com/n/485b2f58-8e2b-4633-a1c5-658bf513e53e/alps-milan-italy_16x9.jpg",
+      image:
+        "https://i.natgeofe.com/n/485b2f58-8e2b-4633-a1c5-658bf513e53e/alps-milan-italy_16x9.jpg",
     },
     {
       Location: "Berlin",
@@ -146,7 +148,8 @@ async function main() {
       latitude: 52.5292,
       longitude: 13.401,
       phoneNumber: "+49 030 27013724",
-      image: "https://www.zicasso.com/static/fc7ac8652d1d916ad0d3be6a1ee37a06/6d821/fc7ac8652d1d916ad0d3be6a1ee37a06.jpg",
+      image:
+        "https://www.zicasso.com/static/fc7ac8652d1d916ad0d3be6a1ee37a06/6d821/fc7ac8652d1d916ad0d3be6a1ee37a06.jpg",
     },
     {
       Location: "Shibuya",
@@ -156,7 +159,8 @@ async function main() {
       latitude: 35.661751,
       longitude: 139.703081,
       phoneNumber: "03-5428-4393",
-      image: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?fm=jpg&w=3000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hpYnV5YXxlbnwwfHwwfHx8MA%3D%3D",
+      image:
+        "https://images.unsplash.com/photo-1542051841857-5f90071e7989?fm=jpg&w=3000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hpYnV5YXxlbnwwfHwwfHx8MA%3D%3D",
     },
     {
       Location: "Osaka",
@@ -165,7 +169,8 @@ async function main() {
       latitude: 34.678395,
       longitude: 135.49892,
       phoneNumber: "06-6533-0705",
-      image: "https://blog.sakura.co/wp-content/uploads/2023/03/Sakuraco_osaka6-1.jpg",
+      image:
+        "https://blog.sakura.co/wp-content/uploads/2023/03/Sakuraco_osaka6-1.jpg",
     },
     {
       Location: "Harajuku",
@@ -175,7 +180,8 @@ async function main() {
       latitude: 35.6702,
       longitude: 139.704057,
       phoneNumber: "03-5771-0090",
-      image: "https://www.gotokyo.org/en/story/guide/shibuya-shop/images/shibuyashopping_main.jpg",
+      image:
+        "https://www.gotokyo.org/en/story/guide/shibuya-shop/images/shibuyashopping_main.jpg",
     },
     {
       Location: "Fukuoka",
@@ -185,7 +191,8 @@ async function main() {
       latitude: 33.589606,
       longitude: 130.396423,
       phoneNumber: "092-732-5002",
-      image: "https://a3.cdn.japantravel.com/photo/290-216180/1440x960!/fukuoka-fukuoka-prefecture-216180.jpg",
+      image:
+        "https://a3.cdn.japantravel.com/photo/290-216180/1440x960!/fukuoka-fukuoka-prefecture-216180.jpg",
     },
     {
       Location: "Daikanyama",
@@ -195,7 +202,8 @@ async function main() {
       latitude: 35.648888,
       longitude: 139.703534,
       phoneNumber: "03-5456-0085",
-      image: "https://byfood.b-cdn.net/api/public/assets/9407/content?optimizer=image",
+      image:
+        "https://byfood.b-cdn.net/api/public/assets/9407/content?optimizer=image",
     },
     {
       Location: "Nagoya",
@@ -205,7 +213,8 @@ async function main() {
       latitude: 35.171238,
       longitude: 136.905157,
       phoneNumber: "052-261-2858",
-      image: "https://content.r9cdn.net/rimg/dimg/68/67/c5247216-city-2121-165f3326118.jpg?width=1366&height=768&xhint=2169&yhint=1514&crop=true",
+      image:
+        "https://content.r9cdn.net/rimg/dimg/68/67/c5247216-city-2121-165f3326118.jpg?width=1366&height=768&xhint=2169&yhint=1514&crop=true",
     },
     {
       Location: "Seoul",
@@ -223,7 +232,8 @@ async function main() {
       latitude: 31.2208,
       longitude: 121.4513,
       phoneNumber: "+86-021-6025-0570",
-      image: "https://www.outlooktravelmag.com/media/shanghai-1-1582544504.profileImage.2x-scaled.webp",
+      image:
+        "https://www.outlooktravelmag.com/media/shanghai-1-1582544504.profileImage.2x-scaled.webp",
     },
   ];
 
@@ -235,13 +245,12 @@ async function main() {
     });
     console.log("Created or updated theater:", theater);
 
-    // Grab 5 random movies from MovieAPI table
-    const movies = await prisma.movieAPI.findMany({
-      take: 5,
-      orderBy: {
-        id: "desc",
-      },
-    });
+    // Grab all movies from MovieAPI table and shuffle them
+    let movies = await prisma.movieAPI.findMany({});
+    shuffleArray(movies);
+
+    // Select the first 5 movies from the shuffled list
+    movies = movies.slice(0, 5);
 
     let startTime = new Date();
     startTime.setHours(10, 0, 0, 0); // Start at 10:00 AM

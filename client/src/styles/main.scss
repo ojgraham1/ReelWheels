@@ -1,11 +1,12 @@
 :root {
-  background-color: black;
+  background-image: url(https://cdn.pixabay.com/animation/2023/03/19/02/34/02-34-11-741_512.gif);
+  background-color: rgb(0, 0, 0);
+  background-repeat: repeat;
   color: white;
 }
 a:link {
   text-decoration: none;
 }
-
 a:visited {
   text-decoration: none;
   color: white;
@@ -13,13 +14,31 @@ a:visited {
 a:hover {
   text-decoration: none;
 }
-
 a:active {
   text-decoration: none;
 }
-
 .ex {
   margin-top: 100px;
   font-size: xx-large;
   color: aliceblue;
+}
+
+// Mobile Devices
+@media screen and (min-width: 320px) and (max-width: 480px) {
+}
+
+// iPads and Tablets
+@media screen and (min-width: 481px) and (max-width: 768px) {
+}
+
+// Small Screens and Laptops
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+}
+
+// Desktops and Large Screens
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+}
+
+// Extra large screens
+@media screen and (min-width: 1201px) {
 }

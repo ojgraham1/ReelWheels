@@ -1,0 +1,121 @@
+/* TheaterList.jsx */
+.theater-list-container {
+  margin: 100px;
+}
+.theater-list-container.modal-open {
+  filter: blur(3px);
+}
+.theater-list-heading {
+  text-align: center;
+}
+.theater-cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.theater-card {
+  margin: 30px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.5s;
+}
+.theater-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.555);
+  transition: background 0.3s;
+}
+.theater-card:hover::before {
+  background: rgba(0, 0, 0, 0);
+}
+.theater-card:hover h2 {
+  background-color: rgb(232, 232, 232);
+  color: rgb(67, 67, 67);
+}
+.tlbgImg {
+  height: 250px;
+  width: 250px;
+  background-size: cover;
+  background-position: center;
+}
+.tlbgImg:hover {
+  opacity: 1;
+}
+.tlLoc-Overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  padding: 2px;
+  z-index: 2;
+}
+.theater-location {
+  padding: 2px;
+  width: fit-content;
+  text-align: center;
+  color: rgb(222, 222, 222);
+  font-family: serif;
+  font-size: 1.2rem;
+  font-weight: 100;
+  background: rgba(140, 140, 140, 0.168);
+}
+
+// Mobile Devices
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .theater-list-container{
+    margin: 20px;
+    margin-top: 100px;
+    margin-bottom: 80px;
+  }
+  .theater-card{
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+  }
+}
+
+// iPads and Tablets
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .theater-list-container{
+    margin: 20px;
+    margin-top: 100px;
+    margin-bottom: 80px;
+  }
+  .theater-card{
+    width: 175px;
+    height: 175px;
+    margin: 10px;
+  }
+}
+
+// Small Screens and Laptops
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .theater-list-container{
+    margin: 20px;
+    margin-top: 100px;
+    margin-bottom: 80px;
+  }
+  .theater-card{
+    width: 225px;
+    height: 225px;
+    margin: 10px;
+  }
+}
+
+// Desktops and Large Screens
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+}
+
+// Extra large screens
+@media screen and (min-width: 1201px) {
+}

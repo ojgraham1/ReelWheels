@@ -1,0 +1,199 @@
+/* NavBar */
+.navBar {
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: black;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+  font-family: "Roboto", sans-serif;
+  padding: 0 20px;
+}
+.navBarContent {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  justify-content: space-between;
+}
+.nbDateTime {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: red;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  margin-right: 20px;
+}
+.navBarL {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: white;
+  font-size: 1.2rem;
+  font-family: "Merriweather", serif;
+}
+.navBarL li {
+  display: flex;
+  align-items: center;
+}
+.navBarL .nL {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.navBarL .nL:hover {
+  color: red;
+}
+.navBarL .nL-logout-icon {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.navBarL .nL-logout-icon:hover {
+  transform: scale(1.1);
+}
+.nbDateTime {
+  margin-left: -100px;
+  margin-top: -5px;
+  margin-bottom: -5px;
+  color: red;
+  font-size: small;
+  font-family: sans-serif;
+}
+.hamburger {
+  display: none;
+  cursor: pointer;
+  font-size: 24px;
+}
+.vLogo{
+  display: none;
+}
+// Hamburger Menu for Mobile Devices, iPads, and Small Screens
+@media screen and (min-width: 320px) and (max-width: 1024px) {
+  .navBar {
+    position: fixed;
+    justify-content: space-between;
+    
+    .nbDateTime{
+      height: 100px;
+      margin: 15px;
+    }
+    .hamburger {
+      z-index: 999;
+      margin: 45px;
+      display: inline-block;
+      cursor: pointer;
+
+      div {
+        width: 30px;
+        height: 4px;
+        background-color: #ffffff;
+        margin: 6px 0;
+        transition: 0.4s;
+      }
+        &.open .bar1 {
+          transform: rotate(-45deg) translate(-7.5px, 8px);
+          width: 30px;
+          margin: none;
+        }
+        &.open .bar2 {
+          opacity: 0;
+        }
+        &.open .bar3 {
+          transform: rotate(45deg) translate(-6px, -7px);
+          width: 30px;
+        }
+    }
+  
+    .navBarL {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0;
+      margin: 0;
+      position: fixed;
+      top: 0;
+      right: -222px;
+      width: 222px; 
+      height: 100%;
+      background-color: black;
+      transition: right 0.4s;
+
+      &.open {
+        right: 0;  
+        top: 0;
+      }
+      .vLogo{
+        display: block;
+        padding: 5px;
+        height: 215px;      
+      }
+      li {
+        margin-left: 10px;
+        margin-top: -10px;
+        padding: 10px;
+      }
+      .nL {
+        text-decoration: none;
+        color:white;
+      }
+      .nL:hover {
+        color: #c20000;
+      }
+      .nL-logout-icon {
+        font-family: "Merriweather", serif;
+        border: none;
+        outline: none;
+        background: none;
+        width: 100%;
+        margin: 0.6rem 0 1rem 0;
+        cursor: pointer;
+        font-size: 1.1rem;
+        color: #c20000;
+        text-transform: capitalize;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        border-radius: 10px;
+        box-shadow:
+          5px 5px 11px rgba(101, 101, 101, 0.2),
+          -1px -1px 5px rgba(255, 255, 255, 0.75);
+      }
+      .nLin {
+        font-family: "Merriweather", serif;
+        border: none;
+        outline: none;
+        background: none;
+        width: 100%;
+        margin: 0.6rem 0 1rem 0;
+        cursor: pointer;
+        font-size: 1.1rem;
+        color: #ffffff;;
+        text-transform: capitalize;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        border-radius: 10px;
+        box-shadow:
+          5px 5px 11px rgba(101, 101, 101, 0.2),
+          -1px -1px 5px rgba(255, 255, 255, 0.75);
+      }
+      .nL-logout-icon:hover, .nLin:hover {
+        transform: none;
+        transition: color 0.3s;
+        color: #c20000;
+        box-shadow:
+          inset 5px 5px 11px rgba(0, 0, 0, 0.2),
+          inset -1px -1px 5px rgba(255, 255, 255, 0.75);
+      }
+    }
+  }
+}

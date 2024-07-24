@@ -1,14 +1,18 @@
 {
   "scripts": {
-    "start-all": "concurrently \"npm run dev --prefix client\" \"node server/index.js\""
+    "start-all": "concurrently \"npm run dev --prefix client\" \"node server/index.js\"",
+    "build": "npm i && cd client && npm i --legacy-peer-deps && npm run build && cd ../server && npm i && npm run seed"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
   },
   "dependencies": {
-    "@fortawesome/free-regular-svg-icons": "^6.5.2",
+    "@fortawesome/free-brands-svg-icons": "^6.6.0",
+    "@fortawesome/free-regular-svg-icons": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@reduxjs/toolkit": "^2.2.6",
     "hero-slider": "^3.2.1",
+    "mui": "^0.0.1",
     "react": "^18.3.1",
     "react-modal": "^3.16.1",
     "react-redux": "^9.1.2",

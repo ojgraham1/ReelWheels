@@ -2,12 +2,15 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { PrismaClient } = require("@prisma/client");
-const jwtSecret = "shh";
+require("dotenv").config();
+const jwtSecret = process.env.JWTSEC;
+
+console.log(jwtSecret);
 
 const prisma = new PrismaClient();
 const router = express.Router();
 
-// Register
+// Register a new user
 router.post("/register", async (req, res) => {
   const {
     username,
@@ -22,6 +25,7 @@ router.post("/register", async (req, res) => {
   } = req.body;
 
   if (!username || !password || !firstName || !lastName || !email) {
+    console.error("Missing required fields", req.body);
     return res.status(400).json({ error: "Missing required fields" });
   }
 
@@ -41,13 +45,15 @@ router.post("/register", async (req, res) => {
       },
     });
 
+    console.log("User registered successfully", newUser);
     res.status(201).json({ message: "User registered successfully", newUser });
   } catch (error) {
+    console.error("Error during registration:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 });
 
-// Login
+// Login a user
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
 
@@ -78,8 +84,9 @@ router.post("/login", async (req, res) => {
       { expiresIn: "1w" }
     );
 
-    res.status(200).json({ token });
+    res.status(200).json({ token, userId: user.id });
   } catch (error) {
+    console.error("Error during login:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 });

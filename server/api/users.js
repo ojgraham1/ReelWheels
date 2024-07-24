@@ -48,38 +48,6 @@ router.get("/username/:username", veryTokey, async (req, res) => {
   }
 });
 
-// Create New User
-// router.post("/", async (req, res) => {
-//   const {
-//     username,
-//     password,
-//     firstName,
-//     lastName,
-//     email,
-//     address,
-//     phoneNumber,
-//     birthdate,
-//     isAdmin,
-//   } = req.body;
-//   try {
-//     const newUser = await prisma.users.create({
-//       data: {
-//         username: username,
-//         password: password,
-//         firstName: firstName,
-//         lastName: lastName,
-//         email: email,
-//         address: address,
-//         phoneNumber: phoneNumber,
-//         birthdate: birthdate,
-//         isAdmin: Boolean(isAdmin),
-//       },
-//     });
-//     res.status(201).json(newUser);
-//   } catch (error) {
-//     res.status(400).json({ msg: error.message });
-//   }
-// });
 
 // // Update Existing User
 router.put("/:id", veryTokey, async (req, res) => {

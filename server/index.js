@@ -6,12 +6,14 @@ const insertNowPlayingMovies = require("./insertMovies");
 const app = express();
 const port = 3000;
 
+// add API
 const TMDB_API_KEY =
   process.env.TMDB_API_KEY || "60bff7c4b3bc017974f0186538e281a6";
 const TMDB_BASE_URL = "https://api.themoviedb.org/3";
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(__dirname + "/../client/dist"));
 
 // Route import
 const usersRoute = require("./api/users");
@@ -24,7 +26,7 @@ const { veryTokey, isAdmin } = require("./auth/middleware");
 
 //Routes
 app.use("/users", usersRoute);
-app.use("/reservations", veryTokey, isAdmin, reservationsRoute);
+app.use("/reservations", veryTokey, reservationsRoute);
 app.use("/theater", theaterRoute);
 app.use("/showtimes", showtimesRoute);
 app.use("/auth", authRoute);
@@ -40,6 +42,7 @@ cron.schedule("0 0 * * *", () => {
     );
 });
 
+//fetch movies from TMDB API
 app.get("/api/movies", async (req, res) => {
   try {
     const response = await axios.get(`${TMDB_BASE_URL}/trending/movie/week`, {
@@ -54,6 +57,7 @@ app.get("/api/movies", async (req, res) => {
   }
 });
 
+// start the server on port
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });

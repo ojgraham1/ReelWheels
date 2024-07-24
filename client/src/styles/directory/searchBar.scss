@@ -1,0 +1,175 @@
+.search-bar-container {
+  padding-top: 10vh;
+  width: 40%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 200px;
+}
+.search-bar {
+  display: flex;
+  flex-direction: row;
+}
+.input-wrapper {
+  width: 100%;
+  height: 2.5rem;
+  border: none;
+  border-radius: 10px;
+  padding: 0 15px;
+  box-shadow: 0px 0px 8px #ddd;
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+.searchInput {
+  background-color: transparent;
+  border: none; 
+  height: 100%;
+  font-size: 1.25rem;
+  width: 100%;
+  margin-left: 5px;
+}
+.searchInput:focus {
+  outline: none;
+}
+.search-icon {
+  margin-top: 3.5px;
+  color: black;
+}
+
+// Maya's Input, will check in w group if okay!
+.rListContainer{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  width: max-content;
+}
+.subcategory{
+  margin-left: 10px;
+  color: rgb(208, 0, 0);
+}
+.resLi {
+  margin-top: -10px;
+  margin-left: 10px;
+}
+.srTitle{
+  color: black
+}
+.category-result{
+  color: rgba(155, 10, 10, 0.57);
+  margin-bottom: 5px;
+}
+// 
+
+.browse-Result-List {
+  color: black;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 8px #ddd;
+  border-radius: 10px;
+  margin-top: 1rem;
+  max-height: 150px;
+  overflow-y: auto;
+}
+.tv-Result-List {
+  color: black;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 8px #ddd;
+  border-radius: 10px;
+  margin-top: 1rem;
+  max-height: 150px;
+  overflow-y: auto;
+}
+.nowPlaying-Result-List {
+  color: black;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 8px #ddd;
+  border-radius: 10px;
+  margin-top: 1rem;
+  max-height: 150px;
+  overflow-y: auto;
+}
+.search-result {
+  padding: 10px 20px;
+}
+.search-result:hover {
+  margin-right: 10px;  
+  background-color: #efefef;
+  cursor: pointer;
+}
+
+// Mobile Devices
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .input-wrapper {
+    width: 280px;
+  }
+  .searchInput {
+    width: 260px;
+  }
+  .Results-Lists{
+    width: 260px;
+  }  
+}
+
+// iPads and Tablets
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .input-wrapper {
+    width: 380px;
+  }
+  .searchInput {
+    width: 360px;
+  }
+  .Results-Lists{
+    width: 360px;
+  }  
+}
+
+// Small Screens and Laptops
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .input-wrapper {
+    width: 400px;
+  }
+  .searchInput {
+    width: 380px;
+  }
+  .Results-Lists{
+    width: 380px;
+  }  
+}
+
+// Desktops and Large Screens
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+  .input-wrapper {
+    width: 500px;
+  }
+  .searchInput {
+    width: 480px;
+  }
+  .Results-Lists{
+    width: 480px;
+  }  
+}
+
+// Extra large screens
+@media screen and (min-width: 1201px) {
+  .input-wrapper {
+    width: 600px;
+  }
+  .searchInput {
+    width: 580px;
+  }
+  .Results-Lists{
+    width: 580px;
+  }  
+}
