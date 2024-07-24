@@ -429,6 +429,16 @@ footer .about-us-link:hover {
   text-decoration: underline;
 }
 
+a:link {
+  text-decoration: none;
+  color: white;
+}
+
+a:visited {
+  text-decoration: none;
+  color: white;
+}
+
 /* Movie List */
 .mLContainer {
   margin-top: -15px;
@@ -1088,6 +1098,7 @@ footer .about-us-link:hover {
     background-size: cover;
     background-position: center;
     width: fit-content;
+    height: fit-content;
     overflow: hidden;
     position: relative;
     bottom: -100px;
@@ -1103,11 +1114,10 @@ footer .about-us-link:hover {
     justify-content: center;
     position: relative;
     z-index: 1;
-    margin: 100px;
   }
   .mpText-Container {
     margin-top: 300px;
-    width: fit-content;
+    height: min-content;
   }
   .play-btn {
     margin-bottom: -300px;
@@ -1547,22 +1557,23 @@ footer .about-us-link:hover {
   transform: scale(1.1);
 }
 
-@media screen and (min-width: 320px) and (max-width: 1200px) {
+@media screen and (min-width: 320px) and (max-width: 1025px) {
   .browse-page-container {
-    margin-top: -5%;
-    background-size: cover;
-    background-position: center;
-    width: 115%;
-    overflow: hidden;
-    position: relative;
-  }
-  .browse-page-container, .bpImg {
-    object-fit: contain;
+    height: fit-content;
     width: fit-content;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    overflow: hidden;
+  }
+  .bpVideo-Container {
+    margin-top: 100px;
+  }
+  .bpInfo {
+    margin-top: -50px;
   }
   .bpText-Container {
-    margin-bottom: 100px;
-    width: fit-content;
+    height: min-content;
   }
 }
 @media screen and (min-width: 1600px) {

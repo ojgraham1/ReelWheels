@@ -118,7 +118,7 @@
     background-position: center;
     width: fit-content;
     // height: 100vh;
-    // height: max-content;
+    height: fit-content;
     overflow: hidden;
     position: relative;
     bottom: -100px;
@@ -134,11 +134,11 @@
     justify-content: center;
     position: relative;
     z-index: 1;
-    margin: 100px;
+    // margin: 100px;
   }
   .mpText-Container {
     margin-top: 300px;
-    width: fit-content;
+    height: min-content;
   }
   .play-btn {
     margin-bottom: -300px;
