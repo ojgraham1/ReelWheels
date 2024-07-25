@@ -86,6 +86,7 @@ function BrowsePage() {
                             <p>{details.overview}</p>
                             <button className='atwBtn' onClick={addToWatchlist}>Add to Watchlist</button>
                                 <Snackbar
+                                    className='atwNotif'
                                     open={open}
                                     autoHideDuration={2000}
                                     onClose={handleClose}
