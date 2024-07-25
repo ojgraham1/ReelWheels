@@ -83,12 +83,13 @@
     background-size: cover;
     background-position: center;
     height: auto;
-    width: max-content;
+    // width: max-content;
     position: relative;
     overflow: hidden;
   }
   .bpVideo-Container {
     height: auto;
+    width: auto;
   }
   .bvid-content {
     width: auto;
