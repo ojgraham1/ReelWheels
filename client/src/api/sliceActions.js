@@ -156,9 +156,10 @@ export const {
     useCreateReservationMutation,
 
     // Showtimes Actions
-    getShowtimes,
-    getShowtimesByTheaterId,
-    deleteShowtime,
+    useGetShowtimesQuery,
+    useCreateShowtimeMutation,
+    useGetShowtimesByTheaterIdQuery,
+    useDeleteShowtimeMutation,
 
 
 } = actionsApi;

@@ -136,10 +136,12 @@
     position: relative;
     z-index: 1;
     // margin: 100px;
+
   }
   .mpText-Container {
     margin-top: 300px;
     height: auto;
+    width: auto;
   }
   .play-btn {
     margin-bottom: -300px;
@@ -157,7 +159,6 @@
   }
   .mpVideo-Container.show {
     margin-top: 120px;
-    width: auto;
     width: auto;
     height: auto;
     display: flex;
