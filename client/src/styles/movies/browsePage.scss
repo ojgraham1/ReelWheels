@@ -94,6 +94,13 @@
   .bvid-content {
     width: auto;
     height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
   }
 
   .bpInfo {

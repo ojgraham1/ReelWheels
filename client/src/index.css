@@ -1134,10 +1134,24 @@ a:visited {
     height: 600px;
     margin-top: -425px;
     margin-bottom: -350px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    position: relative;
   }
   .mpVideo-Container.show {
     margin-top: 120px;
     width: auto;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
   }
 }
 @media screen and (min-width: 2000px) {
@@ -1581,6 +1595,13 @@ a:visited {
   .bvid-content {
     width: auto;
     height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
   }
   .bpInfo {
     margin-top: -100px;
