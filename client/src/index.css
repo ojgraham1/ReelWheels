@@ -1612,6 +1612,10 @@ a:visited {
     height: fit-content;
     width: auto;
   }
+  .atwNotif {
+    margin-bottom: 50px;
+    width: auto;
+  }
 }
 @media screen and (min-width: 1600px) {
   .bpText-Container {
