@@ -1580,6 +1580,11 @@ a:visited {
   transform: scale(1.1);
 }
 
+.atwNotif {
+  margin-bottom: 50px;
+  width: auto;
+}
+
 @media screen and (min-width: 320px) and (max-width: 1269px) {
   .browse-page-container {
     background-size: cover;
@@ -1610,10 +1615,6 @@ a:visited {
   }
   .bpText-Container {
     height: fit-content;
-    width: auto;
-  }
-  .atwNotif {
-    margin-bottom: 50px;
     width: auto;
   }
 }
