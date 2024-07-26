@@ -76,6 +76,11 @@
 .atwBtn:hover {
   transform: scale(1.1);
 }
+.atwNotif{
+  margin-bottom: 50px;
+  width: auto;
+}
+
 
 // Mobile Devices, iPads, Small and Large Screens
 @media screen and (min-width: 320px) and (max-width: 1269px) {
@@ -110,10 +115,6 @@
   }
   .bpText-Container {
     height: fit-content;
-    width: auto;
-  }
-  .atwNotif{
-    margin-bottom: 50px;
     width: auto;
   }
 }

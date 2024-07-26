@@ -12,7 +12,7 @@ const Account = () => {
   const dispatch = useDispatch(); // Accessing Redux dispatch function
   const { username } = useParams(); // Extracting username parameter from URL
   const [formData, setFormData] = useState({
-      birthMonth: "",
+    birthMonth: "",
     birthDay: "",
     birthYear: "",
   }); // State for form data
